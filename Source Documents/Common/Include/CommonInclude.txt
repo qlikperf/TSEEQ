@@ -1,0 +1,87 @@
+/**********************************************************************************************************************************************************
+	File:		CommonInclude.txt
+	Purpose:	Common Initialization and Common Ending routines for all QVFs and QVWs that invoke SEEQ, the Structured ETL Engine for Qlik.
+	
+	Author:		Jeff R. Robbins
+	Email:		jrs@qlik.com; jr@QlikPerf.com
+	
+	Version:	3.1.1
+	Date:		2017-12-15
+	
+	This program is provided in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+**********************************************************************************************************************************************************/
+sub CommonInit 
+	Trace 'Entering subroutine CommonInit in $(vCommonScriptPath)\CommonInclude.txt';
+	SET ThousandSep=',';
+	SET DecimalSep='.';
+	SET MoneyThousandSep=',';
+	SET MoneyDecimalSep='.';
+	SET MoneyFormat='$#,##0;($#,##0)';
+	SET TimeFormat='h:mm:ss TT';
+	SET DateFormat='MM/DD/YYYY';
+	SET TimestampFormat='MM-DD-YY h:mm:ss[.fff] TT';
+	SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
+	SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
+	
+	IF upper (vPurpose) <> 'APP' THEN 
+		SET HidePrefix='';
+	ELSE
+		SET HidePrefix='%'; // hide (by default) field names that have names starting with a percent sign.
+	ENDIF
+	SET vFinished = 0;  // 0 means script did not finish; 1 inidicates script completion; this is for debugging. 
+	/************************************************************************************************************************************
+		Get start time of this reload script. 
+	************************************************************************************************************************************/
+	LET vReloadTimeStart = Now(1);
+	/*******************************************************************************************************************************
+		Write debugging info to log for this QVW/QVF:
+	*******************************************************************************************************************************/
+	TRACE '$(vEnvironment)';
+	TRACE '$(vApp)';
+	TRACE '$(vPurpose)';
+	/**************************************************************************************************************************************
+		If table VariableRepository exists, then drop it, as we'll create it from scratch when we load common variables:
+	***************************************************************************************************************************************/
+	if len ( NoOfRows('VariableRepository') ) > 0 THEN 
+		DROP Table VariableRepository;
+	ENDIf
+	/**************************************************************************************************************************************
+		If table Rules table exists, then drop it, as we don't want to inherit Rules in the case of BINARY LOAD:
+	**************************************************************************************************************************************/
+	if len ( NoOfRows('Rules For Entire Reload') ) > 0 THEN 
+		DROP Table [Rules For Entire Reload];
+	ENDIf
+	/**************************************************************************************************************************************
+		If execution trace table exists, drop it, as we don't need to inherit it in the case of BINARY LOAD:
+	**************************************************************************************************************************************/
+	if len ( NoOfRows('Execution Stats For Entire Reload') ) > 0 THEN 
+		trace SEEQ_ExecutionTracepresent;
+		DROP Table [Execution Stats For Entire Reload];
+	 ENDIF
+	/**************************************************************************************************************************************
+		Define the common variables path.
+	***************************************************************************************************************************************/
+	SET vCommonVariablePath='$(vCommonPath)variables$(vSlash)';
+	trace $(vCommonVariablePath)Common_Variables.xls;
+	
+	// set vPurge=1; // set to 1 to purge.
+	if vPurge = 1 THEN // reload without data to quickly create a small QVW. Useful for automated backups and archiving.
+		LET vPurge = 0;	// set vPurge to 0 so that the next reload will be a normal (non-purge) reload.
+		LET vReloadTimeEnd = now();
+		exit script;
+	endif
+	Trace 'Exiting subroutine CommonInit in $(vCommonScriptPath)\CommonInclude.txt';
+end sub
+
+sub CommonEnd
+	Trace 'Entering subroutine CommonEnd in $(vCommonScriptPath)\CommonInclude.txt';
+	if upper(vPurpose) = 'LOAD' THEN 
+		RENAME FIELD [QVD Created] to [QVD Loaded];
+	endif
+	LET vReloadTimeEnd = now();		// for performance profiling
+	SET vFinished = 1;  			// 0 means script did not finish; 1 inidicates script completion; this is for debugging. 
+	Trace 'Exiting subroutine CommonEnd in $(vCommonScriptPath)\CommonInclude.txt';
+	EXIT Script;	
+ENDSUB	

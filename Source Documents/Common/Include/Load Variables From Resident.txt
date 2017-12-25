@@ -1,0 +1,147 @@
+/****************************************************************************************************************************************
+	Procedure:	Load_Variables_from_Resident
+		
+	Author:		Jeff R. Robbins
+	Email:		jrs@qlik.com; jr@QlikPerf.com
+	
+	Version:	3.1.1
+	Date:		2017-12-15
+	
+	This program is provided in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+	
+	Purpose:		Load variables from the specified resident table.
+	
+	Sample Invocation:  	call Load_Variables_from_Resident('My_Resident_Table', 'DROP' );
+	
+	Parameters:
+				vTmpResidentTable: Name of resident table containing variables and their definitions.
+
+				vKEEPorDROP:		'KEEP' will initialize variables and also retain variable info in a data model table.
+									Such a table greatly facilitates the use of Qlik associative logic to search
+									for variables and their derivations.
+								
+									'DROP' will initialize variables, but will not persit variable info in a data model table.		
+****************************************************************************************************************************************/
+sub Load_Variables_from_Resident(vTmpResidentTable, vKEEPorDROP)
+	call Load_Variables_from_Resident_Init;
+	Let vLVR_NumVariablesToInit = NoOfRows('Tmp_Variable_Repository');
+	For i = 0 to $(vLVR_NumVariablesToInit)-1
+		Let vLVR_SetOrLet  = upper(Peek('SET or LET',   $(i), 'Tmp_Variable_Repository'));
+		Let vLVR_VariableName  = Peek('%VariableName',    $(i), 'Tmp_Variable_Repository');
+		// the replace() in the following line is needed to prevent premature dollar sign expansion, which is rarely desirable:
+		LET vLVR_VariableDefinition = Peek('Variable Definition',   $(i), 'Tmp_Variable_Repository');
+		LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39));
+		IF (Mod($(vLVR_NumSingleQuote), 2) <> 0) THEN		// check for unbalanced (an uneven number of) single quotes. 
+			call Load_Variables_from_Resident_Handle_Error;
+		Else
+			call Load_Variables_from_Resident_Define_Variable;
+		ENDIF
+		call Load_Variables_from_Resident_Clear_Variables;
+	Next
+	LET i = null();
+	IF len(NoOfRows('VariableRepository') ) > 0  AND upper(vKEEPorDROP) = 'KEEP' THEN // VariableRepository table exists, CONCATENATE
+		Concatenate (VariableRepository) LOAD * Resident Tmp_Variable_Repository;
+	ELSEIF  upper(vKEEPorDROP) = 'KEEP'  then	// VariableRepository does not exist
+		VariableRepository: NoConcatenate LOAD * Resident Tmp_Variable_Repository;
+	ENDIF
+	DROP Table Tmp_Variable_Repository;  
+	LET vLVR_NumVariablesToInit = null();
+endsub 
+/****************************************************************************************************************************************/
+sub  Load_Variables_from_Resident_Init
+	//2014-01-07 JRR added the following three lines to handle the cases where vApp is not defined in the callee, so that WildMatch would not return an undesired result.
+	if IsNull(vApp)  or len (trim(vApp)) = 0  THEN
+		SET vApp = 'BLANK';	
+	ENDIF
+	
+	VarTypeMap:
+	MAPPING LOAD * INLINE [
+	FirstLetterOfName, VarType
+	e,			Expression
+	v,			General
+	c,			Color
+	];
+	
+	Tmp_Variable_Repository:
+	NoConcatenate LOAD 
+		[Load Order],
+		VariableSourceFile,
+		VariableSourceFilePath,
+		[Variable Name] AS %VariableName, 
+		applymap ( 'VarTypeMap', left( [Variable Name], 1 ), 'Other' ) AS [Variable Type],
+		replace ( replace( [Variable Definition] , '“', '"'), '”', '"') AS [Variable Definition], 
+		Comment AS [Variable Comment]
+		,
+		if (len([SET or LET]) <2, 'SET', [SET or LET]) AS [SET or LET] // if not defined, defaults to SET
+	Resident $(vTmpResidentTable)
+	// Honor exclusion rules; some variables should not be in certain apps; also, a 
+	// variable can be disabled entirely if the exclude rule specifies 'ALL' app variants:
+	WHERE 
+		// Don't load lines marked for exclusion from this app.  We inject a blank (' ') to handle cases
+		// where [Exclude From Application] is null:
+		NOT wildmatch([Exclude From Application] & ' ', '*$(vApp)*') 
+	AND 
+		 ( len(trim([Variable Name])) > 0	)	// don't load blank lines
+	 AND		// don't load blank lines
+		upper([Exclude From Application]) <> 'ALL'	// don't load lines marked for exclusion from all apps
+;
+	Tmp_Variable_Repository_02:
+	NOCONCATENATE LOAD * Resident Tmp_Variable_Repository Order By [Load Order];
+		DROP TABLE Tmp_Variable_Repository;
+	Rename Table Tmp_Variable_Repository_02 TO Tmp_Variable_Repository; 
+	DROP FIELD [Load Order];
+
+ENDSUB
+/****************************************************************************************************************************************/
+sub Load_Variables_from_Resident_Handle_Error
+			   	LET vLVR_ErrString=	chr(39) & 
+				'ERROR: INVALID VARIABLE VALUE DEFINED for varible $(vLVR_VariableName). Odd number of single quotes cannot be parsed. ' & 
+				'Root cause is possibly consumption by Excel of the first single quote in the variable value.  '			 &
+				'Resolution is possibly to add an additional single quote to the very front of the Excel cell '	&
+				'where the variable value is defined.' & chr(39);
+			   TRACE $(vLVR_ErrString);
+			   SET '$(vLVR_VariableName)' = $(vLVR_ErrString);
+			   LET vLVR_VariableDefinition=null();		//this line needed to prevent the string with an odd number of single quotes from causing issues.
+ENDSUB			   
+/****************************************************************************************************************************************/
+sub Load_Variables_from_Resident_Define_Variable
+		  //Here the the expressions are assigned to variables  
+			IF '$(vLVR_SetOrLet)' = 'LET' THEN
+				Let '$(vLVR_VariableName)' = $(vLVR_VariableDefinition);
+			ELSE 	//'$(vSetOrLet)' = 'SET' or is blank, in which case we default to SET
+				// 2013-11-21 BEGIN BLOCK JRR  added logic to handle dollar sign expansion
+				//  To prevent dollar sign expansion from occurring during reload (typically undesirable where SET is used), 
+				//  we separate the '$' from the '(':
+				LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) ;	
+				IF vWildMatchFound > 0  THEN
+					// This is counter-intuitive, but we use LET even though SET is the default or was specified, since 
+					// we need the chr(39) to evalute to single quotes:
+					LET vTmp  =chr(39);					
+					LET vTmp  =chr(39) &
+					replace (
+						replace(vLVR_VariableDefinition, chr(39), chr(39) & chr(38) &  'chr(39)' &chr(38) & chr(39)), 
+					'$(', '$' & chr(39) & chr(38) & chr(39) &  '(' 
+					) & chr(39) 
+					;
+					LET '$(vLVR_VariableName)'  =  Evaluate( vTmp );  
+				ELSE
+					//	Trace NOT WildMatchFound;
+			   		Set '$(vLVR_VariableName)'  = $(vLVR_VariableDefinition); 
+					; // 2015-01-08 JRR added this line to prevent "Script line error/General Script Error"
+				ENDIF
+			ENDIF   
+ENDSUB			
+/****************************************************************************************************************************************/
+sub Load_Variables_from_Resident_Clear_Variables
+		LET vTmp = null();					
+		LET vLVR_VariableName = null();
+		LET vLVR_VariableDefinition = null();								
+		LET vLVR_ErrString = null();		
+		LET vLVR_SetOrLet = null();
+		LET vWildMatchFound	=null();
+		LET vLVR_DollarSignExpansionDetected = null();		
+		LET vLVR_NumSingleQuote = null();
+ENDSUB
+/****************************************************************************************************************************************/

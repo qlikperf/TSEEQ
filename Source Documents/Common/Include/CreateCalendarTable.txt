@@ -1,0 +1,116 @@
+/****************************************************************************************************************************************
+	Procedure:	CreateCalendarQvd
+		
+	Author:		Jeff R. Robbins
+	Email:		jrs@qlik.com; jr@QlikPerf.com
+	
+	Version:	3.1.1
+	Date:		2017-12-15
+	
+	This program is provided in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+	
+	Purpose:			Generate and store to QVD a calendar table that is read by the data model.
+	
+	Sample Invocation:  	call CreateCalendarQvd('Order', 'DROP');
+	Sample Invocation:  	call CreateCalendarQvd('', 'KEEP');
+	
+		Parameters:
+				vCCQ_CalendarName: Name of calendar, ex Order, Sales, Ship...  This can be blank (''), in which case field names will not be pre-fixed.  
+
+				vKEEPorDROP:		'KEEP' will retain the calendar table within memory after the calendar QVD is written.
+								
+							'DROP' will drop the calendar table from memory
+	
+****************************************************************************************************************************************/
+/***************************************************************************************************************
+In typical production settings, vToday is set to the current date, or the prior date in some cases where
+the data is current as of the prior day.  In test environments where the data is not current, vToday can 
+be set to any prior date.
+****************************************************************************************************************/
+//	LET vToday = num(Today()); 											// uncomment to override the vToday set in CommonVariables.xls.
+LET vMinDateNum = num(MakeDate(2010, 1, 1));							// Start the calendar on the first day of 2010. 
+// LET vMinDateNum = num(YearStart(addmonths(vToday, -12)));			// Start the calendar on the first day of last year. 
+LET vMaxDateNum = floor(num(YearEnd(addmonths(vToday, 36))));			// End the calendar on the last day three years in the future.
+
+sub CreateCalendarQvd( vCCQ_CalendarName, vKEEPorDROP )
+	
+
+	if len(trim(vCCQ_CalendarName)) = 0 THEN 
+		SET vCCQ_CalendarName = '';
+		LET vCCQ_CalendarNameNoSpaces='';		
+	ELSE 
+		LET vCCQ_CalendarName = '$(vCCQ_CalendarName)' & ' ';
+		LET vCCQ_CalendarNameNoSpaces=trim(vCCQ_CalendarName);				
+	ENDIF
+
+	//*************** Temporary Calendar ***************
+	DateField:
+	LOAD 
+	            $(vMinDateNum) + rowno() - 1 AS Num, 
+	            date($(vMinDateNum) + rowno() - 1) AS TempDate 
+	AUTOGENERATE 
+	            $(vMaxDateNum) - $(vMinDateNum) + 1; 
+     
+	//*************** Master Calendar ***************
+	[$(vCCQ_CalendarName)Calendar]:
+	LOAD           
+	            IF ( num(TempDate) = num($(vTodayNum)), 1, 0 ) AS [$(vCCQ_CalendarName)Today Flag],
+	            IF (TempDate >= $(vTodayNum)-7 AND TempDate < $(vTodayNum), 1, 0 ) AS [$(vCCQ_CalendarName)Past Week Flag],    		// 7-day span preceeding today                   
+	            IF (TempDate >  ( $(vTodayNum) - 31 ) AND TempDate < $(vTodayNum), 1, 0 ) AS [$(vCCQ_CalendarName)Past Month Flag],  // 30-day span preceeding today
+	            IF (TempDate <  ( $(vTodayNum) + 30 ) AND TempDate >= $(vTodayNum), 1, 0 ) AS [$(vCCQ_CalendarName)Future Month Flag],  // 30-day including today and next 29
+	            IF (TempDate >  ( $(vTodayNum) - 91  ) AND TempDate  < $(vTodayNum), 1, 0 ) AS [$(vCCQ_CalendarName)Past Quarter Flag],	// 90-day span preceeding today
+	//             //NOTE:  QuarterWeek and Week calculations are offset by 3 days for Vendor Finance reporting.  The TempDate - 3 offsets the date by 3 days.  
+	//             //This is done to start the week on Thursday instead of Sunday.
+	//             IF( 'Q'&ceil(Month(TempDate)/3) <> PEEK(Quarter), 1, 
+	//                                     IF(week(TempDate - 3) = PEEK(Week), PEEK(QuarterWeek), PEEK(QuarterWeek) + 1)) as QuarterWeek,
+	//             Week(TempDate - 3) AS Week,         
+	            //Standard Date Functions
+	           QuarterStart(TempDate) AS  [$(vCCQ_CalendarName)Quarter Start],
+	//           Date(TempDate) AS KeyDate,
+//	           Date(TempDate) AS OrderDate,
+	           Date (TempDate) AS [$(vCCQ_CalendarName)Date],
+	           num(TempDate) AS [$(vCCQ_CalendarName)DateNum], //date field set as a number for quick comparison
+	           year(TempDate) & '-Q'&ceil(Month(TempDate)/3) AS [$(vCCQ_CalendarName)YearQuarter],                 
+	           Year(TempDate) AS [$(vCCQ_CalendarName)Year],
+	           Month(TempDate) AS [$(vCCQ_CalendarName)Month],
+	           Day(TempDate) AS [$(vCCQ_CalendarName)Day],
+	           Weekday(TempDate) AS [$(vCCQ_CalendarName)WeekDay],
+	           'Q' & ceil(month(TempDate) / 3) AS [$(vCCQ_CalendarName)Quarter],
+	           Date(monthstart(TempDate), 'YYYY-MMM') AS [$(vCCQ_CalendarName)YearMonth],        
+	           Date(monthstart(TempDate), 'MMM-YYYY') AS [$(vCCQ_CalendarName)MonthYear],
+	           Week(TempDate)&'-'&Year(TempDate) AS [$(vCCQ_CalendarName)WeekYear],             
+	           WeekYear(TempDate)&'-'&Week(TempDate) AS [$(vCCQ_CalendarName)YearWeek],                                                                     
+	           WeekStart(TempDate) AS [$(vCCQ_CalendarName)WeekStarting],
+	           inyeartodate(TempDate, $(vToday), 0) * -1 AS [$(vCCQ_CalendarName)CurYTDFlag],
+	           inyeartodate(TempDate, $(vToday), -1) * -1 AS [$(vCCQ_CalendarName)LastYTDFlag],
+	           InQuarterToDate(TempDate, $(vToday), 0) * -1 AS [$(vCCQ_CalendarName)CurQTDFlag],
+	           InQuarterToDate(TempDate, $(vToday), -1) * -1 AS [$(vCCQ_CalendarName)LastQTDFlag],
+	           InMonthToDate(TempDate, $(vToday), 0) * -1 AS [$(vCCQ_CalendarName)CurMTDFlag],
+	           InMonthToDate(TempDate, $(vToday), -1) * -1 AS [$(vCCQ_CalendarName)LastMTDFlag],
+	           InYear(TempDate, $(vToday), 0) * -1 AS [$(vCCQ_CalendarName)CurYearFlag],
+	           InYear(TempDate, $(vToday), -1) * -1 AS [$(vCCQ_CalendarName)LastYearFlag],
+	           InQuarter(TempDate, $(vToday), 0) * -1 AS [$(vCCQ_CalendarName)CurQtrFlag],
+	           InQuarter(TempDate, $(vToday), -1) * -1 AS [$(vCCQ_CalendarName)LastQtrFlag],
+	           InMonth(TempDate, $(vToday), 0) * -1 AS [$(vCCQ_CalendarName)CurMonthFlag],
+	           InMonth(TempDate, $(vToday), -1) * -1 AS [$(vCCQ_CalendarName)LastMonthFlag],
+	           InMonth(TempDate, $(vToday), -2) * -1 AS [$(vCCQ_CalendarName)TwoMonthsAgoFlag],
+	           (TempDate >= AddMonths(MonthStart($(vToday)), -11)) * -1 AS [$(vCCQ_CalendarName)Rolling12MonthFlag],
+	           (TempDate >= AddMonths(MonthStart($(vToday)), -2)) * -1 AS [$(vCCQ_CalendarName)Rolling3MonthFlag],
+	           If(Weekday(TempDate) <= 1, 'Mon-Tue', if(Weekday(TempDate) <= 4, 'Wed-Thu-Fri', 'Weekend')) AS [$(vCCQ_CalendarName)WeekdayGrouping]
+	                        
+	RESIDENT DateField 
+	ORDER BY TempDate ASC;
+	
+//	DROP Field DateNum;
+	Store [$(vCCQ_CalendarName)Calendar] into [$(vQVDPath)\Extracted\$(vCCQ_CalendarNameNoSpaces)Calendar.qvd];
+	// 2017-04-17 JRR commented the following line:
+	//	Store [$(vCCQ_CalendarName)Calendar] into $(vQVDPath)\Extracted\CommonCalendar.qvd;	
+	DROP TABLE DateField;
+		
+	IF upper(vKEEPorDROP) = 'DROP' THEN 
+		DROP Table [$(vCCQ_CalendarName)Calendar];
+	ENDIF	
+
+ENDSUB

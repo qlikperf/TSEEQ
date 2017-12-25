@@ -1,0 +1,58 @@
+/**********************************************************************************************************************************************************
+	File:		ETL Analysis Include.txt
+	Purpose:	Read Historical ETL statistics.
+	Included By:	ETL Analysis.qvw & ETL Analysis.qvf
+	
+	Author:		Jeff R. Robbins
+	Email:		jrs@qlik.com; jr@QlikPerf.com
+	
+	Version:	3.1.1
+	Date:		2017-12-15
+	
+	This program is provided in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+**********************************************************************************************************************************************************/
+SET HidePrefix='%';
+
+ExtractTransform:
+LOAD 
+	* ,
+	Timestamp([EEE Execution Completion Time], 'hh:mm:ss[.fff] TT') AS [EEE Execution Completion Time 2],
+	Timestamp([Batch Start Time]) AS [SEEQ Start Time],
+	date(floor ([Batch Start Time])) AS Date
+FROM [$(vETLStatisticsQVDPath)Historical Extract.qvd] (qvd);
+
+set ErrorMode=0;
+Concatenate (ExtractTransform) LOAD 
+	* ,
+	Timestamp([EEE Execution Completion Time], 'hh:mm:ss[.fff] TT') AS [EEE Execution Completion Time 2],
+	Timestamp([Batch Start Time]) AS [SEEQ Start Time],
+	date(floor ([Batch Start Time])) AS Date
+FROM [$(vETLStatisticsQVDPath)Historical Transform.qvd] (qvd);
+
+DROP Field [EEE Execution Completion Time];
+RENAME Field [EEE Execution Completion Time 2] TO [EEE Execution Completion Time];
+
+/*********************************************************************************************************************
+	Generate a calendar table (if one was not previously created).
+*********************************************************************************************************************/
+//$(must_Include=$(vCommonScriptPath)createcalendartable.txt); 
+//call CreateCalendarQvd('', 'KEEP');		// Create Calendar.qvd and keep the resulting table in memory. '' indicates a blank prefix on calendar field names.
+
+//OR
+
+/*********************************************************************************************************************
+	Read a previously created calendar table
+*********************************************************************************************************************/
+Calendar:
+Left Keep (ExtractTransform)
+ LOAD * FROM [$(vCommonQVDPath)Extracted$(vSlash)Calendar.qvd] (qvd);
+
+
+/*********************************************************************************************************************
+	QlikView uses QVWs; Qlik Sense uses QVFs.  Name the field accordingly:
+*********************************************************************************************************************/
+IF upper(vQlikProduct)='SENSE' THEN
+	RENAME Field QVW to QVF;
+ENDIF

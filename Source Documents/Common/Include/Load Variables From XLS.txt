@@ -1,0 +1,52 @@
+/*******************************************************************************************************************************************************
+	Procedure: 	Load_Variables_from_XLS
+
+	Author:		Jeff R. Robbins
+	Email:		jrs@qlik.com; jr@QlikPerf.com
+	
+	Version:	3.1.1
+	Date:		2017-12-15	
+
+	Purpose:	Load variables from the specified XLS file and contained worksheet into a QlikVIew app.
+	
+	Sample Invocation:  call Load_Variables_from_XLS('$(vCommonVariablePath)Common_Variables.xls', 'Sheet1', 'KEEP')
+	
+		Parameters:
+				vExpressionFile: 	Path and name of XLS file containing variables.
+				
+				vWorksheet:		The worksheet within the XLS files containing variables.
+				
+				vKEEPorDROP:		'KEEP' will will initialize variables and persist info about variables in a data model table.
+							 Such a table greatly facilitates the use of Qlik associative logic to search
+							 for variables and their derivation.
+								
+							 'DROP' will initialize variables, but will not persist variable info in a data model table.			
+
+	This program is provided in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+*******************************************************************************************************************************************************/
+sub Load_Variables_from_XLS(vExpressionFile, vWorksheet, vKEEPorDROP)
+
+	if vLoadVariablesFlag <> 1 AND len(trim(vLoadVariablesFlag)) > 0  THEN	
+		trace 'vLoadVariablesFlag = $(vLoadVariableFlag).  Exiting since it is <> 1.';
+		exit sub
+	ENDIF
+
+	trace vExpressionFile=$(vExpressionFile);
+
+	SET vLVR_VariableDefinition = '';
+	
+	Tmp_XLS_Contents:
+	LOAD *,
+		FileName() AS VariableSourceFile,
+		FilePath ()  AS VariableSourceFilePath 
+	FROM
+	[$(vExpressionFile)]
+	(biff, embedded labels, table is $(vWorksheet)$)	// Excel XP and prior   (xls extension)
+////	(ooxml, embedded labels, table is $(vWorksheet))	// Excel 2003 and newer (xlsx extension)
+	;
+	call Load_Variables_from_Resident('Tmp_XLS_Contents', '$(vKEEPorDROP)' );	// keep variable list in tabular format in data model
+	
+	DROP Table Tmp_XLS_Contents;
+	 
+endsub

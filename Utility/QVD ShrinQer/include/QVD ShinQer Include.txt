@@ -1,0 +1,69 @@
+/**********************************************************************************************************************************************************
+	File:			QVD ShrinQer Include.txt
+	Purpose:		Shrink QVDs to faciliate faster prototyping and unit testing. 
+	
+	Author:		Jeff R. Robbins
+	Email:		jrs@qlik.com; jr@QlikPerf.com
+	
+	Version:	3.1.1
+	Date:		2017-12-15
+
+	This program is provided in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+**********************************************************************************************************************************************************/
+
+ConfigurationTable:
+LOAD 
+	RowNo() AS [Row Number],
+	*
+FROM
+[$(vListOfQVDsToShrink)]
+(ooxml, embedded labels, table is Sheet1)
+WHERE Upper (ENABLED) =  'Y'
+;
+
+SET vConfigurationTable='ConfigurationTable';
+LET vNoOfRows = NoOfRows('$(vConfigurationTable)');
+
+for i = 0 to vNoOfRows - 1
+     LET vTargetTable =  peek('Table', i, '$(vConfigurationTable)');
+     LET vParentTable =  peek('Parent Table', i, '$(vConfigurationTable)'); 
+     LET vSrcSubDir =  peek('Source Folder', i, '$(vConfigurationTable)'); 
+     LET vDestSubDir =  peek('Destination Folder', i, '$(vConfigurationTable)'); 
+     LET vReductionType =  peek('Reduction Type', i, '$(vConfigurationTable)'); 
+     LET vPercentSizeToMake = peek('Percentage To Keep', i, '$(vConfigurationTable)');
+     LET vKeyFieldParent = peek('Key Field Parent', i, '$(vConfigurationTable)');
+     LET vKeyFieldChild = peek('Key Field Child', i, '$(vConfigurationTable)');
+	// with vPercentSizeToMake of 10%, keep 1 out of 10 (10 will be the second argument to the modulus function).
+	// with vPercentSizeToMake of 20%, keep 1 out of 5  ( 5 will be the second argument to the modulus function).
+	// and so on ...
+     LET vModValue = round((100 / ( vPercentSizeToMake * 100) ));	
+     
+     IF upper(vReductionType) = 'PERCENTAGE' THEN			//  load a percentage of values, based on the value of vModValue:
+		[$(vTargetTable)]:
+		NOCONCATENATE LOAD * FROM [$(vSrcSubDir)\$(vTargetTable).qvd] (qvd)	 	WHERE mod(RecNo(), $(vModValue) ) = 0; 
+	 ELSEIF       upper(vReductionType) = 'KEEP_MATCHES_TO_PARENT' THEN		// only those values which link to another table (which we arbitrarily call the "master"):
+		set a = 1;
+		IF upper(vKeyFieldParent) = 'AUTODETECT' THEN		// LEFT KEEP works automatically based on commonly named fields in the two tables.
+			[$(vTargetTable)]:
+			LEFT KEEP ([$(vParentTable)])     LOAD * FROM [$(vSrcSubDir)\$(vTargetTable).qvd] (qvd);
+		ELSE 												// If we cannot rely on commonly named fields, uses Exists()
+			LOAD * FROM [$(vSrcSubDir)$(vTargetTable).qvd] (qvd) WHERE Exists ($(vKeyFieldParent), $(vKeyFieldChild));	
+		ENDIF				
+     ENDIF
+	     STORE [$(vTargetTable)] INTO [$(vDestSubDir)$(vTargetTable).qvd] (qvd);
+NEXT
+
+SET vRetainTableYorN = 'INIT';
+
+for i = 0 to vNoOfRows - 1
+     LET vTargetTable =  peek('Table', i, '$(vConfigurationTable)');
+     LET vRetainTableYorN =  upper(peek('Retain Shrunken Table in QVD ShrinQer App', $(i), '$(vConfigurationTable)'));
+	IF vRetainTableYorN <> 'Y' THEN
+		DROP Table '$(vTargetTable)';
+	ENDIF
+NEXT
+
+SET vConfigurationTable='ConfigurationTable';
+LET vNoOfRows = NoOfRows('$(vConfigurationTable)');

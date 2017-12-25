@@ -1,0 +1,210 @@
+/**********************************************************************************************************************************************************
+	File:		SEEQ_init.txt
+	Purpose:	Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
+						Subroutines in this file are called from SEEQ_include.txt
+	
+	Author:		Jeff R. Robbins
+	Email:		jrs@qlik.com; jr@QlikPerf.com
+	
+	Version:	3.1.1
+	Date:		2017-12-15
+	
+	This program is provided in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+**********************************************************************************************************************************************************/
+sub InitVariablesOuter
+	SET vSEEQ_DropExcludedFieldsStatement=;
+	LET vSEEQ_Semicolon=chr(59);
+	LET vSEEQ_linefeed=chr(10);
+	// EXTRACTed or TRANSFORMed; this is for performance profiling:
+	LET vPurposeED = '$(vPurpose)' & 'ed';  
+	LET vSEEQ_GetThisRuleLine = 'purgechar([Target], ' & chr(39) & ' -	' & chr(39) & ') = ' & chr(39) &'$' & '(vSEEQ_TargetWithoutBrackets)'& chr(39) &'	AND upper(ENABLED)  = ' & chr(39) & 'Y' & chr(39);
+	LET vSEEQ_BatchStartTime = num(now());
+////	XLS file format
+	SET vSEEQ_XLS = 'XLS';
+	SET vSEEQ_XLSFormat = 'biff';
+	LET vSEEQ_XLSDollar = chr(36);		
+////	XLSX file format:
+//	SET vSEEQ_XLS = 'XLSX';
+//	SET vSEEQ_XLSFormat = 'ooxml';
+
+	IF upper('$(vPurpose)') = 'LOAD' THEN
+//		SET vSEEQ_RulesFieldList = Target,	[Source Folder], Source, [Load Command], [Row Limit], Constraints, AutoNumber(Source & '_' & [Source Folder] ) AS SEEQ_TargetKey;	
+		SET vSEEQ_RulesFieldList = 'N/A' AS [Stale After (Days)], 'N/A' AS [Target Folder], Target,	[Source Folder], Source, [Load Command], [Row Limit], Constraints, AutoNumber(Source & '_' & [Source Folder] ) AS SEEQ_TargetKey;
+	ELSE 
+		SET vSEEQ_RulesFieldList = *, AutoNumber(Target & '_' & [Target Folder] ) AS SEEQ_TargetKey;
+	ENDIf
+
+   	SET vSEEQ_MaxRulesTryCount=4;
+   	SET vSEEQ_RulesTryCount=1;	
+	SET ErrorMode = 0; 		SET vSEEQ_RulesReadSuccessFlag = 0;
+	do 		// keep attempting to read the rules file until you succeed (Excel locks the file while saving, so multiple attempts might be needed).
+		Rules:
+		LOAD 
+			'$(vRulesSourceFile)' AS [Rules File], 
+			$(vSEEQ_RulesFieldList) 
+		FROM [$(vRulesSourceFile)] ($(vSEEQ_XLSFormat), embedded labels, table is TABLES$(vSEEQ_XLSDollar))  WHERE UPPER(ENABLED) = 'Y' ;
+
+     	LET vSEEQ_TableCount = NoOfRows('Rules') - 1;
+
+		LET vSEEQ_RulesReadSuccessFlag = not IsNull(vSEEQ_TableCount );
+		//Trace $(vSEEQ_RulesReadSuccessFlag);
+		IF NOT vSEEQ_RulesReadSuccessFlag THEN 
+			IF vSEEQ_RulesTryCount >= vSEEQ_MaxRulesTryCount THEN
+				Trace "The rules file was not successfully read after $(vSEEQ_MaxRulesTryCount) attempts.  Exiting script. Please review reload log for errors.";
+				SET vSEEQ_MaxRulesTryCount='';
+   				SET vSEEQ_RulesTryCount='';	 
+	   			SET ErrorMode = 1;
+	   				$(vRulesSourceFile) Error in reading rules file.  Please check log for details;	// invalid syntax synthetically forces an error
+				exit   Script;		// do not delete this line; it is not for debugging.
+			ELSE
+				Trace "The SEEQ rules file seems to be missing or locked. Waiting a few seconds for the lock to clear."; 
+				SLEEP 3000;
+			ENDIF
+			LET vSEEQ_RulesTryCount = vSEEQ_RulesTryCount + 1;	
+		ENDIF
+	loop while vSEEQ_RulesReadSuccessFlag = 0
+	SET vSEEQ_MaxRulesTryCount='';
+	SET vSEEQ_RulesTryCount='';
+	Trace "The SEEQ rules file has been successfully read."; 	
+	SET ErrorMode = 1;
+	SET vSEEQ_RulesFieldList = '';	
+	SET vSEEQ_RulesReadSuccessFlag = '';
+end sub // InitVariablesOuter
+/******************************************************************************************************************************************/
+sub InitVariablesInner
+
+	SET vSEEQ_NumFields$(vPurposeED)=0;		// 2017-04-08 JRR moved this line from InitVariablesOuter to InitVariablesInner
+	SET vSEEQ_NumRecords$(vPurposeED)=0;	// 2017-04-08 JRR moved this line from InitVariablesOuter to InitVariablesInner
+	SET vSEEQ_Messages=;
+	SET vSEEQ_ThisIsMappingTable=0;		
+	SET vSEEQ_ExecuteStatement='';
+	SET vSEEQ_ExecuteStatementIncrementalBlock2='';
+	SET vSEEQ_FieldsExpansion ='';
+	 LET vSEEQ_TimeIteration = num(now(1));		// performance profiling
+	// For Extract or Tranforms, the target is a QVD; for a Load, the target is a table in the QV associative data model. 
+	SET vSEEQ_StoreReduced = ''; 	
+	SET vSEEQ_Target = ''; 
+	SET vSEEQ_TargetWithoutBrackets = ''; 
+	SET vSEEQ_TargetFolder = ''; 	
+	SET vSEEQ_Source= ''; 	// database table or stored procedure (for an Extract) or QVD (for a Transform or LOAD)
+	SET vSEEQ_SourceFolder = ''; 
+	SET vSEEQ_StaleAfter = ''; 	// Number of days which a QVD is considered "fresh".
+	SET vSEEQ_Constraints = ''; 	// Typically a WHERE clause to reduce the record set
+
+	SET vSEEQ_Fields = ''; 		// ALL, INCLUDE_SUBSET or EXCLUDE_SUBSET	
+	SET vSEEQ_LoadCommand = '';	// SELECT or EXEC for an Extract, LOAD for a QVD
+	SET vSEEQ_QVDCreateTime = '';// Date stamp on the Target QVD.
+	SET vSEEQ_AddFields = ' ';	// Fields to add during a Transform		
+	SET vSEEQ_TableType = ' ';	// Dimension or Fact
+	SET vSEEQ_IncrementalLoadType = 'INIT';
+	SET vSEEQ_RowLimit = ''; 	
+	LET vSEEQ_ModfiedTimestampField = 'INIT';
+	
+	SET vSEEQ_SourceFolderPostfix='';
+	
+	LET vSEEQ_Incremental_ID_Fields = 'INIT';
+	SET vSEEQ_SourceType ='';
+	SET vSEEQ_SourceFormat ='';
+	SET vSEEQ_KeepOrDrop='';
+	LET  vSEEQ_PostLoadScript  = peek('Post Load Script' , $(vSEEQ_OuterLoopCounter), 'Rules' );
+// 	LET  = replace( peek('Post Load Script' , $(vSEEQ_OuterLoopCounter), 'Rules' ), ';', '$' & '(vSEEQ_Semicolon)');
+//	IF len(trim(vSEEQ_PostSQLScript)) < 1 THEN
+//		SET vSEEQ_PostSQLScript='zz';
+//	ENDIF	
+	LET vSEEQ_StoreReduced =  upper(peek('STORE REDUCED', $(vSEEQ_OuterLoopCounter), 'Rules')) ;
+	LET vSEEQ_Target =  '[' & PurgeChar(peek('Target', $(vSEEQ_OuterLoopCounter), 'Rules'), ' -	[]')  & ']' ;		// 2016-09-25 JRR added this line.
+	LET vSEEQ_TargetWithoutBrackets =  PurgeChar(peek('Target', $(vSEEQ_OuterLoopCounter), 'Rules'), ' -	[]')   ;		// 2016-09-25 JRR added this line.	
+	
+	LET vSEEQ_TargetFolder =  peek('Target Folder', $(vSEEQ_OuterLoopCounter), 'Rules');			
+	//2017-07-22 JRR commented the following line due to error when running in Qlik Sense June 2017 release:
+//	IF right(vSEEQ_TargetFolder, 1) <> $(vSlash) THEN			// append trailing '\' (QlikView) or '/' (QlikSense) to complete the path.
+	//2017-07-22 JRR added the following line to resolve error when running in Qlik Sense June 2017 release:
+	IF right(vSEEQ_TargetFolder, 1) <> '$(vSlash)' THEN			// append trailing '\' (QlikView) or '/' (QlikSense) to complete the path.
+		SET vSEEQ_TargetFolder  = '$(vSEEQ_TargetFolder)$(vSlash)';
+	ENDIF
+
+	LET vSEEQ_TargetKey  = peek('SEEQ_TargetKey', $(vSEEQ_OuterLoopCounter), 'Rules');	
+	
+	//Trace 	$(SEEQ_TargetKey); 
+//	LET vSEEQ_Source =  replace ( PurgeChar(peek('Source', $(vSEEQ_OuterLoopCounter), 'Rules'), ' -	'), '<space>', ' ') ;	// 2016-10-24 JRR commented this line.
+	LET vSEEQ_Source =  peek('Source', $(vSEEQ_OuterLoopCounter), 'Rules') ;					// 2016-10-24 JRR added this line.
+	LET vSEEQ_SourceFolder =  peek('Source Folder', $(vSEEQ_OuterLoopCounter), 'Rules');
+	IF right(vSEEQ_SourceFolder, 1) = '\' OR   right(vSEEQ_SourceFolder, 1) = '/' THEN		// strip trailing slash if it exist; we add it back later..
+		LET vSEEQ_SourceFolder  = left(vSEEQ_SourceFolder, len(vSEEQ_SourceFolder) - 1);
+	ENDIF
+
+	IF right(vSEEQ_SourceFolder, 1) <> '$(vSlash)' THEN			// append trailing '\' to complete the path.
+		SET vSEEQ_SourceFolder  = '$(vSEEQ_SourceFolder)$(vSlash)';
+	ENDIF
+
+	SET vSEEQ_SourceOriginal = $(vSEEQ_Source) ; 	//	for the COMMENT TABLE done at the end of a Tranform
+	LET vSEEQ_StaleAfter =  Replace(peek('Stale After (Days)', $(vSEEQ_OuterLoopCounter), 'Rules')  , ' ', '');
+	LET vSEEQ_LoadCommand = peek('Load Command', $(vSEEQ_OuterLoopCounter), 'Rules');		
+	LET vSEEQ_Fields =  Replace( peek('Fields', $(vSEEQ_OuterLoopCounter), 'Rules')  , ' ', '');			
+	LET vSEEQ_Constraints =   if (
+									left (peek('Constraints', $(vSEEQ_OuterLoopCounter), 'Rules'), 2) = '//', 
+									'',		// if the the '//' indicates the contraint is commented, simply ignore the constraint.
+									trim(peek('Constraints', $(vSEEQ_OuterLoopCounter), 'Rules')) 
+								); 
+	//	LET vSEEQ_ThisIsMappingTable= wildmatch(vSEEQ_LoadCommand, '*mapping*'); // 2017-02-21 JRR commented this line so that a commented MAPPING prefix would not be executed.
+	LET vSEEQ_ThisIsMappingTable= if (upper(left(trim(vSEEQ_LoadCommand), 7)) = 'MAPPING', 1, 0);	// 2017-02-21 JRR added this line, which disregards MAPPING if it's preceeded by '//'.
+	LET  vSEEQ_LastModfiedTimestampFormatForQuery = peek('Last Modfied Timestamp Format for Query', $(vSEEQ_OuterLoopCounter), 'Rules');
+
+	// strip initial "where" from the contraint if it exists. The Wildmatch is case insensitive:
+	// IF	WildMatch(ltrim(vSEEQ_Constraints), 'WHERE*') THEN	
+	 IF	left(vSEEQ_Constraints, 5) = 'WHERE' THEN	
+		LET vSEEQ_Constraints = Right( LTrim(vSEEQ_Constraints),  Len(Ltrim(vSEEQ_Constraints)) - 5  );// strip intial "WHERE" if it exists; we add it back later.
+	ENDIF
+
+	LET vSEEQ_QVDCreateTime = if(len(trim(QvdCreateTime('$(vSEEQ_TargetFolder)$(vSEEQ_TargetWithoutBrackets).qvd'))) < 1, 0, QvdCreateTime('$(vSEEQ_TargetFolder)$(vSEEQ_TargetWithoutBrackets).qvd'));
+	IF upper(vPurpose) = 'TRANSFORM' THEN 
+		LET vSEEQ_SourceType =   peek('Source Type', $(vSEEQ_OuterLoopCounter), 'Rules');	
+	endif
+						
+	LET vSEEQ_RowLimit =   trim(peek('Row Limit', $(vSEEQ_OuterLoopCounter), 'Rules'));	
+
+	LET vSEEQ_IncrementalLoadType =   if (upper(vPurpose)='EXTRACT', peek('Incremental Load Type', $(vSEEQ_OuterLoopCounter), 'Rules'), 'N/A');
+	LET vSEEQ_ModfiedTimestampField = peek('Last Modfied Timestamp Field', $(vSEEQ_OuterLoopCounter), 'Rules');
+	LET vSEEQ_Incremental_ID_Fields = 
+//							chr(39) &
+							replace ( 
+									replace ( peek('Incremental ID Field(s)', $(vSEEQ_OuterLoopCounter), 'Rules') , ' ', '')
+								, ',' ,  '&' & chr(39)&'_'&chr(39) & '&') // & chr(39)  & '-' & chr(39) & '&'  & chr(39) )
+//							& chr(39) 
+	;
+	SET vSEEQ_From = 'FROM ';  				// for SQL SELECT statements and LOAD from QVD.  'FROM ' will be blanked out in the case of stored procedure calls
+	IF IsNull (vSEEQ_QVDCreateTime) THEN 	// Target QVD does not exist. (Relevant to Extract and Transform).
+		LET vSEEQ_QVDCreateTime = 0;
+	ENDIF
+	
+	IF len(vSEEQ_StaleAfter) < 1 THEN 
+		SET vSEEQ_StaleAfter = 0;
+	ENDIF
+
+	IF len (vSEEQ_RowLimit) > 0 THEN 					// limit SELECT or LOAD to first n rows if the user specified a limit.
+		SET vSEEQ_Prefix = 'First $(vSEEQ_RowLimit) ';
+	ELSE 
+		SET vSEEQ_Prefix = '';
+	ENDIF
+
+	IF upper(vPurpose) = 'EXTRACT' OR upper(vPurpose) = 'TRANSFORM' THEN 
+		LET vSEEQ_KeepOrDrop = upper(peek('Keep or Drop', $(vSEEQ_OuterLoopCounter), 'Rules' ));
+	ENDIF
+	LET vSEEQ_LastExecTime = 0;	
+
+	IF upper(vPurpose) = 'EXTRACT' THEN 
+		set vSEEQ_SQL = 'SQL ';			// pulling from the DB
+	ELSEIF upper(vPurpose) = 'TRANSFORM' OR upper(vPurpose) = 'LOAD' THEN 
+			IF upper(vSEEQ_SourceType = 'EXTERNAL' ) THEN
+				LET vSEEQ_SourceFormat = peek('External Source Format', $(vSEEQ_OuterLoopCounter), 'Rules' );
+				set vSEEQ_Source = '[$(vSEEQ_SourceFolder)$(vSEEQ_Source)] $(vSEEQ_SourceFormat)'; 
+			ELSE
+				set vSEEQ_Source = '[$(vSEEQ_SourceFolder)$(vSEEQ_Source).qvd] (qvd)'; 
+			ENDIF
+			set vSEEQ_SQL ='';		// for a Transforms and Loads, we load from a QVD, so we blank out the vSEEQ_SQL variable
+	ENDIF
+	SET vSEEQ_ErrorDetected = 0;
+end Sub	// InitVariablesInner
+/******************************************************************************************************************************************/

@@ -1,0 +1,113 @@
+/*********************************************************************************************************************
+	Read in the ETL rules  so field derivation can be viewed within this QVW in the Dev Console.
+	This script tab is not required to implement application functionality for end users, but
+	it does assist the developer greatly with data tracing.
+	
+
+*********************************************************************************************************************/
+
+// Currently, this include file is coded to be invoked from the DataModel QVW or QVF.  Invoking from elsewhere might require
+// a change to the following line:
+LET vTransformRulesFile = replace(vRulesSourceFile, 'LOAD', 'Transform');
+
+MetaData:
+lOAD
+	Target AS [MD Target Table], 
+    Source AS [MD Original Table]
+FROM
+[$(vTransformRulesFile)]
+(biff, embedded labels, table is TABLES$)
+WHERE upper(ENABLED) = 'Y' AND NOT WildMatch ([Load Command], '*CrossTable*');
+
+// exit Script;
+
+MetaData2:
+LOAD
+	Target AS [MD Target Table], 
+     [Target Field Definition] As [MD Original Source Field], 
+     [Target Field Name] AS [MD Field Name in This Datamodel]
+//     , 
+ //    Comment AS [MD Comment], 
+ //    [Is Cash Management Component] AS [MD Is Cash Management Component]
+FROM
+[$(vTransformRulesFile)]
+(biff, embedded labels, table is TRANSFORM_FIELDS$)
+WHERE upper(ENABLED) = 'Y'and [Target Field Name] <> 'Fact Type'  ;
+
+Concatenate
+LOAD
+	Target AS [MD Target Table], 
+     [Field] As [MD Original Source Field], 
+     [Field] AS [MD Field Name in This Datamodel]
+FROM
+[$(vTransformRulesFile)]
+(biff, embedded labels, table is INCLUDE_FIELDS$)
+WHERE upper(ENABLED) = 'Y' ;
+
+LEFt Join (MetaData) LOAD * Resident MetaData2;
+drop Table MetaData2;
+
+// exit Script;
+
+MetaData2Tmp:
+LOAD
+	trim ( SubField ( [MD Field Name in This Datamodel Tmp], ',' ) ) AS [MD Field Name in This Datamodel],
+	*
+;
+MetaData2Tmp:
+LOAD
+	[Load Command],
+	Target AS [MD Target Table], 
+	Source AS [MD Original Table]
+	,
+	subfield ( SubField ( [Load Command], '(', 2), ')', 1)    AS [MD Field Name in This Datamodel Tmp]
+FROM
+[$(vTransformRulesFile)]
+(biff, embedded labels, table is TABLES$)
+WHERE upper(ENABLED) = 'Y' and  WildMatch([Load Command], '*crosstable*') 
+;
+
+
+//
+MetaData2:
+NoConcatenate LOAD * Resident MetaData2Tmp where len([MD Field Name in This Datamodel]) > 1;
+
+drop table MetaData2Tmp;
+
+
+left jOIN (MetaData2) LOAD
+	Target AS [MD Target Table], 
+     purgechar( concat ( [Target Field Definition], ', '), '[]') As [MD Original Source Field]
+FROM
+[$(vTransformRulesFile)]
+(biff, embedded labels, table is TRANSFORM_FIELDS$)
+WHERE upper(ENABLED) = 'Y'and [Target Field Name] <> 'Fact Type'  and len(trim([Field Order])) < 1
+group by Target
+;
+
+Concatenate (MetaData) LoAD * Resident MetaData2;
+
+DROP Table MetaData2;
+//exit Script;
+RIGHT JOIN (MetaData)
+LOAD 
+     Target  AS [MD Table Name in This Datamodel], 
+     [Source Folder] AS [MD Source Folder], 
+     Source	AS [MD Target Table]	
+
+FROM
+[$(vRulesSourceFile)]
+(biff, embedded labels, table is TABLES$)
+WHERE ENABLED = 'Y'
+;
+
+RENAME_Map:
+MAPPING LOAD * Inline [
+a, 	b
+MD Target Table, MD QVD Read
+MD Original Table, MD Source To QVD
+MD Original Source Field, MD Field from Source
+];
+RENAME Fields using RENAME_Map;
+
+drop Field [Load Command] From MetaData;

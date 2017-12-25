@@ -1,0 +1,107 @@
+/**********************************************************************************************************************************************************
+	File:				QVD LooQer v2 include.qvs
+	
+	Included by:		QVD LooQer v2 include.qvw
+	
+	Purpose:			This script reads a recursively reads a folder to generate a list of all QVDs within. The user may then select any one of the QVDs
+						to view the QVD contents in a table box.  A macro automatically generates the table box based on field names found within the 
+						selected QVD. 
+								
+	Author:		Jeff R. Robbins
+	Email:		jrs@qlik.com; jr@QlikPerf.com
+	
+	Version:	3.1.1
+	Date:		2017-12-15
+
+	This program is provided in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+**********************************************************************************************************************************************************/
+SET vQVDLoaded = 0;
+
+LET vDirectoryToSearch=trim(vDirectoryToSearch);
+IF Right(vDirectoryToSearch, 1) <> '\' THEN		// append trailing backslash if it's not present.
+	SET vDirectoryToSearch=$(vDirectoryToSearch)\;
+ENDIF
+
+LET vLastQVD_ListRefresh = QvdCreateTime('$(vTmpFolder)\QVD_List.qvd');		// See if a QVD list was already created.
+IF IsNull(vLastQVD_ListRefresh) THEN
+	LET  vLastQVD_ListRefresh = 0;
+ENDIF
+
+IF '$(vAction)' ='ReloadQVDList' OR vLastQVD_ListRefresh = 0 THEN 		// traverse folder to find all QVDs.
+		sub DoDir (Root)
+			for each File in filelist (Root&'\*.*')
+				QVD_List:
+//				LOAD
+//					*,
+////					ShortDir & '\' & QVD AS ShortDirAndQVD,
+//					IF (SubField(Dir, '\', -1) = 'PRD' OR SubField(Dir, '\', -1) = 'CPY', SubField(Dir, '\', -1)) AS Environment
+//				;
+				LOAD
+					replace( '~' &right('$(Root)',  len('$(Root)') -  Index('$(Root)', '\', $(vNumDirectorySegmentsToRemove) ) )  , '\\', '\' )  AS ShortDir,				
+					replace( '~' &right('$(File)',  len('$(File)') -  Index('$(File)', '\', $(vNumDirectorySegmentsToRemove) ) ) , '\\', '\' )   AS ShortDirAndQVD,				
+					'$(Root)' AS [Original Root],
+					 SubField('$(File)', '\', -1// Start of [BrandCategories.qvd] LOAD statements
+					) as QVD,
+					replace('$(Root)', '\\', '\') AS Dir,
+					// replace(replace( '$(Root)', '$(vDirectoryPortionToHide)' , '~\'), '\\', '\') AS ShortDir,
+					FileTime('$(File)') AS [QVD Timestamp],
+					replace('$(File)', '\\', '\') AS DirAndQVD
+					AutoGenerate 1
+					WHERE WildMatch('$(File)', '*.QVD') AND NOT WildMatch('$(File)', $(vExcludeString) )			;
+
+				if right(upper('$(File)'), 3 ) = 'QVD' AND NOT WildMatch('$(File)', $(vExcludeString)) THEN
+					AllFields_List:
+					LOAD 
+						CreatorDoc,
+						FieldName AS [Field Name],
+						replace('$(File)', '\\', '\') AS DirAndQVD
+					FROM [$(File)] (XmlSimple, Table is [QvdTableHeader/Fields/QvdFieldHeader]);
+				ENDIF
+			next File
+				
+			for each Dir in dirlist (Root&'\*' )
+				call DoDir ('$(Dir)')
+			Next Dir
+		end sub
+
+		call DoDir ('$(vDirectoryToSearch)');
+
+		LET vNumQVDs = NoOfRows('QVD_List');
+		IF vNumQVDs > 0 THEN
+				STORE QVD_List INTO $(vTmpFolder)\QVD_List.qvd (qvd);
+				STORE AllFields_List INTO $(vTmpFolder)\AllFields_List.qvd (qvd);
+		ENDIF
+ENDIF		
+
+IF  '$(vAction)' = 'ReloadSelectedQVD' THEN
+	LOAD * FROM $(vTmpFolder)\QVD_List.qvd (qvd);			// reload cached list of available QVDs
+	LOAD * FROM $(vTmpFolder)\AllFields_List.qvd (qvd);		// reload cached list of available fields
+	IF 	'$(vMaxRowsToFetch)' = 'ALL' THEN
+		 SET vLoadPrefix = ''	;
+	ELSE 
+		 LET vLoadPrefix = 'First ' & num(vMaxRowsToFetch) & ' '	;
+	ENDIF
+		$(vLoadPrefix) 	LOAD * FROM [$(vQVDtoLoad)] (qvd);	// Now, load the actual QVD to load
+		SET vQVDLoaded = 1;
+ELSE	
+	EXIT Script;	 
+END IF
+
+LET vLoadedQVD = replace(replace( '$(vQVDtoLoad)', '$(vDirectoryPortionToHide)' , '~\'), '\\', '\')  ; //& 	 SubField('$(vQVDtoLoad)', '\', -1) ;
+// LET vTableName = left(SubField( SubField('$(vQVDtoLoad)', '\', -1), '.', 1), 48);  // 2017-06-15 JRR commented this line.
+LET vTableName = left(replace(replace( SubField('$(vQVDtoLoad)', '\', -1), '.qvd', ''), '.QVD', ''), 48);  // 2017-06-15 JRR added this line.
+
+LET vNoOfFields = NoOfFields('$(vTableName)') ;
+LET vNoOfRows = NoOfRows('$(vTableName)') ;
+
+//exit SCRIPT;
+FOR i = 1 to vNoOfFields
+	LET vFieldName = FieldName(i, vTableName);
+	FieldNames:
+	LOAD
+			'$(vFieldName)' AS FieldName
+	AutoGenerate 1;
+NEXT
+

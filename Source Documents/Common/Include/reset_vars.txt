@@ -1,0 +1,27 @@
+'------------------------------------------------------------------------------------------------------
+' sub reset_vars
+' Deletes all variables, except critical variables that must also be present for reloads.
+' For developer convenience; not for execution during application run-time.
+'------------------------------------------------------------------------------------------------------
+'  sub reset_vars 		
+	set doc=ActiveDocument 
+	set vars = doc.GetVariableDescriptions
+	for i = 0 to vars.Count - 1 
+	set v = vars.Item(i) 
+	if left(v.Name,1) <> "z" and v.Name <> "vLoadVariables" and v.Name <> "vCommonScriptPath*" _
+								and v.Name <> "vCommonScriptPathAbsolute" _
+								and v.Name <> "vEnvironment" and  v.Name <> "vRulesFile" _
+							 	and     v.Name <> "vConnectionFile"  and v.Name <> "vApp" _
+							  	and v.Name <> "vSEEQ_Mode" and v.Name <> "vPurpose" _
+							  	and v.Name <> "vPurge"	_
+							  	and v.Name <> "vRulesSourceFile" _
+				then 
+'		doc.Variables(v.Name).SetContent "0.0", true 		'set variable to 0.0
+		ActiveDocument.RemoveVariable v.Name		'delete variable entirely
+	end if 
+	next 
+	set v = nothing 
+	set vars = nothing 
+	set doc = nothing
+'  end sub
+

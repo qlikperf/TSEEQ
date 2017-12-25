@@ -1,0 +1,25 @@
+/************************************************************************************************************************************************
+	Apply '%' prefix to all fields in the Variable Repository table, so that those fields are treated as hidden fields.
+*************************************************************************************************************************************************/
+
+FieldsTmp:
+LOAD * INLINE [
+OldName
+SET or LET
+Variable Comment
+Variable Definition
+Variable Type
+VariableSourceFile
+VariableSourceFilePath
+];
+
+FieldMap:
+MAPPING LOAD 
+	OldName, 
+	'%' & OldName AS NewName
+Resident  FieldsTmp;
+
+RENAME FIELDS USING FieldMap;
+
+DROP TABLE FieldsTmp;
+	
