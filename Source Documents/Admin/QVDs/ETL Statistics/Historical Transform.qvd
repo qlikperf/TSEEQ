@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ <QvdTableHeader>
+   <QvBuildNo>50500</QvBuildNo>
+   <CreatorDoc>E:\tc\EEE\Consulting\2_Transform\Consulting Transform.qvw</CreatorDoc>
+   <CreateUtcTime>2017-12-27 15:52:14</CreateUtcTime>
+   <SourceCreateUtcTime></SourceCreateUtcTime>
+   <SourceFileUtcTime></SourceFileUtcTime>
+   <SourceFileSize>-1</SourceFileSize>
+   <StaleUtcTime></StaleUtcTime>
+   <TableName>QVDsGeneratedHistorical</TableName>
+   <Fields>
+     <QvdFieldHeader>
+       <FieldName>SEEQ_TargetKey</FieldName>
+       <BitOffset>0</BitOffset>
+       <BitWidth>8</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>INTEGER</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>0</Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>12</NoOfSymbols>
+       <Offset>0</Offset>
+       <Length>60</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>QVW</FieldName>
+       <BitOffset>0</BitOffset>
+       <BitWidth>0</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>1</NoOfSymbols>
+       <Offset>60</Offset>
+       <Length>22</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$ascii</String>
+         <String>$text</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>SEEQ Execution Messages</FieldName>
+       <BitOffset>0</BitOffset>
+       <BitWidth>0</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>1</NoOfSymbols>
+       <Offset>82</Offset>
+       <Length>2</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$ascii</String>
+         <String>$text</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Batch Start Time</FieldName>
+       <BitOffset>0</BitOffset>
+       <BitWidth>0</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>1</NoOfSymbols>
+       <Offset>84</Offset>
+       <Length>25</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$timestamp</String>
+         <String>$numeric</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>EEE Start Time</FieldName>
+       <BitOffset>8</BitOffset>
+       <BitWidth>3</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>7</NoOfSymbols>
+       <Offset>109</Offset>
+       <Length>210</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$timestamp</String>
+         <String>$numeric</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Query Constaint</FieldName>
+       <BitOffset>48</BitOffset>
+       <BitWidth>2</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>3</NoOfSymbols>
+       <Offset>319</Offset>
+       <Length>127</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$ascii</String>
+         <String>$text</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>ETL Operation</FieldName>
+       <BitOffset>0</BitOffset>
+       <BitWidth>0</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>1</NoOfSymbols>
+       <Offset>446</Offset>
+       <Length>11</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$ascii</String>
+         <String>$text</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName># Fields</FieldName>
+       <BitOffset>11</BitOffset>
+       <BitWidth>5</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>7</NoOfSymbols>
+       <Offset>457</Offset>
+       <Length>52</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName># Rows</FieldName>
+       <BitOffset>16</BitOffset>
+       <BitWidth>3</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>8</NoOfSymbols>
+       <Offset>509</Offset>
+       <Length>89</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName># Fields Stored</FieldName>
+       <BitOffset>19</BitOffset>
+       <BitWidth>3</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>7</NoOfSymbols>
+       <Offset>598</Offset>
+       <Length>52</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName># Rows Stored</FieldName>
+       <BitOffset>38</BitOffset>
+       <BitWidth>3</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>8</NoOfSymbols>
+       <Offset>650</Offset>
+       <Length>89</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>QVD With Path</FieldName>
+       <BitOffset>22</BitOffset>
+       <BitWidth>4</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>12</NoOfSymbols>
+       <Offset>739</Offset>
+       <Length>454</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$ascii</String>
+         <String>$text</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>QVD</FieldName>
+       <BitOffset>26</BitOffset>
+       <BitWidth>4</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>12</NoOfSymbols>
+       <Offset>1193</Offset>
+       <Length>214</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$ascii</String>
+         <String>$text</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Load Type</FieldName>
+       <BitOffset>0</BitOffset>
+       <BitWidth>0</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>1</NoOfSymbols>
+       <Offset>1407</Offset>
+       <Length>5</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$ascii</String>
+         <String>$text</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Time for QVD Store </FieldName>
+       <BitOffset>50</BitOffset>
+       <BitWidth>2</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>3</NoOfSymbols>
+       <Offset>1412</Offset>
+       <Length>64</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Time for Incremental Post-Proc</FieldName>
+       <BitOffset>0</BitOffset>
+       <BitWidth>0</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>1</NoOfSymbols>
+       <Offset>1476</Offset>
+       <Length>7</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Time for Incremental Pre-Proc</FieldName>
+       <BitOffset>0</BitOffset>
+       <BitWidth>0</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>1</NoOfSymbols>
+       <Offset>1483</Offset>
+       <Length>7</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Time for ETL Operation</FieldName>
+       <BitOffset>52</BitOffset>
+       <BitWidth>2</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>4</NoOfSymbols>
+       <Offset>1490</Offset>
+       <Length>97</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Time Total for Table</FieldName>
+       <BitOffset>41</BitOffset>
+       <BitWidth>3</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>5</NoOfSymbols>
+       <Offset>1587</Offset>
+       <Length>124</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>EEE Executed Script</FieldName>
+       <BitOffset>30</BitOffset>
+       <BitWidth>4</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>12</NoOfSymbols>
+       <Offset>1711</Offset>
+       <Length>5749</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$ascii</String>
+         <String>$text</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>EEE Execution Completion Time</FieldName>
+       <BitOffset>44</BitOffset>
+       <BitWidth>4</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>TIMESTAMP</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>MM-DD-YY h:mm:ss[.fff] TT</Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>8</NoOfSymbols>
+       <Offset>7460</Offset>
+       <Length>168</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$timestamp</String>
+         <String>$numeric</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>EEE Execution Time Elapsed</FieldName>
+       <BitOffset>54</BitOffset>
+       <BitWidth>2</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>4</NoOfSymbols>
+       <Offset>7628</Offset>
+       <Length>97</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>EEE Execution Order</FieldName>
+       <BitOffset>34</BitOffset>
+       <BitWidth>4</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>##############</Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>12</NoOfSymbols>
+       <Offset>7725</Offset>
+       <Length>60</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+   </Fields>
+   <Compression></Compression>
+   <RecordByteSize>7</RecordByteSize>
+   <NoOfRecords>12</NoOfRecords>
+   <Offset>7785</Offset>
+   <Length>84</Length>
+   <Lineage></Lineage>
+   <Comment></Comment>
+ </QvdTableHeader>
+                         	   
+         Consulting Transform  aß|å@43096.452743056 #ß|å@12-27-17 10:51:57 AM ìF÷|å@12-27-17 10:51:58 AM 1u¹}å@12-27-17 10:52:06 AM úºÑ}å@12-27-17 10:52:07 AM Â ê}å@12-27-17 10:52:08 AM Ò2~å@12-27-17 10:52:11 AM v£{~å@12-27-17 10:52:14 AM  WHERE  pse__Total_Hours__c <> 0 WHERE  upper(pse__Closed_for_Time_Entry__c) ='FALSE' OR  pse__Closed_for_Time_Entry__c = 0 TRANSFORM 	   9    15    2    16    30    3    1 £$ 271523 Ú)# 2304474 YÙ 121177 .Ð 118830 Õ$  9429 I   73 wæ 124535 m  2925 	   9    15    2    16    30    3    1 £$ 271523 Ú)# 2304474 YÙ 121177 .Ð 118830 Õ$  9429 I   73 wæ 124535 m  2925 ..\QVDs\Transformed\Accounts.qvd ..\QVDs\Transformed\Contacts.qvd ..\QVDs\Transformed\CaseOwners.qvd ..\QVDs\Transformed\Timecards.qvd ..\QVDs\Transformed\Projects.qvd ..\QVDs\Transformed\ProjectOwners.qvd ..\QVDs\Transformed\TimecardResources.qvd ..\QVDs\Transformed\Regions.qvd ..\QVDs\Transformed\OpportunityOwners.qvd ..\QVDs\Transformed\ProjectManagers.qvd ..\QVDs\Transformed\NonDeletedTimecards.qvd ..\QVDs\Transformed\Assignments.qvd Accounts.qvd Contacts.qvd CaseOwners.qvd Timecards.qvd Projects.qvd ProjectOwners.qvd TimecardResources.qvd Regions.qvd OpportunityOwners.qvd ProjectManagers.qvd NonDeletedTimecards.qvd Assignments.qvd N/A     0 C  €V4?3.4722223063e-005 ÿÿÿÈEè>1.1574076779652e-005     0     0 ÿÿÿÈEè>1.1574076779652e-005 ,  À:W?5.7870369346347e-005     0 ÐÿÿÈEø>2.3148146283347e-005 ÿÿÿÈEè>1.1574076779652e-005 îÿÿŸÈE?9.2592592409346e-005     0 †   ÈEè>1.1574069503695e-005 C  €V4?3.4722223063e-005 [Accounts]:		
+LOAD  
+     BillingCity AS [Billing City], 
+     BillingCountry AS [Billing Country], 
+     BillingState AS [Billing State], 
+     Id AS [Account Id], 
+     Name AS [Account], 
+     OwnerId AS [Account Owner Id], 
+     Type AS [Account Type], 
+     date ( CreatedDate ) AS [Account Created], 
+     date ( LastModifiedDate ) AS [Account Last Modified]
+ FROM  [..\QVDs\Extracted\Account.qvd] (qvd) ;  [Contacts]:		
+LOAD  
+     AccountId AS [Account Id], 
+     Department AS [Contact Department], 
+     Description AS [Contact Description], 
+     Email AS [Contact Email], 
+     FirstName & ' ' & LastName AS [Contact Name], 
+     FirstName AS [Contact First Name], 
+     Id AS [Contact Id], 
+     LastName AS [Contact Last Name], 
+     MailingCity AS [Contact Mailing City], 
+     MailingCountry AS [Contact Mailing Country], 
+     MailingState AS [Contact Mailing State], 
+     MobilePhone AS [Contact Mobile Phone], 
+     OwnerId AS [Contact OwnerId], 
+     Phone AS [Contact Phone], 
+     Salutation AS [Contact Salutation]
+ FROM  [..\QVDs\Extracted\Contact.qvd] (qvd) ;  [CaseOwners]:		
+LOAD  
+     FirstName & ' ' & LastName AS [Case Owner Name], 
+     Id AS [Case Owner Id]
+ FROM  [..\QVDs\Extracted\User.qvd] (qvd) ;  [Timecards]:		
+LOAD DISTINCT  
+     Id AS [Timecard Id], 
+     'Timecard' AS [Type], 
+     CurrencyIsoCode AS [Currency], 
+     Name AS [Timecard], 
+     date ( CreatedDate ) AS [TC Created], 
+     date ( LastModifiedDate ) AS [TC Modified], 
+     date ( floor (weekend (  ( pse__End_Date__c ) ) )  - 1) AS [KeyDate], 
+     date ( floor (weekend (  ( pse__End_Date__c ) ) )  - 1) AS [Weekend Date], 
+     if (
+ len(trim(pse__Status__c))<1,
+ 'unknown (Timecard)', 
+ pse__Status__c  & ' (Timecard)' 
+)
+ AS [Status], 
+     if ( 
+  pse__Billable__c=0,
+  'false',
+  if (
+         pse__Billable__c=1,
+         'true'
+        ,pse__Billable__c
+   )
+) AS [Billable], 
+     pse__Approved__c & ' (Timecard)' AS [Approved], 
+     pse__Project__c AS [Project Id], 
+     pse__Resource__c AS [Resource Id], 
+     pse__Total_Billable_Amount__c /  pse__Total_Hours__c AS [TC Hourly Rate], 
+     pse__Total_Billable_Amount__c AS [Billable Amount], 
+     pse__Total_Hours__c AS [Hours]
+ FROM  [..\QVDs\Extracted\TimeCard.qvd] (qvd) WHERE  pse__Total_Hours__c <> 0;  [Projects]:		
+LOAD  
+     (
+ ( 
+  floor(weekend((pse__End_Date__c))-1)  
+  - 
+  (  + 6  ) 
+ ) 
+   / 7 
+ ) + 1
+
+
+ AS [Project Weeks Remaining], 
+     Budget__c AS [Budget], 
+     CurrencyIsoCode AS [Currency for Project], 
+     Id AS [Project Id], 
+     IsDeleted AS [Project IsDeleted], 
+     Name AS [Project], 
+     OwnerId AS [Project Owner Id], 
+     PO_Number__c AS [Project PO #], 
+     Remaining_Budget__c AS [Remaining Budget], 
+     date ( CreatedDate ) AS [Project Created], 
+     date ( LastModifiedDate ) AS [Project Modified], 
+     date ( pse__End_Date__c ) AS [Project End Date], 
+     date( + 6 ) AS [Project First Apply Date], 
+     date(floor(weekend(pse__End_Date__c))-1) AS [Project End Last Day of Week], 
+     pse__Account__c AS [Account Id], 
+     pse__Billings__c AS [Billings], 
+     pse__Expense_Budget__c AS [Project Expense Budget], 
+     pse__Expense_Costs__c AS [Project Expense Costs], 
+     pse__Is_Billable__c AS [Project IsBillable], 
+     pse__Opportunity_Owner__c AS [Opportunity Owner Id], 
+     pse__Opportunity_Owner__c AS [Project Opportunity Owner Id], 
+     pse__Opportunity__c AS [Opportunity Id], 
+     pse__Project_Manager__c AS [Project Manager Id], 
+     pse__Project_Manager__c AS [Project Manager], 
+     pse__Project_Status__c AS [Project Status], 
+     pse__Region__c AS [Region Id], 
+     pse__Revenue__c AS [Project Revenue], 
+     pse__Stage__c AS [Project Stage], 
+     pse__Start_Date__c AS [Project Start Date], 
+     [pse__End_Date__c] AS [pse__End_Date__c]
+ FROM  [..\QVDs\Extracted\Project.qvd] (qvd) ;  [ProjectOwners]:		
+LOAD  
+     FirstName & ' ' & LastName AS [Project Owner Name], 
+     Id AS [Project Owner Id]
+ FROM  [..\QVDs\Extracted\User.qvd] (qvd) ;  [TimecardResources]:		
+LOAD  
+     FirstName & ' ' & LastName AS [Consultant], 
+     Id AS [Resource Id]
+ FROM  [..\QVDs\Extracted\Contact.qvd] (qvd) ;  [Regions]:		
+LOAD  
+     Id AS [Region Id], 
+     Name AS [Region], 
+     [pse__Parent_Region__c] AS [pse__Parent_Region__c]
+ FROM  [..\QVDs\Extracted\Region.qvd] (qvd) ;  [OpportunityOwners]:		
+LOAD  
+     FirstName & ' ' & LastName AS [Opportunity Owners], 
+     Id AS [Opportunity Owner Id]
+ FROM  [..\QVDs\Extracted\User.qvd] (qvd) ;  [ProjectManagers]:		
+LOAD  
+     FirstName & ' ' & LastName AS [Project Manager Name], 
+     Id AS [Project Manager Id]
+ FROM  [..\QVDs\Extracted\Contact.qvd] (qvd) ;  [NonDeletedTimecards]:		
+LOAD  
+     Id AS [Timecard Id]
+ FROM  [..\QVDs\Extracted\NonDeletedTimecard.qvd] (qvd) ;  [Assignments]:		
+LOAD  
+     Id AS [AS Id], 
+     'Assignment' AS [Type], 
+     'TBD (Assignment)' AS [Approved], 
+     'true' AS [Billable], 
+     CurrencyIsoCode AS [Currency], 
+     Name AS [Assignment Name], 
+     date ( floor (weekend (  ( pse__End_Date__c ) ) ) - 1) AS [Date], 
+     date ( pse__End_Date__c ) AS [Assignment End Date], 
+     pse__Assignment_Number__c AS [Assignment], 
+     pse__Bill_Rate__c AS [AS Hourly Rate], 
+     pse__Billable_Hours_Submitted__c AS [Assignment Submitted Hours], 
+     pse__Project__c AS [Project Id], 
+     pse__Resource__c AS [Resource Id], 
+     pse__Scheduled_Hours__c -  pse__Billable_Hours_Submitted__c AS [Assignment Remaining Hours], 
+     pse__Scheduled_Hours__c AS [Assignment Scheduled Hours], 
+     pse__Status__c & '(Assignment)' AS [Status]
+ FROM  [..\QVDs\Extracted\Assignment.qvd] (qvd) WHERE  upper(pse__Closed_for_Time_Entry__c) ='FALSE' OR  pse__Closed_for_Time_Entry__c = 0;  ìF÷|å@10:51:58 AM ×£p}å@10:52:03 AM úºÑ}å@10:52:07 AM Â ê}å@10:52:08 AM SŒ~å@10:52:10 AM Ò2~å@10:52:11 AM ­]c~å@10:52:13 AM v£{~å@10:52:14 AM ÿÿÿÈEè>1.1574076779652e-005 ,  À:W?5.7870369346347e-005     0 ÐÿÿÈEø>2.3148146283347e-005                         	   
+                	IDDT’ˆˆ  ÛÌÌ$¡#$7 RU•4 ‘™YHø-íÝ]U "¢T 	Qffhø
+6¶ªªu ßîîu¢

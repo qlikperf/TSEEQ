@@ -1,4 +1,5 @@
 REM This file automates end-to-end ETL for QlikView for the TSEEQ Sales Sample.
+REM Please see the TSEEQ Documentation PDF for Qlik Sense instructions. 
 
 
 REM  The next line generates the Common Calendar:
