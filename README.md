@@ -7,7 +7,7 @@
 Please read the **__TSEEQ__** **[documentation](https://github.com/qlikperf/TSEEQ/blob/master/TSEEQ%20Documentation.pdf)** for step-by-step instructions.
 
 ## Minimum Requirements:
-QlikView (v11 or 12); OR Qlik Sense 2.1 or higher (including all releases names after dates, for example, the "June 2017" and later releases).  **__TSEEQ__** works with both Desktop and Server product variants.
+QlikView (v11 or 12); OR Qlik Sense 2.1 or higher (including all releases named after dates, for example, the "June 2017" and later releases).  **__TSEEQ__** works with both Desktop and Server product variants.
 
 ## Install
 To install **__TSEEQ__**, first download the **[master ZIP file](https://github.com/qlikperf/TSEEQ/archive/master.zip)**. Unzip that file, and follow instructions in the contained __SEEQ Documentation.PDF__.
@@ -28,10 +28,9 @@ The distinguishing characteristic of **__TSEEQ__** versus Traditional Embedding 
 
 ![TES](https://github.com/qlikperf/TSEEQ/blob/master/img/SEEQ_vs_TES.png) 
 
-
 Note: **__TSEEQ__** and TES are not mutually exclusive; a hybrid approach is useful in many cases. 
 
 ## License
-**[MIT](https://github.com/qlikperf/TSEEQ/blob/master/license)**
+**[MIT](https://github.com/qlikperf/TSEEQ/blob/master/LICENSE)**
 
 If you experience an issue, do not contact Qlik Support.  Please open an issue here: **[Issues](https://github.com/qlikperf/TSEEQ/issues)**
