@@ -74,4 +74,4 @@ vSEEQ_DropExcludedFieldsStatement
 vSEEQ_ModeOriginal
 vSEEQ_ModfiedTimestampField
 vSEEQ_SourceFolderPostfix
-vSEEQScriptPath
+vSEEQScriptPath 
