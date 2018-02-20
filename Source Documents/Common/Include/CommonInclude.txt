@@ -1,12 +1,12 @@
 /**********************************************************************************************************************************************************
 	File:		CommonInclude.txt
-	Purpose:	Common Initialization and Common Ending routines for all QVFs and QVWs that invoke SEEQ, the Structured ETL Engine for Qlik.
+	Purpose:	Common Initialization and Common Ending routines for all QVFs and QVWs that invoke SEEQ, The Structured ETL Engine for Qlik.
 	
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.1
-	Date:		2017-12-15
+	Version:	3.1.2
+	Date:		2018-02-15
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -81,7 +81,7 @@ sub CommonEnd
 		RENAME FIELD [QVD Created] to [QVD Loaded];
 	endif
 	LET vReloadTimeEnd = now();		// for performance profiling
-	SET vFinished = 1;  			// 0 means script did not finish; 1 inidicates script completion; this is for debugging. 
+	SET vFinished = 1;  			// 0 means script did not finish; 1 indicates script completion; this is for debugging. 
 	Trace 'Exiting subroutine CommonEnd in $(vCommonScriptPath)\CommonInclude.txt';
 	EXIT Script;	
 ENDSUB	
