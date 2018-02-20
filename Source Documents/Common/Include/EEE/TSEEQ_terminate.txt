@@ -1,5 +1,5 @@
 /**********************************************************************************************************************************************************
-	File:			SEEQ_terminate.txt
+	File:			SEEQ_terminate.txt 
 	Purpose:		Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
 						Subroutines in this file are called from SEEQ_include.txt
 	

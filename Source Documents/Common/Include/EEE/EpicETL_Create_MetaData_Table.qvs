@@ -2,7 +2,7 @@
 	Read in the ETL rules  so field derivation can be viewed within this QVW in the Dev Console.
 	This script tab is not required to implement application functionality for end users, but
 	it does assist the developer greatly with data tracing.
-	
+	 
 
 *********************************************************************************************************************/
 

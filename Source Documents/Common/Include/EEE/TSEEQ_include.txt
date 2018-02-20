@@ -1,5 +1,5 @@
 /**********************************************************************************************************************************************************
-	File:		SEEQ_include.txt
+	File:		SEEQ_include.txt 
 	Purpose:	Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
 						
 	Author:		Jeff R. Robbins
