@@ -71,7 +71,7 @@ vSEEQ_RowLimitOverride
 vSEEQ_Messages
 vSEEQ_ErrorDetected
 vSEEQ_DropExcludedFieldsStatement
-vSEEQ_ModeOriginal
+vTSEEQ_ModeOriginal
 vSEEQ_ModfiedTimestampField
 vSEEQ_SourceFolderPostfix
-vSEEQScriptPath 
+vSEEQScriptPath

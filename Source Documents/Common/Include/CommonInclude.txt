@@ -76,6 +76,7 @@ sub CommonInit
 end sub
 
 sub CommonEnd
+	RENAME FIELD [SEEQ Execution Messages] to [TSEEQ Execution Messages];
 	Trace 'Entering subroutine CommonEnd in $(vCommonScriptPath)\CommonInclude.txt';
 	if upper(vPurpose) = 'LOAD' THEN 
 		RENAME FIELD [QVD Created] to [QVD Loaded];

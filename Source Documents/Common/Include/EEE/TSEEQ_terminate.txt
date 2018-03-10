@@ -1,13 +1,13 @@
 /**********************************************************************************************************************************************************
-	File:			SEEQ_terminate.txt 
+	File:			SEEQ_terminate.txt
 	Purpose:		Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
 						Subroutines in this file are called from SEEQ_include.txt
 	
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.1
-	Date:		2017-12-15
+	Version:	3.1.2
+	Date:		2018-02-15
 
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -18,7 +18,7 @@
 sub StoreQVD
 	LET vSEEQ_NoOfRowsInTarget=NoOfRows('$(vSEEQ_TargetWithoutBrackets)') ;
 	LET vSEEQ_TimeQVDStore = num(now(1));		// performance profiling  
-		IF upper(vSEEQ_Mode) = 'GENERATE AND EXECUTE' AND vSEEQ_ThisIsMappingTable <> 1 AND vSEEQ_NoOfRowsInTarget > 0  THEN		// vSEEQ_Mode is not GENERATE ONLY and this is not a mapping table.
+		IF upper(vTSEEQ_Mode) = 'GENERATE AND EXECUTE' AND vSEEQ_ThisIsMappingTable <> 1 AND vSEEQ_NoOfRowsInTarget > 0  THEN		// vTSEEQ_Mode is not GENERATE ONLY and this is not a mapping table.
 			IF 	vSEEQ_ErrorDetected <> 1 AND upper(vPurpose) <> 'LOAD' THEN
 				STORE $(vSEEQ_Target) INTO [$(vSEEQ_TargetFolder)$(vSEEQ_TargetWithoutBrackets).qvd] (qvd);	
 			ENDIF
@@ -27,14 +27,14 @@ sub StoreQVD
 		ELSE 
 			SET vSEEQ_NumRecordsStored = 0;
 			SET vSEEQ_NumFieldsStored = 0;
-			IF upper(vSEEQ_Mode) = 'GENERATE ONLY'	THEN
-				CALL SEEQ_WriteMessage('vSEEQ_Mode = GENERATE ONLY.  ETL code generated but not executed.');			
+			IF upper(vTSEEQ_Mode) = 'GENERATE ONLY'	THEN
+				CALL SEEQ_WriteMessage('vTSEEQ_Mode = GENERATE ONLY.  ETL code generated but not executed.');			
 			ENDIF
-			IF vSEEQ_NoOfRowsInTarget AND upper(vSEEQ_Mode) = 'GENERATE AND EXECUTE' THEN 
-//			IF vSEEQ_NoOfRowsInTarget AND upper(vSEEQ_Mode) = 'GENERATE AND EXECUTE' = 0 THEN 
+			IF vSEEQ_NoOfRowsInTarget AND upper(vTSEEQ_Mode) = 'GENERATE AND EXECUTE' THEN 
+//			IF vSEEQ_NoOfRowsInTarget AND upper(vTSEEQ_Mode) = 'GENERATE AND EXECUTE' = 0 THEN 
 				CALL SEEQ_WriteMessage('No records exist in $(vSEEQ_TargetWithoutBrackets). Skipping STORE of QVD.');
 			ENDIF
-			IF vSEEQ_ThisIsMappingTable = 1 AND upper(vSEEQ_Mode) = 'GENERATE AND EXECUTE' THEN 
+			IF vSEEQ_ThisIsMappingTable = 1 AND upper(vTSEEQ_Mode) = 'GENERATE AND EXECUTE' THEN 
 //			IF vSEEQ_ThisIsMappingTable = 1  THEN 
 				CALL SEEQ_WriteMessage('This is a mapping table - skipping STORE of QVD.');
 			ENDIF
@@ -42,13 +42,13 @@ sub StoreQVD
 	
 	LET vSEEQ_TimeQVDStore = num(now(1)) - vSEEQ_TimeQVDStore;	// performance profiling	
 		IF vSEEQ_KeepOrDrop <> 'KEEP' THEN	// default behavior is to drop the table after storing the QVD.
-			IF upper(vSEEQ_Mode) = 'GENERATE AND EXECUTE' AND vSEEQ_ThisIsMappingTable <> 1 AND upper(vPurpose) <> 'LOAD'  THEN		// vSEEQ_Mode is not GENERATE ONLY
+			IF upper(vTSEEQ_Mode) = 'GENERATE AND EXECUTE' AND vSEEQ_ThisIsMappingTable <> 1 AND upper(vPurpose) <> 'LOAD'  THEN		// vTSEEQ_Mode is not GENERATE ONLY
 				DROP Table $(vSEEQ_Target);	
 		ENDIF
 	ENDIF	
 	LET vSEEQ_IterationStartTime = timestamp(num(vSEEQ_TimeIteration));
     LET vSEEQ_TimeIteration = num(now(1)) - vSEEQ_TimeIteration;		// performance profiling
-//	IF  vSEEQ_NoOfRowsInTarget > 0 OR upper(vSEEQ_Mode) = 'GENERATE ONLY' OR vSEEQ_ThisIsMappingTable THEN 	
+//	IF  vSEEQ_NoOfRowsInTarget > 0 OR upper(vTSEEQ_Mode) = 'GENERATE ONLY' OR vSEEQ_ThisIsMappingTable THEN 	
 		[Execution Stats]:
 		LOAD 
 			// subfield(DocumentName(), '.', 1) AS [QVW],	// 2017-04-19 JRR commented this line.
@@ -100,7 +100,7 @@ sub SEEQ_Terminate
     	JOIN ([Execution Stats]) LOAD * Resident SEEQ_ExecutionTrace WHERE upper([EEE Executed Script]) <> 'INIT';
     	DROP Table SEEQ_ExecutionTrace;
 	ENDIF
-	IF upper(vPurpose) <> 'LOAD'  and upper(vSEEQ_Mode) = 'GENERATE AND EXECUTE'  THEN
+	IF upper(vPurpose) <> 'LOAD'  and upper(vTSEEQ_Mode) = 'GENERATE AND EXECUTE'  THEN
 		// create QVD with EXTRACT & TRANSFORM performance statistics:
 			LET vEEEQVDTraceFile = 'Historical ' & Capitalize(vPurpose);
 			IF len(NoOfRows('Execution Stats') ) > 0 THEN
@@ -120,8 +120,8 @@ sub SEEQ_Terminate
 	SEEQ_var_list_destroy:		// add required fields
 	LOAD 
 		*,
-		'null()' AS [Variable Definition],
-		'LET' AS [SET or LET],
+		'' AS [Variable Definition],
+		'SET' AS [SET or LET],
 		1 AS [Load Order],
 		null() AS VariableSourceFile,
 		null() AS VariableSourceFilePath,

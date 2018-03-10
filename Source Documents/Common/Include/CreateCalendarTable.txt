@@ -4,8 +4,8 @@
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.1
-	Date:		2017-12-15
+	Version:	3.1.2
+	Date:		2018-02-15
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -29,10 +29,11 @@ In typical production settings, vToday is set to the current date, or the prior 
 the data is current as of the prior day.  In test environments where the data is not current, vToday can 
 be set to any prior date.
 ****************************************************************************************************************/
-//	LET vToday = num(Today()); 											// uncomment to override the vToday set in CommonVariables.xls.
-LET vMinDateNum = num(MakeDate(2010, 1, 1));							// Start the calendar on the first day of 2010. 
-// LET vMinDateNum = num(YearStart(addmonths(vToday, -12)));			// Start the calendar on the first day of last year. 
-LET vMaxDateNum = floor(num(YearEnd(addmonths(vToday, 36))));			// End the calendar on the last day three years in the future.
+//	LET vToday = num(Today()); 											// Uncomment this line to override the value set in CommonVariables.xls.
+// LET vMinDateNum = num(YearStart(addmonths(vToday, -12)));			// Uncomment this line to override the value set in CommonVariables.xls.
+// LET vMaxDateNum = floor(num(YearEnd(addmonths(vToday, 36))));		// Uncomment this line to override the value set in CommonVariables.xls.
+
+
 
 sub CreateCalendarQvd( vCCQ_CalendarName, vKEEPorDROP )
 	

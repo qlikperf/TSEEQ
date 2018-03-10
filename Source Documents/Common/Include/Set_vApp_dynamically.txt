@@ -5,8 +5,8 @@
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.1
-	Date:		2017-12-15
+	Version:	3.1.2
+	Date:		2018-02-15
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of

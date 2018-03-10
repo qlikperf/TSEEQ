@@ -1,13 +1,13 @@
 /**********************************************************************************************************************************************************
-	File:				SEEQ_subroutines.txt 
+	File:				SEEQ_subroutines.txt
 	Purpose:			Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
 						Subroutines in this file are called from SEEQ_include.txt
 	
 	Author:				Jeff R. Robbins
 	Author email:		jrs@qlik.com; jr@qlikperf.com
 	
-	Version:	3.1.1
-	Date:		2017-12-15
+	Version:	3.1.2
+	Date:		2018-02-15
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -32,7 +32,7 @@ END SUB			// ExcludeFieldsInit
 sub ExcludeFields
 //	IF upper(vPurpose) = 'EXTRACT' THEN	
 //		LET vExcludeFields = peek('ExcludeFields', 0, 'ExcludeFields');
-//		IF upper(vPurpose) = 'EXTRACT' AND vSEEQ_Fields = 'EXCLUDE_SUBSET' AND len('$(vExcludeFields)' ) > 0 AND upper(vSEEQ_Mode)='GENERATE AND EXECUTE'  THEN		
+//		IF upper(vPurpose) = 'EXTRACT' AND vSEEQ_Fields = 'EXCLUDE_SUBSET' AND len('$(vExcludeFields)' ) > 0 AND upper(vTSEEQ_Mode)='GENERATE AND EXECUTE'  THEN		
 //		// exclude fields are specified in vRulesSourceFile
 //			DROP Fields $(vExcludeFields) FROM $(vSEEQ_Target);
 //		ENDIF
@@ -148,9 +148,9 @@ sub SEEQ_WriteProxyQVD
 		// the need to have transform logic for both QVD and External file types; we can use a single set of logic for both.
 			TmpProxyTable:
 			First 100 LOAD * FROM $(vSEEQ_Source);
-//			STORE TmpProxyTable INTO  [$(vSEEQ_TargetFolder)$(vSEEQ_SourceOriginal)_SEEQ_tmp.qvd] (qvd);		// This line causes terse  "END SUB" or "Script line error" error on some systems. 
+			STORE TmpProxyTable INTO  [$(vSEEQ_TargetFolder)$(vSEEQ_TargetWithoutBrackets)_TSEEQ_proxy.qvd] (qvd);
 			DROP Table TmpProxyTable;
-			SET vSEEQ_TmpProxyTable = [$(vSEEQ_TargetFolder)$(vSEEQ_SourceOriginal)_SEEQ_tmp.qvd] (qvd);		// This line causes terse  "END SUB" or "Script line error" error on some systems. 
+			SET vSEEQ_TmpProxyTable = [$(vSEEQ_TargetFolder)$(vSEEQ_TargetWithoutBrackets)_TSEEQ_proxy.qvd] (qvd);
 ENDSUB
 /******************************************************************************************************************************************/
 sub SEEQ_TransformIncludeSubset

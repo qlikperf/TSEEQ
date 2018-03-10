@@ -4,8 +4,8 @@
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.1
-	Date:		2017-12-15	
+	Version:	3.1.2
+	Date:		2018-02-15	
 
 	Purpose:	Load variables from the specified XLS file and contained worksheet into a QlikVIew app.
 	

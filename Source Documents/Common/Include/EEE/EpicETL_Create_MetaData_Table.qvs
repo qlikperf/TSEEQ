@@ -1,9 +1,17 @@
 /*********************************************************************************************************************
-	Read in the ETL rules  so field derivation can be viewed within this QVW in the Dev Console.
-	This script tab is not required to implement application functionality for end users, but
-	it does assist the developer greatly with data tracing.
-	 
+	Author:		Jeff R. Robbins
+	Email:		jrs@qlik.com; jr@QlikPerf.com
+	
+	Version:	3.1.2
+	Date:		2018-02-15
+	
+	This program is provided in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
 
+	Purpose: Read in the ETL rules  so field derivation can be viewed in a Qlik app.
+	This script tab is not required to implement application functionality for end users, but
+	it does assist the developer with data tracing.
 *********************************************************************************************************************/
 
 // Currently, this include file is coded to be invoked from the DataModel QVW or QVF.  Invoking from elsewhere might require
