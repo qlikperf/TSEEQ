@@ -16,10 +16,12 @@ To install **__TSEEQ__**, first download the **[latest release ZIP file](https:/
 **__TSEEQ__** implements centralized management of Extract, Transform and Load (ETL) operations that provide data to QlikView and Qlik Sense applications. 
  
 Primary benefits of **__TSEEQ__** are: 
-<li>Governance:     ETL operations are defined in externalized (and therefore readily manageable) rule sets.</li>
-<li>Self-Service:   Business users may easily define and modify ETL operations in sandbox environments.</li>
-<li>Performance:    A profiler enables efficient ETL execution.</li>
-<li>Productivity:   A common code base promotes reuse and streamlines ETL development.</li>
+
+* Governance:     ETL operations are defined in externalized (and therefore readily manageable) rule sets.
+* Self-Service:   Business users may easily define and modify ETL operations in sandbox environments.
+* Performance:    A profiler enables efficient ETL execution.
+* Productivity:   A common code base promotes reuse and streamlines ETL development.
+
 
 ![TSEEQ](https://github.com/qlikperf/TSEEQ/blob/master/img/SEEQ_basic_flow.png) 
 
