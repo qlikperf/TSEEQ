@@ -1,0 +1,1 @@
+This folder contains metadata used by the QVD LooQer.

@@ -10,14 +10,22 @@
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.2.1
-	Date:		2018-02-15
+	Version:	3.2.2
+	Date:		2018-04-14
 
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
 **********************************************************************************************************************************************************/
 SET vQVDLoaded = 0;
+
+QVDsToExclude:		// Exclude metadata QVDs from the available list of QVDs to open. 
+LOAD * Inline [
+QVDToExclude
+AllFields_List.qvd
+QVD_List.qvd
+];
+
 
 LET vDirectoryToSearch=trim(vDirectoryToSearch);
 IF Right(vDirectoryToSearch, 1) <> '\' THEN		// append trailing backslash if it's not present.
@@ -42,14 +50,12 @@ IF '$(vAction)' ='ReloadQVDList' OR vLastQVD_ListRefresh = 0 THEN 		// traverse 
 					replace( '~' &right('$(Root)',  len('$(Root)') -  Index('$(Root)', '\', $(vNumDirectorySegmentsToRemove) ) )  , '\\', '\' )  AS ShortDir,				
 					replace( '~' &right('$(File)',  len('$(File)') -  Index('$(File)', '\', $(vNumDirectorySegmentsToRemove) ) ) , '\\', '\' )   AS ShortDirAndQVD,				
 					'$(Root)' AS [Original Root],
-					 SubField('$(File)', '\', -1// Start of [BrandCategories.qvd] LOAD statements
-					) as QVD,
+					 SubField('$(File)', '\', -1) as [QVD To Open] ,
 					replace('$(Root)', '\\', '\') AS Dir,
-					// replace(replace( '$(Root)', '$(vDirectoryPortionToHide)' , '~\'), '\\', '\') AS ShortDir,
 					FileTime('$(File)') AS [QVD Timestamp],
 					replace('$(File)', '\\', '\') AS DirAndQVD
 					AutoGenerate 1
-					WHERE WildMatch('$(File)', '*.QVD') AND NOT WildMatch('$(File)', $(vExcludeString) )			;
+					WHERE WildMatch('$(File)', '*.QVD') AND NOT WildMatch('$(File)', $(vExcludeString) ) and not Exists(QVDToExclude ,SubField('$(File)', '\', -1) )		;
 
 				if right(upper('$(File)'), 3 ) = 'QVD' AND NOT WildMatch('$(File)', $(vExcludeString)) THEN
 					AllFields_List:
@@ -73,30 +79,35 @@ IF '$(vAction)' ='ReloadQVDList' OR vLastQVD_ListRefresh = 0 THEN 		// traverse 
 				STORE QVD_List INTO $(vTmpFolder)\QVD_List.qvd (qvd);
 				STORE AllFields_List INTO $(vTmpFolder)\AllFields_List.qvd (qvd);
 		ENDIF
-ENDIF		
+ENDIF	
+
+
+DROP Table QVDsToExclude;	
 
 IF  '$(vAction)' = 'ReloadSelectedQVD' THEN
+	_QVD_List:
 	LOAD * FROM $(vTmpFolder)\QVD_List.qvd (qvd);			// reload cached list of available QVDs
+	_AllFields_List:
 	LOAD * FROM $(vTmpFolder)\AllFields_List.qvd (qvd);		// reload cached list of available fields
 	IF 	'$(vMaxRowsToFetch)' = 'ALL' THEN
 		 SET vLoadPrefix = ''	;
 	ELSE 
 		 LET vLoadPrefix = 'First ' & num(vMaxRowsToFetch) & ' '	;
 	ENDIF
-		$(vLoadPrefix) 	LOAD * FROM [$(vQVDtoLoad)] (qvd);	// Now, load the actual QVD to load
+		NoConcatenate $(vLoadPrefix) 	LOAD * FROM [$(vQVDtoLoad)] (qvd);	// Load the actual QVD contents.
 		SET vQVDLoaded = 1;
 ELSE	
 	EXIT Script;	 
 END IF
 
 LET vLoadedQVD = replace(replace( '$(vQVDtoLoad)', '$(vDirectoryPortionToHide)' , '~\'), '\\', '\')  ; //& 	 SubField('$(vQVDtoLoad)', '\', -1) ;
-// LET vTableName = left(SubField( SubField('$(vQVDtoLoad)', '\', -1), '.', 1), 48);  // 2017-06-15 JRR commented this line.
-LET vTableName = left(replace(replace( SubField('$(vQVDtoLoad)', '\', -1), '.qvd', ''), '.QVD', ''), 48);  // 2017-06-15 JRR added this line.
+LET vTableName = left(replace(replace( SubField('$(vQVDtoLoad)', '\', -1), '.qvd', ''), '.QVD', ''), 48);  // Some Qlik product versions limit table names to 48 characters.
 
 LET vNoOfFields = NoOfFields('$(vTableName)') ;
+Trace '$(vNoOfFields)';
 LET vNoOfRows = NoOfRows('$(vTableName)') ;
+//EXIT SCRIPT;
 
-//exit SCRIPT;
 FOR i = 1 to vNoOfFields
 	LET vFieldName = FieldName(i, vTableName);
 	FieldNames:
@@ -104,4 +115,3 @@ FOR i = 1 to vNoOfFields
 			'$(vFieldName)' AS FieldName
 	AutoGenerate 1;
 NEXT
-
