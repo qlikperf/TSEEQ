@@ -4,8 +4,8 @@
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.2
-	Date:		2018-02-15
+	Version:	3.1.4
+	Date:		2018-04-24
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -30,8 +30,8 @@ the data is current as of the prior day.  In test environments where the data is
 be set to any prior date.
 ****************************************************************************************************************/
 //	LET vToday = num(Today()); 											// Uncomment this line to override the value set in CommonVariables.xls.
-// LET vMinDateNum = num(YearStart(addmonths(vToday, -12)));			// Uncomment this line to override the value set in CommonVariables.xls.
-// LET vMaxDateNum = floor(num(YearEnd(addmonths(vToday, 36))));		// Uncomment this line to override the value set in CommonVariables.xls.
+LET vMinDateNum = num(YearStart(addmonths(vToday, -60)));			// Uncomment this line to override the value set in CommonVariables.xls.
+LET vMaxDateNum = floor(num(YearEnd(addmonths(vToday, 36))));		// Uncomment this line to override the value set in CommonVariables.xls.
 
 
 
