@@ -1,7 +1,7 @@
 
 # **__TSEEQ__** ("seek"), The Structured ETL Engine for Qlik
 
-## Latest Release == [3.1.3](https://github.com/qlikperf/TSEEQ/releases/latest)
+## Latest Release == [3.1.4](https://github.com/qlikperf/TSEEQ/releases/latest)
 
 ## Documentation
 Please read the **__TSEEQ__** **[documentation](https://github.com/qlikperf/TSEEQ/blob/master/TSEEQ%20Documentation.pdf)** for step-by-step instructions.
@@ -10,7 +10,7 @@ Please read the **__TSEEQ__** **[documentation](https://github.com/qlikperf/TSEE
 QlikView (v11 or 12); OR Qlik Sense 2.1 or higher (including all releases named after dates, for example, the "June 2017" and later releases).  **__TSEEQ__** works with both Desktop and Server product variants.
 
 ## Install
-To install **__TSEEQ__**, first download the **[latest release ZIP file](https://github.com/qlikperf/TSEEQ/releases)**. Unzip that file, and follow instructions in the contained __TSEEQ Documentation.PDF__.
+To install **__TSEEQ__**, first download the **[Source code (zip) file for the newest release](https://github.com/qlikperf/TSEEQ/releases)**. Unzip that file, and follow instructions in the contained __TSEEQ Documentation.PDF__.
 
 ## Description
 **__TSEEQ__** implements centralized management of Extract, Transform and Load (ETL) operations that provide data to QlikView and Qlik Sense applications. 
