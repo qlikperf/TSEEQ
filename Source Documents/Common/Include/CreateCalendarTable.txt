@@ -114,4 +114,4 @@ sub CreateCalendarQvd( vCCQ_CalendarName, vKEEPorDROP )
 		DROP Table [$(vCCQ_CalendarName)Calendar];
 	ENDIF	
 
-ENDSUB
+ENDSUB 
