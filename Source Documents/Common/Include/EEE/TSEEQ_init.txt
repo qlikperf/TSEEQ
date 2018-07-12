@@ -74,7 +74,7 @@ sub InitVariablesOuter
 end sub // InitVariablesOuter
 /******************************************************************************************************************************************/
 sub InitVariablesInner
-
+	SET vSEEQ_DropExcludedFieldsStatement=;		// 2018-07-12 JRR added this line
 	SET vSEEQ_NumFields$(vPurposeED)=0;		// 2017-04-08 JRR moved this line from InitVariablesOuter to InitVariablesInner
 	SET vSEEQ_NumRecords$(vPurposeED)=0;	// 2017-04-08 JRR moved this line from InitVariablesOuter to InitVariablesInner
 	SET vSEEQ_Messages=;
