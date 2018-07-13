@@ -6,8 +6,8 @@
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.2
-	Date:		2018-02-15
+	Version:	3.1.5
+	Date:		2018-07-13
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -19,7 +19,13 @@ sub InitVariablesOuter
 	LET vSEEQ_linefeed=chr(10);
 	// EXTRACTed or TRANSFORMed; this is for performance profiling:
 	LET vPurposeED = '$(vPurpose)' & 'ed';  
-	LET vSEEQ_GetThisRuleLine = 'purgechar([Target], ' & chr(39) & ' -	' & chr(39) & ') = ' & chr(39) &'$' & '(vSEEQ_TargetWithoutBrackets)'& chr(39) &'	AND upper(ENABLED)  = ' & chr(39) & 'Y' & chr(39);
+
+            // 2018-07-13 JRR commented the following line: 
+            //          LET vSEEQ_GetThisRuleLine = 'purgechar([Target], ' & chr(39) & ' -         ' & chr(39) & ') = ' & chr(39) &'$' & '(vSEEQ_TargetWithoutBrackets)'& chr(39) &'          AND upper(ENABLED)  = ' & chr(39) & 'Y' & chr(39);
+            // 2018-07-13 JRR added the following line to support wildcard expansion of Targets in INCLUDE, EXCLUDE and TRANSFORM field operations: 
+            LET vSEEQ_GetThisRuleLine ='wildmatch('&chr(39)&'$'&'(vSEEQ_TargetWithoutBrackets)'&chr(39)&', purgechar([Target], ' & chr(39) & ' -            ' & chr(39) & ')&'&chr(39)&'*'&chr(39)&')'&'   AND upper(ENABLED)  = ' & chr(39) & 'Y' & chr(39);
+
+
 	LET vSEEQ_BatchStartTime = num(now());
 ////	XLS file format
 	SET vSEEQ_XLS = 'XLS';
