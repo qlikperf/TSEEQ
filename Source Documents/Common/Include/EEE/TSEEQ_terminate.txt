@@ -6,8 +6,8 @@
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.2
-	Date:		2018-02-15
+	Version:	3.1.7
+	Date:		2018-12-09
 
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -53,7 +53,7 @@ sub StoreQVD
 		LOAD 
 			// subfield(DocumentName(), '.', 1) AS [QVW],	// 2017-04-19 JRR commented this line.
 			 if ( len(trim(DocumentTitle() ) ) > 0, DocumentTitle(), subfield(DocumentName(), '.', 1) ) AS [QVW], // 2017-04-19 JRR added this line.
-			'$(vSEEQ_Messages)' AS [SEEQ Execution Messages],
+			'$(vSEEQ_Messages)' AS [TSEEQ Execution Messages],
 			$(vSEEQ_BatchStartTime) 	AS [Batch Start Time],
 	//				'$(vSEEQ_Comment)' AS [Comment],
 //			'$(vSEEQ_IterationStartTime)' AS [$(vPurpose) Start Time],

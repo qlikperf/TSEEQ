@@ -5,8 +5,8 @@
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.2
-	Date:		2018-02-15
+	Version:	3.1.7
+	Date:		2018-12-09
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -76,7 +76,7 @@ sub CommonInit
 end sub
 
 sub CommonEnd
-	RENAME FIELD [SEEQ Execution Messages] to [TSEEQ Execution Messages];
+//	RENAME FIELD [SEEQ Execution Messages] to [TSEEQ Execution Messages];
 	Trace 'Entering subroutine CommonEnd in $(vCommonScriptPath)\CommonInclude.txt';
 	if upper(vPurpose) = 'LOAD' THEN 
 		RENAME FIELD [QVD Created] to [QVD Loaded];

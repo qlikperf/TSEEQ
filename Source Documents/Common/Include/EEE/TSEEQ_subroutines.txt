@@ -6,8 +6,8 @@
 	Author:				Jeff R. Robbins
 	Author email:		jrs@qlik.com; jr@qlikperf.com
 	
-	Version:	3.1.2
-	Date:		2018-02-15
+	Version:	3.1.7
+	Date:		2018-12-09
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -38,7 +38,7 @@ sub ExcludeFields
 //		ENDIF
 //	ENDIF
 	IF upper(vPurpose) = 'EXTRACT' THEN	
-		LET vExcludeFields = peek('ExcludeFields', 0, 'ExcludeFields');
+		LET vExcludeFields = peek('ExcludeFieldsConcat', 0, 'ExcludeFieldsConcat');
 		IF upper(vPurpose) = 'EXTRACT' AND vSEEQ_Fields = 'EXCLUDE_SUBSET' AND len('$(vExcludeFields)' ) > 0  THEN		
 		// exclude fields are specified in vRulesSourceFile
 		SET vSEEQ_DropExcludedFieldsStatement='DROP Fields $(vExcludeFields) FROM $(vSEEQ_Target)$(vSEEQ_Semicolon)';
