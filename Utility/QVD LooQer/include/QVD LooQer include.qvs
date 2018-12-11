@@ -10,8 +10,8 @@
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.3
-	Date:		2018-04-14
+	Version:	3.1.7
+	Date:		2018-12-11
 
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -100,7 +100,10 @@ ELSE
 	EXIT Script;	 
 END IF
 
-LET vLoadedQVD = replace(replace( '$(vQVDtoLoad)', '$(vDirectoryPortionToHide)' , '~\'), '\\', '\')  ; //& 	 SubField('$(vQVDtoLoad)', '\', -1) ;
+// 2018-09-16 JRR commented the following line:
+// LET vLoadedQVD = replace(replace( '$(vQVDtoLoad)', '$(vDirectoryPortionToHide)' , '~\'), '\\', '\')  ; //& 	 SubField('$(vQVDtoLoad)', '\', -1) ;
+LET vLoadedQVD = replace( '~' &right('$(vQVDtoLoad)',  len('$(vQVDtoLoad)') -  Index('$(vQVDtoLoad)', '\', $(vNumDirectorySegmentsToRemove) ) ) , '\\', '\' );
+
 LET vTableName = left(replace(replace( SubField('$(vQVDtoLoad)', '\', -1), '.qvd', ''), '.QVD', ''), 48);  // Some Qlik product versions limit table names to 48 characters.
 
 LET vNoOfFields = NoOfFields('$(vTableName)') ;
