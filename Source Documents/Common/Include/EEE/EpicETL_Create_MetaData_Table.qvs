@@ -1,3 +1,6 @@
+// Currently, this include file is coded to be invoked from the DataModel QVW or QVF.  Invoking from elsewhere might require
+// a change to the following line:
+LET vTransformRulesFile = replace(vRulesSourceFile, 'LOAD', 'Transform');
 /*********************************************************************************************************************
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
@@ -13,11 +16,6 @@
 	This script tab is not required to implement application functionality for end users, but
 	it does assist the developer with data tracing.
 *********************************************************************************************************************/
-
-// Currently, this include file is coded to be invoked from the DataModel QVW or QVF.  Invoking from elsewhere might require
-// a change to the following line:
-LET vTransformRulesFile = replace(vRulesSourceFile, 'LOAD', 'Transform');
-
 MetaData:
 lOAD
 	Target AS [MD Target Table], 

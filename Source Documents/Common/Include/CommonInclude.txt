@@ -1,3 +1,4 @@
+sub CommonInit 
 /**********************************************************************************************************************************************************
 	File:		CommonInclude.txt
 	Purpose:	Common Initialization and Common Ending routines for all QVFs and QVWs that invoke SEEQ, The Structured ETL Engine for Qlik.
@@ -12,7 +13,6 @@
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
 **********************************************************************************************************************************************************/
-sub CommonInit 
 	Trace 'Entering subroutine CommonInit in $(vCommonScriptPath)\CommonInclude.txt';
 	SET ThousandSep=',';
 	SET DecimalSep='.';
@@ -24,6 +24,13 @@ sub CommonInit
 	SET TimestampFormat='MM-DD-YY h:mm:ss[.fff] TT';
 	SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
 	SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
+
+	IF len(trim(vLVR_VariableDefinition)) > 0 THEN		// 2108-12-09 JRR added this block
+		// vLVR_VariableDefinition should not defined at this point, but if it is defined and contains 
+		// unbalanced parens, quotes or brackets, it will cause problems with the subsequent include of 
+		// $(vCommonScriptPath)load variables From Resident.txt
+		SET vLVR_VariableDefinition=;
+	ENDIF
 	
 	IF upper (vPurpose) <> 'APP' THEN 
 		SET HidePrefix='';

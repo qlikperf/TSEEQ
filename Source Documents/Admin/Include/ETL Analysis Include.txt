@@ -1,3 +1,4 @@
+Trace Entering Include File: '~\Admin\Include\ETL Analysis Include.txt';
 /**********************************************************************************************************************************************************
 	File:		ETL Analysis Include.txt
 	Purpose:	Read Historical ETL statistics.
@@ -6,14 +7,13 @@
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.2
-	Date:		2018-02-15
+	Version:	3.1.7
+	Date:		2018-12-09
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
 **********************************************************************************************************************************************************/
-SET HidePrefix='%';
 
 ExtractTransform:
 LOAD 
@@ -58,3 +58,5 @@ IF upper(vQlikProduct)='SENSE' THEN
 ENDIF
 
 RENAME FIELD [SEEQ Start Time] to [TSEEQ Start Time];
+
+Trace Entering Exiting Include File: '~\Admin\Include\ETL Analysis Include.txt';

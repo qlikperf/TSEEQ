@@ -1,11 +1,9 @@
+sub Load_Variables_from_XLS(vExpressionFile, vWorksheet, vKEEPorDROP)
 /*******************************************************************************************************************************************************
 	Procedure: 	Load_Variables_from_XLS
 
-	Author:		Jeff R. Robbins
-	Email:		jrs@qlik.com; jr@QlikPerf.com
-	
-	Version:	3.1.2
-	Date:		2018-02-15	
+	Version:	3.1.7
+	Date:		2018-12-09
 
 	Purpose:	Load variables from the specified XLS file and contained worksheet into a QlikVIew app.
 	
@@ -25,8 +23,6 @@
 	This program is provided in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 *******************************************************************************************************************************************************/
-sub Load_Variables_from_XLS(vExpressionFile, vWorksheet, vKEEPorDROP)
-
 	if vLoadVariablesFlag <> 1 AND len(trim(vLoadVariablesFlag)) > 0  THEN	
 		trace 'vLoadVariablesFlag = $(vLoadVariableFlag).  Exiting since it is <> 1.';
 		exit sub

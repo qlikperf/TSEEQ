@@ -1,3 +1,4 @@
+Sub ExcludeFieldsInit
 /**********************************************************************************************************************************************************
 	File:				SEEQ_subroutines.txt
 	Purpose:			Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
@@ -13,7 +14,6 @@
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
 **********************************************************************************************************************************************************/
-Sub ExcludeFieldsInit
 	SET vExcludeFields='';
 	IF vSEEQ_Fields = 'EXCLUDE_SUBSET' THEN 
 			ExcludeFields:

@@ -1,3 +1,4 @@
+$(must_Include=$(vCommonScriptPath)eee\TSEEQ_init.txt);
 /**************************************************************************************************************************************
 	File:		TSEEQ Master Include File.txt
 	Purpose:	This file includes multiple include files that implement TSEEQ, The Structured ETL Engine for Qlik.
@@ -5,10 +6,9 @@
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.2
-	Date:		2018-02-15
+	Version:	3.1.7
+	Date:		2018-12-09
 ***************************************************************************************************************************************/
-$(must_Include=$(vCommonScriptPath)eee\TSEEQ_init.txt);
 $(must_Include=$(vCommonScriptPath)eee\TSEEQ_subroutines.txt);
 $(must_Include=$(vCommonScriptPath)eee\TSEEQ_subroutines_incremental.txt);
 $(must_Include=$(vCommonScriptPath)eee\TSEEQ_terminate.txt);

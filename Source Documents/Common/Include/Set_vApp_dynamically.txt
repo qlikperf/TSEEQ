@@ -1,21 +1,5 @@
-/****************************************************************************************************************************************
-	File: 		Set_vApp_dynamically.txt
-	Included by:	All QVFs and QVWs. 
-		
-	Author:		Jeff R. Robbins
-	Email:		jrs@qlik.com; jr@QlikPerf.com
-	
-	Version:	3.1.2
-	Date:		2018-02-15
-	
-	This program is provided in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
-	
-	Purpose:		Set the vApp variable dynamically, based on the output of DocumentTitle() or DocumentName().
-****************************************************************************************************************************************/
 IF len(trim(DocumentTitle() ) ) >  0 THEN 		
-	LET vApp = 	subfield(DocumentTitle(), ' ', 1);  	// The Title will always be set in Qlik Sense, but only sometimes in QlikView.
+	LET vApp = 	subfield(DocumentTitle(), ' ', 1);  // The Title will always be set in Qlik Sense, but only sometimes in QlikView.
 ELSE 
 	LET vApp = subfield(DocumentName(), ' ', 1) ;	// If the Title is not set, use the file name, which is returned by DocumentName().
 ENDIF
@@ -23,3 +7,20 @@ ENDIF
 IF upper(vQlikProduct) = 'VIEW' THEN
 	LET vApp = upper(vApp);
 ENDIF
+
+/****************************************************************************************************************************************
+	File: 		Set_vApp_dynamically.txt
+	Included by:	All QVFs and QVWs. 
+		
+	Author:		Jeff R. Robbins
+	Email:		jrs@qlik.com; jr@QlikPerf.com
+	
+	Version:	3.1.7
+	Date:		2018-12-09
+	
+	This program is provided in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+	
+	Purpose:		Set the vApp variable dynamically, based on the output of DocumentTitle() or DocumentName().
+****************************************************************************************************************************************/

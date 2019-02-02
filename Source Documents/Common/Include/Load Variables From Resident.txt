@@ -1,11 +1,12 @@
+sub Load_Variables_from_Resident(vTmpResidentTable, vKEEPorDROP)
 /****************************************************************************************************************************************
 	Procedure:	Load_Variables_from_Resident
 		
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.2
-	Date:		2018-02-15
+	Version:	3.1.7
+	Date:		2018-12-09
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -24,7 +25,6 @@
 								
 									'DROP' will initialize variables, but will not persit variable info in a data model table.		
 ****************************************************************************************************************************************/
-sub Load_Variables_from_Resident(vTmpResidentTable, vKEEPorDROP)
 	call Load_Variables_from_Resident_Init;
 	Let vLVR_NumVariablesToInit = NoOfRows('Tmp_Variable_Repository');
 	For i = 0 to $(vLVR_NumVariablesToInit)-1

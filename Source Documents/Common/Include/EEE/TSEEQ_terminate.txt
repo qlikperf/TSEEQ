@@ -1,3 +1,4 @@
+sub StoreQVD
 /**********************************************************************************************************************************************************
 	File:			SEEQ_terminate.txt
 	Purpose:		Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
@@ -11,11 +12,7 @@
 
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
-**********************************************************************************************************************************************************/
-
-/******************************************************************************************************************************************/
-sub StoreQVD
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  **********************************************************************************************************************************************************/
 	LET vSEEQ_NoOfRowsInTarget=NoOfRows('$(vSEEQ_TargetWithoutBrackets)') ;
 	LET vSEEQ_TimeQVDStore = num(now(1));		// performance profiling  
 		IF upper(vTSEEQ_Mode) = 'GENERATE AND EXECUTE' AND vSEEQ_ThisIsMappingTable <> 1 AND vSEEQ_NoOfRowsInTarget > 0  THEN		// vTSEEQ_Mode is not GENERATE ONLY and this is not a mapping table.

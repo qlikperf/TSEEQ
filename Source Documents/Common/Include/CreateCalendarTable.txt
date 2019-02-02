@@ -1,11 +1,21 @@
+/***************************************************************************************************************
+In typical production settings, vToday is set to the current date, or the prior date in some cases where
+the data is current as of the prior day.  In test environments where the data is not current, vToday can 
+be set to any prior date.
+****************************************************************************************************************/
+//	LET vToday = num(Today()); 											// Uncomment this line to override the value set in CommonVariables.xls.
+LET vMinDateNum = num(YearStart(addmonths(vToday, -60)));			// Uncomment this line to override the value set in CommonVariables.xls.
+LET vMaxDateNum = floor(num(YearEnd(addmonths(vToday, 36))));		// Uncomment this line to override the value set in CommonVariables.xls.
+
+sub CreateCalendarQvd( vCCQ_CalendarName, vKEEPorDROP )
 /****************************************************************************************************************************************
 	Procedure:	CreateCalendarQvd
 		
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.4
-	Date:		2018-04-24
+	Version:	3.1.7
+	Date:		2018-12-09
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -24,20 +34,6 @@
 							'DROP' will drop the calendar table from memory
 	
 ****************************************************************************************************************************************/
-/***************************************************************************************************************
-In typical production settings, vToday is set to the current date, or the prior date in some cases where
-the data is current as of the prior day.  In test environments where the data is not current, vToday can 
-be set to any prior date.
-****************************************************************************************************************/
-//	LET vToday = num(Today()); 											// Uncomment this line to override the value set in CommonVariables.xls.
-LET vMinDateNum = num(YearStart(addmonths(vToday, -60)));			// Uncomment this line to override the value set in CommonVariables.xls.
-LET vMaxDateNum = floor(num(YearEnd(addmonths(vToday, 36))));		// Uncomment this line to override the value set in CommonVariables.xls.
-
-
-
-sub CreateCalendarQvd( vCCQ_CalendarName, vKEEPorDROP )
-	
-
 	if len(trim(vCCQ_CalendarName)) = 0 THEN 
 		SET vCCQ_CalendarName = '';
 		LET vCCQ_CalendarNameNoSpaces='';		
@@ -104,10 +100,8 @@ sub CreateCalendarQvd( vCCQ_CalendarName, vKEEPorDROP )
 	RESIDENT DateField 
 	ORDER BY TempDate ASC;
 	
-//	DROP Field DateNum;
 	Store [$(vCCQ_CalendarName)Calendar] into [$(vQVDPath)\Extracted\$(vCCQ_CalendarNameNoSpaces)Calendar.qvd];
-	// 2017-04-17 JRR commented the following line:
-	//	Store [$(vCCQ_CalendarName)Calendar] into $(vQVDPath)\Extracted\CommonCalendar.qvd;	
+
 	DROP TABLE DateField;
 		
 	IF upper(vKEEPorDROP) = 'DROP' THEN 

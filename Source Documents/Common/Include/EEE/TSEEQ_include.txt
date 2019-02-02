@@ -1,3 +1,4 @@
+sub SEEQ_ExecuteRulesSourceFile
 /**********************************************************************************************************************************************************
 	File:		SEEQ_include.txt
 	Purpose:	Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
@@ -5,14 +6,13 @@
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.2
-	Date:		2018-02-15
+	Version:	3.1.7
+	Date:		2018-12-09
 
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
 **********************************************************************************************************************************************************/
-sub SEEQ_ExecuteRulesSourceFile
 	Call InitVariablesOuter;	
 	SEEQ_ExecutionTrace: LOAD 'INIT' AS [EEE Executed Script], now() AS [EEE Execution Completion Time], 0 AS [EEE Execution Time Elapsed]  AutoGenerate 1;
 	for vSEEQ_OuterLoopCounter = 0 to vSEEQ_TableCount  // created in InitVariablesOuter
