@@ -75,3 +75,5 @@ vTSEEQ_ModeOriginal
 vSEEQ_ModfiedTimestampField
 vSEEQ_SourceFolderPostfix
 vSEEQScriptPath
+vTSEEQ_RetainFieldRulesFlag
+vTSEEQ_SimulateLatencyFlag

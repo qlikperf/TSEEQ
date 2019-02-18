@@ -73,8 +73,10 @@ $(vSEEQ_PostLoadScript)';
 		//---- 
 		LET vSEEQ_ComputerName=ComputerName();
 		trace 'Computer name is $(vSEEQ_ComputerName)';
-		if upper(vSEEQ_ComputerName)='USREM-JRSz' or upper(vSEEQ_ComputerName)='W2008001'THEN	// In a fast sandbox environment, simulate latency for the purposes of generating sample data for performance profiling.
-			LET vSEEQ_RandomSleepTime= 800 + (rand() * 4000);
+		// In a fast sandbox environment, simulate latency for the purposes of generating sample data for performance profiling.
+		// if upper(vSEEQ_ComputerName)='USREM-JRS' or upper(vSEEQ_ComputerName)='W2008001'THEN		// use hostname to determine if this is a sandbox
+		if vTSEEQ_SimulateLatencyFlag = 1 THEN														// use flager to determine if this is a sandbox
+			LET vSEEQ_RandomSleepTime= 800 + (rand() * 3000);
 			TRACE 'Sleeping $(vSEEQ_RandomSleepTime) milliseconds to simulate latency';
 			sleep ($(vSEEQ_RandomSleepTime));
 		ENDIF

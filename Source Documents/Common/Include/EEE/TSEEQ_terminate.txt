@@ -12,7 +12,8 @@ sub StoreQVD
 
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  **********************************************************************************************************************************************************/
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+**********************************************************************************************************************************************************/
 	LET vSEEQ_NoOfRowsInTarget=NoOfRows('$(vSEEQ_TargetWithoutBrackets)') ;
 	LET vSEEQ_TimeQVDStore = num(now(1));		// performance profiling  
 		IF upper(vTSEEQ_Mode) = 'GENERATE AND EXECUTE' AND vSEEQ_ThisIsMappingTable <> 1 AND vSEEQ_NoOfRowsInTarget > 0  THEN		// vTSEEQ_Mode is not GENERATE ONLY and this is not a mapping table.
@@ -149,6 +150,12 @@ sub SEEQ_Terminate
 	ENDIF
 	DROP Table [Rules];
 	// END BLOCK JRR added on 2017-04-11 to support multiple SEEQ invocations from a single QVF
-	
+
+	IF (upper(vPurpose) = 'EXTRACT' or  upper(vPurpose)= 'TRANSFORM' ) AND vTSEEQ_RetainFieldRulesFlag <> 1  THEN 
+		DROP Table 	ExcludeFieldsForAllTables, 	IncludeFieldsForAllTables;
+	ENDIF
+	IF upper(vPurpose) = 'TRANSFORM'  AND vTSEEQ_RetainFieldRulesFlag <> 1 THEN 
+		DROP Table 	TransformFieldsForAllTables;
+	ENDIF
 ENDSUB	
 /******************************************************************************************************************************************/

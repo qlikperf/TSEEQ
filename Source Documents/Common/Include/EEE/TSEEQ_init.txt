@@ -1,6 +1,6 @@
 sub InitVariablesOuter
 /**********************************************************************************************************************************************************
-	File:		SEEQ_init.txt
+	File:		TSEEQ_init.txt
 	Purpose:	Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
 						Subroutines in this file are called from SEEQ_include.txt
 	
@@ -23,7 +23,9 @@ sub InitVariablesOuter
             // 2018-07-13 JRR commented the following line: 
             //         LET vSEEQ_GetThisRuleLine = 'purgechar([Target], ' & chr(39) & ' -         ' & chr(39) & ') = ' & chr(39) &'$' & '(vSEEQ_TargetWithoutBrackets)'& chr(39) &'          AND upper(ENABLED)  = ' & chr(39) & 'Y' & chr(39);
             // 2018-07-13 JRR added the following line to support wildcard expansion of Targets in INCLUDE, EXCLUDE and TRANSFORM field operations; 2018-08-08 simplified the line to correct over-application of wildcard expansion.
-            LET vSEEQ_GetThisRuleLine ='wildmatch('&chr(39)&'$'&'(vSEEQ_TargetWithoutBrackets)'&chr(39)&', purgechar([Target], ' & chr(39) & ' -            ' & chr(39) & '))'&'   AND upper(ENABLED)  = ' & chr(39) & 'Y' & chr(39);
+//            LET vSEEQ_GetThisRuleLine ='wildmatch('&chr(39)&'$'&'(vSEEQ_TargetWithoutBrackets)'&chr(39)&', purgechar([Target], ' & chr(39) & ' -            ' & chr(39) & '))'&'   AND upper(ENABLED)  = ' & chr(39) & 'Y' & chr(39);
+			  LET vSEEQ_GetThisRuleLine ='wildmatch('&chr(39)&'$'&'(vSEEQ_TargetWithoutBrackets)'&chr(39)&', purgechar([Target], ' & chr(39) & ' -            ' & chr(39) & '))';
+
 
 	LET vSEEQ_BatchStartTime = num(now());
 ////	XLS file format
@@ -46,6 +48,7 @@ sub InitVariablesOuter
 	SET ErrorMode = 0; 		SET vSEEQ_RulesReadSuccessFlag = 0;
 	do 		// keep attempting to read the rules file until you succeed (Excel locks the file while saving, so multiple attempts might be needed).
 		Rules:
+		NOCONCATENATE 	
 		LOAD 
 			'$(vRulesSourceFile)' AS [Rules File], 
 			$(vSEEQ_RulesFieldList) 
@@ -57,7 +60,8 @@ sub InitVariablesOuter
 		//Trace $(vSEEQ_RulesReadSuccessFlag);
 		IF NOT vSEEQ_RulesReadSuccessFlag THEN 
 			IF vSEEQ_RulesTryCount >= vSEEQ_MaxRulesTryCount THEN
-				Trace "The rules file was not successfully read after $(vSEEQ_MaxRulesTryCount) attempts.  Exiting script. Please review reload log for errors.";
+				Trace "The rules file was not successfully read after $(vSEEQ_MaxRulesTryCount) attempts.  " & 
+					"Exiting script. Please review reload log for errors.";
 				SET vSEEQ_MaxRulesTryCount='';
    				SET vSEEQ_RulesTryCount='';	 
 	   			SET ErrorMode = 1;
@@ -68,6 +72,36 @@ sub InitVariablesOuter
 				SLEEP 3000;
 			ENDIF
 			LET vSEEQ_RulesTryCount = vSEEQ_RulesTryCount + 1;	
+		ELSE 	
+			QUALIFY *;
+			UNQUALIFY Target, ENABLED;
+			IF 	upper(vPurpose) ='EXTRACT' OR  upper(vPurpose) ='TRANSFORM' THEN
+				EX:
+				NOCONCATENATE LOAD 	DISTINCT * 
+				FROM	[$(vRulesSourceFile)]	($(vSEEQ_XLSFormat), embedded labels, table is EXCLUDE_FIELDS$(vTSEEQ_XLS_Worksheet_PostFix)$(vSEEQ_XLSDollar))
+				WHERE upper(ENABLED)='Y'
+				;
+				IN:
+				NOCONCATENATE LOAD 	DISTINCT * 		
+				FROM	[$(vRulesSourceFile)] 	($(vSEEQ_XLSFormat), embedded labels, table is INCLUDE_FIELDS$(vTSEEQ_XLS_Worksheet_PostFix)$(vSEEQ_XLSDollar))
+				WHERE upper(ENABLED)='Y'
+				;
+			ENDIF
+			IF 	upper(vPurpose) = 'TRANSFORM' THEN			
+				TR:
+				NOCONCATENATE 
+				LOAD 	DISTINCT * 		
+				FROM	[$(vRulesSourceFile)] 	($(vSEEQ_XLSFormat), embedded labels, table is TRANSFORM_FIELDS$(vTSEEQ_XLS_Worksheet_PostFix)$(vSEEQ_XLSDollar))
+				WHERE upper(ENABLED)='Y'
+				;
+			ENDIF
+			UNQUALIFY *;
+			IF upper(vPurpose) = 'EXTRACT' OR Upper(vPurpose) = 'TRANSFORM' THEN
+				DROP FIELD ENABLED;
+			ENDIF
+			RENAME Table EX to ExcludeFieldsForAllTables;
+			RENAME Table IN to IncludeFieldsForAllTables;
+			RENAME Table TR to TransformFieldsForAllTables;					
 		ENDIF
 	loop while vSEEQ_RulesReadSuccessFlag = 0
 	SET vSEEQ_MaxRulesTryCount='';
@@ -134,7 +168,7 @@ sub InitVariablesInner
 	
 	//Trace 	$(SEEQ_TargetKey); 
 //	LET vSEEQ_Source =  replace ( PurgeChar(peek('Source', $(vSEEQ_OuterLoopCounter), 'Rules'), ' -	'), '<space>', ' ') ;	// 2016-10-24 JRR commented this line.
-	LET vSEEQ_Source =  peek('Source', $(vSEEQ_OuterLoopCounter), 'Rules') ;					// 2016-10-24 JRR added this line.
+	LET vSEEQ_Source =  peek('Source', $(vSEEQ_OuterLoopCounter), 'Rules') ;	
 	LET vSEEQ_SourceFolder =  peek('Source Folder', $(vSEEQ_OuterLoopCounter), 'Rules');
 	IF right(vSEEQ_SourceFolder, 1) = '\' OR   right(vSEEQ_SourceFolder, 1) = '/' THEN		// strip trailing slash if it exist; we add it back later..
 		LET vSEEQ_SourceFolder  = left(vSEEQ_SourceFolder, len(vSEEQ_SourceFolder) - 1);
