@@ -1,6 +1,6 @@
 IF len(trim(DocumentTitle() ) ) >  0 THEN 		
   	// The Title will always be set in Qlik Sense, but only sometimes in QlikView.
-  	LET vPurpose = 	replace( replace(upper(subfield(DocumentTitle(), ' ', 2)), 'DATAMODEL', 'LOAD'), 'DASHBOARD', 'APP');
+  	LET vPurpose = 	subfield ( replace( replace(upper(subfield(DocumentTitle(), ' ', 2)), 'DATAMODEL', 'LOAD'), 'DASHBOARD', 'APP'), '(', 1);
 ELSE 
 	// If the Title is not set, use the file name, which is returned by DocumentName()
 	LET vPurpose = replace( replace( upper(subfield(subfield(DocumentName(), ' ', 2), '.', 1)), 'DATAMODEL', 'LOAD'), 'DASHBOARD', 'APP') ;	
@@ -12,8 +12,8 @@ ENDIF
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.7
-	Date:		2018-12-09
+	Version:	3.1.7b
+	Date:		2018-02-19
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of

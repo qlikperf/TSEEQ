@@ -97,7 +97,7 @@ sub CommonEnd
 	(ooxml, embedded labels, table is Sheet1)
 	WHERE ENABLED='Y';
 	
-	IF upper(vPurpose) <> 'APP' THEN 
+	IF upper(vPurpose) = 'APP' THEN 		// prefix system fields with % so they don't show up as fields to self-service users
 		Rename Fields using TSEEQ_RenameMap;
 	ENDIF
 
