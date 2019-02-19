@@ -6,8 +6,8 @@ sub CommonInit
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.7v
-	Date:		2018-02-19
+	Version:	3.1.7
+	Date:		2018-12-09
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -96,10 +96,7 @@ sub CommonEnd
 	FROM [lib://Common/External Data\XLS\FieldRenameMap.xlsx]
 	(ooxml, embedded labels, table is Sheet1)
 	WHERE ENABLED='Y';
-	
-	IF upper(vPurpose) <> 'APP' THEN 
-		Rename Fields using TSEEQ_RenameMap;
-	ENDIF
+	Rename Fields using TSEEQ_RenameMap;
 
 	LET vReloadTimeEnd = now();		// for performance profiling
 	SET vFinished = 1;  			// 0 means script did not finish; 1 indicates script completion; this is for debugging. 
