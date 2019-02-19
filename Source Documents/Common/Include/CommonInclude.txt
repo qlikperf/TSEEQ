@@ -83,21 +83,21 @@ sub CommonInit
 end sub
 
 sub CommonEnd
-//	RENAME FIELD [SEEQ Execution Messages] to [TSEEQ Execution Messages];
+
 	Trace 'Entering subroutine CommonEnd in $(vCommonScriptPath)\CommonInclude.txt';
 	if upper(vPurpose) = 'LOAD' THEN 
 		RENAME FIELD [QVD Created] to [QVD Loaded];
 	endif
 
-	TSEEQ_RenameMap:  // Prefix field names with "%" to mark them as system fields.
-	Mapping LOAD
-	    Old,
-	    New
-	FROM [lib://Common/External Data\XLS\FieldRenameMap.xlsx]
-	(ooxml, embedded labels, table is Sheet1)
-	WHERE ENABLED='Y';
-	
-	IF upper(vPurpose) = 'APP' THEN 		// prefix system fields with % so they don't show up as fields to self-service users
+	IF upper(vPurpose) = 'APP' THEN
+		TSEEQ_RenameMap:  // prefix system fields with '%' so they are invisible to self-service users
+		Mapping LOAD
+		    Old,
+		    New
+		FROM [$(vCommonEXDPath)\XLS\FieldRenameMap.xlsx]
+		(ooxml, embedded labels, table is Sheet1)
+		WHERE ENABLED='Y'
+		;
 		Rename Fields using TSEEQ_RenameMap;
 	ENDIF
 
