@@ -1,0 +1,1 @@
+This folder contains QVDs and CSV files created by ..\..\..\..\Utilities\QVD ExTraqtor.

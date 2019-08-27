@@ -1,0 +1,73 @@
+/**********************************************************************************************************************************************************
+	File:				QVD ExtraQtor include.qvs
+	
+	Included by:		QVD ExtraQtor.qvw
+	
+	Purpose:			This script creates a set of QVDs or TXT files, one per memory-resident table, from an in-memory Qlik data model.
+						Typically, this in-memory data model is loaded with a single BINARY statement, as is done in the QVD ExtraQtor
+						in the Utilities folder.
+
+	
+	2 sample invocations follow; the first creates comma-delimited CSV files and the second creates QVDs: 
+
+			1. Passing Variables as the first 2 parameters:
+						SET vOutputDir='lib://Common/QVDs/ExtraQted';	// Qlik Sense
+						SET vOutputDir='..\..\Common\QVDs\ExtraQted\';	// Qlik View
+						SET vOutputFormat='CSV';						
+						call ExtraQtQVDs(vOutputDir, vOutputFormat, 'DROP');	// Drop memory resident tables after CSV files are created
+
+			2. Passing strings as the first 2 parameters:
+						call ExtraQtQVDs('..\..\Common\QVDs\ExtraQted\', 'QVD', 'KEEP');		// QlikView
+						call ExtraQtQVDs('lib://Common/QVDs/ExtraQted', 'QVD', 'KEEP');		// QlikSense						
+						// The 2 lines immediately above keep (do not drop) memory resident tables after QVD files are created. 
+						// This is not related to the KEEP prefix to the LOAD statement.
+						
+			
+	Author:		Jeff R. Robbins
+	Email:		jrs@qlik.com; jr@QlikPerf.com
+	
+	Version:	3.1.8
+	Date:		2019-07-15
+
+	This program is provided in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+**********************************************************************************************************************************************************/
+sub ExtraQtQVDs (vOutputDirLocal, vOutputFormatIncoming, vKeepOrDropLocal)
+
+	let vNumberOfTables = NoOfTables();
+	SET i=;
+	SET j=;
+
+	FOR i = 0 to vNumberOfTables - 1
+		let j=i+1;
+		Trace 'Storing table $(j) of $(vNumberOfTables)';
+		let vTableName = TableName(i);
+		IF vOutputFormatIncoming='CSV' THEN 
+			SET vFileExtensionLocal = 'CSV';
+			SET vOutputFormatLocal = 'TXT';			// The Qlik Store command, below, will create a CSV when invoked with 'TXT'.
+		ELSE
+			SET vFileExtensionLocal = 'QVD';
+			SET vOutputFormatLocal = 'QVD';
+		ENDIF	 
+		Store '$(vTableName)' into [$(vOutputDirLocal)\$(vTableName).$(vFileExtensionLocal)] ($(vOutputFormatLocal));
+	NEXT //i
+
+	// optional clean-up; drop all memory resident tables:
+	IF upper(vKeepOrDropLocal) = 'DROP' THEN
+		FOR i = 0 to vNumberOfTables - 1
+		//	Trace $(i);
+			let vTableName = TableName(0);		// after droping table 0, then table 1 becomes table 0.  And so on down the line.
+			DROP TABLE '$(vTableName)';
+		NEXT
+	END IF
+
+	LET vNumberOfTables=;
+	LET vTableName=;
+	SET i=;
+	SET j=;
+
+	SET vOutputFormatLocal=;
+	SET vFileExtensionLocal=;
+
+end sub
