@@ -1,7 +1,7 @@
 
 # **__TSEEQ__** ("seek"), The Structured ETL Engine for Qlik
 
-## Latest Release == [4.0.2](https://github.com/qlikperf/TSEEQ/releases/latest)
+## Latest Release == [4.0.3](https://github.com/qlikperf/TSEEQ/releases/latest)
 
 ## Documentation
 Please read the **__TSEEQ__** **[documentation](https://github.com/qlikperf/TSEEQ/blob/master/TSEEQ%20Documentation.pdf)** for step-by-step instructions.
