@@ -1,0 +1,2155 @@
+﻿2019-09-20 04:19:56      Execution started.
+2019-09-20 04:19:56      QlikView Desktop Version      12.0.20400.0
+2019-09-20 04:19:56      CPU Target                    x64
+2019-09-20 04:19:56      Operating System              Windows 10 Enterprise  (64 bit edition)
+2019-09-20 04:19:56      Wow64 mode                    Not using Wow64
+2019-09-20 04:19:56      Language                      0409 English (United States) English
+2019-09-20 04:19:56      Country                       1 United States United States
+2019-09-20 04:19:56      MDAC Version                  6.3.9600.16384
+2019-09-20 04:19:56      MDAC Full Install Version     6.3.9600.16384
+2019-09-20 04:19:56      PreferredCompression          2
+2019-09-20 04:19:56      EnableParallelReload          1
+2019-09-20 04:19:56      ParallelizeQvdLoads           1
+2019-09-20 04:19:56      AutoSaveAfterReload           0
+2019-09-20 04:19:56      BackupBeforeReload            1
+2019-09-20 04:19:56      EnableFlushLog                1
+2019-09-20 04:19:56      SaveInfoWhenSavingFile        0
+2019-09-20 04:19:56      UserLogfileCharset            65001
+2019-09-20 04:19:56      OdbcLoginTimeout              -1
+2019-09-20 04:19:56      OdbcConnectionTimeout         -1
+2019-09-20 04:19:56      ScriptWantsDbWrite            false
+2019-09-20 04:19:56      ScriptWantsExe                false
+2019-09-20 04:19:56      LogFile CodePage Used:        65001
+2019-09-20 04:19:56      UseMemoryFillPattern          1
+2019-09-20 04:19:56      ScriptMode                    Legacy (gives greater system access) (aka qv11 mode)
+2019-09-20 04:19:56      ReloadCodebase                Classic
+2019-09-20 04:19:56      Reload Executed By            QTSEL\jrs
+2019-09-20 04:19:56      Process Executing             QlikView Desktop
+2019-09-20 04:19:56      Process ID                    137196
+2019-09-20 04:19:56 0025 LET vThisFilePostfix=right(DocumentName(), 4)
+2019-09-20 04:19:56 0026 IF upper(vThisFilePostfix) = '.QVW' THEN
+2019-09-20 04:19:56 0027 
+2019-09-20 04:19:56 0027   SET vQlikProduct='VIEW'
+2019-09-20 04:19:56 0028 ELSE 
+2019-09-20 04:19:56 0029 
+2019-09-20 04:19:56 0031 SET vThisFilePostfix=
+2019-09-20 04:19:56 0041 IF vQlikProduct = 'SENSE' THEN 		
+2019-09-20 04:19:56 0042 
+2019-09-20 04:19:56 0064 IF vQlikProduct='VIEW' THEN
+2019-09-20 04:19:56 0065 
+2019-09-20 04:19:56 0065   SET vCommonPath=..\..\Common\
+2019-09-20 04:19:56 0069   SET vSlash='\'
+2019-09-20 04:19:56 0070 ELSEIF      vQlikProduct='SENSE' THEN
+2019-09-20 04:19:56 0071 
+2019-09-20 04:19:56 0074 SET vCommonScriptPath ='..\..\Common\Include\'
+2019-09-20 04:19:56 0089 IF len(trim(DocumentTitle() ) ) >  0 THEN 		
+2019-09-20 04:19:56 0090 
+2019-09-20 04:19:56 0006   LET vPurpose = replace( replace( upper(subfield(subfield(DocumentName(), ' ', 2), '.', 1)), 'DATAMODEL', 'LOAD'), 'DASHBOARD', 'APP') 
+2019-09-20 04:19:56 0007 ENDIF
+2019-09-20 04:19:56 0008 
+2019-09-20 04:19:56 0122 IF len(trim(DocumentTitle() ) ) >  0 THEN 		
+2019-09-20 04:19:56 0123 
+2019-09-20 04:19:56 0004   LET vApp = subfield(DocumentName(), ' ', 1) 
+2019-09-20 04:19:56 0005 ENDIF
+2019-09-20 04:19:56 0006 
+2019-09-20 04:19:56 0007 IF upper(vQlikProduct) = 'VIEW' THEN
+2019-09-20 04:19:56 0008 
+2019-09-20 04:19:56 0008   LET vApp = upper(vApp)
+2019-09-20 04:19:56 0009 ENDIF
+2019-09-20 04:19:56 0010 
+2019-09-20 04:19:56 0132 IF upper(vQlikProduct) = 'SENSE' THEN 
+2019-09-20 04:19:56 0133 
+2019-09-20 04:19:56 0135   SET vAppPath = '..\'
+2019-09-20 04:19:56 0136 ENDIF
+2019-09-20 04:19:56 0137 
+2019-09-20 04:19:56 0150 sub CommonInit 
+2019-09-20 04:19:56 0151 
+2019-09-20 04:19:56 0085 sub CommonEnd
+2019-09-20 04:19:56 0086 
+2019-09-20 04:19:56 0151 Call CommonInit
+2019-09-20 04:19:56 0016   Trace 'Entering subroutine CommonInit in ..\..\Common\Include\\CommonInclude.txt'
+2019-09-20 04:19:56 0016   'Entering subroutine CommonInit in ..\..\Common\Include\\CommonInclude.txt'
+2019-09-20 04:19:56 0017   
+2019-09-20 04:19:56 0017   SET ThousandSep=','
+2019-09-20 04:19:56 0018   SET DecimalSep='.'
+2019-09-20 04:19:56 0019   SET MoneyThousandSep=','
+2019-09-20 04:19:56 0020   SET MoneyDecimalSep='.'
+2019-09-20 04:19:56 0021   SET MoneyFormat='$#,##0;($#,##0)'
+2019-09-20 04:19:56 0022   SET TimeFormat='h:mm:ss TT'
+2019-09-20 04:19:56 0023   SET DateFormat='MM/DD/YYYY'
+2019-09-20 04:19:56 0024   SET TimestampFormat='MM-DD-YY h:mm:ss[.fff] TT'
+2019-09-20 04:19:56 0025   SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec'
+2019-09-20 04:19:56 0026   SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun'
+2019-09-20 04:19:56 0028   IF len(trim(vLVR_VariableDefinition)) > 0 THEN		
+2019-09-20 04:19:56 0029   
+2019-09-20 04:19:56 0035   IF upper (vPurpose) <> 'APP' THEN 
+2019-09-20 04:19:56 0036   
+2019-09-20 04:19:56 0036     SET HidePrefix=''
+2019-09-20 04:19:56 0037   ELSE
+2019-09-20 04:19:56 0038   
+2019-09-20 04:19:56 0040   SET vFinished = 0
+2019-09-20 04:19:56 0044   LET vReloadTimeStart = Now(1)
+2019-09-20 04:19:56 0048   TRACE ''
+2019-09-20 04:19:56 0048   ''
+2019-09-20 04:19:56 0049   
+2019-09-20 04:19:56 0049   TRACE 'SALES'
+2019-09-20 04:19:56 0049   'SALES'
+2019-09-20 04:19:56 0050   
+2019-09-20 04:19:56 0050   TRACE 'LOAD'
+2019-09-20 04:19:56 0050   'LOAD'
+2019-09-20 04:19:56 0051   
+2019-09-20 04:19:56 0054   if len ( NoOfRows('VariableRepository') ) > 0 THEN 
+2019-09-20 04:19:56 0055   
+2019-09-20 04:19:56 0060   if len ( NoOfRows('Rules For Entire Reload') ) > 0 THEN 
+2019-09-20 04:19:56 0061   
+2019-09-20 04:19:56 0066   if len ( NoOfRows('Execution Stats For Entire Reload') ) > 0 THEN 
+2019-09-20 04:19:56 0067   
+2019-09-20 04:19:56 0073   SET vCommonVariablePath='..\..\Common\variables\'
+2019-09-20 04:19:56 0074   trace ..\..\Common\variables\Common_Variables.xls
+2019-09-20 04:19:56 0074   ..\..\Common\variables\Common_Variables.xls
+2019-09-20 04:19:56 0075   
+2019-09-20 04:19:56 0077   if vPurge = 1 THEN 
+2019-09-20 04:19:56 0078   
+2019-09-20 04:19:56 0082   Trace 'Exiting subroutine CommonInit in ..\..\Common\Include\\CommonInclude.txt'
+2019-09-20 04:19:56 0082   'Exiting subroutine CommonInit in ..\..\Common\Include\\CommonInclude.txt'
+2019-09-20 04:19:56 0083   
+2019-09-20 04:19:56 0083 end sub
+2019-09-20 04:19:56 0084 
+2019-09-20 04:19:56 0164 sub Load_Variables_from_Resident(vTmpResidentTable, vKEEPorDROP)
+2019-09-20 04:19:56 0165 
+2019-09-20 04:19:56 0053 sub  Load_Variables_from_Resident_Init
+2019-09-20 04:19:56 0054 
+2019-09-20 04:19:56 0098 sub Load_Variables_from_Resident_Handle_Error
+2019-09-20 04:19:56 0099 
+2019-09-20 04:19:56 0109 sub Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0110 
+2019-09-20 04:19:56 0137 sub Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138 
+2019-09-20 04:19:56 0165 sub Load_Variables_from_XLS(vExpressionFile, vWorksheet, vKEEPorDROP)
+2019-09-20 04:19:56 0166 
+2019-09-20 04:19:56 0171 call Load_Variables_from_XLS('..\..\Common\variables\Common_Variables.xls', 'Sheet1', 'KEEP') 
+2019-09-20 04:19:56 0026   if vLoadVariablesFlag <> 1 AND len(trim(vLoadVariablesFlag)) > 0  THEN	
+2019-09-20 04:19:56 0027   
+2019-09-20 04:19:56 0031   trace vExpressionFile=..\..\Common\variables\Common_Variables.xls
+2019-09-20 04:19:56 0031   vExpressionFile=..\..\Common\variables\Common_Variables.xls
+2019-09-20 04:19:56 0032   
+2019-09-20 04:19:56 0033   SET vLVR_VariableDefinition = ''
+2019-09-20 04:19:56 0035   Tmp_XLS_Contents:
+2019-09-20 04:19:56 0036   	LOAD *,
+2019-09-20 04:19:56 0037   		FileName() AS VariableSourceFile,
+2019-09-20 04:19:56 0038   		FilePath ()  AS VariableSourceFilePath 
+2019-09-20 04:19:56 0039   	FROM
+2019-09-20 04:19:56 0040   	[..\..\Common\variables\Common_Variables.xls]
+2019-09-20 04:19:56 0041   	(biff, embedded labels, table is Sheet1$)	
+2019-09-20 04:19:56 0042   
+2019-09-20 04:19:56 0043   	
+2019-09-20 04:19:56        	11 fields found: Load Order, Variable Name, Variable Definition, SET or LET, Last Modified By, Last Modified Date, Comment, F8, Exclude From Application, VariableSourceFile, VariableSourceFilePath, 
+2019-09-20 04:19:56        28 lines fetched
+2019-09-20 04:19:56 0044   call Load_Variables_from_Resident('Tmp_XLS_Contents', 'KEEP' )
+2019-09-20 04:19:56 0028     call Load_Variables_from_Resident_Init
+2019-09-20 04:19:56 0055       if IsNull(vApp)  or len (trim(vApp)) = 0  THEN
+2019-09-20 04:19:56 0056       
+2019-09-20 04:19:56 0059       VarTypeMap:
+2019-09-20 04:19:56 0060       	MAPPING LOAD * INLINE [
+2019-09-20 04:19:56 0061       	FirstLetterOfName, VarType
+2019-09-20 04:19:56 0062       	e,			Expression
+2019-09-20 04:19:56 0063       	v,			General
+2019-09-20 04:19:56 0064       	c,			Color
+2019-09-20 04:19:56 0065       	]
+2019-09-20 04:19:56            	2 fields found: FirstLetterOfName, VarType, 
+2019-09-20 04:19:56            3 lines fetched
+2019-09-20 04:19:56 0067       Tmp_Variable_Repository:
+2019-09-20 04:19:56 0068       	NoConcatenate LOAD 
+2019-09-20 04:19:56 0069       		[Load Order],
+2019-09-20 04:19:56 0070       		VariableSourceFile,
+2019-09-20 04:19:56 0071       		VariableSourceFilePath,
+2019-09-20 04:19:56 0072       		[Variable Name] AS %VariableName, 
+2019-09-20 04:19:56 0073       		applymap ( 'VarTypeMap', left( [Variable Name], 1 ), 'Other' ) AS [Variable Type],
+2019-09-20 04:19:56 0074       		replace ( replace( [Variable Definition] , '“', '"'), '”', '"') AS [Variable Definition], 
+2019-09-20 04:19:56 0075       		Comment AS [Variable Comment]
+2019-09-20 04:19:56 0076       		,
+2019-09-20 04:19:56 0077       		if (len([SET or LET]) <2, 'SET', [SET or LET]) AS [SET or LET] 
+2019-09-20 04:19:56 0078       	Resident Tmp_XLS_Contents
+2019-09-20 04:19:56 0079       	
+2019-09-20 04:19:56 0080       	
+2019-09-20 04:19:56 0081       	WHERE 
+2019-09-20 04:19:56 0082       		
+2019-09-20 04:19:56 0083       		
+2019-09-20 04:19:56 0084       		NOT wildmatch([Exclude From Application] & ' ', '*SALES*') 
+2019-09-20 04:19:56 0085       	AND 
+2019-09-20 04:19:56 0086       		 ( len(trim([Variable Name])) > 0	)	
+2019-09-20 04:19:56 0087       	 AND		
+2019-09-20 04:19:56 0088       		upper([Exclude From Application]) <> 'ALL'	
+2019-09-20 04:19:56 0089       
+2019-09-20 04:19:56            	8 fields found: Load Order, VariableSourceFile, VariableSourceFilePath, %VariableName, Variable Type, Variable Definition, Variable Comment, SET or LET, 
+2019-09-20 04:19:56            24 lines fetched
+2019-09-20 04:19:56 0090       Tmp_Variable_Repository_02:
+2019-09-20 04:19:56 0091       	NOCONCATENATE LOAD * Resident Tmp_Variable_Repository Order By [Load Order]
+2019-09-20 04:19:56            	8 fields found: Load Order, VariableSourceFile, VariableSourceFilePath, %VariableName, Variable Type, Variable Definition, Variable Comment, SET or LET, 
+2019-09-20 04:19:56            24 lines fetched
+2019-09-20 04:19:56 0092       DROP TABLE Tmp_Variable_Repository
+2019-09-20 04:19:56 0093       Rename Table Tmp_Variable_Repository_02 TO Tmp_Variable_Repository
+2019-09-20 04:19:56 0094       DROP FIELD [Load Order]
+2019-09-20 04:19:56 0096     ENDSUB
+2019-09-20 04:19:56 0097     
+2019-09-20 04:19:56 0029     Let vLVR_NumVariablesToInit = NoOfRows('Tmp_Variable_Repository')
+2019-09-20 04:19:56 0030     For i = 0 to 24-1
+2019-09-20 04:19:56 0031     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   0, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    0, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   0, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(6, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'LET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0112             Let 'vCommonEXDPath' = '..\..\Common\' & 'External Data' &  '\'
+2019-09-20 04:19:56 0113           ELSE 	
+2019-09-20 04:19:56 0114           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   1, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    1, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   1, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'LET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0112             Let 'vToday' = num(today())
+2019-09-20 04:19:56 0113           ELSE 	
+2019-09-20 04:19:56 0114           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   2, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    2, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   2, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(6, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'LET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0112             Let 'vCommonQVDPath' = '..\..\Common\'& 'QVDs' &  '\'
+2019-09-20 04:19:56 0113           ELSE 	
+2019-09-20 04:19:56 0114           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   3, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    3, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   3, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(6, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'LET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0112             Let 'vQVDPath' = if (vQlikProduct='VIEW', '..\QVDs\', 'lib://..\/QVDs/' )
+2019-09-20 04:19:56 0113           ELSE 	
+2019-09-20 04:19:56 0114           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   4, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    4, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   4, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(6, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'LET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0112             Let 'vETLStatisticsQVDPath' = if (vQlikProduct='VIEW', '..\..\Admin\QVDs\ETL Statistics\', 'lib://Admin/QVDs/ETL Statistics/' )
+2019-09-20 04:19:56 0113           ELSE 	
+2019-09-20 04:19:56 0114           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   5, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    5, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   5, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(6, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'LET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0112             Let 'vEXDPath' = if (
+2019-09-20 04:19:56 0113                 vQlikProduct='VIEW', 
+2019-09-20 04:19:56 0114                 '..\External Data\',                        
+2019-09-20 04:19:56 0115                 'lib://..\/External Data/'         
+2019-09-20 04:19:56 0116             )
+2019-09-20 04:19:56 0113           ELSE 	
+2019-09-20 04:19:56 0114           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   6, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    6, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   6, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vUserIsDeveloper'  = 1
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   7, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    7, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   7, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(6, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'LET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0112             Let 'vVariablePath' = if (vQlikProduct='VIEW', '..\Variables\', 'lib://..\/Variables/' )
+2019-09-20 04:19:56 0113           ELSE 	
+2019-09-20 04:19:56 0114           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   8, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    8, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   8, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vETL_Analysis'  = ..\..\Admin\4_App\ETL Analysis.qvw
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   9, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    9, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   9, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vQVD_Viewer'  = ..\..\..\Utility\QVD LooQer\QVD LooQer.qvw
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   10, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    10, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   10, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(6, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'LET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0112             Let 'vTSEEQ_ModeWhenLastRun' = if (upper(vTSEEQ_Mode) = 'GENERATE AND EXECUTE', 'Execut', 'Generat')
+2019-09-20 04:19:56 0113           ELSE 	
+2019-09-20 04:19:56 0114           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   11, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    11, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   11, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'LET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0112             Let 'vTSEEQ_ModeWhenLastRunLong' = upper(vTSEEQ_Mode)
+2019-09-20 04:19:56 0113           ELSE 	
+2019-09-20 04:19:56 0114           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   12, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    12, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   12, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(6, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vQlikFileExtension'  = if  (vQlikProduct='VIEW', 'QVW', 'QVF')
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   13, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    13, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   13, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'zDebug'  = 0
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   14, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    14, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   14, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(6, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'LET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0112             Let 'vCommonScriptPathAbsolute' = left( DocumentPath(), Index( DocumentPath(), '\',  SubStringCount(DocumentPath(), '\')-2 ) ) & 'Common\Include\'
+2019-09-20 04:19:56 0113           ELSE 	
+2019-09-20 04:19:56 0114           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   15, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    15, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   15, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(6, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'LET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0112             Let 'vAppScriptPath' = if (vQlikProduct = 'VIEW', '..\Include\', 'lib://..\/Include/')
+2019-09-20 04:19:56 0113           ELSE 	
+2019-09-20 04:19:56 0114           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   16, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    16, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   16, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0121               LET vTmp  =chr(39)
+2019-09-20 04:19:56 0122               LET vTmp  =chr(39) &
+2019-09-20 04:19:56 0123               					replace (
+2019-09-20 04:19:56 0124               						replace(vLVR_VariableDefinition, chr(39), chr(39) & chr(38) &  'chr(39)' &chr(38) & chr(39)), 
+2019-09-20 04:19:56 0125               					'$(', '$' & chr(39) & chr(38) & chr(39) &  '(' 
+2019-09-20 04:19:56 0126               					) & chr(39) 
+2019-09-20 04:19:56 0127               					
+2019-09-20 04:19:56 0128               LET 'vSEEQScriptPath'  =  Evaluate( vTmp )
+2019-09-20 04:19:56 0129             ELSE
+2019-09-20 04:19:56 0130             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   17, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    17, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   17, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vFinishedErrorMsg'  = The prior script execution did not finish.
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   18, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    18, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   18, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vRunPreProcessingFlag'  = 1
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   19, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    19, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   19, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vRunPostProcessingFlag'  = 1
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   20, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    20, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   20, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vRunSEEQ_Flag'  = 1
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   21, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    21, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   21, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vLoadVariablesFlag'  = 1
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   22, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    22, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   22, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'LET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0112             Let 'vMinDateNum' = num(YearStart(addmonths(vToday, -12)))
+2019-09-20 04:19:56 0113           ELSE 	
+2019-09-20 04:19:56 0114           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   23, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    23, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   23, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'LET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0112             Let 'vMaxDateNum' = floor(num(YearEnd(addmonths(vToday, 36))))
+2019-09-20 04:19:56 0113           ELSE 	
+2019-09-20 04:19:56 0114           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0043     LET i = null()
+2019-09-20 04:19:56 0044     IF len(NoOfRows('VariableRepository') ) > 0  AND upper(vKEEPorDROP) = 'KEEP' THEN 
+2019-09-20 04:19:56 0045     
+2019-09-20 04:19:56 0047       VariableRepository: NoConcatenate LOAD * Resident Tmp_Variable_Repository
+2019-09-20 04:19:56            	7 fields found: VariableSourceFile, VariableSourceFilePath, %VariableName, Variable Type, Variable Definition, Variable Comment, SET or LET, 
+2019-09-20 04:19:56            24 lines fetched
+2019-09-20 04:19:56 0048     ENDIF
+2019-09-20 04:19:56 0049     
+2019-09-20 04:19:56 0049     DROP Table Tmp_Variable_Repository
+2019-09-20 04:19:56 0050     LET vLVR_NumVariablesToInit = null()
+2019-09-20 04:19:56 0051   endsub 
+2019-09-20 04:19:56 0052   
+2019-09-20 04:19:56 0046   DROP Table Tmp_XLS_Contents
+2019-09-20 04:19:56 0048 endsub
+2019-09-20 04:19:56 0176 call Load_Variables_from_XLS('..\..\Common\variables\Common_LOAD_Variables.xls', 'Sheet1', 'KEEP') 
+2019-09-20 04:19:56 0026   if vLoadVariablesFlag <> 1 AND len(trim(vLoadVariablesFlag)) > 0  THEN	
+2019-09-20 04:19:56 0027   
+2019-09-20 04:19:56 0031   trace vExpressionFile=..\..\Common\variables\Common_LOAD_Variables.xls
+2019-09-20 04:19:56 0031   vExpressionFile=..\..\Common\variables\Common_LOAD_Variables.xls
+2019-09-20 04:19:56 0032   
+2019-09-20 04:19:56 0033   SET vLVR_VariableDefinition = ''
+2019-09-20 04:19:56 0035   Tmp_XLS_Contents:
+2019-09-20 04:19:56 0036   	LOAD *,
+2019-09-20 04:19:56 0037   		FileName() AS VariableSourceFile,
+2019-09-20 04:19:56 0038   		FilePath ()  AS VariableSourceFilePath 
+2019-09-20 04:19:56 0039   	FROM
+2019-09-20 04:19:56 0040   	[..\..\Common\variables\Common_LOAD_Variables.xls]
+2019-09-20 04:19:56 0041   	(biff, embedded labels, table is Sheet1$)	
+2019-09-20 04:19:56 0042   
+2019-09-20 04:19:56 0043   	
+2019-09-20 04:19:56        	11 fields found: Load Order, Variable Name, Variable Definition, SET or LET, Last Modified By, Last Modified Date, Comment, F8, Exclude From Application, VariableSourceFile, VariableSourceFilePath, 
+2019-09-20 04:19:56        1 lines fetched
+2019-09-20 04:19:56 0044   call Load_Variables_from_Resident('Tmp_XLS_Contents', 'KEEP' )
+2019-09-20 04:19:56 0028     call Load_Variables_from_Resident_Init
+2019-09-20 04:19:56 0055       if IsNull(vApp)  or len (trim(vApp)) = 0  THEN
+2019-09-20 04:19:56 0056       
+2019-09-20 04:19:56 0059       VarTypeMap:
+2019-09-20 04:19:56 0060       	MAPPING LOAD * INLINE [
+2019-09-20 04:19:56 0061       	FirstLetterOfName, VarType
+2019-09-20 04:19:56 0062       	e,			Expression
+2019-09-20 04:19:56 0063       	v,			General
+2019-09-20 04:19:56 0064       	c,			Color
+2019-09-20 04:19:56 0065       	]
+2019-09-20 04:19:56            	2 fields found: FirstLetterOfName, VarType, 
+2019-09-20 04:19:56            3 lines fetched
+2019-09-20 04:19:56 0067       Tmp_Variable_Repository:
+2019-09-20 04:19:56 0068       	NoConcatenate LOAD 
+2019-09-20 04:19:56 0069       		[Load Order],
+2019-09-20 04:19:56 0070       		VariableSourceFile,
+2019-09-20 04:19:56 0071       		VariableSourceFilePath,
+2019-09-20 04:19:56 0072       		[Variable Name] AS %VariableName, 
+2019-09-20 04:19:56 0073       		applymap ( 'VarTypeMap', left( [Variable Name], 1 ), 'Other' ) AS [Variable Type],
+2019-09-20 04:19:56 0074       		replace ( replace( [Variable Definition] , '“', '"'), '”', '"') AS [Variable Definition], 
+2019-09-20 04:19:56 0075       		Comment AS [Variable Comment]
+2019-09-20 04:19:56 0076       		,
+2019-09-20 04:19:56 0077       		if (len([SET or LET]) <2, 'SET', [SET or LET]) AS [SET or LET] 
+2019-09-20 04:19:56 0078       	Resident Tmp_XLS_Contents
+2019-09-20 04:19:56 0079       	
+2019-09-20 04:19:56 0080       	
+2019-09-20 04:19:56 0081       	WHERE 
+2019-09-20 04:19:56 0082       		
+2019-09-20 04:19:56 0083       		
+2019-09-20 04:19:56 0084       		NOT wildmatch([Exclude From Application] & ' ', '*SALES*') 
+2019-09-20 04:19:56 0085       	AND 
+2019-09-20 04:19:56 0086       		 ( len(trim([Variable Name])) > 0	)	
+2019-09-20 04:19:56 0087       	 AND		
+2019-09-20 04:19:56 0088       		upper([Exclude From Application]) <> 'ALL'	
+2019-09-20 04:19:56 0089       
+2019-09-20 04:19:56            	8 fields found: Load Order, VariableSourceFile, VariableSourceFilePath, %VariableName, Variable Type, Variable Definition, Variable Comment, SET or LET, 
+2019-09-20 04:19:56            1 lines fetched
+2019-09-20 04:19:56 0090       Tmp_Variable_Repository_02:
+2019-09-20 04:19:56 0091       	NOCONCATENATE LOAD * Resident Tmp_Variable_Repository Order By [Load Order]
+2019-09-20 04:19:56            	8 fields found: Load Order, VariableSourceFile, VariableSourceFilePath, %VariableName, Variable Type, Variable Definition, Variable Comment, SET or LET, 
+2019-09-20 04:19:56            1 lines fetched
+2019-09-20 04:19:56 0092       DROP TABLE Tmp_Variable_Repository
+2019-09-20 04:19:56 0093       Rename Table Tmp_Variable_Repository_02 TO Tmp_Variable_Repository
+2019-09-20 04:19:56 0094       DROP FIELD [Load Order]
+2019-09-20 04:19:56 0096     ENDSUB
+2019-09-20 04:19:56 0097     
+2019-09-20 04:19:56 0029     Let vLVR_NumVariablesToInit = NoOfRows('Tmp_Variable_Repository')
+2019-09-20 04:19:56 0030     For i = 0 to 1-1
+2019-09-20 04:19:56 0031     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   0, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    0, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   0, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(8, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'LET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0112             Let 'vLOADHelpText' = 'This ' & if  (vQlikProduct='VIEW', 'QVW', 'QVF') & ' implements the LOAD step for The Structured ETL Engine for Qlik (TSEEQ).  In the LOAD, TSEEQ interprets the Rules Source File to load QVDs into this data model. This data model is then subsequently consumed by a front-end (UI) application ' & if  (vQlikProduct='VIEW', 'QVW', 'QVF') & '.'
+2019-09-20 04:19:56 0113             & chr(13) & chr(13)
+2019-09-20 04:19:56 0114             & 'For assistance with TSEEQ implementations, please contact Qlik Consulting with the button at upper left.
+2019-09-20 04:19:56 0115             '
+2019-09-20 04:19:56 0116             
+2019-09-20 04:19:56 0113           ELSE 	
+2019-09-20 04:19:56 0114           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0043     LET i = null()
+2019-09-20 04:19:56 0044     IF len(NoOfRows('VariableRepository') ) > 0  AND upper(vKEEPorDROP) = 'KEEP' THEN 
+2019-09-20 04:19:56 0045     
+2019-09-20 04:19:56 0045       Concatenate (VariableRepository) LOAD * Resident Tmp_Variable_Repository
+2019-09-20 04:19:56            	7 fields found: VariableSourceFile, VariableSourceFilePath, %VariableName, Variable Type, Variable Definition, Variable Comment, SET or LET, 
+2019-09-20 04:19:56            25 lines fetched
+2019-09-20 04:19:56 0046     ELSEIF  upper(vKEEPorDROP) = 'KEEP'  then	
+2019-09-20 04:19:56 0047     
+2019-09-20 04:19:56 0049     DROP Table Tmp_Variable_Repository
+2019-09-20 04:19:56 0050     LET vLVR_NumVariablesToInit = null()
+2019-09-20 04:19:56 0051   endsub 
+2019-09-20 04:19:56 0052   
+2019-09-20 04:19:56 0046   DROP Table Tmp_XLS_Contents
+2019-09-20 04:19:56 0048 endsub
+2019-09-20 04:19:56 0181 call Load_Variables_from_XLS('..\..\Common\variables\Common_InfoText_Variables.xls', 'Sheet1', 'KEEP') 
+2019-09-20 04:19:56 0026   if vLoadVariablesFlag <> 1 AND len(trim(vLoadVariablesFlag)) > 0  THEN	
+2019-09-20 04:19:56 0027   
+2019-09-20 04:19:56 0031   trace vExpressionFile=..\..\Common\variables\Common_InfoText_Variables.xls
+2019-09-20 04:19:56 0031   vExpressionFile=..\..\Common\variables\Common_InfoText_Variables.xls
+2019-09-20 04:19:56 0032   
+2019-09-20 04:19:56 0033   SET vLVR_VariableDefinition = ''
+2019-09-20 04:19:56 0035   Tmp_XLS_Contents:
+2019-09-20 04:19:56 0036   	LOAD *,
+2019-09-20 04:19:56 0037   		FileName() AS VariableSourceFile,
+2019-09-20 04:19:56 0038   		FilePath ()  AS VariableSourceFilePath 
+2019-09-20 04:19:56 0039   	FROM
+2019-09-20 04:19:56 0040   	[..\..\Common\variables\Common_InfoText_Variables.xls]
+2019-09-20 04:19:56 0041   	(biff, embedded labels, table is Sheet1$)	
+2019-09-20 04:19:56 0042   
+2019-09-20 04:19:56 0043   	
+2019-09-20 04:19:56        	11 fields found: Load Order, Variable Name, Variable Definition, SET or LET, Last Modified By, Last Modified Date, Comment, F8, Exclude From Application, VariableSourceFile, VariableSourceFilePath, 
+2019-09-20 04:19:56        10 lines fetched
+2019-09-20 04:19:56 0044   call Load_Variables_from_Resident('Tmp_XLS_Contents', 'KEEP' )
+2019-09-20 04:19:56 0028     call Load_Variables_from_Resident_Init
+2019-09-20 04:19:56 0055       if IsNull(vApp)  or len (trim(vApp)) = 0  THEN
+2019-09-20 04:19:56 0056       
+2019-09-20 04:19:56 0059       VarTypeMap:
+2019-09-20 04:19:56 0060       	MAPPING LOAD * INLINE [
+2019-09-20 04:19:56 0061       	FirstLetterOfName, VarType
+2019-09-20 04:19:56 0062       	e,			Expression
+2019-09-20 04:19:56 0063       	v,			General
+2019-09-20 04:19:56 0064       	c,			Color
+2019-09-20 04:19:56 0065       	]
+2019-09-20 04:19:56            	2 fields found: FirstLetterOfName, VarType, 
+2019-09-20 04:19:56            3 lines fetched
+2019-09-20 04:19:56 0067       Tmp_Variable_Repository:
+2019-09-20 04:19:56 0068       	NoConcatenate LOAD 
+2019-09-20 04:19:56 0069       		[Load Order],
+2019-09-20 04:19:56 0070       		VariableSourceFile,
+2019-09-20 04:19:56 0071       		VariableSourceFilePath,
+2019-09-20 04:19:56 0072       		[Variable Name] AS %VariableName, 
+2019-09-20 04:19:56 0073       		applymap ( 'VarTypeMap', left( [Variable Name], 1 ), 'Other' ) AS [Variable Type],
+2019-09-20 04:19:56 0074       		replace ( replace( [Variable Definition] , '“', '"'), '”', '"') AS [Variable Definition], 
+2019-09-20 04:19:56 0075       		Comment AS [Variable Comment]
+2019-09-20 04:19:56 0076       		,
+2019-09-20 04:19:56 0077       		if (len([SET or LET]) <2, 'SET', [SET or LET]) AS [SET or LET] 
+2019-09-20 04:19:56 0078       	Resident Tmp_XLS_Contents
+2019-09-20 04:19:56 0079       	
+2019-09-20 04:19:56 0080       	
+2019-09-20 04:19:56 0081       	WHERE 
+2019-09-20 04:19:56 0082       		
+2019-09-20 04:19:56 0083       		
+2019-09-20 04:19:56 0084       		NOT wildmatch([Exclude From Application] & ' ', '*SALES*') 
+2019-09-20 04:19:56 0085       	AND 
+2019-09-20 04:19:56 0086       		 ( len(trim([Variable Name])) > 0	)	
+2019-09-20 04:19:56 0087       	 AND		
+2019-09-20 04:19:56 0088       		upper([Exclude From Application]) <> 'ALL'	
+2019-09-20 04:19:56 0089       
+2019-09-20 04:19:56            	8 fields found: Load Order, VariableSourceFile, VariableSourceFilePath, %VariableName, Variable Type, Variable Definition, Variable Comment, SET or LET, 
+2019-09-20 04:19:56            10 lines fetched
+2019-09-20 04:19:56 0090       Tmp_Variable_Repository_02:
+2019-09-20 04:19:56 0091       	NOCONCATENATE LOAD * Resident Tmp_Variable_Repository Order By [Load Order]
+2019-09-20 04:19:56            	8 fields found: Load Order, VariableSourceFile, VariableSourceFilePath, %VariableName, Variable Type, Variable Definition, Variable Comment, SET or LET, 
+2019-09-20 04:19:56            10 lines fetched
+2019-09-20 04:19:56 0092       DROP TABLE Tmp_Variable_Repository
+2019-09-20 04:19:56 0093       Rename Table Tmp_Variable_Repository_02 TO Tmp_Variable_Repository
+2019-09-20 04:19:56 0094       DROP FIELD [Load Order]
+2019-09-20 04:19:56 0096     ENDSUB
+2019-09-20 04:19:56 0097     
+2019-09-20 04:19:56 0029     Let vLVR_NumVariablesToInit = NoOfRows('Tmp_Variable_Repository')
+2019-09-20 04:19:56 0030     For i = 0 to 10-1
+2019-09-20 04:19:56 0031     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   0, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    0, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   0, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vTSEEQ_InfoButton1Caption'  = Visit TSEEQ.net
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   1, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    1, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   1, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vTSEEQ_InfoButton1URL'  = https://tseeq.net
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   2, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    2, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   2, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vTSEEQ_InfoButton1HelpText'  = Visit TSEEQ.net
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   3, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    3, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   3, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vTSEEQ_InfoButton2Caption'  = Contact Qlik Consulting
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   4, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    4, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   4, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(2, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vTSEEQ_InfoButton2URL'  = 'mailto:QlikConsultingUSA@qlik.com;%20Jeff%20Robbins%20%3cJeff.Robbins@qlik.com%3e;%20jr@qlikperf.com?subject=TSEEQ%20query:%20The%20Structured%20ETL%20Engine%20for%20Qlik'
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   5, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    5, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   5, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vTSEEQ_InfoButton2HelpText'  = Email the Qlik Consulting TSEEQ Team
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   6, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    6, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   6, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(4, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vPleaseDefineRulesMsg'  = 'Please click the red Reload button above to run the ' & upper(vPurpose) & '.'
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   7, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    7, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   7, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(2, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vPleaseDefineRulesMsgShow'  = Count([Rules File]) < 1
+2019-09-20 04:19:56 0132               and 
+2019-09-20 04:19:56 0133               upper(vPurpose) <> 'APP'
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   8, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    8, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   8, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(4, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'vEvaluationTxtObjHelpText'  = 'This is the evaluation (via double dollar sign expansion ) of the current value of ' & only (%VariableName) & '. An error is expected for path variables and any other variables whose current value cannot be evaluated as a QlikView expression.'
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   9, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    9, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   9, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0121               LET vTmp  =chr(39)
+2019-09-20 04:19:56 0122               LET vTmp  =chr(39) &
+2019-09-20 04:19:56 0123               					replace (
+2019-09-20 04:19:56 0124               						replace(vLVR_VariableDefinition, chr(39), chr(39) & chr(38) &  'chr(39)' &chr(38) & chr(39)), 
+2019-09-20 04:19:56 0125               					'$(', '$' & chr(39) & chr(38) & chr(39) &  '(' 
+2019-09-20 04:19:56 0126               					) & chr(39) 
+2019-09-20 04:19:56 0127               					
+2019-09-20 04:19:56 0128               LET 'vConfigurationInputBoxHelpText'  =  Evaluate( vTmp )
+2019-09-20 04:19:56 0129             ELSE
+2019-09-20 04:19:56 0130             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0043     LET i = null()
+2019-09-20 04:19:56 0044     IF len(NoOfRows('VariableRepository') ) > 0  AND upper(vKEEPorDROP) = 'KEEP' THEN 
+2019-09-20 04:19:56 0045     
+2019-09-20 04:19:56 0045       Concatenate (VariableRepository) LOAD * Resident Tmp_Variable_Repository
+2019-09-20 04:19:56            	7 fields found: VariableSourceFile, VariableSourceFilePath, %VariableName, Variable Type, Variable Definition, Variable Comment, SET or LET, 
+2019-09-20 04:19:56            35 lines fetched
+2019-09-20 04:19:56 0046     ELSEIF  upper(vKEEPorDROP) = 'KEEP'  then	
+2019-09-20 04:19:56 0047     
+2019-09-20 04:19:56 0049     DROP Table Tmp_Variable_Repository
+2019-09-20 04:19:56 0050     LET vLVR_NumVariablesToInit = null()
+2019-09-20 04:19:56 0051   endsub 
+2019-09-20 04:19:56 0052   
+2019-09-20 04:19:56 0046   DROP Table Tmp_XLS_Contents
+2019-09-20 04:19:56 0048 endsub
+2019-09-20 04:19:56 0191 sub InitVariablesOuter
+2019-09-20 04:19:56 0192 
+2019-09-20 04:19:56 0155 sub InitVariablesInner
+2019-09-20 04:19:56 0156 
+2019-09-20 04:19:56 0012 Sub ExcludeFieldsInit
+2019-09-20 04:19:56 0013 
+2019-09-20 04:19:56 0032 sub ExcludeFields
+2019-09-20 04:19:56 0033 
+2019-09-20 04:19:56 0042 sub IncludeFields
+2019-09-20 04:19:56 0043 
+2019-09-20 04:19:56 0065 sub TransformFields 
+2019-09-20 04:19:56 0066 
+2019-09-20 04:19:56 0135 sub SEEQ_WriteMessage(vSEEQ_MessageToWrite)
+2019-09-20 04:19:56 0136 
+2019-09-20 04:19:56 0140 sub SEEQ_WriteProxyQVD
+2019-09-20 04:19:56 0141 
+2019-09-20 04:19:56 0151 sub SEEQ_TransformIncludeSubset
+2019-09-20 04:19:56 0152 
+2019-09-20 04:19:56 0013 sub IncrementalBlock1
+2019-09-20 04:19:56 0014 
+2019-09-20 04:19:56 0041 sub IncrementalBlock2
+2019-09-20 04:19:56 0042 
+2019-09-20 04:19:56 0014 sub StoreQVD
+2019-09-20 04:19:56 0015 
+2019-09-20 04:19:56 0083 sub SEEQ_Terminate
+2019-09-20 04:19:56 0084 
+2019-09-20 04:19:56 0015 sub SEEQ_ExecuteRulesSourceFile
+2019-09-20 04:19:56 0016 
+2019-09-20 04:19:56 0196 call Load_Variables_from_XLS('..\..\Common\variables\Color_Variables.xls', 'Sheet1', 'KEEP') 
+2019-09-20 04:19:56 0026   if vLoadVariablesFlag <> 1 AND len(trim(vLoadVariablesFlag)) > 0  THEN	
+2019-09-20 04:19:56 0027   
+2019-09-20 04:19:56 0031   trace vExpressionFile=..\..\Common\variables\Color_Variables.xls
+2019-09-20 04:19:56 0031   vExpressionFile=..\..\Common\variables\Color_Variables.xls
+2019-09-20 04:19:56 0032   
+2019-09-20 04:19:56 0033   SET vLVR_VariableDefinition = ''
+2019-09-20 04:19:56 0035   Tmp_XLS_Contents:
+2019-09-20 04:19:56 0036   	LOAD *,
+2019-09-20 04:19:56 0037   		FileName() AS VariableSourceFile,
+2019-09-20 04:19:56 0038   		FilePath ()  AS VariableSourceFilePath 
+2019-09-20 04:19:56 0039   	FROM
+2019-09-20 04:19:56 0040   	[..\..\Common\variables\Color_Variables.xls]
+2019-09-20 04:19:56 0041   	(biff, embedded labels, table is Sheet1$)	
+2019-09-20 04:19:56 0042   
+2019-09-20 04:19:56 0043   	
+2019-09-20 04:19:56        	12 fields found: Load Order, Label, Variable Name, Variable Definition, SET or LET, Last Modified By, Last Modified Date, Comment, Exclude From Application, F10, VariableSourceFile, VariableSourceFilePath, 
+2019-09-20 04:19:56        27 lines fetched
+2019-09-20 04:19:56 0044   call Load_Variables_from_Resident('Tmp_XLS_Contents', 'KEEP' )
+2019-09-20 04:19:56 0028     call Load_Variables_from_Resident_Init
+2019-09-20 04:19:56 0055       if IsNull(vApp)  or len (trim(vApp)) = 0  THEN
+2019-09-20 04:19:56 0056       
+2019-09-20 04:19:56 0059       VarTypeMap:
+2019-09-20 04:19:56 0060       	MAPPING LOAD * INLINE [
+2019-09-20 04:19:56 0061       	FirstLetterOfName, VarType
+2019-09-20 04:19:56 0062       	e,			Expression
+2019-09-20 04:19:56 0063       	v,			General
+2019-09-20 04:19:56 0064       	c,			Color
+2019-09-20 04:19:56 0065       	]
+2019-09-20 04:19:56            	2 fields found: FirstLetterOfName, VarType, 
+2019-09-20 04:19:56            3 lines fetched
+2019-09-20 04:19:56 0067       Tmp_Variable_Repository:
+2019-09-20 04:19:56 0068       	NoConcatenate LOAD 
+2019-09-20 04:19:56 0069       		[Load Order],
+2019-09-20 04:19:56 0070       		VariableSourceFile,
+2019-09-20 04:19:56 0071       		VariableSourceFilePath,
+2019-09-20 04:19:56 0072       		[Variable Name] AS %VariableName, 
+2019-09-20 04:19:56 0073       		applymap ( 'VarTypeMap', left( [Variable Name], 1 ), 'Other' ) AS [Variable Type],
+2019-09-20 04:19:56 0074       		replace ( replace( [Variable Definition] , '“', '"'), '”', '"') AS [Variable Definition], 
+2019-09-20 04:19:56 0075       		Comment AS [Variable Comment]
+2019-09-20 04:19:56 0076       		,
+2019-09-20 04:19:56 0077       		if (len([SET or LET]) <2, 'SET', [SET or LET]) AS [SET or LET] 
+2019-09-20 04:19:56 0078       	Resident Tmp_XLS_Contents
+2019-09-20 04:19:56 0079       	
+2019-09-20 04:19:56 0080       	
+2019-09-20 04:19:56 0081       	WHERE 
+2019-09-20 04:19:56 0082       		
+2019-09-20 04:19:56 0083       		
+2019-09-20 04:19:56 0084       		NOT wildmatch([Exclude From Application] & ' ', '*SALES*') 
+2019-09-20 04:19:56 0085       	AND 
+2019-09-20 04:19:56 0086       		 ( len(trim([Variable Name])) > 0	)	
+2019-09-20 04:19:56 0087       	 AND		
+2019-09-20 04:19:56 0088       		upper([Exclude From Application]) <> 'ALL'	
+2019-09-20 04:19:56 0089       
+2019-09-20 04:19:56            	8 fields found: Load Order, VariableSourceFile, VariableSourceFilePath, %VariableName, Variable Type, Variable Definition, Variable Comment, SET or LET, 
+2019-09-20 04:19:56            7 lines fetched
+2019-09-20 04:19:56 0090       Tmp_Variable_Repository_02:
+2019-09-20 04:19:56 0091       	NOCONCATENATE LOAD * Resident Tmp_Variable_Repository Order By [Load Order]
+2019-09-20 04:19:56            	8 fields found: Load Order, VariableSourceFile, VariableSourceFilePath, %VariableName, Variable Type, Variable Definition, Variable Comment, SET or LET, 
+2019-09-20 04:19:56            7 lines fetched
+2019-09-20 04:19:56 0092       DROP TABLE Tmp_Variable_Repository
+2019-09-20 04:19:56 0093       Rename Table Tmp_Variable_Repository_02 TO Tmp_Variable_Repository
+2019-09-20 04:19:56 0094       DROP FIELD [Load Order]
+2019-09-20 04:19:56 0096     ENDSUB
+2019-09-20 04:19:56 0097     
+2019-09-20 04:19:56 0029     Let vLVR_NumVariablesToInit = NoOfRows('Tmp_Variable_Repository')
+2019-09-20 04:19:56 0030     For i = 0 to 7-1
+2019-09-20 04:19:56 0031     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   0, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    0, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   0, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'cCautionary'  = Rgb ( 255, 226, 80 )
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   1, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    1, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   1, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'cCautionaryTableCell'  = Rgb ( 255, 255, 200 )
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   2, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    2, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   2, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(6, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'cETL_PurposeIndicator'  = if (
+2019-09-20 04:19:56 0132               	upper(vPurpose) = 'EXTRACT', 			
+2019-09-20 04:19:56 0133               	RGB( 100, 255, 100),				
+2019-09-20 04:19:56 0134               	if (
+2019-09-20 04:19:56 0135               		upper(vPurpose) = 'TRANSFORM', 
+2019-09-20 04:19:56 0136               		RGB( 0, 187, 0),			
+2019-09-20 04:19:56 0137               		if (
+2019-09-20 04:19:56 0138               			upper(vPurpose) = 'LOAD', 
+2019-09-20 04:19:56 0139               			RGB( 255, 128, 0)	,	
+2019-09-20 04:19:56 0140               			RGB( 230, 230, 250)		
+2019-09-20 04:19:56 0141               		)
+2019-09-20 04:19:56 0142               	)
+2019-09-20 04:19:56 0143               )
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   3, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    3, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   3, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'cGood'  = rgb( 201, 228,170 )
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   4, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    4, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   4, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'cGoodTableCell'  = Rgb ( 222, 255, 222 )
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   5, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    5, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   5, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'cUrgent'  = Rgb ( 200, 0, 0 )
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0031       Let vLVR_SetOrLet  = upper(Peek('SET or LET',   6, 'Tmp_Variable_Repository'))
+2019-09-20 04:19:56 0032       Let vLVR_VariableName  = Peek('%VariableName',    6, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0034       LET vLVR_VariableDefinition = Peek('Variable Definition',   6, 'Tmp_Variable_Repository')
+2019-09-20 04:19:56 0035       LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39))
+2019-09-20 04:19:56 0036       IF (Mod(0, 2) <> 0) THEN		
+2019-09-20 04:19:56 0037       
+2019-09-20 04:19:56 0039         call Load_Variables_from_Resident_Define_Variable
+2019-09-20 04:19:56 0111           IF 'SET' = 'LET' THEN
+2019-09-20 04:19:56 0112           
+2019-09-20 04:19:56 0117             LET vWildMatchFound =  WildMatch (vLVR_VariableDefinition, '*$' & chr(40) & '*' ) 
+2019-09-20 04:19:56 0118             IF vWildMatchFound > 0  THEN
+2019-09-20 04:19:56 0119             
+2019-09-20 04:19:56 0131               Set 'cUrgentTableCell'  = Rgb ( 255, 203, 209 )
+2019-09-20 04:19:56 0133             ENDIF
+2019-09-20 04:19:56 0134             
+2019-09-20 04:19:56 0134           ENDIF   
+2019-09-20 04:19:56 0135           
+2019-09-20 04:19:56 0135         ENDSUB			
+2019-09-20 04:19:56 0136         
+2019-09-20 04:19:56 0040       ENDIF
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0041       call Load_Variables_from_Resident_Clear_Variables
+2019-09-20 04:19:56 0138         LET vTmp = null()
+2019-09-20 04:19:56 0139         LET vLVR_VariableName = null()
+2019-09-20 04:19:56 0140         LET vLVR_VariableDefinition = null()
+2019-09-20 04:19:56 0141         LET vLVR_ErrString = null()
+2019-09-20 04:19:56 0142         LET vLVR_SetOrLet = null()
+2019-09-20 04:19:56 0143         LET vWildMatchFound	=null()
+2019-09-20 04:19:56 0144         LET vLVR_DollarSignExpansionDetected = null()
+2019-09-20 04:19:56 0145         LET vLVR_NumSingleQuote = null()
+2019-09-20 04:19:56 0146       ENDSUB
+2019-09-20 04:19:56 0147       
+2019-09-20 04:19:56 0042     Next
+2019-09-20 04:19:56 0043     
+2019-09-20 04:19:56 0043     LET i = null()
+2019-09-20 04:19:56 0044     IF len(NoOfRows('VariableRepository') ) > 0  AND upper(vKEEPorDROP) = 'KEEP' THEN 
+2019-09-20 04:19:56 0045     
+2019-09-20 04:19:56 0045       Concatenate (VariableRepository) LOAD * Resident Tmp_Variable_Repository
+2019-09-20 04:19:56            	7 fields found: VariableSourceFile, VariableSourceFilePath, %VariableName, Variable Type, Variable Definition, Variable Comment, SET or LET, 
+2019-09-20 04:19:56            42 lines fetched
+2019-09-20 04:19:56 0046     ELSEIF  upper(vKEEPorDROP) = 'KEEP'  then	
+2019-09-20 04:19:56 0047     
+2019-09-20 04:19:56 0049     DROP Table Tmp_Variable_Repository
+2019-09-20 04:19:56 0050     LET vLVR_NumVariablesToInit = null()
+2019-09-20 04:19:56 0051   endsub 
+2019-09-20 04:19:56 0052   
+2019-09-20 04:19:56 0046   DROP Table Tmp_XLS_Contents
+2019-09-20 04:19:56 0048 endsub
+2019-09-20 04:19:56 0202 IF upper(vPurpose) = 'APP' THEN 
+2019-09-20 04:19:56 0203 
+2019-09-20 04:19:56 0215 IF vRunPreProcessingFlag = 1 AND upper(vTSEEQ_Mode) = 'GENERATE AND EXECUTE' THEN		
+2019-09-20 04:19:56 0216 
+2019-09-20 04:19:56 0216   Trace Entering Include File: SALESLOADInclude_PostProcessing.txt
+2019-09-20 04:19:56 0216   Entering Include File: SALESLOADInclude_PostProcessing.txt
+2019-09-20 04:19:56 0217   
+2019-09-20 04:19:56 0008   Trace Exiting Include File: SALESLOADInclude_PostProcessing.txt
+2019-09-20 04:19:56 0008   Exiting Include File: SALESLOADInclude_PostProcessing.txt
+2019-09-20 04:19:56 0009   
+2019-09-20 04:19:56 0217 ENDIF
+2019-09-20 04:19:56 0218 
+2019-09-20 04:19:56 0228 IF upper(vPurpose) = 'EXTRACT' THEN
+2019-09-20 04:19:56 0229 
+2019-09-20 04:19:56 0241 SET vTSEEQ_RulesFileFormat='XLS'
+2019-09-20 04:19:56 0245 IF vQlikProduct = 'VIEW' THEN
+2019-09-20 04:19:56 0246 
+2019-09-20 04:19:56 0246   IF vTSEEQ_RulesFileFormat='XLS' THEN
+2019-09-20 04:19:56 0247   
+2019-09-20 04:19:56 0247     SET vRulesSourceFile='..\ETL_Rules\SALESLOADRules.xls'
+2019-09-20 04:19:56 0248   ELSEIF vTSEEQ_RulesFileFormat='CSV' THEN
+2019-09-20 04:19:56 0249   
+2019-09-20 04:19:56 0251 ELSEIF vQlikProduct = 'SENSE' THEN
+2019-09-20 04:19:56 0252 
+2019-09-20 04:19:56 0270 If vRunSEEQ_Flag = 1 THEN 
+2019-09-20 04:19:56 0271 
+2019-09-20 04:19:56 0277   IF vQlikProduct = 'VIEW' THEN	
+2019-09-20 04:19:56 0278   
+2019-09-20 04:19:56 0280     IF upper(vPurpose) = 'EXTRACT' and upper(vTSEEQ_Mode) ='GENERATE AND EXECUTE' THEN  
+2019-09-20 04:19:56 0281     
+2019-09-20 04:19:56 0283   ELSEIF vQlikProduct = 'SENSE' THEN
+2019-09-20 04:19:56 0284   
+2019-09-20 04:19:56 0290   Call SEEQ_ExecuteRulesSourceFile
+2019-09-20 04:19:56 0016     Call InitVariablesOuter
+2019-09-20 04:19:56 0017       SET vSEEQ_DropExcludedFieldsStatement=
+2019-09-20 04:19:56 0018       LET vSEEQ_Semicolon=chr(59)
+2019-09-20 04:19:56 0019       LET vSEEQ_linefeed=chr(10)
+2019-09-20 04:19:56 0021       LET vPurposeED = 'LOAD' & 'ed'
+2019-09-20 04:19:56 0027       LET vSEEQ_GetThisRuleLine ='wildmatch('&chr(39)&'$'&'(vSEEQ_TargetWithoutBrackets)'&chr(39)&', purgechar([Target], ' & chr(39) & ' -            ' & chr(39) & '))'
+2019-09-20 04:19:56 0030       LET vSEEQ_BatchStartTime = num(now())
+2019-09-20 04:19:56 0032       SET vSEEQ_XLS = 'XLS'
+2019-09-20 04:19:56 0033       SET vSEEQ_XLSFormat = 'biff'
+2019-09-20 04:19:56 0034       LET vSEEQ_XLSDollar = chr(36)
+2019-09-20 04:19:56 0036       LET vTSEEQ_RuleFileType = upper(right (vRulesSourceFile, 3))
+2019-09-20 04:19:56 0038       IF upper('LOAD') = 'LOAD' THEN
+2019-09-20 04:19:56 0039       
+2019-09-20 04:19:56 0039         SET vSEEQ_RulesFieldList = 'N/A' AS [Stale After (Days)], 'N/A' AS [Target Folder], Target,	[Source Folder], Source, [Load Command], [Row Limit], Constraints, AutoNumber(Source & '_' & [Source Folder] ) AS SEEQ_TargetKey
+2019-09-20 04:19:56 0040       ELSE 
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0044       SET vSEEQ_MaxRulesTryCount=4
+2019-09-20 04:19:56 0045       SET vSEEQ_RulesTryCount=1
+2019-09-20 04:19:56 0046       SET ErrorMode = 0
+2019-09-20 04:19:56 0046       SET vSEEQ_RulesReadSuccessFlag = 0
+2019-09-20 04:19:56 0047       do 		
+2019-09-20 04:19:56 0048       
+2019-09-20 04:19:56 0048         IF vTSEEQ_RuleFileType = 'XLS' THEN
+2019-09-20 04:19:56 0049         
+2019-09-20 04:19:56 0049           Rules:
+2019-09-20 04:19:56 0050           			NOCONCATENATE 	
+2019-09-20 04:19:56 0051           			LOAD 
+2019-09-20 04:19:56 0052           				'..\ETL_Rules\SALESLOADRules.xls' AS [Rules File], 
+2019-09-20 04:19:56 0053           				'N/A' AS [Stale After (Days)], 'N/A' AS [Target Folder], Target,	[Source Folder], Source, [Load Command], [Row Limit], Constraints, AutoNumber(Source & '_' & [Source Folder] ) AS SEEQ_TargetKey 
+2019-09-20 04:19:56 0054           			FROM [..\ETL_Rules\SALESLOADRules.xls] (biff, embedded labels, table is TABLES$)  WHERE UPPER(ENABLED) = 'Y' 
+2019-09-20 04:19:56                	10 fields found: Rules File, Stale After (Days), Target Folder, Target, Source Folder, Source, Load Command, Row Limit, Constraints, SEEQ_TargetKey, 
+2019-09-20 04:19:56                9 lines fetched
+2019-09-20 04:19:56 0055         ELSEIF vTSEEQ_RuleFileType = 'CSV' THEN
+2019-09-20 04:19:56 0056         
+2019-09-20 04:19:56 0066         LET vSEEQ_TableCount = NoOfRows('Rules') - 1
+2019-09-20 04:19:56 0068         LET vSEEQ_RulesReadSuccessFlag = not IsNull(vSEEQ_TableCount )
+2019-09-20 04:19:56 0069         IF NOT vSEEQ_RulesReadSuccessFlag THEN 
+2019-09-20 04:19:56 0070         
+2019-09-20 04:19:56 0084           QUALIFY *
+2019-09-20 04:19:56 0085           UNQUALIFY Target, ENABLED
+2019-09-20 04:19:56 0087           IF vTSEEQ_RuleFileType = 'XLS' THEN
+2019-09-20 04:19:56 0088           
+2019-09-20 04:19:56 0088             IF 	upper(vPurpose) ='EXTRACT' OR  upper(vPurpose) ='TRANSFORM' THEN
+2019-09-20 04:19:56 0089             
+2019-09-20 04:19:56 0100             IF 	upper(vPurpose) = 'TRANSFORM' THEN			
+2019-09-20 04:19:56 0101             
+2019-09-20 04:19:56 0108           ELSEIF vTSEEQ_RuleFileType = 'CSV' THEN				
+2019-09-20 04:19:56 0109           
+2019-09-20 04:19:56 0137           UNQUALIFY *
+2019-09-20 04:19:56 0138           IF upper(vPurpose) = 'EXTRACT' OR Upper(vPurpose) = 'TRANSFORM' THEN
+2019-09-20 04:19:56 0139           
+2019-09-20 04:19:56 0141           RENAME Table EX to ExcludeFieldsForAllTables
+2019-09-20 04:19:56 0142           RENAME Table IN to IncludeFieldsForAllTables
+2019-09-20 04:19:56 0143           RENAME Table TR to TransformFieldsForAllTables
+2019-09-20 04:19:56 0144         ENDIF
+2019-09-20 04:19:56 0145         
+2019-09-20 04:19:56 0145       loop while vSEEQ_RulesReadSuccessFlag = 0
+2019-09-20 04:19:56 0146       
+2019-09-20 04:19:56 0146       SET vSEEQ_MaxRulesTryCount=''
+2019-09-20 04:19:56 0147       SET vSEEQ_RulesTryCount=''
+2019-09-20 04:19:56 0148       Trace "The SEEQ rules file has been successfully read."
+2019-09-20 04:19:56 0148       "The SEEQ rules file has been successfully read."
+2019-09-20 04:19:56 0149       
+2019-09-20 04:19:56 0149       SET ErrorMode = 1
+2019-09-20 04:19:56 0150       SET vSEEQ_RulesFieldList = ''
+2019-09-20 04:19:56 0151       SET vSEEQ_RulesReadSuccessFlag = ''
+2019-09-20 04:19:56 0152       SET vTSEEQ_RuleFileType=
+2019-09-20 04:19:56 0153     end sub 
+2019-09-20 04:19:56 0154     
+2019-09-20 04:19:56 0017     SEEQ_ExecutionTrace: LOAD 'INIT' AS [EEE Executed Script], now() AS [EEE Execution Completion Time], 0 AS [EEE Execution Time Elapsed]  AutoGenerate 1
+2019-09-20 04:19:56          	3 fields found: EEE Executed Script, EEE Execution Completion Time, EEE Execution Time Elapsed, 
+2019-09-20 04:19:56          1 lines fetched
+2019-09-20 04:19:56 0018     for vSEEQ_OuterLoopCounter = 0 to vSEEQ_TableCount  
+2019-09-20 04:19:56 0019     
+2019-09-20 04:19:56 0019       Call InitVariablesInner
+2019-09-20 04:19:56 0156         SET vSEEQ_DropExcludedFieldsStatement=
+2019-09-20 04:19:56 0157         SET vSEEQ_NumFieldsLOADed=0
+2019-09-20 04:19:56 0158         SET vSEEQ_NumRecordsLOADed=0
+2019-09-20 04:19:56 0159         SET vSEEQ_Messages=
+2019-09-20 04:19:56 0160         SET vSEEQ_ThisIsMappingTable=0
+2019-09-20 04:19:56 0161         SET vSEEQ_ExecuteStatement=''
+2019-09-20 04:19:56 0162         SET vSEEQ_ExecuteStatementIncrementalBlock2=''
+2019-09-20 04:19:56 0163         SET vSEEQ_FieldsExpansion =''
+2019-09-20 04:19:56 0164         LET vSEEQ_TimeIteration = num(now(1))
+2019-09-20 04:19:56 0166         SET vSEEQ_StoreReduced = ''
+2019-09-20 04:19:56 0167         SET vSEEQ_Target = ''
+2019-09-20 04:19:56 0168         SET vSEEQ_TargetWithoutBrackets = ''
+2019-09-20 04:19:56 0169         SET vSEEQ_TargetFolder = ''
+2019-09-20 04:19:56 0170         SET vSEEQ_Source= ''
+2019-09-20 04:19:56 0171         SET vSEEQ_SourceFolder = ''
+2019-09-20 04:19:56 0172         SET vSEEQ_StaleAfter = ''
+2019-09-20 04:19:56 0173         SET vSEEQ_Constraints = ''
+2019-09-20 04:19:56 0175         SET vSEEQ_Fields = ''
+2019-09-20 04:19:56 0176         SET vSEEQ_LoadCommand = ''
+2019-09-20 04:19:56 0177         SET vSEEQ_QVDCreateTime = ''
+2019-09-20 04:19:56 0178         SET vSEEQ_AddFields = ' '
+2019-09-20 04:19:56 0179         SET vSEEQ_TableType = ' '
+2019-09-20 04:19:56 0180         SET vSEEQ_IncrementalLoadType = 'INIT'
+2019-09-20 04:19:56 0181         SET vSEEQ_RowLimit = ''
+2019-09-20 04:19:56 0182         LET vSEEQ_ModfiedTimestampField = 'INIT'
+2019-09-20 04:19:56 0184         SET vSEEQ_SourceFolderPostfix=''
+2019-09-20 04:19:56 0186         LET vSEEQ_Incremental_ID_Fields = 'INIT'
+2019-09-20 04:19:56 0187         SET vSEEQ_SourceType =''
+2019-09-20 04:19:56 0188         SET vSEEQ_SourceFormat =''
+2019-09-20 04:19:56 0189         SET vSEEQ_KeepOrDrop=''
+2019-09-20 04:19:56 0190         LET  vSEEQ_PostLoadScript  = peek('Post Load Script' , 0, 'Rules' )
+2019-09-20 04:19:56 0195         LET vSEEQ_StoreReduced =  upper(peek('STORE REDUCED', 0, 'Rules')) 
+2019-09-20 04:19:56 0196         LET vSEEQ_Target =  '[' & PurgeChar(peek('Target', 0, 'Rules'), ' -	[]')  & ']' 
+2019-09-20 04:19:56 0197         LET vSEEQ_TargetWithoutBrackets =  PurgeChar(peek('Target', 0, 'Rules'), ' -	[]')   
+2019-09-20 04:19:56 0199         LET vSEEQ_TargetFolder =  peek('Target Folder', 0, 'Rules')
+2019-09-20 04:19:56 0203         IF right(vSEEQ_TargetFolder, 1) <> '\' THEN			
+2019-09-20 04:19:56 0204         
+2019-09-20 04:19:56 0204           SET vSEEQ_TargetFolder  = 'N/A\'
+2019-09-20 04:19:56 0205         ENDIF
+2019-09-20 04:19:56 0206         
+2019-09-20 04:19:56 0207         LET vSEEQ_TargetKey  = peek('SEEQ_TargetKey', 0, 'Rules')
+2019-09-20 04:19:56 0211         LET vSEEQ_Source =  peek('Source', 0, 'Rules') 
+2019-09-20 04:19:56 0212         LET vSEEQ_SourceFolder =  peek('Source Folder', 0, 'Rules')
+2019-09-20 04:19:56 0213         IF right(vSEEQ_SourceFolder, 1) = '\' OR   right(vSEEQ_SourceFolder, 1) = '/' THEN		
+2019-09-20 04:19:56 0214         
+2019-09-20 04:19:56 0214           LET vSEEQ_SourceFolder  = left(vSEEQ_SourceFolder, len(vSEEQ_SourceFolder) - 1)
+2019-09-20 04:19:56 0215         ENDIF
+2019-09-20 04:19:56 0216         
+2019-09-20 04:19:56 0217         IF right(vSEEQ_SourceFolder, 1) <> '\' THEN			
+2019-09-20 04:19:56 0218         
+2019-09-20 04:19:56 0218           SET vSEEQ_SourceFolder  = '..\QVDs\Transformed\'
+2019-09-20 04:19:56 0219         ENDIF
+2019-09-20 04:19:56 0220         
+2019-09-20 04:19:56 0221         SET vSEEQ_SourceOriginal = Categories 
+2019-09-20 04:19:56 0222         LET vSEEQ_StaleAfter =  Replace(peek('Stale After (Days)', 0, 'Rules')  , ' ', '')
+2019-09-20 04:19:56 0223         LET vSEEQ_LoadCommand = peek('Load Command', 0, 'Rules')
+2019-09-20 04:19:56 0224         LET vSEEQ_Fields =  Replace( peek('Fields', 0, 'Rules')  , ' ', '')
+2019-09-20 04:19:56 0225         LET vSEEQ_Constraints =   if (
+2019-09-20 04:19:56 0226         									left (peek('Constraints', 0, 'Rules'), 2) = '//', 
+2019-09-20 04:19:56 0227         									'',		
+2019-09-20 04:19:56 0228         									trim(peek('Constraints', 0, 'Rules')) 
+2019-09-20 04:19:56 0229         								)
+2019-09-20 04:19:56 0231         LET vSEEQ_ThisIsMappingTable= if (upper(left(trim(vSEEQ_LoadCommand), 7)) = 'MAPPING', 1, 0)
+2019-09-20 04:19:56 0232         LET  vSEEQ_LastModfiedTimestampFormatForQuery = peek('Last Modfied Timestamp Format for Query', 0, 'Rules')
+2019-09-20 04:19:56 0236         IF	left(vSEEQ_Constraints, 5) = 'WHERE' THEN	
+2019-09-20 04:19:56 0237         
+2019-09-20 04:19:56 0240         LET vSEEQ_QVDCreateTime = if(len(trim(QvdCreateTime('N/A\Categories.qvd'))) < 1, 0, QvdCreateTime('N/A\Categories.qvd'))
+2019-09-20 04:19:56 0241         IF upper(vPurpose) = 'TRANSFORM' THEN 
+2019-09-20 04:19:56 0242         
+2019-09-20 04:19:56 0245         LET vSEEQ_RowLimit =   trim(peek('Row Limit', 0, 'Rules'))
+2019-09-20 04:19:56 0247         LET vSEEQ_IncrementalLoadType =   if (upper(vPurpose)='EXTRACT', peek('Incremental Load Type', 0, 'Rules'), 'N/A')
+2019-09-20 04:19:56 0248         LET vSEEQ_ModfiedTimestampField = peek('Last Modfied Timestamp Field', 0, 'Rules')
+2019-09-20 04:19:56 0249         LET vSEEQ_Incremental_ID_Fields = 
+2019-09-20 04:19:56 0250         
+2019-09-20 04:19:56 0251         							replace ( 
+2019-09-20 04:19:56 0252         									replace ( peek('Incremental ID Field(s)', 0, 'Rules') , ' ', '')
+2019-09-20 04:19:56 0253         								, ',' ,  '&' & chr(39)&'_'&chr(39) & '&') 
+2019-09-20 04:19:56 0254         
+2019-09-20 04:19:56 0255         	
+2019-09-20 04:19:56 0256         SET vSEEQ_From = 'FROM '
+2019-09-20 04:19:56 0257         IF IsNull (vSEEQ_QVDCreateTime) THEN 	
+2019-09-20 04:19:56 0258         
+2019-09-20 04:19:56 0261         IF len(vSEEQ_StaleAfter) < 1 THEN 
+2019-09-20 04:19:56 0262         
+2019-09-20 04:19:56 0265         IF len (vSEEQ_RowLimit) > 0 THEN 					
+2019-09-20 04:19:56 0266         
+2019-09-20 04:19:56 0268           SET vSEEQ_Prefix = ''
+2019-09-20 04:19:56 0269         ENDIF
+2019-09-20 04:19:56 0270         
+2019-09-20 04:19:56 0271         IF upper(vPurpose) = 'EXTRACT' OR upper(vPurpose) = 'TRANSFORM' THEN 
+2019-09-20 04:19:56 0272         
+2019-09-20 04:19:56 0274         LET vSEEQ_LastExecTime = 0
+2019-09-20 04:19:56 0276         IF upper(vPurpose) = 'EXTRACT' THEN 
+2019-09-20 04:19:56 0277         
+2019-09-20 04:19:56 0279           IF upper(vSEEQ_SourceType = 'EXTERNAL' ) THEN
+2019-09-20 04:19:56 0280           
+2019-09-20 04:19:56 0283             set vSEEQ_Source = '[..\QVDs\Transformed\Categories.qvd] (qvd)'
+2019-09-20 04:19:56 0284           ENDIF
+2019-09-20 04:19:56 0285           
+2019-09-20 04:19:56 0285           set vSEEQ_SQL =''
+2019-09-20 04:19:56 0286         ENDIF
+2019-09-20 04:19:56 0287         
+2019-09-20 04:19:56 0287         SET vSEEQ_ErrorDetected = 0
+2019-09-20 04:19:56 0288       end Sub	
+2019-09-20 04:19:56 0289       
+2019-09-20 04:19:56 0021       SET vTSEEQ_ModeOriginal=GENERATE AND EXECUTE
+2019-09-20 04:19:56 0022       if upper(vPurpose) <> 'LOAD' and vReloadTimeStart -  vSEEQ_QVDCreateTime <= vSEEQ_StaleAfter and upper(vTSEEQ_Mode)='GENERATE AND EXECUTE'  then 
+2019-09-20 04:19:56 0023       
+2019-09-20 04:19:56 0030       CALL ExcludeFieldsInit
+2019-09-20 04:19:56 0017         SET vExcludeFields=''
+2019-09-20 04:19:56 0018         IF vSEEQ_Fields = 'EXCLUDE_SUBSET' THEN 
+2019-09-20 04:19:56 0019         
+2019-09-20 04:19:56 0030       END SUB			
+2019-09-20 04:19:56 0031       
+2019-09-20 04:19:56 0031       IF upper(vSEEQ_Fields) <> 'INCLUDE_SUBSET' THEN
+2019-09-20 04:19:56 0032       
+2019-09-20 04:19:56 0034         SET vSEEQ_FieldsExpansion = '*'
+2019-09-20 04:19:56 0035       ELSE 
+2019-09-20 04:19:56 0036       
+2019-09-20 04:19:56 0040       CALL TransformFields
+2019-09-20 04:19:56 0066         IF upper(vPurpose) = 'TRANSFORM' THEN
+2019-09-20 04:19:56 0067         
+2019-09-20 04:19:56 0133       END SUB	
+2019-09-20 04:19:56 0134       
+2019-09-20 04:19:56 0041       CALL IncrementalBlock1
+2019-09-20 04:19:56 0018         LET vSEEQ_TimeIncrementalPreProccessing = num(now(1))
+2019-09-20 04:19:56 0020         LET vSEEQAddOnFileSize=FileSize('..\..\Common\Include\EEE\add-ons\QCEE Incremental1.txt')
+2019-09-20 04:19:56 0022         IF  vSEEQAddOnFileSize > 0 THEN
+2019-09-20 04:19:56 0023         
+2019-09-20 04:19:56 0026           IF len(trim(vSEEQ_Constraints))>0 AND left(vSEEQ_Constraints, 2) <> '//'THEN
+2019-09-20 04:19:56 0027           
+2019-09-20 04:19:56 0029           IF upper(vSEEQ_IncrementalLoadType) <> 'FULL' AND upper(vPurpose) = 'EXTRACT'  THEN
+2019-09-20 04:19:56 0030           
+2019-09-20 04:19:56 0034         ENDIF
+2019-09-20 04:19:56 0035         
+2019-09-20 04:19:56 0035         SET vSEEQAddOnFileSize=
+2019-09-20 04:19:56 0036         LET vSEEQ_TimeIncrementalPreProccessing = num(now(1)) -  vSEEQ_TimeIncrementalPreProccessing
+2019-09-20 04:19:56 0039       end sub	
+2019-09-20 04:19:56 0040       
+2019-09-20 04:19:56 0043       SET vSEEQ_ExecuteStatement = '[Categories]:		
+2019-09-20 04:19:56 0044       LOAD * FROM  [..\QVDs\Transformed\Categories.qvd] (qvd) ;'
+2019-09-20 04:19:56 0047       CALL ExcludeFields
+2019-09-20 04:19:56 0033         IF upper(vPurpose) = 'EXTRACT' THEN	
+2019-09-20 04:19:56 0034         
+2019-09-20 04:19:56 0040       end sub	
+2019-09-20 04:19:56 0041       
+2019-09-20 04:19:56 0049       IF len(trim(vSEEQ_DropExcludedFieldsStatement)) >0  THEN
+2019-09-20 04:19:56 0050       
+2019-09-20 04:19:56 0054       IF len(trim(vSEEQ_PostLoadScript)) >0  THEN
+2019-09-20 04:19:56 0055       
+2019-09-20 04:19:56 0059       LET vSEEQ_TimeLoad = num(now(1))
+2019-09-20 04:19:56 0061       IF upper(vTSEEQ_Mode) = 'GENERATE AND EXECUTE' THEN		
+2019-09-20 04:19:56 0062       
+2019-09-20 04:19:56 0062         Trace 'Executing the following code:'
+2019-09-20 04:19:56 0062         'Executing the following code:'
+2019-09-20 04:19:56 0063         
+2019-09-20 04:19:56 0063         Trace '[Categories]:		
+2019-09-20 04:19:56 0064         LOAD * FROM  [..\QVDs\Transformed\Categories.qvd] (qvd) ;'
+2019-09-20 04:19:56 0063         '[Categories]:		
+2019-09-20 04:19:56 0064         LOAD * FROM  [..\QVDs\Transformed\Categories.qvd] (qvd) ;'
+2019-09-20 04:19:56 0065         
+2019-09-20 04:19:56 0064         [Categories]:		
+2019-09-20 04:19:56 0065         LOAD * FROM  [..\QVDs\Transformed\Categories.qvd] (qvd) 
+2019-09-20 04:19:56              Error: Cannot open file 'C:\TSEEQ\Source Documents\TSEEQ Sales Sample\QVDs\Transformed\Categories.qvd' The system cannot find the file specified.
+2019-09-20 04:19:56              
+2019-09-20 04:19:58              General Script Error
+2019-09-20 04:19:58              Execution Failed
+2019-09-20 04:19:58              Execution finished.

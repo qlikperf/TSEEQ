@@ -7,8 +7,8 @@ sub InitVariablesOuter
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.7
-	Date:		2018-12-09
+	Version:	4.0.2
+	Date:		2019-09-20
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -31,13 +31,11 @@ sub InitVariablesOuter
 ////	XLS file format
 	SET vSEEQ_XLS = 'XLS';
 	SET vSEEQ_XLSFormat = 'biff';
-	LET vSEEQ_XLSDollar = chr(36);		
-////	XLSX file format:
-//	SET vSEEQ_XLS = 'XLSX';
-//	SET vSEEQ_XLSFormat = 'ooxml';
-
+	LET vSEEQ_XLSDollar = chr(36);
+	
+	LET vTSEEQ_RuleFileType = upper(right (vRulesSourceFile, 3));	// 2019-10-31 JRR added this line for CSV support
+			
 	IF upper('$(vPurpose)') = 'LOAD' THEN
-//		SET vSEEQ_RulesFieldList = Target,	[Source Folder], Source, [Load Command], [Row Limit], Constraints, AutoNumber(Source & '_' & [Source Folder] ) AS SEEQ_TargetKey;	
 		SET vSEEQ_RulesFieldList = 'N/A' AS [Stale After (Days)], 'N/A' AS [Target Folder], Target,	[Source Folder], Source, [Load Command], [Row Limit], Constraints, AutoNumber(Source & '_' & [Source Folder] ) AS SEEQ_TargetKey;
 	ELSE 
 		SET vSEEQ_RulesFieldList = *, AutoNumber(Target & '_' & [Target Folder] ) AS SEEQ_TargetKey;
@@ -46,18 +44,28 @@ sub InitVariablesOuter
    	SET vSEEQ_MaxRulesTryCount=4;
    	SET vSEEQ_RulesTryCount=1;	
 	SET ErrorMode = 0; 		SET vSEEQ_RulesReadSuccessFlag = 0;
-	do 		// keep attempting to read the rules file until you succeed (Excel locks the file while saving, so multiple attempts might be needed).
-		Rules:
-		NOCONCATENATE 	
-		LOAD 
-			'$(vRulesSourceFile)' AS [Rules File], 
-			$(vSEEQ_RulesFieldList) 
-		FROM [$(vRulesSourceFile)] ($(vSEEQ_XLSFormat), embedded labels, table is TABLES$(vSEEQ_XLSDollar))  WHERE UPPER(ENABLED) = 'Y' ;
+	do 		// keep attempting to read the rules file until you succeed (the file may be briefly locked while it is being saved, so multiple attempts might be needed).
+		IF vTSEEQ_RuleFileType = 'XLS' THEN
+			Rules:
+			NOCONCATENATE 	
+			LOAD 
+				'$(vRulesSourceFile)' AS [Rules File], 
+				$(vSEEQ_RulesFieldList) 
+			FROM [$(vRulesSourceFile)] ($(vSEEQ_XLSFormat), embedded labels, table is TABLES$(vSEEQ_XLSDollar))  WHERE UPPER(ENABLED) = 'Y' ;
+		ELSEIF vTSEEQ_RuleFileType = 'CSV' THEN
+			Rules:
+			NOCONCATENATE 	
+			LOAD 
+				'$(vRulesSourceFile)' AS [Rules File], 
+				$(vSEEQ_RulesFieldList) 
+			FROM [$(vRulesSourceFile)] (txt, utf8, embedded labels, delimiter is ',', msq) WHERE UPPER(ENABLED) = 'Y';
+		ELSE	
+				TRACE 'Unknown rules file type with extension of $(vTSEEQ_RuleFileType). Exiting.';			
+		ENDIF
 
      	LET vSEEQ_TableCount = NoOfRows('Rules') - 1;
 
 		LET vSEEQ_RulesReadSuccessFlag = not IsNull(vSEEQ_TableCount );
-		//Trace $(vSEEQ_RulesReadSuccessFlag);
 		IF NOT vSEEQ_RulesReadSuccessFlag THEN 
 			IF vSEEQ_RulesTryCount >= vSEEQ_MaxRulesTryCount THEN
 				Trace "The rules file was not successfully read after $(vSEEQ_MaxRulesTryCount) attempts.  " & 
@@ -75,33 +83,64 @@ sub InitVariablesOuter
 		ELSE 	
 			QUALIFY *;
 			UNQUALIFY Target, ENABLED;
-			IF 	upper(vPurpose) ='EXTRACT' OR  upper(vPurpose) ='TRANSFORM' THEN
-				EX:
-				NOCONCATENATE LOAD 	DISTINCT * 
-				FROM	[$(vRulesSourceFile)]	($(vSEEQ_XLSFormat), embedded labels, table is EXCLUDE_FIELDS$(vTSEEQ_XLS_Worksheet_PostFix)$(vSEEQ_XLSDollar))
-				WHERE upper(ENABLED)='Y'
-				;
-				IN:
-				NOCONCATENATE LOAD 	DISTINCT * 		
-				FROM	[$(vRulesSourceFile)] 	($(vSEEQ_XLSFormat), embedded labels, table is INCLUDE_FIELDS$(vTSEEQ_XLS_Worksheet_PostFix)$(vSEEQ_XLSDollar))
-				WHERE upper(ENABLED)='Y'
-				;
+			
+			IF vTSEEQ_RuleFileType = 'XLS' THEN
+				IF 	upper(vPurpose) ='EXTRACT' OR  upper(vPurpose) ='TRANSFORM' THEN
+					EX:
+					NOCONCATENATE LOAD 	DISTINCT * 
+					FROM	[$(vRulesSourceFile)]	($(vSEEQ_XLSFormat), embedded labels, table is EXCLUDE_FIELDS$(vTSEEQ_XLS_Worksheet_PostFix)$(vSEEQ_XLSDollar))
+					WHERE upper(ENABLED)='Y'
+					;
+					IN:
+					NOCONCATENATE LOAD 	DISTINCT * 		
+					FROM	[$(vRulesSourceFile)] 	($(vSEEQ_XLSFormat), embedded labels, table is INCLUDE_FIELDS$(vTSEEQ_XLS_Worksheet_PostFix)$(vSEEQ_XLSDollar))
+					WHERE upper(ENABLED)='Y'
+					;
+				ENDIF
+				IF 	upper(vPurpose) = 'TRANSFORM' THEN			
+					TR:
+					NOCONCATENATE 
+					LOAD 	DISTINCT * 		
+					FROM	[$(vRulesSourceFile)] 	($(vSEEQ_XLSFormat), embedded labels, table is TRANSFORM_FIELDS$(vTSEEQ_XLS_Worksheet_PostFix)$(vSEEQ_XLSDollar))
+					WHERE upper(ENABLED)='Y'
+					;
+				ENDIF
+			ELSEIF vTSEEQ_RuleFileType = 'CSV' THEN				
+				LET vRulesSourceFile_EXCLUDE_FIELDS=Replace(vRulesSourceFile, '_TABLES_', '_EXCLUDE_FIELDS_');
+				LET vRulesSourceFile_INCLUDE_FIELDS=Replace(vRulesSourceFile, '_TABLES_', '_INCLUDE_FIELDS_');	
+				LET vRulesSourceFile_TRANSFORM_FIELDS=Replace(vRulesSourceFile, '_TABLES_', '_TRANSFORM_FIELDS_');											
+				IF 	upper(vPurpose) ='EXTRACT' OR  upper(vPurpose) ='TRANSFORM' THEN
+					EX:
+					NOCONCATENATE LOAD 	DISTINCT * 
+					FROM [$(vRulesSourceFile_EXCLUDE_FIELDS)] (txt, utf8, embedded labels, delimiter is ',', msq)
+					WHERE upper(ENABLED)='Y'
+					;
+					IN:
+					NOCONCATENATE LOAD 	DISTINCT * 		
+					FROM [$(vRulesSourceFile_INCLUDE_FIELDS)] (txt, utf8, embedded labels, delimiter is ',', msq)
+					WHERE upper(ENABLED)='Y'
+					;
+				ENDIF
+				IF 	upper(vPurpose) = 'TRANSFORM' THEN			
+					TR:
+					NOCONCATENATE 
+					LOAD 	DISTINCT * 		
+					FROM [$(vRulesSourceFile_TRANSFORM_FIELDS)] (txt, utf8, embedded labels, delimiter is ',', msq)
+					WHERE upper(ENABLED)='Y'
+					;
+				ENDIF
+				SET vRulesSourceFile_EXCLUDE_FIELDS=;
+				SET vRulesSourceFile_INCLUDE_FIELDS=;	
+				SET vRulesSourceFile_TRANSFORM_FIELDS=;	
 			ENDIF
-			IF 	upper(vPurpose) = 'TRANSFORM' THEN			
-				TR:
-				NOCONCATENATE 
-				LOAD 	DISTINCT * 		
-				FROM	[$(vRulesSourceFile)] 	($(vSEEQ_XLSFormat), embedded labels, table is TRANSFORM_FIELDS$(vTSEEQ_XLS_Worksheet_PostFix)$(vSEEQ_XLSDollar))
-				WHERE upper(ENABLED)='Y'
-				;
-			ENDIF
+			
 			UNQUALIFY *;
 			IF upper(vPurpose) = 'EXTRACT' OR Upper(vPurpose) = 'TRANSFORM' THEN
 				DROP FIELD ENABLED;
 			ENDIF
 			RENAME Table EX to ExcludeFieldsForAllTables;
 			RENAME Table IN to IncludeFieldsForAllTables;
-			RENAME Table TR to TransformFieldsForAllTables;					
+			RENAME Table TR to TransformFieldsForAllTables;		
 		ENDIF
 	loop while vSEEQ_RulesReadSuccessFlag = 0
 	SET vSEEQ_MaxRulesTryCount='';
@@ -110,6 +149,7 @@ sub InitVariablesOuter
 	SET ErrorMode = 1;
 	SET vSEEQ_RulesFieldList = '';	
 	SET vSEEQ_RulesReadSuccessFlag = '';
+	SET vTSEEQ_RuleFileType=;
 end sub // InitVariablesOuter
 /******************************************************************************************************************************************/
 sub InitVariablesInner

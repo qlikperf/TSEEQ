@@ -77,3 +77,4 @@ vSEEQ_SourceFolderPostfix
 vSEEQScriptPath
 vTSEEQ_RetainFieldRulesFlag
 vTSEEQ_SimulateLatencyFlag
+vSEEQ_PostLoadScript

@@ -1,0 +1,17 @@
+﻿Comment,Target,Field,ENABLED,Order
+Sample of,plan_transactions,a.svc_id,Y,1
+Sample Rule,plan_transactions,a.cust_id,Y,2
+Sample Rule,plan_transactions,a.last_update_date,Y,3
+Sample Rule,plan_transactions,a.user_id_created,Y,4
+Sample Rule,plan_transactions,a.user_id_ic,Y,5
+Sample Rule,plan_transactions,b.user_id_assign,Y,6
+Sample Rule,plan_transactions,b.lead_state_cd,Y,7
+Sample Rule,plan_transactions,b.lead_ty_cd,Y,8
+Sample Rule,plan_transactions,a.wd_cd,Y,9
+Sample Rule pulling all fields in a table,Fact_Sales_Activity,FSA.*,Y,1
+Sample Rule showing inclusion of a single field,Fact_Sales_Activity,FSA.Upd_Batch_Id,Y,2
+Sample Rule showing inclusion of multiple fields (comma-separated) in a single cell,,"dar.Acct_Rep_Job_Cd,
+de.Job_Desc",Y,3
+"Sample Rule showing use of SQL AS (alias), with a single field",Fact_Sales_Activity,de.First_Name AS Acct_Rep_First_Name,Y,4
+"Sample Rule showing use of SQL AS (alias), with multiple fields (comma-separated) in a single cell",Fact_Sales_Activity,"dar.Acct_Rep_Job_Cd as Acct_Rep_Job_Cd,
+de.Job_Desc As Acct_Rep_Job_Desc",Y,5

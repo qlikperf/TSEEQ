@@ -7,8 +7,8 @@ sub StoreQVD
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.7
-	Date:		2018-12-09
+	Version:	4.0.2
+	Date:		2019-09-20
 
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -49,18 +49,13 @@ sub StoreQVD
 //	IF  vSEEQ_NoOfRowsInTarget > 0 OR upper(vTSEEQ_Mode) = 'GENERATE ONLY' OR vSEEQ_ThisIsMappingTable THEN 	
 		[Execution Stats]:
 		LOAD 
-			// subfield(DocumentName(), '.', 1) AS [QVW],	// 2017-04-19 JRR commented this line.
 			 if ( len(trim(DocumentTitle() ) ) > 0, DocumentTitle(), subfield(DocumentName(), '.', 1) ) AS [QVW], // 2017-04-19 JRR added this line.
 			'$(vSEEQ_Messages)' AS [TSEEQ Execution Messages],
 			$(vSEEQ_BatchStartTime) 	AS [Batch Start Time],
-	//				'$(vSEEQ_Comment)' AS [Comment],
-//			'$(vSEEQ_IterationStartTime)' AS [$(vPurpose) Start Time],
 			'$(vSEEQ_IterationStartTime)' AS [EEE Start Time],			
 			'$(vSEEQ_Constraints)'		 AS [Query Constaint],
 			$(vSEEQ_TargetKey) AS SEEQ_TargetKey,
 			'$(vPurpose)' AS [ETL Operation],
-//			$(vSEEQ_NumFields$(vPurposeED)) AS [# Fields $(vPurposeED)], 
-//			$(vSEEQ_NumRecords$(vPurposeED)) AS [# Rows $(vPurposeED)], 
 			$(vSEEQ_NumFields$(vPurposeED)) AS [# Fields], 
 			$(vSEEQ_NumRecords$(vPurposeED)) AS [# Rows], 
 			$(vSEEQ_NumFieldsStored) AS [# Fields Stored], 
@@ -75,7 +70,6 @@ sub StoreQVD
 			) 			AS [Time for QVD Store ],
 			$(vSEEQ_TimeIncrementalPostProccessing) AS [Time for Incremental Post-Proc],
 			$(vSEEQ_TimeIncrementalPreProccessing) AS [Time for Incremental Pre-Proc],				
-//			$(vSEEQ_TimeLoad) AS [Time for $(vPurpose)],	
 			$(vSEEQ_TimeLoad) AS [Time for ETL Operation],				
 			$(vSEEQ_TimeIteration)			 AS [Time Total for Table]		
 			AutoGenerate 1;
@@ -158,4 +152,76 @@ sub SEEQ_Terminate
 		DROP Table 	TransformFieldsForAllTables;
 	ENDIF
 ENDSUB	
+
+//sub SEEQ_Terminate
+//	IF NoOfRows('Execution Stats') > 0 THEN 
+//    	JOIN ([Execution Stats]) LOAD * Resident SEEQ_ExecutionTrace WHERE upper([EEE Executed Script]) <> 'INIT';
+//    	DROP Table SEEQ_ExecutionTrace;
+//	ENDIF
+//	IF upper(vPurpose) <> 'LOAD'  and upper(vTSEEQ_Mode) = 'GENERATE AND EXECUTE'  THEN
+//		// create QVD with EXTRACT & TRANSFORM performance statistics:
+//			LET vEEEQVDTraceFile = 'Historical ' & Capitalize(vPurpose);
+//			IF len(NoOfRows('Execution Stats') ) > 0 THEN
+//				QVDsGeneratedHistorical:
+//				NOCONCATENATE LOAD * Resident [Execution Stats] WHERE len(trim([QVD])) > 0;
+//				IF len(trim(QvdCreateTime('$(vETLStatisticsQVDPath)$(vEEEQVDTraceFile).qvd')) ) > 0 THEN		// QVD exists; load records from prior extract/tranform
+//					CONCATENATE (QVDsGeneratedHistorical) 
+//					First 100000	// keep no more than 100,000 records from prior executions. This is an arbitrary limit and could be raised.
+//					LOAD * FROM [$(vETLStatisticsQVDPath)\$(vEEEQVDTraceFile).qvd] (qvd);
+//				ENDIF
+//				STORE [QVDsGeneratedHistorical] INTO [$(vETLStatisticsQVDPath)$(vEEEQVDTraceFile).qvd] (qvd);
+//				DROP Table QVDsGeneratedHistorical;
+//			ENDIF
+//	ENDIF
+//
+//	// Destroy all TSEEQ (formerly SEEQ) variables, which are not needed after the engine executes, by setting each to null().  
+//	TSEEQ_var_list_destroy_tmp:		
+//	LOAD Variable as [Variable Name]
+//	FROM
+//	[$(vCommonScriptPath)\EEE\SEEQ_VariableList.txt]
+//	(txt, codepage is 1252, embedded labels, delimiter is ' ', msq);
+//
+//	TSEEQ_var_list_destroy:		// add fields that are required by Load_Variables_from_Resident().  Most are placeholders.
+//	LOAD 
+//		*,
+//		'' AS [Variable Definition],	
+//		'SET' AS [SET or LET],
+//		1 AS [Load Order],				.	//	placeholder
+//		null() AS VariableSourceFile,		//	placeholder
+//		null() AS VariableSourceFilePath,	//	placeholder
+//		'zzz' AS Comment,						//	placeholder
+//		null() AS [Exclude From Application]	//	placeholder
+//	Resident SEEQ_var_list_destroy_tmp;
+//	DROP Table SEEQ_var_list_destroy_tmp;
+//
+//	call Load_Variables_from_Resident('TSEEQ_var_list_destroy', 'DROP')	// set each variable to blank and drop variable metadata.
+//
+//	DROP Table TSEEQ_var_list_destroy;
+//
+//	// BEGIN BLOCK JRR added on 2017-04-11 to support multiple SEEQ invocations from a single QVF
+//	// 2017-06-05 JRR removed square brackets around table name in call to NoOfRows.
+//	if len ( NoOfRows('Execution Stats For Entire Reload') ) > 0 THEN 
+//		Concatenate ([Execution Stats For Entire Reload]) LOAD * Resident [Execution Stats];
+//	ELSE
+//		[Execution Stats For Entire Reload]:
+//		NoConcatenate LOAD * Resident [Execution Stats];
+//	ENDIF
+//	DROP Table [Execution Stats];
+//	// 2017-06-05 JRR removed square brackets around table name in call to NoOfRows.
+// 	 if len ( NoOfRows('Rules For Entire Reload') ) > 0 THEN 
+//		Concatenate ([Rules For Entire Reload]) LOAD * Resident [Rules];
+//	ELSE
+//		[Rules For Entire Reload]:
+//		NoConcatenate LOAD * Resident [Rules];
+//	ENDIF
+//	DROP Table [Rules];
+//	// END BLOCK JRR added on 2017-04-11 to support multiple SEEQ invocations from a single QVF
+//
+//	IF (upper(vPurpose) = 'EXTRACT' or  upper(vPurpose)= 'TRANSFORM' ) AND vTSEEQ_RetainFieldRulesFlag <> 1  THEN 
+//		DROP Table 	ExcludeFieldsForAllTables, 	IncludeFieldsForAllTables;
+//	ENDIF
+//	IF upper(vPurpose) = 'TRANSFORM'  AND vTSEEQ_RetainFieldRulesFlag <> 1 THEN 
+//		DROP Table 	TransformFieldsForAllTables;
+//	ENDIF
+//ENDSUB	
 /******************************************************************************************************************************************/

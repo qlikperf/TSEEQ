@@ -71,6 +71,18 @@ REM
 	Copy  "..\..\Source Documents\TSEEQ Sales Sample\ETL_Rules\SalesTransformRules.xls"  "..\..\Source Documents\%NewAppName%\ETL_Rules\%NewAppName%TransformRules.xls"
 	Copy  "..\..\Source Documents\TSEEQ Sales Sample\ETL_Rules\SalesLoadRules.xls"   	"..\..\Source Documents\%NewAppName%\ETL_Rules\%NewAppName%LoadRules.xls"
 	Copy  "..\..\Source Documents\TSEEQ Sales Sample\Variables\Sales_Variables.xls"   	"..\..\Source Documents\%NewAppName%\Variables\%NewAppName%_Variables.xls"
+	Copy  "..\..\Source Documents\TSEEQ Sales Sample\Variables\Sales_Extract_Variables.xls"   	"..\..\Source Documents\%NewAppName%\Variables\%NewAppName%_Extract_Variables.xls"
+
+	Copy  "%vTSEEQSalesFolder%ETL_Rules\CSV\SalesExtractRules_TABLES_Worksheet.csv"   "%vNewAppFolder%\ETL_Rules\CSV\%vNewAppName%ExtractRules_TABLES_Worksheet.csv"
+	Copy  "%vTSEEQSalesFolder%ETL_Rules\CSV\SalesExtractRules_INCLUDE_FIELDS_Worksheet.csv"   "%vNewAppFolder%\ETL_Rules\CSV\%vNewAppName%ExtractRules_INCLUDE_FIELDS_Worksheet.csv"
+	Copy  "%vTSEEQSalesFolder%ETL_Rules\CSV\SalesExtractRules_EXCLUDE_FIELDS_Worksheet.csv"   "%vNewAppFolder%\ETL_Rules\CSV\%vNewAppName%ExtractRules_EXCLUDE_FIELDS_Worksheet.csv"
+
+	Copy  "%vTSEEQSalesFolder%ETL_Rules\CSV\SalesTransformRules_TABLES_Worksheet.csv"   "%vNewAppFolder%\ETL_Rules\CSV\%vNewAppName%TransformRules_TABLES_Worksheet.csv"
+	Copy  "%vTSEEQSalesFolder%ETL_Rules\CSV\SalesTransformRules_INCLUDE_FIELDS_Worksheet.csv"   "%vNewAppFolder%\ETL_Rules\CSV\%vNewAppName%TransformRules_INCLUDE_FIELDS_Worksheet.csv"
+	Copy  "%vTSEEQSalesFolder%ETL_Rules\CSV\SalesTransformRules_EXCLUDE_FIELDS_Worksheet.csv"   "%vNewAppFolder%\ETL_Rules\CSV\%vNewAppName%TransformRules_EXCLUDE_FIELDS_Worksheet.csv"
+	Copy  "%vTSEEQSalesFolder%ETL_Rules\CSV\SalesTransformRules_TRANSFORM_FIELDS_Worksheet.csv"   "%vNewAppFolder%\ETL_Rules\CSV\%vNewAppName%TransformRules_TRANSFORM_FIELDS_Worksheet.csv"
+
+	Copy  "%vTSEEQSalesFolder%ETL_Rules\CSV\SalesLoadRules_TABLES_Worksheet.csv"   "%vNewAppFolder%\ETL_Rules\CSV\%vNewAppName%LoadRules_TABLES_Worksheet.csv"
 exit /b
 
 

@@ -1,0 +1,175 @@
+﻿2019-09-20 04:15:45      Execution started.
+2019-09-20 04:15:45      QlikView Desktop Version      12.0.20400.0
+2019-09-20 04:15:45      CPU Target                    x64
+2019-09-20 04:15:45      Operating System              Windows 10 Enterprise  (64 bit edition)
+2019-09-20 04:15:45      Wow64 mode                    Not using Wow64
+2019-09-20 04:15:45      Language                      0409 English (United States) English
+2019-09-20 04:15:45      Country                       1 United States United States
+2019-09-20 04:15:45      MDAC Version                  6.3.9600.16384
+2019-09-20 04:15:45      MDAC Full Install Version     6.3.9600.16384
+2019-09-20 04:15:45      PreferredCompression          2
+2019-09-20 04:15:45      EnableParallelReload          1
+2019-09-20 04:15:45      ParallelizeQvdLoads           1
+2019-09-20 04:15:45      AutoSaveAfterReload           0
+2019-09-20 04:15:45      BackupBeforeReload            1
+2019-09-20 04:15:45      EnableFlushLog                1
+2019-09-20 04:15:45      SaveInfoWhenSavingFile        0
+2019-09-20 04:15:45      UserLogfileCharset            65001
+2019-09-20 04:15:45      OdbcLoginTimeout              -1
+2019-09-20 04:15:45      OdbcConnectionTimeout         -1
+2019-09-20 04:15:45      ScriptWantsDbWrite            false
+2019-09-20 04:15:45      ScriptWantsExe                false
+2019-09-20 04:15:45      LogFile CodePage Used:        65001
+2019-09-20 04:15:45      UseMemoryFillPattern          1
+2019-09-20 04:15:45      ScriptMode                    Legacy (gives greater system access) (aka qv11 mode)
+2019-09-20 04:15:45      ReloadCodebase                Classic
+2019-09-20 04:15:45      Reload Executed By            QTSEL\jrs
+2019-09-20 04:15:45      Process Executing             QlikView Desktop
+2019-09-20 04:15:45      Process ID                    137196
+2019-09-20 04:15:45 0016 Worksheets:
+2019-09-20 04:15:45 0017 LOAD * Inline [
+2019-09-20 04:15:45 0018 Purpose,	Worksheet
+2019-09-20 04:15:45 0019 Extract,	TABLES
+2019-09-20 04:15:45 0020 Extract,	INCLUDE_FIELDS
+2019-09-20 04:15:45 0021 Extract,	EXCLUDE_FIELDS
+2019-09-20 04:15:45 0022 Transform,	TABLES
+2019-09-20 04:15:45 0023 Transform,	INCLUDE_FIELDS
+2019-09-20 04:15:45 0024 Transform,	EXCLUDE_FIELDS
+2019-09-20 04:15:45 0025 Transform,	TRANSFORM_FIELDS
+2019-09-20 04:15:45 0026 Load,		TABLES
+2019-09-20 04:15:45 0027 ]
+2019-09-20 04:15:45      	2 fields found: Purpose, Worksheet, 
+2019-09-20 04:15:45      8 lines fetched
+2019-09-20 04:15:45 0033 LET vNumWorksheets=NoOfRows('Worksheets')
+2019-09-20 04:15:45 0035 for i = 0 to vNumWorksheets-1
+2019-09-20 04:15:45 0036 
+2019-09-20 04:15:45 0036   LET vPurpose =  peek('Purpose', 0, 'Worksheets')
+2019-09-20 04:15:45 0037   LET vWorksheet =  peek('Worksheet', 0, 'Worksheets')
+2019-09-20 04:15:45 0038   TRACE 'Extract & TABLES'
+2019-09-20 04:15:45 0038   'Extract & TABLES'
+2019-09-20 04:15:45 0039   
+2019-09-20 04:15:45 0039   [TABLES]:
+2019-09-20 04:15:45 0040   	LOAD *
+2019-09-20 04:15:45 0041   	FROM
+2019-09-20 04:15:45 0042   	[c:\TSEEQ\Source Documents\TSEEQ Sales Sample\ETL_Rules\SalesExtractRules.xls]
+2019-09-20 04:15:45 0043   	(biff, embedded labels, table is TABLES$)	WHERE ENABLED='Y'	
+2019-09-20 04:15:45        	16 fields found: Comment, Target Folder, Target, Source, Row Limit, Load Command, ENABLED, Incremental Load Type, Last Modfied Timestamp Field, Last Modfied Timestamp Format for Query, Incremental ID Field(s), Stale After (Days), Fields, Constraints, Keep or Drop, Post Load Script, 
+2019-09-20 04:15:45        8 lines fetched
+2019-09-20 04:15:45 0044   STORE TABLES INTO [c:\TSEEQ\Source Documents\TSEEQ Sales Sample\ETL_Rules\CSV\SalesExtractRules_TABLES_WorkSheet.csv] (TXT)
+2019-09-20 04:15:45 0045   DROP Table [TABLES]
+2019-09-20 04:15:45 0046 NEXT
+2019-09-20 04:15:45 0047 
+2019-09-20 04:15:45 0036   LET vPurpose =  peek('Purpose', 1, 'Worksheets')
+2019-09-20 04:15:45 0037   LET vWorksheet =  peek('Worksheet', 1, 'Worksheets')
+2019-09-20 04:15:45 0038   TRACE 'Extract & INCLUDE_FIELDS'
+2019-09-20 04:15:45 0038   'Extract & INCLUDE_FIELDS'
+2019-09-20 04:15:45 0039   
+2019-09-20 04:15:45 0039   [INCLUDE_FIELDS]:
+2019-09-20 04:15:45 0040   	LOAD *
+2019-09-20 04:15:45 0041   	FROM
+2019-09-20 04:15:45 0042   	[c:\TSEEQ\Source Documents\TSEEQ Sales Sample\ETL_Rules\SalesExtractRules.xls]
+2019-09-20 04:15:45 0043   	(biff, embedded labels, table is INCLUDE_FIELDS$)	WHERE ENABLED='Y'	
+2019-09-20 04:15:45        	5 fields found: Comment, Target, Field, ENABLED, Order, 
+2019-09-20 04:15:45        14 lines fetched
+2019-09-20 04:15:45 0044   STORE INCLUDE_FIELDS INTO [c:\TSEEQ\Source Documents\TSEEQ Sales Sample\ETL_Rules\CSV\SalesExtractRules_INCLUDE_FIELDS_WorkSheet.csv] (TXT)
+2019-09-20 04:15:45 0045   DROP Table [INCLUDE_FIELDS]
+2019-09-20 04:15:45 0046 NEXT
+2019-09-20 04:15:45 0047 
+2019-09-20 04:15:45 0036   LET vPurpose =  peek('Purpose', 2, 'Worksheets')
+2019-09-20 04:15:45 0037   LET vWorksheet =  peek('Worksheet', 2, 'Worksheets')
+2019-09-20 04:15:45 0038   TRACE 'Extract & EXCLUDE_FIELDS'
+2019-09-20 04:15:45 0038   'Extract & EXCLUDE_FIELDS'
+2019-09-20 04:15:45 0039   
+2019-09-20 04:15:45 0039   [EXCLUDE_FIELDS]:
+2019-09-20 04:15:45 0040   	LOAD *
+2019-09-20 04:15:45 0041   	FROM
+2019-09-20 04:15:45 0042   	[c:\TSEEQ\Source Documents\TSEEQ Sales Sample\ETL_Rules\SalesExtractRules.xls]
+2019-09-20 04:15:45 0043   	(biff, embedded labels, table is EXCLUDE_FIELDS$)	WHERE ENABLED='Y'	
+2019-09-20 04:15:45        	4 fields found: Comment, Target, Field, ENABLED, 
+2019-09-20 04:15:45        2 lines fetched
+2019-09-20 04:15:45 0044   STORE EXCLUDE_FIELDS INTO [c:\TSEEQ\Source Documents\TSEEQ Sales Sample\ETL_Rules\CSV\SalesExtractRules_EXCLUDE_FIELDS_WorkSheet.csv] (TXT)
+2019-09-20 04:15:45 0045   DROP Table [EXCLUDE_FIELDS]
+2019-09-20 04:15:45 0046 NEXT
+2019-09-20 04:15:45 0047 
+2019-09-20 04:15:45 0036   LET vPurpose =  peek('Purpose', 3, 'Worksheets')
+2019-09-20 04:15:45 0037   LET vWorksheet =  peek('Worksheet', 3, 'Worksheets')
+2019-09-20 04:15:45 0038   TRACE 'Transform & TABLES'
+2019-09-20 04:15:45 0038   'Transform & TABLES'
+2019-09-20 04:15:45 0039   
+2019-09-20 04:15:45 0039   [TABLES]:
+2019-09-20 04:15:45 0040   	LOAD *
+2019-09-20 04:15:45 0041   	FROM
+2019-09-20 04:15:45 0042   	[c:\TSEEQ\Source Documents\TSEEQ Sales Sample\ETL_Rules\SalesTransformRules.xls]
+2019-09-20 04:15:45 0043   	(biff, embedded labels, table is TABLES$)	WHERE ENABLED='Y'	
+2019-09-20 04:15:45        	16 fields found: Sort Order, Comment, Target Folder, Target, Source Folder, Source, Source Type, External Source Format, Row Limit, Load Command, ENABLED, Stale After (Days), Fields, Constraints, Keep or Drop, Post Load Script, 
+2019-09-20 04:15:45        9 lines fetched
+2019-09-20 04:15:45 0044   STORE TABLES INTO [c:\TSEEQ\Source Documents\TSEEQ Sales Sample\ETL_Rules\CSV\SalesTransformRules_TABLES_WorkSheet.csv] (TXT)
+2019-09-20 04:15:45 0045   DROP Table [TABLES]
+2019-09-20 04:15:45 0046 NEXT
+2019-09-20 04:15:45 0047 
+2019-09-20 04:15:45 0036   LET vPurpose =  peek('Purpose', 4, 'Worksheets')
+2019-09-20 04:15:45 0037   LET vWorksheet =  peek('Worksheet', 4, 'Worksheets')
+2019-09-20 04:15:45 0038   TRACE 'Transform & INCLUDE_FIELDS'
+2019-09-20 04:15:45 0038   'Transform & INCLUDE_FIELDS'
+2019-09-20 04:15:45 0039   
+2019-09-20 04:15:45 0039   [INCLUDE_FIELDS]:
+2019-09-20 04:15:45 0040   	LOAD *
+2019-09-20 04:15:45 0041   	FROM
+2019-09-20 04:15:45 0042   	[c:\TSEEQ\Source Documents\TSEEQ Sales Sample\ETL_Rules\SalesTransformRules.xls]
+2019-09-20 04:15:45 0043   	(biff, embedded labels, table is INCLUDE_FIELDS$)	WHERE ENABLED='Y'	
+2019-09-20 04:15:45        	4 fields found: Comment, Target, Field, ENABLED, 
+2019-09-20 04:15:45        14 lines fetched
+2019-09-20 04:15:45 0044   STORE INCLUDE_FIELDS INTO [c:\TSEEQ\Source Documents\TSEEQ Sales Sample\ETL_Rules\CSV\SalesTransformRules_INCLUDE_FIELDS_WorkSheet.csv] (TXT)
+2019-09-20 04:15:45 0045   DROP Table [INCLUDE_FIELDS]
+2019-09-20 04:15:45 0046 NEXT
+2019-09-20 04:15:45 0047 
+2019-09-20 04:15:45 0036   LET vPurpose =  peek('Purpose', 5, 'Worksheets')
+2019-09-20 04:15:45 0037   LET vWorksheet =  peek('Worksheet', 5, 'Worksheets')
+2019-09-20 04:15:45 0038   TRACE 'Transform & EXCLUDE_FIELDS'
+2019-09-20 04:15:45 0038   'Transform & EXCLUDE_FIELDS'
+2019-09-20 04:15:45 0039   
+2019-09-20 04:15:45 0039   [EXCLUDE_FIELDS]:
+2019-09-20 04:15:45 0040   	LOAD *
+2019-09-20 04:15:45 0041   	FROM
+2019-09-20 04:15:45 0042   	[c:\TSEEQ\Source Documents\TSEEQ Sales Sample\ETL_Rules\SalesTransformRules.xls]
+2019-09-20 04:15:45 0043   	(biff, embedded labels, table is EXCLUDE_FIELDS$)	WHERE ENABLED='Y'	
+2019-09-20 04:15:45        	4 fields found: Comment, Target, Field, ENABLED, 
+2019-09-20 04:15:45        7 lines fetched
+2019-09-20 04:15:45 0044   STORE EXCLUDE_FIELDS INTO [c:\TSEEQ\Source Documents\TSEEQ Sales Sample\ETL_Rules\CSV\SalesTransformRules_EXCLUDE_FIELDS_WorkSheet.csv] (TXT)
+2019-09-20 04:15:45 0045   DROP Table [EXCLUDE_FIELDS]
+2019-09-20 04:15:45 0046 NEXT
+2019-09-20 04:15:45 0047 
+2019-09-20 04:15:45 0036   LET vPurpose =  peek('Purpose', 6, 'Worksheets')
+2019-09-20 04:15:45 0037   LET vWorksheet =  peek('Worksheet', 6, 'Worksheets')
+2019-09-20 04:15:45 0038   TRACE 'Transform & TRANSFORM_FIELDS'
+2019-09-20 04:15:45 0038   'Transform & TRANSFORM_FIELDS'
+2019-09-20 04:15:45 0039   
+2019-09-20 04:15:45 0039   [TRANSFORM_FIELDS]:
+2019-09-20 04:15:45 0040   	LOAD *
+2019-09-20 04:15:45 0041   	FROM
+2019-09-20 04:15:45 0042   	[c:\TSEEQ\Source Documents\TSEEQ Sales Sample\ETL_Rules\SalesTransformRules.xls]
+2019-09-20 04:15:45 0043   	(biff, embedded labels, table is TRANSFORM_FIELDS$)	WHERE ENABLED='Y'	
+2019-09-20 04:15:45        	6 fields found: Target, Target Field Definition, Target Field Name, ENABLED, Field Order, Comment, 
+2019-09-20 04:15:45        9 lines fetched
+2019-09-20 04:15:45 0044   STORE TRANSFORM_FIELDS INTO [c:\TSEEQ\Source Documents\TSEEQ Sales Sample\ETL_Rules\CSV\SalesTransformRules_TRANSFORM_FIELDS_WorkSheet.csv] (TXT)
+2019-09-20 04:15:45 0045   DROP Table [TRANSFORM_FIELDS]
+2019-09-20 04:15:45 0046 NEXT
+2019-09-20 04:15:45 0047 
+2019-09-20 04:15:45 0036   LET vPurpose =  peek('Purpose', 7, 'Worksheets')
+2019-09-20 04:15:45 0037   LET vWorksheet =  peek('Worksheet', 7, 'Worksheets')
+2019-09-20 04:15:45 0038   TRACE 'Load & TABLES'
+2019-09-20 04:15:45 0038   'Load & TABLES'
+2019-09-20 04:15:45 0039   
+2019-09-20 04:15:45 0039   [TABLES]:
+2019-09-20 04:15:45 0040   	LOAD *
+2019-09-20 04:15:45 0041   	FROM
+2019-09-20 04:15:45 0042   	[c:\TSEEQ\Source Documents\TSEEQ Sales Sample\ETL_Rules\SalesLoadRules.xls]
+2019-09-20 04:15:45 0043   	(biff, embedded labels, table is TABLES$)	WHERE ENABLED='Y'	
+2019-09-20 04:15:45        	13 fields found: Comment, Load Order, Target, Source Folder, Source, Load Command, ENABLED, Fieldszz, Constraints, Row Limit, F11, F12, F13, 
+2019-09-20 04:15:45        9 lines fetched
+2019-09-20 04:15:45 0044   STORE TABLES INTO [c:\TSEEQ\Source Documents\TSEEQ Sales Sample\ETL_Rules\CSV\SalesLoadRules_TABLES_WorkSheet.csv] (TXT)
+2019-09-20 04:15:45 0045   DROP Table [TABLES]
+2019-09-20 04:15:45 0046 NEXT
+2019-09-20 04:15:45 0047 
+2019-09-20 04:15:45 0048 exit SCRIPT
+2019-09-20 04:15:45      Execution finished.

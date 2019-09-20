@@ -1,0 +1,15 @@
+﻿Comment,Target,Field,ENABLED
+,OrderDetails,LineNo,Y
+,OrderDetails,OrderID,Y
+,OrderDetails,ProductID,Y
+,OrderDetails,Quantity,Y
+,OrderDetails,UnitPrice,Y
+,Shipments,ShipperID,Y
+,Shipments,ShipmentDate,Y
+,Budget,2005,Y
+,Budget,2006,Y
+,Budget,2007,Y
+,Budget,2008,Y
+,Budget,2009,Y
+,EmployeesOfficesMap,EmpID,Y
+,EmployeesOfficesMap,Office,Y

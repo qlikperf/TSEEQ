@@ -1,0 +1,11 @@
+﻿Target,Target Field Definition,Target Field Name,ENABLED,Field Order,Comment
+Budget,"Office&'-'&EmployeeID",BudgetKey,Y,1,
+OrderDetails,"Autonumber(OrderID&'-'&LineNo)",OrderLineKey,Y,1,
+OrderDetails,"money( ( Quantity * UnitPrice  )  * 
+( 1 - Discount), '$#,##0.00;($#,##0.00)'  )",Line Sales Amount,Y,,
+OrderDetails,"num( Discount, '#,##0%' )",Discount %,Y,,
+Orders,"date ( AddMonths( OrderDate, 93 ) )",Order Date,Y,,"The sample data is old, so we add months to make it current."
+OrdersMappingTest,"applymap('EmployeesOfficesMap', EmployeeID, 'NO MATCH')",EmployeeOffice,Y,,
+Products,UnitPrice,Catalogue Price,Y,,
+Shipments,"Autonumber(OrderID&'-'&LineNo)",OrderLineKey,Y,1,
+Shippers,CompanyName,Shipper Name,Y,,

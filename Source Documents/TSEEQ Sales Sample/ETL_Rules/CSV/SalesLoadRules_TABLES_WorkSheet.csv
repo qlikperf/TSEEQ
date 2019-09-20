@@ -1,0 +1,13 @@
+﻿Comment,Load Order,Target,Source Folder,Source,Load Command,ENABLED,Fieldszz,Constraints,Row Limit,F11,F12,F13
+,1,Categories,$(vQVDPath)Transformed\,Categories,LOAD,Y,ALL,,,,,
+,2,Customers,$(vQVDPath)Transformed\,Customers,LOAD,Y,ALL,,,,,
+,3,Divisions,$(vQVDPath)Transformed\,Divisions,"//LEFT JOIN (Customers) 
+LOAD",Y,ALL,,,,,
+,4,Orders,$(vQVDPath)Transformed\,Orders,LOAD,Y,,,,,,
+,5,OrderDetails,$(vQVDPath)Transformed\,OrderDetails,"//LEFT JOIN (Orders) 
+LOAD",Y,ALL,,,,,
+,6,Products,$(vQVDPath)Transformed\,Products,LOAD,Y,,,,,,
+,7,Shipments,$(vQVDPath)Transformed\,Shipments,LOAD,Y,,,,,,
+,8,Shippers,$(vQVDPath)Transformed\,Shippers,"//LEFT JOIN (Shipments) 
+LOAD",Y,,,,,,
+,9,Calendar,$(vCommonQVDPath)Extracted\,OrderCalendar,LEFT KEEP (Orders) LOAD,Y,,,,,,

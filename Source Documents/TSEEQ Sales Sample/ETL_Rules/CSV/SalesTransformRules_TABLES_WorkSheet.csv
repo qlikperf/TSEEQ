@@ -1,0 +1,10 @@
+﻿Sort Order,Comment,Target Folder,Target,Source Folder,Source,Source Type,External Source Format,Row Limit,Load Command,ENABLED,Stale After (Days),Fields,Constraints,Keep or Drop,Post Load Script
+1,Source (extracted QVD) originally  from QWT trainining database.,$(vQVDPath)Transformed\,Categories,$(vQVDPath)Extracted\,CategoriesExtract,QVD,,,LOAD,Y,0.000,ALL,,DROP,
+2,Source (extracted QVD) originally  from QWT trainining database.,$(vQVDPath)Transformed\,Customers,$(vQVDPath)Extracted\,CustomersExtract,QVD,,,LOAD,Y,0.000,EXCLUDE_SUBSET,,KEEP,
+3,Source (extracted QVD) originally  from QWT trainining database.,$(vQVDPath)Transformed\,Divisions,$(vQVDPath)Extracted\,DivisionsExtract,QVD,,,LOAD,Y,0.000,ALL,,DROP,
+4,Source (extracted QVD) originally  from QWT trainining database.,$(vQVDPath)Transformed\,OrderDetails,$(vQVDPath)Extracted\,OrderDetailsExtract,QVD,,,LOAD,Y,0.000,EXCLUDE_SUBSET,,DROP,
+5,Source (extracted QVD) originally  from QWT trainining database.,$(vQVDPath)Transformed\,Orders,$(vQVDPath)Extracted\,OrdersExtract,QVD,,,LOAD,Y,0.000,EXCLUDE_SUBSET,,DROP,
+6,Source (extracted QVD) originally  from QWT trainining database.,$(vQVDPath)Transformed\,Products,$(vQVDPath)Extracted\,ProductsExtract,QVD,,,LOAD,Y,0.000,EXCLUDE_SUBSET,,DROP,
+7,Source (extracted QVD) originally  from QWT trainining database.,$(vQVDPath)Transformed\,Shippers,$(vQVDPath)Extracted\,ShippersExtract,QVD,,,LOAD,Y,0.000,EXCLUDE_SUBSET,,KEEP,
+8,Source (extracted QVD) originally  from QWT trainining database.,$(vQVDPath)Transformed\,Shipments,$(vQVDPath)Extracted\,ShipmentsExtract,QVD,,,LOAD,Y,0.000,INCLUDE_SUBSET,,KEEP,
+10,"Employees and associated Offices; this is a simple External (XLS,CSV,etc) example.",$(vQVDPath)Transformed\,EmployeesOffices,$(vEXDPath)XLS\,EmpOff.xls,EXTERNAL,"(biff, embedded labels, table is Employee$)",,LOAD,Y,0.000,ALL,,DROP,

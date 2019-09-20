@@ -1,0 +1,3 @@
+﻿Comment,Target,Field,ENABLED
+Sample Rule,user_details,[Zip Code],Y
+Sample Rule,user_details,[Phone Number],Y

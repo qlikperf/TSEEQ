@@ -1,0 +1,9 @@
+﻿Comment,Target Folder,Target,Source,Row Limit,Load Command,ENABLED,Incremental Load Type,Last Modfied Timestamp Field,Last Modfied Timestamp Format for Query,Incremental ID Field(s),Stale After (Days),Fields,Constraints,Keep or Drop,Post Load Script
+Pulls data from QWT training database,$(vQVDPath)Extracted\,CategoriesExtract,Categories,,SELECT,Y,FULL,,,,0.00,ALL,,DROP,
+Pulls data from QWT training database,$(vQVDPath)Extracted\,CustomersExtract,Customers,,SELECT,Y,FULL,,,,0.00,ALL,,DROP,
+Pulls data from QWT training database,$(vQVDPath)Extracted\,DivisionsExtract,Divisions,,SELECT,Y,FULL,,,,0.00,ALL,,DROP,
+Pulls data from QWT training database,$(vQVDPath)Extracted,OrderDetailsExtract,`Order Details`,,SELECT,Y,FULL,,,,0.00,ALL,,DROP,
+Pulls data from QWT training database,$(vQVDPath)Extracted\,Orders Extract,Orders,,SELECT,Y,FULL,,,,0.00,ALL,,KEEP,
+Pulls data from QWT training database,$(vQVDPath)Extracted\,ProductsExtract,Products,,SELECT,Y,FULL,,,,0.00,ALL,,DROP,
+Pulls data from QWT training database,$(vQVDPath)Extracted\,ShipmentsExtract,Shipments,,SELECT,Y,FULL,,,,0.00,ALL,,DROP,
+Pulls data from QWT training database,$(vQVDPath)Extracted\,ShippersExtract,Shippers,,SELECT,Y,FULL,,,,0.00,ALL,,DROP,

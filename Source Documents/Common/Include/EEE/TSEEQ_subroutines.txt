@@ -7,8 +7,8 @@ Sub ExcludeFieldsInit
 	Author:				Jeff R. Robbins
 	Author email:		jrs@qlik.com; jr@qlikperf.com
 	
-	Version:	3.1.7
-	Date:		2018-12-09
+	Version:	4.0.2
+	Date:		2019-09-20
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -44,8 +44,7 @@ sub IncludeFields
 	IF upper(vPurpose) = 'EXTRACT' AND upper(vSEEQ_Fields) = 'INCLUDE_SUBSET' THEN	
 	// INCLUDE_FIELD processing for TRANSFORM is handled by the TranformFields procedure, farther below
 			IncludeField:
-//			LOAD 	DISTINCT Order, Field AS IncludeField		// 2016-10-25 JRR added Order field.
-			LOAD 	DISTINCT IN.Field AS IncludeField, RowNo() AS Order		// 2016-11-10 JRR added RowNo() AS Order.
+			LOAD 	DISTINCT IN.Field AS IncludeField, RowNo() AS Order
 			Resident IncludeFieldsForAllTables 
 			WHERE $(vSEEQ_GetThisRuleLine)	and purgechar([Target], ' -	') = '$(vSEEQ_TargetWithoutBrackets)';
 
@@ -71,7 +70,7 @@ sub TransformFields
 		LOAD 	DISTINCT 
 				$(vSEEQ_TargetKey) AS SEEQ_TargetKey,
 				[TR.Target Field Definition] AS [Target Field Definition],
-				PurgeChar([TR.Target Field Name],'[]')  AS [Target Field Name], 		//2014-09-28 JRR added PurgeChar to removed square brackets
+				PurgeChar([TR.Target Field Name],'[]')  AS [Target Field Name], 
 				if (IsNull([TR.Field Order]), 99, [TR.Field Order] )	AS [EEE Field Order],	// sort last (99) if field order is not specified
 				'TRANSFORM_FIELDS' AS [Source XLS Sheet]
 		Resident TransformFieldsForAllTables
@@ -128,13 +127,13 @@ sub TransformFields
 					CALL SEEQ_WriteMessage('Switching to all fields (*)');
 				ENDIF
 			ENDIF
-	DROP Table AddFields;		// 2017-12-15 JRR added this line.
-	DROP Table TargetFields;		// 2017-12-15 JRR added this line.
+	DROP Table AddFields;		
+	DROP Table TargetFields;
 	ENDIF	
 END SUB	//  TransformFields
 /******************************************************************************************************************************************/
 sub SEEQ_WriteMessage(vSEEQ_MessageToWrite)
-				TRACE '$(vSEEQ_MessageToWrite)';		// 2018-08-26 JRR added this line.
+				TRACE '$(vSEEQ_MessageToWrite)';
 				SET vSEEQ_Messages=$(vSEEQ_Messages)$(vSEEQ_linefeed) $(vSEEQ_MessageToWrite);
 endsub
 /******************************************************************************************************************************************/
@@ -144,9 +143,9 @@ sub SEEQ_WriteProxyQVD
 		// the need to have transform logic for both QVD and External file types; we can use a single set of logic for both.
 			TmpProxyTable:
 			First 100 LOAD * FROM $(vSEEQ_Source);
-			STORE TmpProxyTable INTO  [$(vSEEQ_TargetFolder)tmp\tmp_TSEEQ_proxy.qvd] (qvd);
+			STORE TmpProxyTable INTO  [$(vSEEQ_TargetFolder)tmp_TSEEQ_proxy.qvd] (qvd);
 			DROP Table TmpProxyTable;
-			SET vSEEQ_TmpProxyTable = [$(vSEEQ_TargetFolder)tmp\tmp_TSEEQ_proxy.qvd] (qvd);
+			SET vSEEQ_TmpProxyTable = [$(vSEEQ_TargetFolder)tmp_TSEEQ_proxy.qvd] (qvd);
 ENDSUB
 /******************************************************************************************************************************************/
 sub SEEQ_TransformIncludeSubset
