@@ -1,7 +1,7 @@
 
 # **__TSEEQ__** ("seek"), The Structured ETL Engine for Qlik
 
-## Latest Release == [4.0.4](https://github.com/qlikperf/TSEEQ/releases/latest)
+## Latest Release == [4.0.3](https://github.com/qlikperf/TSEEQ/releases/latest)
 
 ## Documentation
 Please read the **__TSEEQ__** **[documentation](https://github.com/qlikperf/TSEEQ/blob/master/TSEEQ%20Documentation.pdf)** for step-by-step instructions.
@@ -11,14 +11,18 @@ QlikView (v11 or 12); OR Qlik Sense 2.1 or higher (including all releases named 
 
 ## Install
 To install **__TSEEQ__**, first download the **[Source code (zip) file for the newest release](https://github.com/qlikperf/TSEEQ/releases)**. After you download the file, please check **Unblock** in the file properties and then click **OK**.
+
 ![Unblock](https://github.com/qlikperf/TSEEQ/blob/master/img/unblock_zip_file.png) 
 
-Unzip that file to a folder, and follow instructions in the __TSEEQ Documentation.PDF__ within that folder. 
-
 To reuse previously created folder data connections without modification, Qlik Sense **Desktop** users should extract zip file contents to **c:\TSEEQ** as shown in the screen shot below.  Alternate folder locations may be used, but do require that the Qlik Sense Desktop user modify the pre-built folder data connections within the provided sample QVFs.
+
+
+
 ![FolderStructure](https://github.com/qlikperf/TSEEQ/blob/master/img/preferred_folder_structure_for_Qlik_Sense_Desktop.png) 
 
-For **QlikView** and Qlik Sense **Enterprise**, any folder location may be used, as these products use relative paths and/or centralized folder data connections. 
+For **QlikView** and Qlik Sense **Enterprise**, any folder location may be used, as these products respectively use relative paths and centralized folder data connections. 
+
+After ZIP file contents have been extracted to a folder, please follow instructions in the __TSEEQ Documentation.PDF__ within that folder. 
 
 ## Description
 **__TSEEQ__** implements centralized management of Extract, Transform and Load (ETL) operations that provide data to QlikView and Qlik Sense applications. 
