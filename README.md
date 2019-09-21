@@ -1,10 +1,10 @@
 
 # **__TSEEQ__** ("seek"), The Structured ETL Engine for Qlik
 
-## Latest Release == [4.0.3](https://github.com/qlikperf/TSEEQ/releases/latest)
+## Latest Release == [4.0.4](https://github.com/qlikperf/TSEEQ/releases/latest)
 
 ## Documentation
-Please read the **__TSEEQ__** **[documentation](https://github.com/qlikperf/TSEEQ/blob/master/TSEEQ%20Documentation.pdf)** for step-by-step instructions.
+Please see the **__TSEEQ__** **[documentation](https://github.com/qlikperf/TSEEQ/blob/master/TSEEQ%20Documentation.pdf)** for step-by-step instructions for installation and configuration.
 
 ## Minimum Requirements:
 QlikView (v11 or 12); OR Qlik Sense 2.1 or higher (including all releases named after dates, for example, the "June 2017" and later releases).  **__TSEEQ__** works with both Desktop and Server product variants.
@@ -14,15 +14,10 @@ To install **__TSEEQ__**, first download the **[Source code (zip) file for the n
 
 ![Unblock](https://github.com/qlikperf/TSEEQ/blob/master/img/unblock_zip_file.png) 
 
-To reuse previously created folder data connections without modification, Qlik Sense **Desktop** users should extract zip file contents to **c:\TSEEQ** as shown in the screen shot below.  Alternate folder locations may be used, but do require that the Qlik Sense Desktop user modify the pre-built folder data connections within the provided sample QVFs.
+After unblocking the ZIP file, please follow the Instructions for the **__TSEEQ Sales Sample__** on page 5 of the  **[documentation](https://github.com/qlikperf/TSEEQ/blob/master/TSEEQ%20Documentation.pdf)**. 
 
+This documentation is also contained as a PDF in the **[Source code (zip) file for the newest release](https://github.com/qlikperf/TSEEQ/releases)**.
 
-
-![FolderStructure](https://github.com/qlikperf/TSEEQ/blob/master/img/preferred_folder_structure_for_Qlik_Sense_Desktop.png) 
-
-For **QlikView** and Qlik Sense **Enterprise**, any folder location may be used, as these products respectively use relative paths and centralized folder data connections. 
-
-After ZIP file contents have been extracted to a folder, please follow instructions in the  **__TSEEQ__** **[documentation](https://github.com/qlikperf/TSEEQ/blob/master/TSEEQ%20Documentation.pdf)**. 
 
 ## Description
 **__TSEEQ__** implements centralized management of Extract, Transform and Load (ETL) operations that provide data to QlikView and Qlik Sense applications. 
