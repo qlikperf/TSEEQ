@@ -22,7 +22,7 @@ To reuse previously created folder data connections without modification, Qlik S
 
 For **QlikView** and Qlik Sense **Enterprise**, any folder location may be used, as these products respectively use relative paths and centralized folder data connections. 
 
-After ZIP file contents have been extracted to a folder, please follow instructions in the __TSEEQ Documentation.PDF__ within that folder. 
+After ZIP file contents have been extracted to a folder, please follow instructions in the  **__TSEEQ__** **[documentation](https://github.com/qlikperf/TSEEQ/blob/master/TSEEQ%20Documentation.pdf)**. 
 
 ## Description
 **__TSEEQ__** implements centralized management of Extract, Transform and Load (ETL) operations that provide data to QlikView and Qlik Sense applications. 
