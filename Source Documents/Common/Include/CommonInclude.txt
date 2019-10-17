@@ -6,8 +6,8 @@ sub CommonInit
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.7b
-	Date:		2018-02-19
+	Version:	4.0.5
+	Date:		2019-10-31
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -32,8 +32,8 @@ sub CommonInit
 		SET vLVR_VariableDefinition=;
 	ENDIF
 	
-	IF upper (vPurpose) <> 'APP' THEN 
-		SET HidePrefix='';
+	IF upper (vPurpose) <> 'APP' AND vTSEEQ_Combined_Purpose_Flag <> 1 THEN 
+		SET HidePrefix=''; 
 	ELSE
 		SET HidePrefix='%'; // hide (by default) field names that have names starting with a percent sign.
 	ENDIF
@@ -48,6 +48,9 @@ sub CommonInit
 	TRACE '$(vEnvironment)';
 	TRACE '$(vApp)';
 	TRACE '$(vPurpose)';
+	IF TSEEQ_Combined_Purpose_Flag = 1 THEN 
+		TRACE 'This is a combined purpose (both LOAD and APP) QVF';
+	ENDIF
 	/**************************************************************************************************************************************
 		If table VariableRepository exists, then drop it, as we'll create it from scratch when we load common variables:
 	***************************************************************************************************************************************/
@@ -85,11 +88,11 @@ end sub
 sub CommonEnd
 
 	Trace 'Entering subroutine CommonEnd in $(vCommonScriptPath)\CommonInclude.txt';
-	if upper(vPurpose) = 'LOAD' THEN 
+	if upper(vPurpose) = 'LOAD' OR vTSEEQ_Combined_Purpose_Flag = 1 THEN 
 		RENAME FIELD [QVD Created] to [QVD Loaded];
 	endif
 
-	IF upper(vPurpose) = 'APP' THEN
+	IF upper(vPurpose) = 'APP' OR vTSEEQ_Combined_Purpose_Flag = 1 THEN
 		TSEEQ_RenameMap:  // prefix system fields with '%' so they are invisible to self-service users
 		Mapping LOAD
 		    Old,
@@ -100,6 +103,13 @@ sub CommonEnd
 		;
 		Rename Fields using TSEEQ_RenameMap;
 	ENDIF
+
+	IF	vTSEEQ_Combined_Purpose_Flag =  1 THEN 
+		LET vLOADHelpText = '$(vCombinedPurposeHelpText)';
+		SET vCombinedPurposeHelpText=;
+	ENDIF
+
+	SET vTSEEQ_Combined_Purpose_Flag=;
 
 	LET vReloadTimeEnd = now();		// for performance profiling
 	SET vFinished = 1;  			// 0 means script did not finish; 1 indicates script completion; this is for debugging. 

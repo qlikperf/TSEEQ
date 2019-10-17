@@ -1,0 +1,91 @@
+Trace 'Entering include file: ~\Common\include\Load AdHoc Dimensions And Measures.qvs';
+/****************************************************************************************************************************************
+	File:		Load AdHoc Dimensions And Measures.qvs
+		
+	Author:		Jeff R. Robbins
+	Email:		jrs@qlik.com; jr@QlikPerf.com
+	
+	Version:	4.0.5
+	Date:		2019-10-31
+	
+	This program is provided in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+	
+	Purpose:		Load Dimensions And Measures for the Native Custom Report, which provides ad hoc reporting without Edit mode.
+	
+	Sample Usage:  	
+        
+            SET vNumberOfSelectableDimensions=2;
+            SET vNumberOfSelectableMeasures=2;
+            $(must_Include=[$(vCommonScriptPath)\Load AdHoc Dimensions And Measures.qvs])
+
+****************************************************************************************************************************************/
+for i = 1 to vNumberOfSelectableDimensions
+
+//    if i > 1 THEN 
+//        SET vJoinPrefix='JOIN ([$(vApp)Dimensions])';
+//    ELSE
+//   	 SET vJoinPrefix='';
+//   ENDIF
+    
+    [$(vApp)Dimensions]:
+//    $(vJoinPrefix) LOAD
+	LOAD    
+        "Dimension" as %Dimension$(i),
+        DimField as %SelectableDimField$(i)
+        ,
+	    FileName() as %DimensionSourceFile            
+    FROM [$(vVariablePath)$(vApp) Dashboard Chart Dimensions.xlsx]
+    (ooxml, embedded labels, table is Sheet1)
+    WHERE ENABLED = 'Y';
+    
+    SET vDimensionCaption$(i) = if(GetPossibleCount(%Dimension$(i)) = 1, Only(%Dimension$(i)), ;
+    LET vTemp= chr(39) & 'Select Dimension ' & $(i)  & chr(39) & ')';
+    SET vDimensionCaption$(i)  = '$(vDimensionCaption$(i)) $(vTemp)';
+next i;    
+
+set i=;
+
+for i = 1 to vNumberOfSelectableMeasures
+
+//    if i > 1 THEN 
+//        SET vJoinPrefix='JOIN ([$(vApp)Measures$(i)])';
+//    ELSE
+//   	 SET vJoinPrefix='';
+//   ENDIF
+
+    [$(vApp)Measures$(i)]:
+//    $(vJoinPrefix) LOAD
+		LOAD
+        "Measure" as %Measure$(i),
+        MeasureDefinition as %MeasureDefinition$(i)
+        ,
+    FileName() as _MeasureSourceFile
+    FROM [$(vVariablePath)$(vApp) Dashboard Chart Measures.xlsx]
+    (ooxml, embedded labels, table is Sheet1)
+    WHERE ENABLED = 'Y';
+    
+    SET vMeasureCaption$(i) = if(GetPossibleCount(_Measure$(i)) = 1, Only(_Measure$(i)), ;
+    LET vTemp= chr(39) & 'Select Measure' & $(i)  &  chr(39) & ')';
+    SET vMeasureCaption$(i)  = '$(vMeasureCaption$(i)) $(vTemp)';  
+next i
+
+	SET i=;
+    SET vTemp=;
+    SET vNumberOfSelectableDimensions=;
+    SET vNumberOfSelectableMeasures=;
+	SET vJoinPrefix='';
+	
+	[$(vApp) FilterPaneFields]:
+//    $(vJoinPrefix) LOAD
+	LOAD    
+        "Title" as %FilterPaneTitle,
+        FilterPaneField as %FilterPaneField
+        ,
+	    FileName() as %FilterPaneFieldSourceFile            
+    FROM [$(vVariablePath)$(vApp) Dashboard Selection Pane Fields.xlsx]
+    (ooxml, embedded labels, table is Sheet1)
+    WHERE ENABLED = 'Y';
+	
+Trace 'Exiting include file:  ~\Common\include\Load AdHoc Dimensions And Measures.qvs';
