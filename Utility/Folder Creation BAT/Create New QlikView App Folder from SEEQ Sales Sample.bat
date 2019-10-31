@@ -60,6 +60,8 @@ REM
 	Copy  "..\..\Source Documents\TSEEQ Sales Sample\include\SalesLoadInclude_PreProcessing.txt"   		"..\..\Source Documents\%NewAppName%\include\%NewAppName%LoadInclude_PreProcessing.txt"
 	Copy  "..\..\Source Documents\TSEEQ Sales Sample\include\SalesLoadInclude_PostProcessing.txt"   		"..\..\Source Documents\%NewAppName%\include\%NewAppName%LoadInclude_PostProcessing.txt"
 
+	Copy  "..\..\Source Documents\TSEEQ Sales Sample\include\SalesAppInclude_PostProcessing.txt"   		"..\..\Source Documents\%NewAppName%\include\%NewAppName%AppInclude_PostProcessing.txt"
+
 
 exit /b
 
@@ -72,6 +74,10 @@ REM
 	Copy  "..\..\Source Documents\TSEEQ Sales Sample\ETL_Rules\SalesLoadRules.xls"   	"..\..\Source Documents\%NewAppName%\ETL_Rules\%NewAppName%LoadRules.xls"
 	Copy  "..\..\Source Documents\TSEEQ Sales Sample\Variables\Sales_Variables.xls"   	"..\..\Source Documents\%NewAppName%\Variables\%NewAppName%_Variables.xls"
 	Copy  "..\..\Source Documents\TSEEQ Sales Sample\Variables\Sales_Extract_Variables.xls"   	"..\..\Source Documents\%NewAppName%\Variables\%NewAppName%_Extract_Variables.xls"
+
+	Copy  "..\..\Source Documents\TSEEQ Sales Sample\Variables\Sales Dashboard Chart Dimensions.xlsx"   	"..\..\Source Documents\%NewAppName%\Variables\%NewAppName% Dashboard Chart Dimensions.xlsx"
+	Copy  "..\..\Source Documents\TSEEQ Sales Sample\Variables\Sales Dashboard Chart Measures.xlsx"   	"..\..\Source Documents\%NewAppName%\Variables\%NewAppName% Dashboard Chart Measures.xlsx"
+	Copy  "..\..\Source Documents\TSEEQ Sales Sample\Variables\Sales Dashboard Selection Pane Fields.xlsx"   "..\..\Source Documents\%NewAppName%\Variables\%NewAppName% Dashboard Selection Pane Fields.xlsx"
 
 	Copy  "%vTSEEQSalesFolder%ETL_Rules\CSV\SalesExtractRules_TABLES_Worksheet.csv"   "%vNewAppFolder%\ETL_Rules\CSV\%vNewAppName%ExtractRules_TABLES_Worksheet.csv"
 	Copy  "%vTSEEQSalesFolder%ETL_Rules\CSV\SalesExtractRules_INCLUDE_FIELDS_Worksheet.csv"   "%vNewAppFolder%\ETL_Rules\CSV\%vNewAppName%ExtractRules_INCLUDE_FIELDS_Worksheet.csv"

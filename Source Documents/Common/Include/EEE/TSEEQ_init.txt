@@ -7,8 +7,8 @@ sub InitVariablesOuter
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	4.0.2
-	Date:		2019-09-20
+	Version:	4.0.5
+	Date:		2019-10-31
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -20,12 +20,7 @@ sub InitVariablesOuter
 	// EXTRACTed or TRANSFORMed; this is for performance profiling:
 	LET vPurposeED = '$(vPurpose)' & 'ed';  
 
-            // 2018-07-13 JRR commented the following line: 
-            //         LET vSEEQ_GetThisRuleLine = 'purgechar([Target], ' & chr(39) & ' -         ' & chr(39) & ') = ' & chr(39) &'$' & '(vSEEQ_TargetWithoutBrackets)'& chr(39) &'          AND upper(ENABLED)  = ' & chr(39) & 'Y' & chr(39);
-            // 2018-07-13 JRR added the following line to support wildcard expansion of Targets in INCLUDE, EXCLUDE and TRANSFORM field operations; 2018-08-08 simplified the line to correct over-application of wildcard expansion.
-//            LET vSEEQ_GetThisRuleLine ='wildmatch('&chr(39)&'$'&'(vSEEQ_TargetWithoutBrackets)'&chr(39)&', purgechar([Target], ' & chr(39) & ' -            ' & chr(39) & '))'&'   AND upper(ENABLED)  = ' & chr(39) & 'Y' & chr(39);
-			  LET vSEEQ_GetThisRuleLine ='wildmatch('&chr(39)&'$'&'(vSEEQ_TargetWithoutBrackets)'&chr(39)&', purgechar([Target], ' & chr(39) & ' -            ' & chr(39) & '))';
-
+	LET vSEEQ_GetThisRuleLine ='wildmatch('&chr(39)&'$'&'(vSEEQ_TargetWithoutBrackets)'&chr(39)&', purgechar([Target], ' & chr(39) & ' -            ' & chr(39) & '))';
 
 	LET vSEEQ_BatchStartTime = num(now());
 ////	XLS file format
@@ -231,9 +226,7 @@ sub InitVariablesInner
 	LET vSEEQ_ThisIsMappingTable= if (upper(left(trim(vSEEQ_LoadCommand), 7)) = 'MAPPING', 1, 0);	// 2017-02-21 JRR added this line, which disregards MAPPING if it's preceeded by '//'.
 	LET  vSEEQ_LastModfiedTimestampFormatForQuery = peek('Last Modfied Timestamp Format for Query', $(vSEEQ_OuterLoopCounter), 'Rules');
 
-	// strip initial "where" from the contraint if it exists. The Wildmatch is case insensitive:
-	// IF	WildMatch(ltrim(vSEEQ_Constraints), 'WHERE*') THEN	
-	 IF	left(vSEEQ_Constraints, 5) = 'WHERE' THEN	
+	 IF	upper(left(vSEEQ_Constraints, 5)) = 'WHERE' THEN	// 2019-10-17 JRR added call to upper()
 		LET vSEEQ_Constraints = Right( LTrim(vSEEQ_Constraints),  Len(Ltrim(vSEEQ_Constraints)) - 5  );// strip intial "WHERE" if it exists; we add it back later.
 	ENDIF
 
