@@ -7,8 +7,8 @@ Sub ExcludeFieldsInit
 	Author:				Jeff R. Robbins
 	Author email:		jrs@qlik.com; jr@qlikperf.com
 	
-	Version:	4.0.2
-	Date:		2019-09-20
+	Version:	4.0.6
+	Date:		2020-02-20
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -20,8 +20,7 @@ Sub ExcludeFieldsInit
 			NoConcatenate 
 			LOAD 
 				DISTINCT EX.Field AS ExcludeFields
-			Resident ExcludeFieldsForAllTables WHERE $(vSEEQ_GetThisRuleLine)
-			;
+			Resident ExcludeFieldsForAllTables WHERE $(vSEEQ_GetThisRuleLine);
 			ExcludeFieldsConcat:
 			LOAD 
 				Concat (DISTINCT ExcludeFields, ', ') AS ExcludeFieldsConcat	
@@ -46,7 +45,8 @@ sub IncludeFields
 			IncludeField:
 			LOAD 	DISTINCT IN.Field AS IncludeField, RowNo() AS Order
 			Resident IncludeFieldsForAllTables 
-			WHERE $(vSEEQ_GetThisRuleLine)	and purgechar([Target], ' -	') = '$(vSEEQ_TargetWithoutBrackets)';
+			// WHERE $(vSEEQ_GetThisRuleLine)	and purgechar([Target], ' -	') = '$(vSEEQ_TargetWithoutBrackets)'; // 2020-02-20 JRR COMMENTED THIS LINE
+			WHERE $(vSEEQ_GetThisRuleLine)	; // 2020-02-20 JRR ADDED THIS LINE to enable INCLUDE_FIELD wildcard matching on Targets 
 
 			IncludeFields:
 			LOAD   Concat (DISTINCT IncludeField, ', ' & chr(10), Order ) & chr(10)  AS IncludeFields RESIDENT IncludeField;
@@ -133,7 +133,7 @@ sub TransformFields
 END SUB	//  TransformFields
 /******************************************************************************************************************************************/
 sub SEEQ_WriteMessage(vSEEQ_MessageToWrite)
-				TRACE '$(vSEEQ_MessageToWrite)';
+				TRACE '$(vSEEQ_TargetWithoutBrackets):  $(vSEEQ_MessageToWrite)';
 				SET vSEEQ_Messages=$(vSEEQ_Messages)$(vSEEQ_linefeed) $(vSEEQ_MessageToWrite);
 endsub
 /******************************************************************************************************************************************/

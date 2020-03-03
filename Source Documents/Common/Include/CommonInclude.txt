@@ -6,8 +6,8 @@ sub CommonInit
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	4.0.5
-	Date:		2019-10-31
+	Version:	4.0.6
+	Date:		2020-02-02
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -21,7 +21,7 @@ sub CommonInit
 	SET MoneyFormat='$#,##0;($#,##0)';
 	SET TimeFormat='h:mm:ss TT';
 	SET DateFormat='MM/DD/YYYY';
-	SET TimestampFormat='MM-DD-YY h:mm:ss[.fff] TT';
+	SET TimestampFormat='YYYY-MM-DD h:mm:ss[.fff] TT';
 	SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
 	SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
 
@@ -38,6 +38,7 @@ sub CommonInit
 		SET HidePrefix='%'; // hide (by default) field names that have names starting with a percent sign.
 	ENDIF
 	SET vFinished = 0;  // 0 means script did not finish; 1 inidicates script completion; this is for debugging. 
+
 	/************************************************************************************************************************************
 		Get start time of this reload script. 
 	************************************************************************************************************************************/
@@ -93,6 +94,7 @@ sub CommonEnd
 	endif
 
 	IF upper(vPurpose) = 'APP' OR vTSEEQ_Combined_Purpose_Flag = 1 THEN
+		trace 'TSEEQ_RenameMap applied';
 		TSEEQ_RenameMap:  // prefix system fields with '%' so they are invisible to self-service users
 		Mapping LOAD
 		    Old,

@@ -5,8 +5,8 @@ Trace 'Entering include file: ~\Common\include\Load AdHoc Dimensions And Measure
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	4.0.5
-	Date:		2019-10-31
+	Version:	4.0.6
+	Date:		2020-02-02
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -22,23 +22,15 @@ Trace 'Entering include file: ~\Common\include\Load AdHoc Dimensions And Measure
 
 ****************************************************************************************************************************************/
 for i = 1 to vNumberOfSelectableDimensions
-
-//    if i > 1 THEN 
-//        SET vJoinPrefix='JOIN ([$(vApp)Dimensions])';
-//    ELSE
-//   	 SET vJoinPrefix='';
-//   ENDIF
-    
-    [$(vApp)Dimensions]:
-//    $(vJoinPrefix) LOAD
+  
+    [$(vApp)Dimensions$(i)]:
 	LOAD    
         "Dimension" as %Dimension$(i),
-        DimField as %SelectableDimField$(i)
-        ,
-	    FileName() as %DimensionSourceFile            
+        DimField as %SelectableDimField$(i),
+	    FileName() as %DimensionSourceFile$(i)            
     FROM [$(vVariablePath)$(vApp) Dashboard Chart Dimensions.xlsx]
     (ooxml, embedded labels, table is Sheet1)
-    WHERE ENABLED = 'Y';
+    WHERE ENABLED = 'Y' and [Lowest Dim Allowed] <= $(i);
     
     SET vDimensionCaption$(i) = if(GetPossibleCount(%Dimension$(i)) = 1, Only(%Dimension$(i)), ;
     LET vTemp= chr(39) & 'Select Dimension ' & $(i)  & chr(39) & ')';
@@ -49,20 +41,12 @@ set i=;
 
 for i = 1 to vNumberOfSelectableMeasures
 
-//    if i > 1 THEN 
-//        SET vJoinPrefix='JOIN ([$(vApp)Measures$(i)])';
-//    ELSE
-//   	 SET vJoinPrefix='';
-//   ENDIF
-
     [$(vApp)Measures$(i)]:
-//    $(vJoinPrefix) LOAD
 		LOAD
         "Measure" as %Measure$(i),
-        MeasureDefinition as %MeasureDefinition$(i)
-        ,
-    FileName() as _MeasureSourceFile
-    FROM [$(vVariablePath)$(vApp) Dashboard Chart Measures.xlsx]
+        MeasureDefinition as %MeasureDefinition$(i),
+        FileName() as %MeasureSourceFile$(i) 
+FROM [$(vVariablePath)$(vApp) Dashboard Chart Measures.xlsx]
     (ooxml, embedded labels, table is Sheet1)
     WHERE ENABLED = 'Y';
     
@@ -78,7 +62,6 @@ next i
 	SET vJoinPrefix='';
 	
 	[$(vApp) FilterPaneFields]:
-//    $(vJoinPrefix) LOAD
 	LOAD    
         "Title" as %FilterPaneTitle,
         FilterPaneField as %FilterPaneField

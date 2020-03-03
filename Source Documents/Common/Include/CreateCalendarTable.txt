@@ -1,11 +1,12 @@
+Trace Entering Include File: $(vCommonScriptPath)CreateCalendarTable.txt;
 /***************************************************************************************************************
 In typical production settings, vToday is set to the current date, or the prior date in some cases where
 the data is current as of the prior day.  In test environments where the data is not current, vToday can 
 be set to any prior date.
 ****************************************************************************************************************/
-//	LET vToday = num(Today()); 											// Uncomment this line to override the value set in CommonVariables.xls.
-LET vMinDateNum = num(YearStart(addmonths(vToday, -60)));			// Uncomment this line to override the value set in CommonVariables.xls.
-LET vMaxDateNum = floor(num(YearEnd(addmonths(vToday, 36))));		// Uncomment this line to override the value set in CommonVariables.xls.
+//	LET vToday = num(Today()); 							// Uncomment this line to override the value set in CommonVariables.xls.
+//	LET vMinDateNum = num(YearStart(addmonths(vToday, -60)));			// Uncomment this line to override the value set in CommonVariables.xls.
+//	LET vMaxDateNum = floor(num(YearEnd(addmonths(vToday, 36))));			// Uncomment this line to override the value set in CommonVariables.xls.
 
 sub CreateCalendarQvd( vCCQ_CalendarName, vKEEPorDROP )
 /****************************************************************************************************************************************
@@ -14,8 +15,8 @@ sub CreateCalendarQvd( vCCQ_CalendarName, vKEEPorDROP )
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.7
-	Date:		2018-12-09
+	Version:	4.0.6
+	Date:		2020-02-02
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -53,11 +54,11 @@ sub CreateCalendarQvd( vCCQ_CalendarName, vKEEPorDROP )
 	//*************** Master Calendar ***************
 	[$(vCCQ_CalendarName)Calendar]:
 	LOAD           
-	            IF ( num(TempDate) = num($(vTodayNum)), 1, 0 ) AS [$(vCCQ_CalendarName)Today Flag],
-	            IF (TempDate >= $(vTodayNum)-7 AND TempDate < $(vTodayNum), 1, 0 ) AS [$(vCCQ_CalendarName)Past Week Flag],    		// 7-day span preceeding today                   
-	            IF (TempDate >  ( $(vTodayNum) - 31 ) AND TempDate < $(vTodayNum), 1, 0 ) AS [$(vCCQ_CalendarName)Past Month Flag],  // 30-day span preceeding today
-	            IF (TempDate <  ( $(vTodayNum) + 30 ) AND TempDate >= $(vTodayNum), 1, 0 ) AS [$(vCCQ_CalendarName)Future Month Flag],  // 30-day including today and next 29
-	            IF (TempDate >  ( $(vTodayNum) - 91  ) AND TempDate  < $(vTodayNum), 1, 0 ) AS [$(vCCQ_CalendarName)Past Quarter Flag],	// 90-day span preceeding today
+	            IF ( num(TempDate) = num($(vToday)), 1, 0 ) AS [$(vCCQ_CalendarName)Today Flag],
+	            IF (TempDate >= $(vToday)-7 AND TempDate < $(vToday), 1, 0 ) AS [$(vCCQ_CalendarName)Past Week Flag],    		// 7-day span preceeding today                   
+	            IF (TempDate >  ( $(vToday) - 31 ) AND TempDate < $(vToday), 1, 0 ) AS [$(vCCQ_CalendarName)Past Month Flag],  // 30-day span preceeding today
+	            IF (TempDate <  ( $(vToday) + 30 ) AND TempDate >= $(vToday), 1, 0 ) AS [$(vCCQ_CalendarName)Future Month Flag],  // 30-day including today and next 29
+	            IF (TempDate >  ( $(vToday) - 91  ) AND TempDate  < $(vToday), 1, 0 ) AS [$(vCCQ_CalendarName)Past Quarter Flag],	// 90-day span preceeding today
 	//             //NOTE:  QuarterWeek and Week calculations are offset by 3 days for Vendor Finance reporting.  The TempDate - 3 offsets the date by 3 days.  
 	//             //This is done to start the week on Thursday instead of Sunday.
 	//             IF( 'Q'&ceil(Month(TempDate)/3) <> PEEK(Quarter), 1, 
@@ -109,3 +110,5 @@ sub CreateCalendarQvd( vCCQ_CalendarName, vKEEPorDROP )
 	ENDIF	
 
 ENDSUB 
+
+Trace Exiting Include File: $(vCommonScriptPath)CreateCalendarTable.txt;
