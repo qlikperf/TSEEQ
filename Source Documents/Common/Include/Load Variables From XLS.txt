@@ -2,8 +2,8 @@ sub Load_Variables_from_XLS(vExpressionFile, vWorksheet, vKEEPorDROP)
 /*******************************************************************************************************************************************************
 	Procedure: 	Load_Variables_from_XLS
 
-	Version:	3.1.7
-	Date:		2018-12-09
+	Version:	4.0.6
+	Date:		2020-02-02
 
 	Purpose:	Load variables from the specified XLS file and contained worksheet into a QlikVIew app.
 	
@@ -28,7 +28,7 @@ sub Load_Variables_from_XLS(vExpressionFile, vWorksheet, vKEEPorDROP)
 		exit sub
 	ENDIF
 
-	trace vExpressionFile=$(vExpressionFile);
+	trace 'vExpressionFile=$(vExpressionFile)';
 
 	SET vLVR_VariableDefinition = '';
 	
