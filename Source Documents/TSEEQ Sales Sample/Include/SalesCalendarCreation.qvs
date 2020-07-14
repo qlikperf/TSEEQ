@@ -1,0 +1,35 @@
+//****************************************************************************************************************
+//	This is an example of an externalized include file.
+//****************************************************************************************************************
+Trace Entering Include File: $(vApp)CalendarCreation.qvs;
+
+// Add script here as required.
+    SET vTSEEQ_FactTableDateField='Date';
+    SET vTSEEQ_CalendarFieldNamePrefix='';
+
+AllDates:   
+Load FieldValue('$(vTSEEQ_FactTableDateField)',IterNo()) as TSEEQ_DateDistinct
+AutoGenerate(1)
+While not Isnull(FieldValue('$(vTSEEQ_FactTableDateField)',IterNo()));
+
+MinMaxDates:
+Load 
+    Max(TSEEQ_DateDistinct) as MaxTSEEQ_Date,		// latest date in Fact Table
+    date(Max(TSEEQ_DateDistinct)) as MaxTSEEQ_DateFormatted,		// latest date in Fact Table
+    Min(TSEEQ_DateDistinct) as MinTSEEQ_Date    	// earliest date in Fact Table
+resident AllDates;
+Drop table AllDates; 
+
+// Prior to generating the calendar, read Variables file for values of vMinDateNum, vMaxDateNum and vToday:
+call Load_Variables_from_XLS('$(vVariablePath)$(vApp)_Date_Variables.xls', 'Sheet1', 'KEEP') ;
+
+$(must_Include=$(vCommonScriptPath)createcalendartable.txt); 
+call CreateCalendarQvd('$(vTSEEQ_CalendarFieldNamePrefix)', 'KEEP');			// Create Calendar and then keep the calendar in memory.    
+
+SET vMinDateNum=;
+SET vMaxDateNum=;
+SET vTSEEQ_FactTableDateField=;
+SET vTSEEQ_CalendarFieldNamePrefix=;
+DROP Table MinMaxDates;
+
+Trace Exiting Include File: $(vApp)CalendarCreation.qvs;
