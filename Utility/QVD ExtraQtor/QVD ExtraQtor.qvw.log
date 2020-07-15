@@ -1,0 +1,121 @@
+﻿2020-06-25 21:06:41      Execution started.
+2020-06-25 21:06:41      QlikView Desktop Version      12.40.20100+2019-06-05 16:55:31+e65903c
+2020-06-25 21:06:41      CPU Target                    x64
+2020-06-25 21:06:41      Operating System              Windows 10 Enterprise  (64 bit edition)
+2020-06-25 21:06:41      Wow64 mode                    Not using Wow64
+2020-06-25 21:06:41      Language                      0409 English English
+2020-06-25 21:06:41      Country                       USA United States United States
+2020-06-25 21:06:41      MDAC Version                  6.3.9600.16384
+2020-06-25 21:06:41      MDAC Full Install Version     6.3.9600.16384
+2020-06-25 21:06:41      PreferredCompression          2
+2020-06-25 21:06:41      EnableParallelReload          1
+2020-06-25 21:06:41      ParallelizeQvdLoads           1
+2020-06-25 21:06:41      AutoSaveAfterReload           0
+2020-06-25 21:06:41      BackupBeforeReload            1
+2020-06-25 21:06:41      EnableFlushLog                1
+2020-06-25 21:06:41      UserLogfileCharset            65001
+2020-06-25 21:06:41      OdbcLoginTimeout              -1
+2020-06-25 21:06:41      OdbcConnectionTimeout         -1
+2020-06-25 21:06:41      LongestPossibleLine           1048576
+2020-06-25 21:06:41      MaxCoreMask                   -1
+2020-06-25 21:06:41      WebFileTimeout                0
+2020-06-25 21:06:41      WebFileUserAgent              Mozilla/5.0
+2020-06-25 21:06:41      DontUseInternetCache          1
+2020-06-25 21:06:41      ScriptWantsDbWrite            false
+2020-06-25 21:06:41      ScriptWantsExe                false
+2020-06-25 21:06:41      ICU_FOR_CHARACTER_CLASSIFICATION true
+2020-06-25 21:06:41      ICU_FOR_CODE_PAGES            true
+2020-06-25 21:06:41      ICU_FOR_COLLATION             true
+2020-06-25 21:06:41      ICU_FOR_LOCALE_INFO           true
+2020-06-25 21:06:41      ICU_FOR_SUPPORT_INFO          true
+2020-06-25 21:06:41      ICU_FOR_TIME_ZONE_INFO        true
+2020-06-25 21:06:41      LogFile CodePage Used:        65001
+2020-06-25 21:06:41      UseMemoryFillPattern          1
+2020-06-25 21:06:41      ScriptMode                    Legacy (gives greater system access) (aka qv11 mode)
+2020-06-25 21:06:41      SequentialThreadCount         28
+2020-06-25 21:06:41      NumberOfCores (effective)     8
+2020-06-25 21:06:41      ReloadCodebase                Bnf
+2020-06-25 21:06:41      Reload ID                     9b1d27cc-1379-45e8-b8ca-4894426cd431
+2020-06-25 21:06:41      Reload Executed By            QTSEL\jrs
+2020-06-25 21:06:41      Process Executing             QlikView Desktop
+2020-06-25 21:06:41      Process ID                    121252
+2020-06-25 21:06:41      Grpc version                  6.0.0
+2020-06-25 21:06:41      Protobuf version              3.6.1
+2020-06-25 21:06:41 0002 binary [..\..\Source Documents\Admin\4_App\Architecture Catalog.qvw]
+2020-06-25 21:06:41 0025 sub ExtraQtQVDs (vOutputDirLocal, vOutputFormatIncoming, vKeepOrDropLocal)
+2020-06-25 21:06:41 0033 Trace 'Setting vOutputFormat to CSV; this will over-ride values set in the input box in the QlikView UI sheet.'
+2020-06-25 21:06:41 0033 'Setting vOutputFormat to CSV; this will over-ride values set in the input box in the QlikView UI sheet.'
+2020-06-25 21:06:41 0034 
+2020-06-25 21:06:41 0034 sleep 1500
+2020-06-25 21:06:42 0035 SET vOutputFormat='QVD'
+2020-06-25 21:06:42 0036 call ExtraQtQVDs(vOutputDir, vOutputFormat, 'KEEP')
+  2020-06-25 21:06:42 0038 let vNumberOfTables = NoOfTables()
+  2020-06-25 21:06:42 0039 SET i=
+  2020-06-25 21:06:42 0040 SET j=
+  2020-06-25 21:06:42 0042 FOR i = 0 to vNumberOfTables - 1
+    2020-06-25 21:06:42 0043 let j=i+1
+    2020-06-25 21:06:42 0044 Trace 'Storing table 1 of 5'
+    2020-06-25 21:06:42 0044 'Storing table 1 of 5'
+    2020-06-25 21:06:42 0045 
+    2020-06-25 21:06:42 0045 let vTableName = TableName(i)
+    2020-06-25 21:06:42 0046 IF vOutputFormatIncoming='CSV' THEN
+      2020-06-25 21:06:42 0050 SET vFileExtensionLocal = 'QVD'
+      2020-06-25 21:06:42 0051 SET vOutputFormatLocal = 'QVD'
+      2020-06-25 21:06:42 0052 ENDIF
+    2020-06-25 21:06:42 0053 Store 'Servers' into [.\ExtraQted Files\Servers.QVD] (QVD)
+  2020-06-25 21:06:42 0054 NEXT //i
+    2020-06-25 21:06:42 0043 let j=i+1
+    2020-06-25 21:06:42 0044 Trace 'Storing table 2 of 5'
+    2020-06-25 21:06:42 0044 'Storing table 2 of 5'
+    2020-06-25 21:06:42 0045 
+    2020-06-25 21:06:42 0045 let vTableName = TableName(i)
+    2020-06-25 21:06:42 0046 IF vOutputFormatIncoming='CSV' THEN
+      2020-06-25 21:06:42 0050 SET vFileExtensionLocal = 'QVD'
+      2020-06-25 21:06:42 0051 SET vOutputFormatLocal = 'QVD'
+      2020-06-25 21:06:42 0052 ENDIF
+    2020-06-25 21:06:42 0053 Store 'ComputerProperties' into [.\ExtraQted Files\ComputerProperties.QVD] (QVD)
+  2020-06-25 21:06:42 0054 NEXT //i
+    2020-06-25 21:06:42 0043 let j=i+1
+    2020-06-25 21:06:42 0044 Trace 'Storing table 3 of 5'
+    2020-06-25 21:06:42 0044 'Storing table 3 of 5'
+    2020-06-25 21:06:42 0045 
+    2020-06-25 21:06:42 0045 let vTableName = TableName(i)
+    2020-06-25 21:06:42 0046 IF vOutputFormatIncoming='CSV' THEN
+      2020-06-25 21:06:42 0050 SET vFileExtensionLocal = 'QVD'
+      2020-06-25 21:06:42 0051 SET vOutputFormatLocal = 'QVD'
+      2020-06-25 21:06:42 0052 ENDIF
+    2020-06-25 21:06:42 0053 Store 'ResolutionOptions' into [.\ExtraQted Files\ResolutionOptions.QVD] (QVD)
+  2020-06-25 21:06:42 0054 NEXT //i
+    2020-06-25 21:06:42 0043 let j=i+1
+    2020-06-25 21:06:42 0044 Trace 'Storing table 4 of 5'
+    2020-06-25 21:06:42 0044 'Storing table 4 of 5'
+    2020-06-25 21:06:42 0045 
+    2020-06-25 21:06:42 0045 let vTableName = TableName(i)
+    2020-06-25 21:06:42 0046 IF vOutputFormatIncoming='CSV' THEN
+      2020-06-25 21:06:42 0050 SET vFileExtensionLocal = 'QVD'
+      2020-06-25 21:06:42 0051 SET vOutputFormatLocal = 'QVD'
+      2020-06-25 21:06:42 0052 ENDIF
+    2020-06-25 21:06:42 0053 Store 'Island' into [.\ExtraQted Files\Island.QVD] (QVD)
+  2020-06-25 21:06:42 0054 NEXT //i
+    2020-06-25 21:06:42 0043 let j=i+1
+    2020-06-25 21:06:42 0044 Trace 'Storing table 5 of 5'
+    2020-06-25 21:06:42 0044 'Storing table 5 of 5'
+    2020-06-25 21:06:42 0045 
+    2020-06-25 21:06:42 0045 let vTableName = TableName(i)
+    2020-06-25 21:06:42 0046 IF vOutputFormatIncoming='CSV' THEN
+      2020-06-25 21:06:42 0050 SET vFileExtensionLocal = 'QVD'
+      2020-06-25 21:06:42 0051 SET vOutputFormatLocal = 'QVD'
+      2020-06-25 21:06:42 0052 ENDIF
+    2020-06-25 21:06:42 0053 Store 'ColumnChoices' into [.\ExtraQted Files\ColumnChoices.QVD] (QVD)
+  2020-06-25 21:06:42 0054 NEXT //i
+  2020-06-25 21:06:42 0057 IF upper(vKeepOrDropLocal) = 'DROP' THEN
+  2020-06-25 21:06:42 0065 LET vNumberOfTables=
+  2020-06-25 21:06:42 0066 LET vTableName=
+  2020-06-25 21:06:42 0067 SET i=
+  2020-06-25 21:06:42 0068 SET j=
+  2020-06-25 21:06:42 0070 SET vOutputFormatLocal=
+  2020-06-25 21:06:42 0071 SET vFileExtensionLocal=
+  2020-06-25 21:06:42 0073 end sub
+2020-06-25 21:06:42 0047 SET vQVD_Viewer ='..\QVD LooQer\QVD LooQer.qvw'
+2020-06-25 21:06:42 0049 exit SCRIPT
+2020-06-25 21:06:42      Execution finished.
