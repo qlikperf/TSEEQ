@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
  <QvdTableHeader>
-   <QvBuildNo>50500</QvBuildNo>
-   <CreatorDoc>E:\tc\EEE\Consulting\2_Transform\Consulting Transform.qvw</CreatorDoc>
-   <CreateUtcTime>2017-12-27 15:52:14</CreateUtcTime>
+   <QvBuildNo>50621</QvBuildNo>
+   <CreatorDoc>f8a07fc2-5bff-4874-82b2-755749863486</CreatorDoc>
+   <CreateUtcTime>2020-07-18 22:19:17</CreateUtcTime>
    <SourceCreateUtcTime></SourceCreateUtcTime>
    <SourceFileUtcTime></SourceFileUtcTime>
    <SourceFileSize>-1</SourceFileSize>
@@ -11,8 +11,8 @@
    <Fields>
      <QvdFieldHeader>
        <FieldName>SEEQ_TargetKey</FieldName>
-       <BitOffset>0</BitOffset>
-       <BitWidth>8</BitWidth>
+       <BitOffset>5</BitOffset>
+       <BitWidth>4</BitWidth>
        <Bias>0</Bias>
        <NumberFormat>
          <Type>INTEGER</Type>
@@ -24,104 +24,17 @@
        </NumberFormat>
        <NoOfSymbols>12</NoOfSymbols>
        <Offset>0</Offset>
-       <Length>60</Length>
+       <Length>69</Length>
        <Comment></Comment>
        <Tags>
          <String>$numeric</String>
          <String>$integer</String>
+         <String>$key</String>
        </Tags>
      </QvdFieldHeader>
      <QvdFieldHeader>
        <FieldName>QVW</FieldName>
-       <BitOffset>0</BitOffset>
-       <BitWidth>0</BitWidth>
-       <Bias>0</Bias>
-       <NumberFormat>
-         <Type>UNKNOWN</Type>
-         <nDec>0</nDec>
-         <UseThou>0</UseThou>
-         <Fmt></Fmt>
-         <Dec></Dec>
-         <Thou></Thou>
-       </NumberFormat>
-       <NoOfSymbols>1</NoOfSymbols>
-       <Offset>60</Offset>
-       <Length>22</Length>
-       <Comment></Comment>
-       <Tags>
-         <String>$ascii</String>
-         <String>$text</String>
-       </Tags>
-     </QvdFieldHeader>
-     <QvdFieldHeader>
-       <FieldName>SEEQ Execution Messages</FieldName>
-       <BitOffset>0</BitOffset>
-       <BitWidth>0</BitWidth>
-       <Bias>0</Bias>
-       <NumberFormat>
-         <Type>UNKNOWN</Type>
-         <nDec>0</nDec>
-         <UseThou>0</UseThou>
-         <Fmt></Fmt>
-         <Dec></Dec>
-         <Thou></Thou>
-       </NumberFormat>
-       <NoOfSymbols>1</NoOfSymbols>
-       <Offset>82</Offset>
-       <Length>2</Length>
-       <Comment></Comment>
-       <Tags>
-         <String>$ascii</String>
-         <String>$text</String>
-       </Tags>
-     </QvdFieldHeader>
-     <QvdFieldHeader>
-       <FieldName>Batch Start Time</FieldName>
-       <BitOffset>0</BitOffset>
-       <BitWidth>0</BitWidth>
-       <Bias>0</Bias>
-       <NumberFormat>
-         <Type>UNKNOWN</Type>
-         <nDec>0</nDec>
-         <UseThou>0</UseThou>
-         <Fmt></Fmt>
-         <Dec></Dec>
-         <Thou></Thou>
-       </NumberFormat>
-       <NoOfSymbols>1</NoOfSymbols>
-       <Offset>84</Offset>
-       <Length>25</Length>
-       <Comment></Comment>
-       <Tags>
-         <String>$timestamp</String>
-         <String>$numeric</String>
-       </Tags>
-     </QvdFieldHeader>
-     <QvdFieldHeader>
-       <FieldName>EEE Start Time</FieldName>
-       <BitOffset>8</BitOffset>
-       <BitWidth>3</BitWidth>
-       <Bias>0</Bias>
-       <NumberFormat>
-         <Type>UNKNOWN</Type>
-         <nDec>0</nDec>
-         <UseThou>0</UseThou>
-         <Fmt></Fmt>
-         <Dec></Dec>
-         <Thou></Thou>
-       </NumberFormat>
-       <NoOfSymbols>7</NoOfSymbols>
-       <Offset>109</Offset>
-       <Length>210</Length>
-       <Comment></Comment>
-       <Tags>
-         <String>$timestamp</String>
-         <String>$numeric</String>
-       </Tags>
-     </QvdFieldHeader>
-     <QvdFieldHeader>
-       <FieldName>Query Constaint</FieldName>
-       <BitOffset>48</BitOffset>
+       <BitOffset>37</BitOffset>
        <BitWidth>2</BitWidth>
        <Bias>0</Bias>
        <NumberFormat>
@@ -133,12 +46,105 @@
          <Thou></Thou>
        </NumberFormat>
        <NoOfSymbols>3</NoOfSymbols>
-       <Offset>319</Offset>
+       <Offset>69</Offset>
+       <Length>53</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$ascii</String>
+         <String>$text</String>
+         <String>$key</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>TSEEQ Execution Messages</FieldName>
+       <BitOffset>64</BitOffset>
+       <BitWidth>2</BitWidth>
+       <Bias>-2</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>1</NoOfSymbols>
+       <Offset>122</Offset>
+       <Length>2</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$ascii</String>
+         <String>$text</String>
+         <String>$key</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Batch Start Time</FieldName>
+       <BitOffset>9</BitOffset>
+       <BitWidth>4</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>11</NoOfSymbols>
+       <Offset>124</Offset>
+       <Length>270</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$key</String>
+         <String>$timestamp</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>EEE Start Time</FieldName>
+       <BitOffset>0</BitOffset>
+       <BitWidth>5</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>22</NoOfSymbols>
+       <Offset>394</Offset>
+       <Length>681</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$key</String>
+         <String>$timestamp</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Query Constaint</FieldName>
+       <BitOffset>66</BitOffset>
+       <BitWidth>2</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>3</NoOfSymbols>
+       <Offset>1075</Offset>
        <Length>127</Length>
        <Comment></Comment>
        <Tags>
          <String>$ascii</String>
          <String>$text</String>
+         <String>$key</String>
        </Tags>
      </QvdFieldHeader>
      <QvdFieldHeader>
@@ -155,17 +161,110 @@
          <Thou></Thou>
        </NumberFormat>
        <NoOfSymbols>1</NoOfSymbols>
-       <Offset>446</Offset>
+       <Offset>1202</Offset>
        <Length>11</Length>
        <Comment></Comment>
        <Tags>
          <String>$ascii</String>
          <String>$text</String>
+         <String>$key</String>
        </Tags>
      </QvdFieldHeader>
      <QvdFieldHeader>
        <FieldName># Fields</FieldName>
-       <BitOffset>11</BitOffset>
+       <BitOffset>13</BitOffset>
+       <BitWidth>4</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>11</NoOfSymbols>
+       <Offset>1213</Offset>
+       <Length>81</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+         <String>$key</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName># Rows</FieldName>
+       <BitOffset>48</BitOffset>
+       <BitWidth>4</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>16</NoOfSymbols>
+       <Offset>1294</Offset>
+       <Length>155</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+         <String>$key</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName># Fields Stored</FieldName>
+       <BitOffset>52</BitOffset>
+       <BitWidth>4</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>11</NoOfSymbols>
+       <Offset>1449</Offset>
+       <Length>81</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+         <String>$key</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName># Rows Stored</FieldName>
+       <BitOffset>56</BitOffset>
+       <BitWidth>4</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>16</NoOfSymbols>
+       <Offset>1530</Offset>
+       <Length>155</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+         <String>$key</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>QVD With Path</FieldName>
+       <BitOffset>17</BitOffset>
        <BitWidth>5</BitWidth>
        <Bias>0</Bias>
        <NumberFormat>
@@ -176,107 +275,20 @@
          <Dec></Dec>
          <Thou></Thou>
        </NumberFormat>
-       <NoOfSymbols>7</NoOfSymbols>
-       <Offset>457</Offset>
-       <Length>52</Length>
-       <Comment></Comment>
-       <Tags>
-         <String>$numeric</String>
-         <String>$integer</String>
-       </Tags>
-     </QvdFieldHeader>
-     <QvdFieldHeader>
-       <FieldName># Rows</FieldName>
-       <BitOffset>16</BitOffset>
-       <BitWidth>3</BitWidth>
-       <Bias>0</Bias>
-       <NumberFormat>
-         <Type>UNKNOWN</Type>
-         <nDec>0</nDec>
-         <UseThou>0</UseThou>
-         <Fmt></Fmt>
-         <Dec></Dec>
-         <Thou></Thou>
-       </NumberFormat>
-       <NoOfSymbols>8</NoOfSymbols>
-       <Offset>509</Offset>
-       <Length>89</Length>
-       <Comment></Comment>
-       <Tags>
-         <String>$numeric</String>
-         <String>$integer</String>
-       </Tags>
-     </QvdFieldHeader>
-     <QvdFieldHeader>
-       <FieldName># Fields Stored</FieldName>
-       <BitOffset>19</BitOffset>
-       <BitWidth>3</BitWidth>
-       <Bias>0</Bias>
-       <NumberFormat>
-         <Type>UNKNOWN</Type>
-         <nDec>0</nDec>
-         <UseThou>0</UseThou>
-         <Fmt></Fmt>
-         <Dec></Dec>
-         <Thou></Thou>
-       </NumberFormat>
-       <NoOfSymbols>7</NoOfSymbols>
-       <Offset>598</Offset>
-       <Length>52</Length>
-       <Comment></Comment>
-       <Tags>
-         <String>$numeric</String>
-         <String>$integer</String>
-       </Tags>
-     </QvdFieldHeader>
-     <QvdFieldHeader>
-       <FieldName># Rows Stored</FieldName>
-       <BitOffset>38</BitOffset>
-       <BitWidth>3</BitWidth>
-       <Bias>0</Bias>
-       <NumberFormat>
-         <Type>UNKNOWN</Type>
-         <nDec>0</nDec>
-         <UseThou>0</UseThou>
-         <Fmt></Fmt>
-         <Dec></Dec>
-         <Thou></Thou>
-       </NumberFormat>
-       <NoOfSymbols>8</NoOfSymbols>
-       <Offset>650</Offset>
-       <Length>89</Length>
-       <Comment></Comment>
-       <Tags>
-         <String>$numeric</String>
-         <String>$integer</String>
-       </Tags>
-     </QvdFieldHeader>
-     <QvdFieldHeader>
-       <FieldName>QVD With Path</FieldName>
-       <BitOffset>22</BitOffset>
-       <BitWidth>4</BitWidth>
-       <Bias>0</Bias>
-       <NumberFormat>
-         <Type>UNKNOWN</Type>
-         <nDec>0</nDec>
-         <UseThou>0</UseThou>
-         <Fmt></Fmt>
-         <Dec></Dec>
-         <Thou></Thou>
-       </NumberFormat>
-       <NoOfSymbols>12</NoOfSymbols>
-       <Offset>739</Offset>
-       <Length>454</Length>
+       <NoOfSymbols>30</NoOfSymbols>
+       <Offset>1685</Offset>
+       <Length>1267</Length>
        <Comment></Comment>
        <Tags>
          <String>$ascii</String>
          <String>$text</String>
+         <String>$key</String>
        </Tags>
      </QvdFieldHeader>
      <QvdFieldHeader>
        <FieldName>QVD</FieldName>
-       <BitOffset>26</BitOffset>
-       <BitWidth>4</BitWidth>
+       <BitOffset>22</BitOffset>
+       <BitWidth>5</BitWidth>
        <Bias>0</Bias>
        <NumberFormat>
          <Type>UNKNOWN</Type>
@@ -286,13 +298,14 @@
          <Dec></Dec>
          <Thou></Thou>
        </NumberFormat>
-       <NoOfSymbols>12</NoOfSymbols>
-       <Offset>1193</Offset>
-       <Length>214</Length>
+       <NoOfSymbols>21</NoOfSymbols>
+       <Offset>2952</Offset>
+       <Length>355</Length>
        <Comment></Comment>
        <Tags>
          <String>$ascii</String>
          <String>$text</String>
+         <String>$key</String>
        </Tags>
      </QvdFieldHeader>
      <QvdFieldHeader>
@@ -309,17 +322,18 @@
          <Thou></Thou>
        </NumberFormat>
        <NoOfSymbols>1</NoOfSymbols>
-       <Offset>1407</Offset>
+       <Offset>3307</Offset>
        <Length>5</Length>
        <Comment></Comment>
        <Tags>
          <String>$ascii</String>
          <String>$text</String>
+         <String>$key</String>
        </Tags>
      </QvdFieldHeader>
      <QvdFieldHeader>
        <FieldName>Time for QVD Store </FieldName>
-       <BitOffset>50</BitOffset>
+       <BitOffset>68</BitOffset>
        <BitWidth>2</BitWidth>
        <Bias>0</Bias>
        <NumberFormat>
@@ -330,13 +344,14 @@
          <Dec></Dec>
          <Thou></Thou>
        </NumberFormat>
-       <NoOfSymbols>3</NoOfSymbols>
-       <Offset>1412</Offset>
-       <Length>64</Length>
+       <NoOfSymbols>4</NoOfSymbols>
+       <Offset>3312</Offset>
+       <Length>92</Length>
        <Comment></Comment>
        <Tags>
          <String>$numeric</String>
          <String>$integer</String>
+         <String>$key</String>
        </Tags>
      </QvdFieldHeader>
      <QvdFieldHeader>
@@ -353,12 +368,13 @@
          <Thou></Thou>
        </NumberFormat>
        <NoOfSymbols>1</NoOfSymbols>
-       <Offset>1476</Offset>
+       <Offset>3404</Offset>
        <Length>7</Length>
        <Comment></Comment>
        <Tags>
          <String>$numeric</String>
          <String>$integer</String>
+         <String>$key</String>
        </Tags>
      </QvdFieldHeader>
      <QvdFieldHeader>
@@ -375,39 +391,18 @@
          <Thou></Thou>
        </NumberFormat>
        <NoOfSymbols>1</NoOfSymbols>
-       <Offset>1483</Offset>
+       <Offset>3411</Offset>
        <Length>7</Length>
        <Comment></Comment>
        <Tags>
          <String>$numeric</String>
          <String>$integer</String>
+         <String>$key</String>
        </Tags>
      </QvdFieldHeader>
      <QvdFieldHeader>
        <FieldName>Time for ETL Operation</FieldName>
-       <BitOffset>52</BitOffset>
-       <BitWidth>2</BitWidth>
-       <Bias>0</Bias>
-       <NumberFormat>
-         <Type>UNKNOWN</Type>
-         <nDec>0</nDec>
-         <UseThou>0</UseThou>
-         <Fmt></Fmt>
-         <Dec></Dec>
-         <Thou></Thou>
-       </NumberFormat>
-       <NoOfSymbols>4</NoOfSymbols>
-       <Offset>1490</Offset>
-       <Length>97</Length>
-       <Comment></Comment>
-       <Tags>
-         <String>$numeric</String>
-         <String>$integer</String>
-       </Tags>
-     </QvdFieldHeader>
-     <QvdFieldHeader>
-       <FieldName>Time Total for Table</FieldName>
-       <BitOffset>41</BitOffset>
+       <BitOffset>39</BitOffset>
        <BitWidth>3</BitWidth>
        <Bias>0</Bias>
        <NumberFormat>
@@ -419,18 +414,19 @@
          <Thou></Thou>
        </NumberFormat>
        <NoOfSymbols>5</NoOfSymbols>
-       <Offset>1587</Offset>
-       <Length>124</Length>
+       <Offset>3418</Offset>
+       <Length>126</Length>
        <Comment></Comment>
        <Tags>
          <String>$numeric</String>
          <String>$integer</String>
+         <String>$key</String>
        </Tags>
      </QvdFieldHeader>
      <QvdFieldHeader>
-       <FieldName>EEE Executed Script</FieldName>
-       <BitOffset>30</BitOffset>
-       <BitWidth>4</BitWidth>
+       <FieldName>Time Total for Table</FieldName>
+       <BitOffset>42</BitOffset>
+       <BitWidth>3</BitWidth>
        <Bias>0</Bias>
        <NumberFormat>
          <Type>UNKNOWN</Type>
@@ -440,41 +436,66 @@
          <Dec></Dec>
          <Thou></Thou>
        </NumberFormat>
-       <NoOfSymbols>12</NoOfSymbols>
-       <Offset>1711</Offset>
-       <Length>5749</Length>
+       <NoOfSymbols>6</NoOfSymbols>
+       <Offset>3544</Offset>
+       <Length>152</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+         <String>$key</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>EEE Executed Script</FieldName>
+       <BitOffset>27</BitOffset>
+       <BitWidth>5</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>30</NoOfSymbols>
+       <Offset>3696</Offset>
+       <Length>11510</Length>
        <Comment></Comment>
        <Tags>
          <String>$ascii</String>
          <String>$text</String>
+         <String>$key</String>
        </Tags>
      </QvdFieldHeader>
      <QvdFieldHeader>
        <FieldName>EEE Execution Completion Time</FieldName>
-       <BitOffset>44</BitOffset>
-       <BitWidth>4</BitWidth>
+       <BitOffset>32</BitOffset>
+       <BitWidth>5</BitWidth>
        <Bias>0</Bias>
        <NumberFormat>
          <Type>TIMESTAMP</Type>
          <nDec>0</nDec>
          <UseThou>0</UseThou>
-         <Fmt>MM-DD-YY h:mm:ss[.fff] TT</Fmt>
+         <Fmt>YYYY-MM-DD h:mm:ss[.fff] TT</Fmt>
          <Dec></Dec>
          <Thou></Thou>
        </NumberFormat>
-       <NoOfSymbols>8</NoOfSymbols>
-       <Offset>7460</Offset>
-       <Length>168</Length>
+       <NoOfSymbols>23</NoOfSymbols>
+       <Offset>15206</Offset>
+       <Length>435</Length>
        <Comment></Comment>
        <Tags>
-         <String>$timestamp</String>
          <String>$numeric</String>
+         <String>$key</String>
+         <String>$timestamp</String>
        </Tags>
      </QvdFieldHeader>
      <QvdFieldHeader>
        <FieldName>EEE Execution Time Elapsed</FieldName>
-       <BitOffset>54</BitOffset>
-       <BitWidth>2</BitWidth>
+       <BitOffset>45</BitOffset>
+       <BitWidth>3</BitWidth>
        <Bias>0</Bias>
        <NumberFormat>
          <Type>UNKNOWN</Type>
@@ -484,18 +505,19 @@
          <Dec></Dec>
          <Thou></Thou>
        </NumberFormat>
-       <NoOfSymbols>4</NoOfSymbols>
-       <Offset>7628</Offset>
-       <Length>97</Length>
+       <NoOfSymbols>5</NoOfSymbols>
+       <Offset>15641</Offset>
+       <Length>126</Length>
        <Comment></Comment>
        <Tags>
          <String>$numeric</String>
          <String>$integer</String>
+         <String>$key</String>
        </Tags>
      </QvdFieldHeader>
      <QvdFieldHeader>
        <FieldName>EEE Execution Order</FieldName>
-       <BitOffset>34</BitOffset>
+       <BitOffset>60</BitOffset>
        <BitWidth>4</BitWidth>
        <Bias>0</Bias>
        <NumberFormat>
@@ -507,25 +529,357 @@
          <Thou>,</Thou>
        </NumberFormat>
        <NoOfSymbols>12</NoOfSymbols>
-       <Offset>7725</Offset>
-       <Length>60</Length>
+       <Offset>15767</Offset>
+       <Length>69</Length>
        <Comment></Comment>
        <Tags>
          <String>$numeric</String>
          <String>$integer</String>
+         <String>$key</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>SEEQ Execution Messages</FieldName>
+       <BitOffset>70</BitOffset>
+       <BitWidth>2</BitWidth>
+       <Bias>-2</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>1</NoOfSymbols>
+       <Offset>15836</Offset>
+       <Length>2</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$ascii</String>
+         <String>$text</String>
        </Tags>
      </QvdFieldHeader>
    </Fields>
    <Compression></Compression>
-   <RecordByteSize>7</RecordByteSize>
-   <NoOfRecords>12</NoOfRecords>
-   <Offset>7785</Offset>
-   <Length>84</Length>
-   <Lineage></Lineage>
+   <RecordByteSize>9</RecordByteSize>
+   <NoOfRecords>102</NoOfRecords>
+   <Offset>15838</Offset>
+   <Length>918</Length>
+   <Lineage>
+     <LineageInfo>
+       <Discriminator>AUTOGENERATE;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>INLINE;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT ExcludeFields;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT ExcludeFieldsForAllTables;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT Execution Stats;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT IncludeFieldsForAllTables;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT SEEQ_ExecutionTrace;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT TargetFields;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT TargetFieldsTmp;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT Tmp_Variable_Repository;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT Tmp_XLS_Contents;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT TransformFieldsForAllTables;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>{STORE - [lib://Admin/QVDs/ETL Statistics/Historical Transform.qvd] (qvd)};</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>{STORE - [lib://ff//QVDs/Transformed\/Categories.qvd] (qvd)};</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>{STORE - [lib://ff//QVDs/Transformed\/Customers.qvd] (qvd)};</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>{STORE - [lib://ff//QVDs/Transformed\/Divisions.qvd] (qvd)};</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>{STORE - [lib://ff//QVDs/Transformed\/EmployeesOffices.qvd] (qvd)};</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>{STORE - [lib://ff//QVDs/Transformed\/OrderDetails.qvd] (qvd)};</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>{STORE - [lib://ff//QVDs/Transformed\/Orders.qvd] (qvd)};</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>{STORE - [lib://ff//QVDs/Transformed\/Products.qvd] (qvd)};</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>{STORE - [lib://ff//QVDs/Transformed\/Shipments.qvd] (qvd)};</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>{STORE - [lib://ff//QVDs/Transformed\/Shippers.qvd] (qvd)};</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>{STORE - [lib://ff//QVDs/Transformed\/tmp_TSEEQ_proxy.qvd] (qvd)};</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\tseeq\source documents\admin\qvds\etl statistics\historical transform.qvd;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\tseeq\source documents\common\include\eee\seeq_variablelist.txt;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\tseeq\source documents\common\variables\common_infotext_variables.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\tseeq\source documents\common\variables\common_transform_variables.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\tseeq\source documents\common\variables\common_variables.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\tseeq\source documents\ff\etl_rules\fftransformrules.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\tseeq\source documents\ff\external data\xls\empoff.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\tseeq\source documents\ff\qvds\extracted\categoriesextract.qvd;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\tseeq\source documents\ff\qvds\extracted\customersextract.qvd;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\tseeq\source documents\ff\qvds\extracted\divisionsextract.qvd;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\tseeq\source documents\ff\qvds\extracted\orderdetailsextract.qvd;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\tseeq\source documents\ff\qvds\extracted\ordersextract.qvd;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\tseeq\source documents\ff\qvds\extracted\productsextract.qvd;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\tseeq\source documents\ff\qvds\extracted\shipmentsextract.qvd;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\tseeq\source documents\ff\qvds\extracted\shippersextract.qvd;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\tseeq\source documents\ff\qvds\transformed\tmp_tseeq_proxy.qvd;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\tseeq\source documents\ff\variables\ff_variables.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+   </Lineage>
    <Comment></Comment>
  </QvdTableHeader>
-                         	   
-         Consulting Transform  aﬂ|Â@43096.452743056 #ﬂ|Â@12-27-17 10:51:57 AM ÏF˜|Â@12-27-17 10:51:58 AM 1uπ}Â@12-27-17 10:52:06 AM ˙∫—}Â@12-27-17 10:52:07 AM ¬ Í}Â@12-27-17 10:52:08 AM “2~Â@12-27-17 10:52:11 AM v£{~Â@12-27-17 10:52:14 AM  WHERE  pse__Total_Hours__c <> 0 WHERE  upper(pse__Closed_for_Time_Entry__c) ='FALSE' OR  pse__Closed_for_Time_Entry__c = 0 TRANSFORM 	   9    15    2    16    30    3    1 £$ 271523 ⁄)# 2304474 YŸ 121177 .– 118830 ’$  9429 I   73 wÊ 124535 m  2925 	   9    15    2    16    30    3    1 £$ 271523 ⁄)# 2304474 YŸ 121177 .– 118830 ’$  9429 I   73 wÊ 124535 m  2925 ..\QVDs\Transformed\Accounts.qvd ..\QVDs\Transformed\Contacts.qvd ..\QVDs\Transformed\CaseOwners.qvd ..\QVDs\Transformed\Timecards.qvd ..\QVDs\Transformed\Projects.qvd ..\QVDs\Transformed\ProjectOwners.qvd ..\QVDs\Transformed\TimecardResources.qvd ..\QVDs\Transformed\Regions.qvd ..\QVDs\Transformed\OpportunityOwners.qvd ..\QVDs\Transformed\ProjectManagers.qvd ..\QVDs\Transformed\NonDeletedTimecards.qvd ..\QVDs\Transformed\Assignments.qvd Accounts.qvd Contacts.qvd CaseOwners.qvd Timecards.qvd Projects.qvd ProjectOwners.qvd TimecardResources.qvd Regions.qvd OpportunityOwners.qvd ProjectManagers.qvd NonDeletedTimecards.qvd Assignments.qvd N/A     0 C  ÄV4?3.4722223063e-005 ˇˇˇ»EË>1.1574076779652e-005     0     0 ˇˇˇ»EË>1.1574076779652e-005 ,  ¿:W?5.7870369346347e-005     0 –ˇˇ»E¯>2.3148146283347e-005 ˇˇˇ»EË>1.1574076779652e-005 Óˇˇü»E?9.2592592409346e-005     0 Ü   »EË>1.1574069503695e-005 C  ÄV4?3.4722223063e-005 [Accounts]:		
+                         	   
+   10    11    12 ff Transform Sales Transform Consulting Transform  )õmÿÂ@44030.76337963 F?œÂ@44030.476446759 Åﬁ“œÂ@44030.472268519 ’,ÓœÂ@44030.469351852 wÇ∏ΩÂ@44029.928773148 ÖÎQΩÂ@44029.91625 kwBΩÂ@44029.914363426 'á4ΩÂ@44029.912662037 y€‰∫Â@44029.840347222  dË∏Â@44029.778368056 aﬂ|Â@43096.452743056 ˆõmÿÂ@2020-07-18 6:19:16 PM øc≥mÿÂ@2020-07-18 6:19:17 PM Úã%?œÂ@2020-07-18 11:26:06 AM ?ﬁ“œÂ@2020-07-18 11:20:04 AM ¡,ÓœÂ@2020-07-18 11:15:52 AM ârœÂ@2020-07-18 11:15:53 AM wÇ∏ΩÂ@2020-07-17 10:17:26 PM ﬂºö∏ΩÂ@2020-07-17 10:17:27 PM ÖÎQΩÂ@2020-07-17 9:59:24 PM `wBΩÂ@2020-07-17 9:56:41 PM ,á4ΩÂ@2020-07-17 9:54:14 PM ıIü4ΩÂ@2020-07-17 9:54:15 PM ó€‰∫Â@2020-07-17 8:10:06 PM `!8‰∫Â@2020-07-17 8:10:07 PM ‹dË∏Â@2020-07-17 6:40:51 PM #ﬂ|Â@12-27-17 10:51:57 AM ÏF˜|Â@12-27-17 10:51:58 AM 1uπ}Â@12-27-17 10:52:06 AM ˙∫—}Â@12-27-17 10:52:07 AM ¬ Í}Â@12-27-17 10:52:08 AM “2~Â@12-27-17 10:52:11 AM v£{~Â@12-27-17 10:52:14 AM  WHERE  pse__Total_Hours__c <> 0 WHERE  upper(pse__Closed_for_Time_Entry__c) ='FALSE' OR  pse__Closed_for_Time_Entry__c = 0 TRANSFORM    4 
+   10    3    8    6    2 	   9    15    16    30    1    8 \   92    4 àB  17032 ´  6571 M   77    3 #   35 £$ 271523 ⁄)# 2304474 YŸ 121177 .– 118830 ’$  9429 I   73 wÊ 124535 m  2925    4 
+   10    3    8    6    2 	   9    15    16    30    1    8 \   92    4 àB  17032 ´  6571 M   77    3 #   35 £$ 271523 ⁄)# 2304474 YŸ 121177 .– 118830 ’$  9429 I   73 wÊ 124535 m  2925 lib://ff//QVDs/Transformed\/Categories.qvd lib://ff//QVDs/Transformed\/Customers.qvd lib://ff//QVDs/Transformed\/Divisions.qvd lib://ff//QVDs/Transformed\/OrderDetails.qvd lib://ff//QVDs/Transformed\/Orders.qvd lib://ff//QVDs/Transformed\/Products.qvd lib://ff//QVDs/Transformed\/Shippers.qvd lib://ff//QVDs/Transformed\/Shipments.qvd lib://ff//QVDs/Transformed\/EmployeesOffices.qvd lib://Sales//QVDs/Transformed\/Categories.qvd lib://Sales//QVDs/Transformed\/Customers.qvd lib://Sales//QVDs/Transformed\/Divisions.qvd lib://Sales//QVDs/Transformed\/OrderDetails.qvd lib://Sales//QVDs/Transformed\/Orders.qvd lib://Sales//QVDs/Transformed\/Products.qvd lib://Sales//QVDs/Transformed\/Shippers.qvd lib://Sales//QVDs/Transformed\/Shipments.qvd lib://Sales//QVDs/Transformed\/EmployeesOffices.qvd ..\QVDs\Transformed\Accounts.qvd ..\QVDs\Transformed\Contacts.qvd ..\QVDs\Transformed\CaseOwners.qvd ..\QVDs\Transformed\Timecards.qvd ..\QVDs\Transformed\Projects.qvd ..\QVDs\Transformed\ProjectOwners.qvd ..\QVDs\Transformed\TimecardResources.qvd ..\QVDs\Transformed\Regions.qvd ..\QVDs\Transformed\OpportunityOwners.qvd ..\QVDs\Transformed\ProjectManagers.qvd ..\QVDs\Transformed\NonDeletedTimecards.qvd ..\QVDs\Transformed\Assignments.qvd Categories.qvd Customers.qvd Divisions.qvd OrderDetails.qvd Orders.qvd Products.qvd Shippers.qvd Shipments.qvd EmployeesOffices.qvd Accounts.qvd Contacts.qvd CaseOwners.qvd Timecards.qvd Projects.qvd ProjectOwners.qvd TimecardResources.qvd Regions.qvd OpportunityOwners.qvd ProjectManagers.qvd NonDeletedTimecards.qvd Assignments.qvd N/A     0 á   »EË>1.1574069503695e-05 ˇˇˇ»EË>1.1574076779652e-05 C  ÄV4?3.4722223063e-005     0     0     0 á   »EË>1.1574069503695e-05 ˇˇˇ»EË>1.1574076779652e-005 ,  ¿:W?5.7870369346347e-005 –ˇˇ»E¯>2.3148146283347e-005     0 ˇˇˇ»EË>1.1574076779652e-05 á   »EË>1.1574069503695e-05 Óˇˇü»E?9.2592592409346e-005 Ü   »EË>1.1574069503695e-005 C  ÄV4?3.4722223063e-005 [Categories]:		
+LOAD  
+     CategoryName AS [Product Category], 
+     [CategoryID] AS [CategoryID], 
+     [CategoryName] AS [CategoryName], 
+     [Description] AS [Description]
+ FROM  [lib://ff//QVDs/Extracted/CategoriesExtract.qvd] (qvd) ;  [Customers]:		
+LOAD  
+     CompanyName AS [Customer], 
+     [CustomerID] AS [CustomerID], 
+     [CompanyName] AS [CompanyName], 
+     [ContactName] AS [ContactName], 
+     [City] AS [City], 
+     [Country] AS [Country], 
+     [DivisionID] AS [DivisionID], 
+     [Address] AS [Address], 
+     [Phone] AS [Phone], 
+     [StateProvince] AS [StateProvince]
+ FROM  [lib://ff//QVDs/Extracted/CustomersExtract.qvd] (qvd) ;  [Divisions]:		
+LOAD  
+     DivisionName AS [Division], 
+     [DivisionID] AS [DivisionID], 
+     [DivisionName] AS [DivisionName]
+ FROM  [lib://ff//QVDs/Extracted/DivisionsExtract.qvd] (qvd) ;  [OrderDetails]:		
+LOAD  
+     Autonumber(OrderID&'-'&LineNo) AS [OrderLineKey], 
+     money( ( Quantity * UnitPrice  )  * ( 1 - Discount), '$#,##0.00;($#,##0.00)'  ) AS [Line Sales Amount], 
+     num( Discount, '#,##0%' ) AS [Discount %], 
+     [OrderID] AS [OrderID], 
+     [LineNo] AS [LineNo], 
+     [ProductID] AS [ProductID], 
+     [Quantity] AS [Quantity], 
+     [UnitPrice] AS [UnitPrice]
+ FROM  [lib://ff//QVDs/Extracted/OrderDetailsExtract.qvd] (qvd) ;  [Orders]:		
+LOAD  
+     date ( AddMonths( OrderDate, 99 ) ) AS [Date], 
+     [OrderID] AS [OrderID], 
+     [CustomerID] AS [CustomerID], 
+     [EmployeeID] AS [EmployeeID], 
+     [Freight] AS [Freight], 
+     [LastModified] AS [LastModified]
+ FROM  [lib://ff//QVDs/Extracted/OrdersExtract.qvd] (qvd) ;  [Products]:		
+LOAD  
+     ProductName AS [Product], 
+     UnitPrice AS [Catalogue Price], 
+     [ProductID] AS [ProductID], 
+     [ProductName] AS [ProductName], 
+     [SupplierID] AS [SupplierID], 
+     [CategoryID] AS [CategoryID], 
+     [QuantityPerUnit] AS [QuantityPerUnit], 
+     [UnitCost] AS [UnitCost], 
+     [UnitsInStock] AS [UnitsInStock], 
+     [UnitsOnOrder] AS [UnitsOnOrder]
+ FROM  [lib://ff//QVDs/Extracted/ProductsExtract.qvd] (qvd) ;  [Shippers]:		
+LOAD  
+     CompanyName AS [Shipper], 
+     [ShipperID] AS [ShipperID]
+ FROM  [lib://ff//QVDs/Extracted/ShippersExtract.qvd] (qvd) ;  [Shipments]:		
+LOAD  
+     Autonumber(OrderID&'-'&LineNo) AS [OrderLineKey], 
+     [ShipperID] AS [ShipperID], 
+     [ShipmentDate] AS [ShipmentDate]
+ FROM  [lib://ff//QVDs/Extracted/ShipmentsExtract.qvd] (qvd) ;  [EmployeesOffices]:		
+LOAD  
+     [EmpID] AS [EmpID], 
+     [Last Name] AS [Last Name], 
+     [First Name] AS [First Name], 
+     [Title] AS [Title], 
+     [Hire Date] AS [Hire Date], 
+     [Office] AS [Office], 
+     [Extension] AS [Extension], 
+     [Reports To] AS [Reports To], 
+     [Year Salary] AS [Year Salary]
+ FROM  [lib://ff//External Data/XLS/EmpOff.xls] (biff, embedded labels, table is Employee$) ;  [Categories]:		
+LOAD  
+     CategoryName AS [Product Category], 
+     [CategoryID] AS [CategoryID], 
+     [CategoryName] AS [CategoryName], 
+     [Description] AS [Description]
+ FROM  [lib://Sales//QVDs/Extracted/CategoriesExtract.qvd] (qvd) ;  [Customers]:		
+LOAD  
+     CompanyName AS [Customer], 
+     [CustomerID] AS [CustomerID], 
+     [CompanyName] AS [CompanyName], 
+     [ContactName] AS [ContactName], 
+     [City] AS [City], 
+     [Country] AS [Country], 
+     [DivisionID] AS [DivisionID], 
+     [Address] AS [Address], 
+     [Phone] AS [Phone], 
+     [StateProvince] AS [StateProvince]
+ FROM  [lib://Sales//QVDs/Extracted/CustomersExtract.qvd] (qvd) ;  [Divisions]:		
+LOAD  
+     DivisionName AS [Division], 
+     [DivisionID] AS [DivisionID], 
+     [DivisionName] AS [DivisionName]
+ FROM  [lib://Sales//QVDs/Extracted/DivisionsExtract.qvd] (qvd) ;  [OrderDetails]:		
+LOAD  
+     Autonumber(OrderID&'-'&LineNo) AS [OrderLineKey], 
+     money( ( Quantity * UnitPrice  )  * ( 1 - Discount), '$#,##0.00;($#,##0.00)'  ) AS [Line Sales Amount], 
+     num( Discount, '#,##0%' ) AS [Discount %], 
+     [OrderID] AS [OrderID], 
+     [LineNo] AS [LineNo], 
+     [ProductID] AS [ProductID], 
+     [Quantity] AS [Quantity], 
+     [UnitPrice] AS [UnitPrice]
+ FROM  [lib://Sales//QVDs/Extracted/OrderDetailsExtract.qvd] (qvd) ;  [Orders]:		
+LOAD  
+     date ( AddMonths( OrderDate, 99 ) ) AS [Date], 
+     [OrderID] AS [OrderID], 
+     [CustomerID] AS [CustomerID], 
+     [EmployeeID] AS [EmployeeID], 
+     [Freight] AS [Freight], 
+     [LastModified] AS [LastModified]
+ FROM  [lib://Sales//QVDs/Extracted/OrdersExtract.qvd] (qvd) ;  [Products]:		
+LOAD  
+     ProductName AS [Product], 
+     UnitPrice AS [Catalogue Price], 
+     [ProductID] AS [ProductID], 
+     [ProductName] AS [ProductName], 
+     [SupplierID] AS [SupplierID], 
+     [CategoryID] AS [CategoryID], 
+     [QuantityPerUnit] AS [QuantityPerUnit], 
+     [UnitCost] AS [UnitCost], 
+     [UnitsInStock] AS [UnitsInStock], 
+     [UnitsOnOrder] AS [UnitsOnOrder]
+ FROM  [lib://Sales//QVDs/Extracted/ProductsExtract.qvd] (qvd) ;  [Shippers]:		
+LOAD  
+     CompanyName AS [Shipper], 
+     [ShipperID] AS [ShipperID]
+ FROM  [lib://Sales//QVDs/Extracted/ShippersExtract.qvd] (qvd) ;  [Shipments]:		
+LOAD  
+     Autonumber(OrderID&'-'&LineNo) AS [OrderLineKey], 
+     [ShipperID] AS [ShipperID], 
+     [ShipmentDate] AS [ShipmentDate]
+ FROM  [lib://Sales//QVDs/Extracted/ShipmentsExtract.qvd] (qvd) ;  [EmployeesOffices]:		
+LOAD  
+     [EmpID] AS [EmpID], 
+     [Last Name] AS [Last Name], 
+     [First Name] AS [First Name], 
+     [Title] AS [Title], 
+     [Hire Date] AS [Hire Date], 
+     [Office] AS [Office], 
+     [Extension] AS [Extension], 
+     [Reports To] AS [Reports To], 
+     [Year Salary] AS [Year Salary]
+ FROM  [lib://Sales//External Data/XLS/EmpOff.xls] (biff, embedded labels, table is Employee$) ;  [Accounts]:		
 LOAD  
      BillingCity AS [Billing City], 
      BillingCountry AS [Billing Country], 
@@ -672,6 +1026,7 @@ LOAD
      pse__Scheduled_Hours__c -  pse__Billable_Hours_Submitted__c AS [Assignment Remaining Hours], 
      pse__Scheduled_Hours__c AS [Assignment Scheduled Hours], 
      pse__Status__c & '(Assignment)' AS [Status]
- FROM  [..\QVDs\Extracted\Assignment.qvd] (qvd) WHERE  upper(pse__Closed_for_Time_Entry__c) ='FALSE' OR  pse__Closed_for_Time_Entry__c = 0;  ÏF˜|Â@10:51:58 AM ◊£p}Â@10:52:03 AM ˙∫—}Â@10:52:07 AM ¬ Í}Â@10:52:08 AM Så~Â@10:52:10 AM “2~Â@10:52:11 AM ≠]c~Â@10:52:13 AM v£{~Â@10:52:14 AM ˇˇˇ»EË>1.1574076779652e-005 ,  ¿:W?5.7870369346347e-005     0 –ˇˇ»E¯>2.3148146283347e-005                         	   
-                	IDDTíàà  €ÃÃ$°#$7†RUï4†ëôYH¯-Ì›]U†"¢T†	Qffh¯
-6∂™™u†ﬂÓÓu¢
+ FROM  [..\QVDs\Extracted\Assignment.qvd] (qvd) WHERE  upper(pse__Closed_for_Time_Entry__c) ='FALSE' OR  pse__Closed_for_Time_Entry__c = 0;  ˆõmÿÂ@øc≥mÿÂ@06:19:17 PM Úã%?œÂ@?ﬁ“œÂ@¡,ÓœÂ@ârœÂ@11:15:53 AM wÇ∏ΩÂ@ﬂºö∏ΩÂ@10:17:27 PM ÖÎQΩÂ@`wBΩÂ@,á4ΩÂ@ıIü4ΩÂ@09:54:15 PM ó€‰∫Â@`!8‰∫Â@08:10:07 PM ‹dË∏Â@ÏF˜|Â@12-27-17 10:51:58 AM ◊£p}Â@12-27-17 10:52:03 AM ˙∫—}Â@12-27-17 10:52:07 AM ¬ Í}Â@12-27-17 10:52:08 AM Så~Â@12-27-17 10:52:10 AM “2~Â@12-27-17 10:52:11 AM ≠]c~Â@12-27-17 10:52:13 AM v£{~Â@12-27-17 10:52:14 AM     0 á   »EË>1.1574069503695e-05 ˇˇˇ»EË>1.1574076779652e-005 ,  ¿:W?5.7870369346347e-005 –ˇˇ»E¯>2.3148146283347e-005                         	   
+   10    11    12            B  @@Ñ ""a`∆ 33ÅÄ! DD° J) U¡†å1 Vf·@Œ9 #s¡B gáH"   ""TP" BBñX" ""bbÿ`" 33ÇÇi" DD¢"\q" U¬¢ûy" Vf‚B‡Å" #s√"ä" gáH#   #$TP# CDñX# ""cdÿ`# 33ÉÑi# DD£$\q# U√§ûy# Vf„D‡Å# #s≈"ä# gáH$   $&TP$ DFñX$ ""dfÿ`$ 33ÑÜi$ DD§&\q$ Uƒ¶ûy$ Vf‰F‡Å•(#s«"ä% gáH&   &(TP& FHñX& ""fhÿ`& 33Üài& DD¶(\q& U∆®ûy& VfÊH‡Å'#s…"ä' gá
+H(   (*TP( HJñX( ""hjÿ`( 33àäi( DD®*\q( U»™ûy( VfËJ‡Å( #sÀ"ä(gá	H)   ),TP) ILñX) ""ilÿ`) 33âåi) DD©,\q) U…¨ûy) VfÈL‡Å) #s	Õ"ä) gá
+H*   *.TP* JNñX* ""jnÿ`* 33äéi* DD™.\q* U Æûy* VfÍN‡Å+#sœ"ä+ gáH,   ,0TP,"MPñX- ""mpÿ`- 33çêi- DD≠0\q- UÕ∞ûy- VfÌP‡Å- #s—"ä- gáH.   .2TP. NRñX. ""nrÿ`. 33éíi. DDÆ2\q. UŒ≤ûy. VfÓR‡Å. #s”"ä. gá‘díOEhÄ0Ù¶ö–my∞Q¥Ë¢QEZ*Är+´Q ã;Ñí4m≥RúLÄ≥¥ÆªR ZZÄ”¥√SñYi†ÙT2ÃT -}Äµt‘T ZäÄ4µ∂‹UñYô†UU˘‰V ÆÆÄu;ÌV èøà
