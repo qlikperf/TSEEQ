@@ -59,7 +59,7 @@ next i
     SET vTemp=;
     SET vNumberOfSelectableDimensions=;
     SET vNumberOfSelectableMeasures=;
-	SET vJoinPrefix='';
+	// SET vJoinPrefix='';
 	
 	[$(vApp) FilterPaneFields]:
 	LOAD    

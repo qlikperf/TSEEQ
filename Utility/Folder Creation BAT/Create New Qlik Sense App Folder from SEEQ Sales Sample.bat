@@ -2,6 +2,7 @@ REM
 REM	Create a new app folder under .\Source Documents\, using the TSEEQ Sales Sample as a template.
 REM
 
+
 	SET vSourceDocsFolder=..\..\Source Documents\
 	SET vTSEEQSalesFolder=..\..\Source Documents\TSEEQ Sales Sample\
 
@@ -29,9 +30,8 @@ REM
 	
 	Copy  "%vTSEEQSalesFolder%1_Extract\Sales Extract.QVF"  	"%vNewAppFolder%\1_Extract\%vNewAppName% Extract.QVF"
 	Copy  "%vTSEEQSalesFolder%2_Transform\Sales Transform.QVF" 	"%vNewAppFolder%\2_Transform\%vNewAppName% Transform.QVF"
- 	Copy  "%vTSEEQSalesFolder%3_Load\Sales DataModel.QVF"  		"%vNewAppFolder%\3_Load\%vNewAppName% DataModel.QVF"
+ 	Copy  "%vTSEEQSalesFolder%3_Load\Sales DataModel (deprecrated).QVF"  		"%vNewAppFolder%\3_Load\%vNewAppName% DataModel (deprecrated).QVF"
  	Copy  "%vTSEEQSalesFolder%4_App\Sales Dashboard.QVF"  		"%vNewAppFolder%\4_App\%vNewAppName% Dashboard.QVF"
- 	Copy  "%vTSEEQSalesFolder%4_App\Sales Datamodel and Dashboard Combined.QVF"  "%vNewAppFolder%\4_App\%vNewAppName% Sales Datamodel and Dashboard Combined.QVF"
 exit /b
 
 
@@ -42,13 +42,14 @@ REM
 	Copy  "%vTSEEQSalesFolder%include\SalesExtractInclude_PreProcessing.txt"   	"%vNewAppFolder%\include\%vNewAppName%ExtractInclude_PreProcessing.txt"
 	Copy  "%vTSEEQSalesFolder%include\SalesTransformInclude_PreProcessing.txt" 	"%vNewAppFolder%\include\%vNewAppName%TransformInclude_PreProcessing.txt"
 	Copy  "%vTSEEQSalesFolder%include\SalesLoadInclude_PreProcessing.txt" 		"%vNewAppFolder%\include\%vNewAppName%LoadInclude_PreProcessing.txt"
+	Copy  "%vTSEEQSalesFolder%include\SalesAppInclude_PreProcessing.txt" 		"%vNewAppFolder%\include\%vNewAppName%AppInclude_PreProcessing.txt"
 
 	Copy  "%vTSEEQSalesFolder%include\SalesExtractInclude_PostProcessing.txt"   	"%vNewAppFolder%\include\%vNewAppName%ExtractInclude_PostProcessing.txt"
 	Copy  "%vTSEEQSalesFolder%include\SalesTransformInclude_PostProcessing.txt" 	"%vNewAppFolder%\include\%vNewAppName%TransformInclude_PostProcessing.txt"
 	Copy  "%vTSEEQSalesFolder%include\SalesLoadInclude_PostProcessing.txt" 		"%vNewAppFolder%\include\%vNewAppName%LoadInclude_PostProcessing.txt"
+	Copy  "%vTSEEQSalesFolder%include\SalesAppInclude_PostProcessing.txt" 		"%vNewAppFolder%\include\%vNewAppName%AppInclude_PostProcessing.txt"
 
-	Copy  "..\..\Source Documents\TSEEQ Sales Sample\include\SalesAppInclude_PostProcessing.txt"   		"..\..\Source Documents\%NewAppName%\include\%NewAppName%AppInclude_PostProcessing.txt"
-
+	Copy  "%vTSEEQSalesFolder%include\SalesCalendarCreation.qvs" 		"%vNewAppFolder%\include\%vNewAppName%CalendarCreation.qvs"
 exit /b
 
 REM
@@ -59,11 +60,14 @@ REM
 	Copy  "%vTSEEQSalesFolder%ETL_Rules\SalesTransformRules.xls"   	"%vNewAppFolder%\ETL_Rules\%vNewAppName%TransformRules.xls"
 	Copy  "%vTSEEQSalesFolder%ETL_Rules\SalesLoadRules.xls"   	"%vNewAppFolder%\ETL_Rules\%vNewAppName%LoadRules.xls"
 	Copy  "%vTSEEQSalesFolder%Variables\Sales_Variables.xls"   	"%vNewAppFolder%\Variables\%vNewAppName%_Variables.xls"
-	Copy  "%vTSEEQSalesFolder%Variables\Sales_Extract_Variables.xls"   	"%vNewAppFolder%\Variables\%vNewAppName%Extract__Variables.xls"
 
-	Copy  "..\..\Source Documents\TSEEQ Sales Sample\Variables\Sales Dashboard Chart Dimensions.xlsx"   	"..\..\Source Documents\%NewAppName%\Variables\%NewAppName% Dashboard Chart Dimensions.xlsx"
-	Copy  "..\..\Source Documents\TSEEQ Sales Sample\Variables\Sales Dashboard Chart Measures.xlsx"   	"..\..\Source Documents\%NewAppName%\Variables\%NewAppName% Dashboard Chart Measures.xlsx"
-	Copy  "..\..\Source Documents\TSEEQ Sales Sample\Variables\Sales Dashboard Selection Pane Fields.xlsx"   "..\..\Source Documents\%NewAppName%\Variables\%NewAppName% Dashboard Selection Pane Fields.xlsx"
+	Copy  "%vTSEEQSalesFolder%Variables\Sales_Extract_Variables.xls"   	"%vNewAppFolder%\Variables\%vNewAppName%_Extract_Variables.xls"
+	Copy  "%vTSEEQSalesFolder%Variables\Sales_App_Variables.xls"   	"%vNewAppFolder%\Variables\%vNewAppName%_App_Variables.xls"
+	Copy  "%vTSEEQSalesFolder%Variables\Sales_Date_Variables.xls"   	"%vNewAppFolder%\Variables\%vNewAppName%_Date_Variables.xls"
+
+	Copy  "..\..\Source Documents\TSEEQ Sales Sample\Variables\Sales Dashboard Chart Dimensions.xlsx"   	"%vNewAppFolder%\Variables\%vNewAppName% Dashboard Chart Dimensions.xlsx"
+	Copy  "..\..\Source Documents\TSEEQ Sales Sample\Variables\Sales Dashboard Chart Measures.xlsx"   	"%vNewAppFolder%\Variables\%vNewAppName% Dashboard Chart Measures.xlsx"
+	Copy  "..\..\Source Documents\TSEEQ Sales Sample\Variables\Sales Dashboard Selection Pane Fields.xlsx"   "%vNewAppFolder%\Variables\%vNewAppName% Dashboard Selection Pane Fields.xlsx"
 
 	Copy  "%vTSEEQSalesFolder%ETL_Rules\CSV\SalesExtractRules_TABLES_Worksheet.csv"   "%vNewAppFolder%\ETL_Rules\CSV\%vNewAppName%ExtractRules_TABLES_Worksheet.csv"
 	Copy  "%vTSEEQSalesFolder%ETL_Rules\CSV\SalesExtractRules_INCLUDE_FIELDS_Worksheet.csv"   "%vNewAppFolder%\ETL_Rules\CSV\%vNewAppName%ExtractRules_INCLUDE_FIELDS_Worksheet.csv"
@@ -75,6 +79,10 @@ REM
 	Copy  "%vTSEEQSalesFolder%ETL_Rules\CSV\SalesTransformRules_TRANSFORM_FIELDS_Worksheet.csv"   "%vNewAppFolder%\ETL_Rules\CSV\%vNewAppName%TransformRules_TRANSFORM_FIELDS_Worksheet.csv"
 
 	Copy  "%vTSEEQSalesFolder%ETL_Rules\CSV\SalesLoadRules_TABLES_Worksheet.csv"   "%vNewAppFolder%\ETL_Rules\CSV\%vNewAppName%LoadRules_TABLES_Worksheet.csv"
+
+	Copy  "..\..\Source Documents\TSEEQ Sales Sample\External Data\XLS\EmpOff.xls" "..\..\Source Documents\ff\External Data\XLS\EmpOff.xls"
+
+
 exit /b
 
 

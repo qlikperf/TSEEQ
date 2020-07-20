@@ -78,3 +78,8 @@ vSEEQScriptPath
 vTSEEQ_RetainFieldRulesFlag
 vTSEEQ_SimulateLatencyFlag
 vSEEQ_PostLoadScript
+vExcludeFields
+vTSEEQ_ModeOriginal
+vSEEQ_TmpProxyTable
+vSEEQ_NumFieldsLOADed
+vSEEQ_NumRecordsLOADed
