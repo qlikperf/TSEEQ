@@ -1,7 +1,7 @@
 REM
 REM	Create a new app folder under .\Source Documents\, using the TSEEQ Sales Sample as a template.
 REM
-
+ 
 	SET vSourceDocsFolder=..\..\Source Documents\
 	SET vTSEEQSalesFolder=..\..\Source Documents\TSEEQ Sales Sample\
 
