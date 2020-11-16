@@ -4,9 +4,9 @@ In typical production settings, vToday is set to the current date, or the prior 
 the data is current as of the prior day.  In test environments where the data is not current, vToday can 
 be set to any prior date.
 ****************************************************************************************************************/
-//	LET vToday = num(Today()); 							// Uncomment this line to override the value set in CommonVariables.xls.
-//	LET vMinDateNum = num(YearStart(addmonths(vToday, -60)));			// Uncomment this line to override the value set in CommonVariables.xls.
-//	LET vMaxDateNum = floor(num(YearEnd(addmonths(vToday, 36))));			// Uncomment this line to override the value set in CommonVariables.xls.
+//	LET vToday = num(Today()); 							// Uncomment this line to override the value set in Sales_Date_Variables.xls.
+//	LET vMinDateNum = num(YearStart(addmonths(vToday, -60)));			// Uncomment this line to override the value set in Sales_Date_Variables.xls.
+//	LET vMaxDateNum = floor(num(YearEnd(addmonths(vToday, 36))));			// Uncomment this line to override the value set in Sales_Date_Variables.xls.
 
 sub CreateCalendarQvd( vCCQ_CalendarName, vKEEPorDROP )
 /****************************************************************************************************************************************
@@ -15,8 +15,8 @@ sub CreateCalendarQvd( vCCQ_CalendarName, vKEEPorDROP )
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	4.0.6
-	Date:		2020-02-02
+	Version:	4.1.1
+	Date:		2020-11-16
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -68,7 +68,7 @@ sub CreateCalendarQvd( vCCQ_CalendarName, vKEEPorDROP )
 	           QuarterStart(TempDate) AS  [$(vCCQ_CalendarName)Quarter Start],
 	//           Date(TempDate) AS KeyDate,
 //	           Date(TempDate) AS OrderDate,
-	           Date (TempDate) AS [$(vCCQ_CalendarName)Date],
+	           Date (TempDate) AS [$(vTSEEQ_FactTableDateField)],
 	           num(TempDate) AS [$(vCCQ_CalendarName)DateNum], //date field set as a number for quick comparison
 	           year(TempDate) & '-Q'&ceil(Month(TempDate)/3) AS [$(vCCQ_CalendarName)YearQuarter],                 
 	           Year(TempDate) AS [$(vCCQ_CalendarName)Year],
