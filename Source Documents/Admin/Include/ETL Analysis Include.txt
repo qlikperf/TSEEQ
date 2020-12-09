@@ -6,57 +6,114 @@ Trace Entering Include File: '~\Admin\Include\ETL Analysis Include.txt';
 	
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
-	
-	Version:	3.1.7
-	Date:		2018-12-09
+
+	Version:	4.1.2
+	Date:		2020-12-07
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
 **********************************************************************************************************************************************************/
+Sub LoadETL_Stats (vETL_Operation)
+	ExtractTransform:
+	// LOAD
+	// 	*,
+	// 	Date &'_'&QVD2 as Date_QVD_Link
+	// ;		
+	LOAD 
+		* ,
+		Hour([Batch Start Time])  as Hour,	
+		if (Hour([Batch Start Time]) >= 12, 'PM', 'AM') AS [AM PM],		
+		replace ( replace( QVW, 'Extract', 'Ex'), 'Transform', 'Tr') as [QVF Short Name],
+		upper( QVW )  as    "APP NAME LINK",
+		replace (QVD, 'RMUT001F.qvd', 'RMUT001FL.qvd')  AS QVD2,	// fix old naming error
+		timestamp("EEE Start Time"  +  "Time Total for Table", 'hh:mm:ss[.fff]') as [QVD Store End Time],
+		if ( [# Rows] = 0, 'Y', 'N' ) as [0 Row Ops?],
+		if (
+			wildmatch(QVW, '*(*)*', '* - JRR', '*test*', 'Sales Extract *' )  OR
+			wildmatch(QVD, '*(*)*', '* - JRR', '*test*', 'Sales Extract *' )  
+		, 'YES', 'NO' ) AS [Noisy Data?], // 2020-08-19 JRR added this line to filter out noisy data
+		Timestamp([EEE Execution Completion Time], 'hh:mm:ss[.fff]') AS [EEE Execution Completion Time 2],
+		Timestamp([EEE Start Time], 'MM/DD hh:mm:ss[.fff]') AS [EEE Start Time 2],
+		Timestamp([Batch Start Time], 'MM/DD hh:mm:ss') AS [QVF Start Time],
+		date(floor ([Batch Start Time])) AS Date
+	FROM [$(vETLStatisticsQVDPath)Historical $(vETL_Operation).qvd] (qvd)
+	;
+end sub
 
-ExtractTransform:
-LOAD 
-	* ,
-	Timestamp([EEE Execution Completion Time], 'hh:mm:ss[.fff] TT') AS [EEE Execution Completion Time 2],
-	Timestamp([Batch Start Time]) AS [SEEQ Start Time],
-	date(floor ([Batch Start Time])) AS Date
-FROM [$(vETLStatisticsQVDPath)Historical Extract.qvd] (qvd);
+LET vETL_QVD_Exists = not isnull(QVDCreateTime('$(vETLStatisticsQVDPath)Historical Extract.qvd'));
+IF vETL_QVD_Exists THEN
+	call LoadETL_Stats('Extract');
+END IF	
+LET vETL_QVD_Exists = not isnull(QVDCreateTime('$(vETLStatisticsQVDPath)Historical Transform.qvd'));
+IF vETL_QVD_Exists THEN
+	call LoadETL_Stats('Transform');
+END IF	
+SET vETL_QVD_Exists =;
 
-set ErrorMode=0;
-Concatenate (ExtractTransform) LOAD 
-	* ,
-	Timestamp([EEE Execution Completion Time], 'hh:mm:ss[.fff] TT') AS [EEE Execution Completion Time 2],
-	Timestamp([Batch Start Time]) AS [SEEQ Start Time],
-	date(floor ([Batch Start Time])) AS Date
-FROM [$(vETLStatisticsQVDPath)Historical Transform.qvd] (qvd);
+RENAME Field [EEE Execution Completion Time 2] TO [Table End Time];
+DROP Field [EEE Start Time];
+RENAME Field [EEE Start Time 2] TO [Table Start Time];
 
-DROP Field [EEE Execution Completion Time];
-RENAME Field [EEE Execution Completion Time 2] TO [EEE Execution Completion Time];
 
 /*********************************************************************************************************************
 	Generate a calendar table (if one was not previously created).
 *********************************************************************************************************************/
-//$(must_Include=$(vCommonScriptPath)createcalendartable.txt); 
-//call CreateCalendarQvd('', 'KEEP');		// Create Calendar.qvd and keep the resulting table in memory. '' indicates a blank prefix on calendar field names.
-
-//OR
-
+SET vTSEEQ_FactTableDateField='Date';
+LET vToday = num(Today()); 							
+LET vMinDateNum = num(YearStart(addmonths(vToday, -24)));	
+LET vMaxDateNum = floor(num(YearEnd(addmonths(vToday, 1))));
+$(must_Include=$(vCommonScriptPath)createcalendartable.txt); 
+call CreateCalendarQvd('', 'KEEP');		// Create Calendar.qvd and keep the resulting table in memory. '' indicates a blank prefix on calendar field names.
+	//OR
 /*********************************************************************************************************************
 	Read a previously created calendar table
 *********************************************************************************************************************/
-Calendar:
-Left Keep (ExtractTransform)
- LOAD * FROM [$(vCommonQVDPath)Extracted$(vSlash)Calendar.qvd] (qvd);
-
+// Calendar:
+// Left Keep (ExtractTransform) LOAD Year, Month, Date FROM [$(vCommonQVDPath)Extracted$(vSlash)Calendar.qvd] (qvd);
 
 /*********************************************************************************************************************
 	QlikView uses QVWs; Qlik Sense uses QVFs.  Name the field accordingly:
 *********************************************************************************************************************/
-IF upper(vQlikProduct)='SENSE' THEN
-	RENAME Field QVW to QVF;
-ENDIF
+// IF upper(vQlikProduct)='SENSE' THEN
+	RENAME Field QVW to QVF;		// Starting in v4.1.2, rename the file regardless of the product.  It's simpler that way.
+// ENDIF
 
-RENAME FIELD [SEEQ Start Time] to [TSEEQ Start Time];
+[QVF End Times]:
+LEFT JOIN (ExtractTransform) Load  distinct
+	QVF,
+	[QVF Start Time],
+	timestamp(max ([QVD Store End Time]), 'hh:mm:ss[.fff]') as [QVF End Time],
+	interval( max ([QVD Store End Time]) - [QVF Start Time], 'hh:mm:ss')  AS [QVF Execution Time (all tables)]
+Resident ExtractTransform
+Group By QVF, [QVF Start Time];
 
-Trace Entering Exiting Include File: '~\Admin\Include\ETL Analysis Include.txt';
+DROP Field QVD;
+Rename field QVD2 to QVD;
+
+
+Rules:
+LOAD
+	FileBaseName() As [Rules File],
+	subfield(Source, '.', 2) AS [Table Name Link],
+	[Target Folder],
+	Target,
+	Source,
+	[Row Limit],
+	[Load Command],
+	ENABLED,
+	[Incremental Load Type],
+	[Last Modfied Timestamp Field],
+	[Last Modfied Timestamp Format for Query],
+	[Incremental ID Field(s)],
+	[Stale After (Days)],
+	Fields,
+	Constraints,
+	[Keep or Drop],
+	[Post Load Script]
+FROM [lib://Sales/ETL_Rules/SalesExtractRules.xls]		// someday, we should include Transform rules as well...
+(biff, embedded labels, table is TABLES$)
+WHERE Upper(ENABLED) = 'Y';
+
+STORE ExtractTransform INTO  [$(vETLStatisticsQVDPath)Historical ExtractTransformClean.qvd] (qvd);
+Trace  Exiting Include File: '~\Admin\Include\ETL Analysis Include.txt';
