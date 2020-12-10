@@ -1,7 +1,7 @@
 IF len(trim(DocumentTitle() ) ) >  0 THEN 		
-	LET vApp = 	subfield(DocumentTitle(), ' ', 1);  // The Title will always be set in Qlik Sense, but only sometimes in QlikView.
+	LET vApp = 	subfield(DocumentTitle(), '@', 1);  // The Title will always be set in Qlik Sense, but only sometimes in QlikView.
 ELSE 
-	LET vApp = subfield(DocumentName(), ' ', 1) ;	// If the Title is not set, use the file name, which is returned by DocumentName().
+	LET vApp = subfield(DocumentName(), '@', 1) ;	// If the Title is not set, use the file name, which is returned by DocumentName().
 ENDIF
 
 IF upper(vQlikProduct) = 'VIEW' THEN

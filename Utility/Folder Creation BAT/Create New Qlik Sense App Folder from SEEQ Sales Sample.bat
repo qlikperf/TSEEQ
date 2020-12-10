@@ -27,8 +27,8 @@ REM	SUBROUTINE Copy QVFs
 REM
 :CopyQVFs
 	REM ------------------- Extract and Transform ------------------- 
-	Copy  "%vTSEEQSalesFolder%1_Extract\Sales Extract.QVF"  	"%vNewAppFolder%\1_Extract\%vNewAppName% Extract.QVF"
-	Copy  "%vTSEEQSalesFolder%2_Transform\Sales Transform.QVF" 	"%vNewAppFolder%\2_Transform\%vNewAppName% Transform.QVF"
+	Copy  "%vTSEEQSalesFolder%1_Extract\Sales@Extract.QVF"  	"%vNewAppFolder%\1_Extract\%vNewAppName%@Extract.QVF"
+	Copy  "%vTSEEQSalesFolder%2_Transform\Sales@Transform.QVF" 	"%vNewAppFolder%\2_Transform\%vNewAppName%@Transform.QVF"
 
 	
 	REM 	In TSEEQ v4.0.9, the following name changes occurred, and apply to v4.0.9 and  later v4.x versions (for example, v4.1.0):
@@ -43,7 +43,7 @@ REM
 	Copy  "%vTSEEQSalesFolder%3_Load\Sales DataModel (deprecrated).QVF"  "%vNewAppFolder%\3_Load\%vNewAppName% DataModel (deprecrated).QVF"
 
 	REM ------------------- Primary Dashboard: The next line is valid for all TSEEQ verions ------------------- 
-	Copy  "%vTSEEQSalesFolder%4_App\Sales Dashboard.QVF"  		"%vNewAppFolder%\4_App\%vNewAppName% Dashboard.QVF"
+	Copy  "%vTSEEQSalesFolder%4_App\Sales@Dashboard.QVF"  		"%vNewAppFolder%\4_App\%vNewAppName%@Dashboard.QVF"
 
 	REM ------------------- Dashboard Variations: Depending on your TSEEQ version, you may wish to run the 1st copy line rather than the 2nd ------------------- 
 	REM ------------------- The next line is for TSEEQ versions prior to v4.0.9:------------------- 
