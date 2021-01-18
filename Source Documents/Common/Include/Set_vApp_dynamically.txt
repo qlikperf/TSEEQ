@@ -1,22 +1,32 @@
-IF len(trim(DocumentTitle() ) ) >  0 THEN 		
-	LET vApp = 	subfield(DocumentTitle(), '@', 1);  // The Title will always be set in Qlik Sense, but only sometimes in QlikView.
-ELSE 
-	LET vApp = subfield(DocumentName(), '@', 1) ;	// If the Title is not set, use the file name, which is returned by DocumentName().
-ENDIF
+IF WildMatch(DocumentTitle(), '*@*') or  WildMatch(DocumentName(), '*@*') THEN
+	// Use MULTIWORD mode (not the default mode). In MULTIWORD mode, the @ symbol, rather than a 
+	// space, is used as the word separator REM in the Extract, Transform and Dashboard QVFs
+	//	For additional information, please see the following GitHub issue:  https://github.com/qlikperf/TSEEQ/issues/7 
+	IF len(trim(DocumentTitle() ) ) >  0 THEN 		
+		LET vApp = 	subfield(DocumentTitle(), '@', 1);  // The Title will always be set in Qlik Sense, but only sometimes in QlikView.
+	ELSE 
+		LET vApp = subfield(DocumentName(), '@', 1) ;	// If the Title is not set, use the file name, which is returned by DocumentName().
+	ENDIF
+ELSE
+	IF len(trim(DocumentTitle() ) ) >  0 THEN 		
+		LET vApp = 	subfield(DocumentTitle(), ' ', 1);  // The Title will always be set in Qlik Sense, but only sometimes in QlikView.
+	ELSE 
+		LET vApp = subfield(DocumentName(), ' ', 1) ;	// If the Title is not set, use the file name, which is returned by DocumentName().
+	ENDIF
+ENDIF	
 
 IF upper(vQlikProduct) = 'VIEW' THEN
 	LET vApp = upper(vApp);
 ENDIF
-
 /****************************************************************************************************************************************
 	File: 		Set_vApp_dynamically.txt
 	Included by:	All QVFs and QVWs. 
 		
-	Author:		Jeff R. Robbins
+	Author:		Jeff R. Robbins and Andrew Gri
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.7
-	Date:		2018-12-09
+	Version:	4.1.3
+	Date:		2020-01-18
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of

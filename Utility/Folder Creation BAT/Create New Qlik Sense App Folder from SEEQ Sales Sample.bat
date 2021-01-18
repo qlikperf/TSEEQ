@@ -1,9 +1,27 @@
-REM
-REM	Create a new app folder under .\Source Documents\, using the TSEEQ Sales Sample as a template.
+REM File: 		Create New Qlik Sense App Folder from SEEQ Sales Sample.bat
+REM		
+REM Author:		Jeff R. Robbins and Andrew Gri
+REM Email:		jrs@qlik.com; jr@QlikPerf.com
+REM	
+REM Version:	4.1.3
+REM Date:		2020-01-18
+REM	
+REM This program is provided in the hope that it will be useful,
+REM but WITHOUT ANY WARRANTY; without even the implied warranty of
+REM MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+REM	
+REM Purpose:		Create a new app folder under .\Source Documents\, using the TSEEQ Sales Sample as a template.
 REM
  
 	SET vSourceDocsFolder=..\..\Source Documents\
 	SET vTSEEQSalesFolder=..\..\Source Documents\TSEEQ Sales Sample\
+	
+	REM If the 1st command line argument is MULTIWORDS (without surrounding quotes), then the @ symbol, rather than a space, is used as the word separator 
+	REM in the Extract, Transform and Dashboard QVFs that are created in the new app folder.  This MULTIWORDS option is not the default option, but 
+	REM is made available as requested in the following issue report:  https://github.com/qlikperf/TSEEQ/issues/7
+	SET vMULTIWORDS=%1
+	@REM echo %vMULTIWORDS%
+	@REM Pause
 
 	call :GetvNewAppName
 	call :CreateFolders
@@ -26,31 +44,62 @@ REM
 REM	SUBROUTINE Copy QVFs
 REM
 :CopyQVFs
-	REM ------------------- Extract and Transform ------------------- 
-	Copy  "%vTSEEQSalesFolder%1_Extract\Sales@Extract.QVF"  	"%vNewAppFolder%\1_Extract\%vNewAppName%@Extract.QVF"
-	Copy  "%vTSEEQSalesFolder%2_Transform\Sales@Transform.QVF" 	"%vNewAppFolder%\2_Transform\%vNewAppName%@Transform.QVF"
+	@REM echo %vMULTIWORDS%
+	@REM Pause	Pause
+	IF [%vMULTIWORDS%]==[MULTIWORDS] (
+		REM ------------------- Extract and Transform ------------------- 
+		Copy  "%vTSEEQSalesFolder%1_Extract\Sales Extract.QVF"  	"%vNewAppFolder%\1_Extract\%vNewAppName%@Extract.QVF"
+		Copy  "%vTSEEQSalesFolder%2_Transform\Sales Transform.QVF" 	"%vNewAppFolder%\2_Transform\%vNewAppName%@Transform.QVF"
 
-	
-	REM 	In TSEEQ v4.0.9, the following name changes occurred, and apply to v4.0.9 and  later v4.x versions (for example, v4.1.0):
-	REM	1. "Sales DataModel.QVF"  was renamed to "Sales DataModel (deprecrated).QVF" 		 (note: “deprecated” was unintentionally misspelled in the file name.)
-	REM	2. "Sales Dashboard.QVF" was renamed to Sales Dashboard Binary Load (deprecrated).QVF	(note: “deprecated” was unintentionally misspelled in the file name.)
-	REM	3. "Sales Datamodel and Dashboard Combined.QVF"  was renamed to "Sales Dashboard.QVF"
+		
+		REM 	In TSEEQ v4.0.9, the following name changes occurred, and apply to v4.0.9 and  later v4.x versions (for example, v4.1.0):
+		REM	1. "Sales DataModel.QVF"  was renamed to "Sales DataModel (deprecrated).QVF" 		 (note: ï¿½deprecatedï¿½ was unintentionally misspelled in the file name.)
+		REM	2. "Sales Dashboard.QVF" was renamed to Sales Dashboard Binary Load (deprecrated).QVF	(note: ï¿½deprecatedï¿½ was unintentionally misspelled in the file name.)
+		REM	3. "Sales Datamodel and Dashboard Combined.QVF"  was renamed to "Sales Dashboard.QVF"
 
-	REM ------------------- DataModel:  Depending on your TSEEQ version, you may wish to run the 1st copy line rather than the 2nd ------------------- 
-	REM ------------------- The next line is for TSEEQ versions prior to v4.0.9: ------------------- 
-	REM Copy  "%vTSEEQSalesFolder%3_Load\Sales DataModel.QVF"  		"%vNewAppFolder%\3_Load\%vNewAppName% DataModel.QVF"
-	REM ------------------- The next copy line is for TSEEQ versions v4.0.9 and later: ------------------- 
-	Copy  "%vTSEEQSalesFolder%3_Load\Sales DataModel (deprecrated).QVF"  "%vNewAppFolder%\3_Load\%vNewAppName% DataModel (deprecrated).QVF"
+		REM ------------------- DataModel:  Depending on your TSEEQ version, you may wish to run the 1st copy line rather than the 2nd ------------------- 
+		REM ------------------- The next line is for TSEEQ versions prior to v4.0.9: ------------------- 
+		REM Copy  "%vTSEEQSalesFolder%3_Load\Sales DataModel.QVF"  		"%vNewAppFolder%\3_Load\%vNewAppName% DataModel.QVF"
+		REM ------------------- The next copy line is for TSEEQ versions v4.0.9 and later: ------------------- 
+		Copy  "%vTSEEQSalesFolder%3_Load\Sales DataModel (deprecrated).QVF"  "%vNewAppFolder%\3_Load\%vNewAppName% DataModel (deprecrated).QVF"
 
-	REM ------------------- Primary Dashboard: The next line is valid for all TSEEQ verions ------------------- 
-	Copy  "%vTSEEQSalesFolder%4_App\Sales@Dashboard.QVF"  		"%vNewAppFolder%\4_App\%vNewAppName%@Dashboard.QVF"
+		REM ------------------- Primary Dashboard: The next line is valid for all TSEEQ verions ------------------- 
+		Copy  "%vTSEEQSalesFolder%4_App\Sales Dashboard.QVF"  		"%vNewAppFolder%\4_App\%vNewAppName%@Dashboard.QVF"
 
-	REM ------------------- Dashboard Variations: Depending on your TSEEQ version, you may wish to run the 1st copy line rather than the 2nd ------------------- 
-	REM ------------------- The next line is for TSEEQ versions prior to v4.0.9:------------------- 
-	REM Copy  "%vTSEEQSalesFolder%4_App\Sales Datamodel and Dashboard Combined.QVF"  "%vNewAppFolder%\4_App\%vNewAppName% Datamodel and Dashboard Combined.QVF"
-	REM ------------------- The next line is for TSEEQ versions v4.0.9 and later: ------------------- 
-	REM The next copy line is for TSEEQ versions v4.0.9 and later: 
- 	Copy  "%vTSEEQSalesFolder%4_App\Sales Dashboard Binary Load (deprecrated).QVF"  "%vNewAppFolder%\4_App\%vNewAppName% Dashboard Binary Load (deprecrated).QVF"
+		REM ------------------- Dashboard Variations: Depending on your TSEEQ version, you may wish to run the 1st copy line rather than the 2nd ------------------- 
+		REM ------------------- The next line is for TSEEQ versions prior to v4.0.9:------------------- 
+		REM Copy  "%vTSEEQSalesFolder%4_App\Sales Datamodel and Dashboard Combined.QVF"  "%vNewAppFolder%\4_App\%vNewAppName% Datamodel and Dashboard Combined.QVF"
+		REM ------------------- The next line is for TSEEQ versions v4.0.9 and later: ------------------- 
+		REM The next copy line is for TSEEQ versions v4.0.9 and later: 
+		Copy  "%vTSEEQSalesFolder%4_App\Sales Dashboard Binary Load (deprecrated).QVF"  "%vNewAppFolder%\4_App\%vNewAppName% Dashboard Binary Load (deprecrated).QVF"
+	) ELSE (
+		REM ------------------- Extract and Transform ------------------- 
+		Copy  "%vTSEEQSalesFolder%1_Extract\Sales Extract.QVF"  	"%vNewAppFolder%\1_Extract\%vNewAppName% Extract.QVF"
+		Copy  "%vTSEEQSalesFolder%2_Transform\Sales Transform.QVF" 	"%vNewAppFolder%\2_Transform\%vNewAppName% Transform.QVF"
+
+		
+		REM 	In TSEEQ v4.0.9, the following name changes occurred, and apply to v4.0.9 and  later v4.x versions (for example, v4.1.0):
+		REM	1. "Sales DataModel.QVF"  was renamed to "Sales DataModel (deprecrated).QVF" 		 (note: ï¿½deprecatedï¿½ was unintentionally misspelled in the file name.)
+		REM	2. "Sales Dashboard.QVF" was renamed to Sales Dashboard Binary Load (deprecrated).QVF	(note: ï¿½deprecatedï¿½ was unintentionally misspelled in the file name.)
+		REM	3. "Sales Datamodel and Dashboard Combined.QVF"  was renamed to "Sales Dashboard.QVF"
+
+		REM ------------------- DataModel:  Depending on your TSEEQ version, you may wish to run the 1st copy line rather than the 2nd ------------------- 
+		REM ------------------- The next line is for TSEEQ versions prior to v4.0.9: ------------------- 
+		REM Copy  "%vTSEEQSalesFolder%3_Load\Sales DataModel.QVF"  		"%vNewAppFolder%\3_Load\%vNewAppName% DataModel.QVF"
+		REM ------------------- The next copy line is for TSEEQ versions v4.0.9 and later: ------------------- 
+		Copy  "%vTSEEQSalesFolder%3_Load\Sales DataModel (deprecrated).QVF"  "%vNewAppFolder%\3_Load\%vNewAppName% DataModel (deprecrated).QVF"
+
+		REM ------------------- Primary Dashboard: The next line is valid for all TSEEQ verions ------------------- 
+		Copy  "%vTSEEQSalesFolder%4_App\Sales Dashboard.QVF"  		"%vNewAppFolder%\4_App\%vNewAppName% Dashboard.QVF"
+
+		REM ------------------- Dashboard Variations: Depending on your TSEEQ version, you may wish to run the 1st copy line rather than the 2nd ------------------- 
+		REM ------------------- The next line is for TSEEQ versions prior to v4.0.9:------------------- 
+		REM Copy  "%vTSEEQSalesFolder%4_App\Sales Datamodel and Dashboard Combined.QVF"  "%vNewAppFolder%\4_App\%vNewAppName% Datamodel and Dashboard Combined.QVF"
+		REM ------------------- The next line is for TSEEQ versions v4.0.9 and later: ------------------- 
+		REM The next copy line is for TSEEQ versions v4.0.9 and later: 
+		Copy  "%vTSEEQSalesFolder%4_App\Sales Dashboard Binary Load (deprecrated).QVF"  "%vNewAppFolder%\4_App\%vNewAppName% Dashboard Binary Load (deprecrated).QVF"
+
+	)	
 exit /b
 
 

@@ -1,19 +1,32 @@
-IF len(trim(DocumentTitle() ) ) >  0 THEN 		
-  	// The Title will always be set in Qlik Sense, but only sometimes in QlikView.
-  	LET vPurpose = 	subfield ( replace( replace(upper(subfield(DocumentTitle(), '@', 2)), 'DATAMODEL', 'LOAD'), 'DASHBOARD', 'APP'), '(', 1);
-ELSE 
-	// If the Title is not set, use the file name, which is returned by DocumentName()
-	LET vPurpose = replace( replace( upper(subfield(subfield(DocumentName(), '@', 2), '.', 1)), 'DATAMODEL', 'LOAD'), 'DASHBOARD', 'APP') ;	
+IF WildMatch(DocumentTitle(), '*@*') or  WildMatch(DocumentName(), '*@*') THEN
+	// Use MULTIWORD mode (not the default mode). In MULTIWORD mode, the @ symbol, rather than a 
+	// space, is used as the word separator REM in the Extract, Transform and Dashboard QVFs
+	//	For additional information, please see the following GitHub issue:  https://github.com/qlikperf/TSEEQ/issues/7 
+	IF len(trim(DocumentTitle() ) ) >  0 THEN 		
+		// The Title will always be set in Qlik Sense, but only sometimes in QlikView.
+		LET vPurpose = 	subfield ( replace( replace(upper(subfield(DocumentTitle(), '@', 2)), 'DATAMODEL', 'LOAD'), 'DASHBOARD', 'APP'), '(', 1);
+	ELSE 
+		// If the Title is not set, use the file name, which is returned by DocumentName()
+		LET vPurpose = replace( replace( upper(subfield(subfield(DocumentName(), '@', 2), '.', 1)), 'DATAMODEL', 'LOAD'), 'DASHBOARD', 'APP') ;	
+	ENDIF
+ELSE
+	IF len(trim(DocumentTitle() ) ) >  0 THEN 		
+		// The Title will always be set in Qlik Sense, but only sometimes in QlikView.
+		LET vPurpose = 	subfield ( replace( replace(upper(subfield(DocumentTitle(), ' ', 2)), 'DATAMODEL', 'LOAD'), 'DASHBOARD', 'APP'), '(', 1);
+	ELSE 
+		// If the Title is not set, use the file name, which is returned by DocumentName()
+		LET vPurpose = replace( replace( upper(subfield(subfield(DocumentName(), ' ', 2), '.', 1)), 'DATAMODEL', 'LOAD'), 'DASHBOARD', 'APP') ;	
+	ENDIF
 ENDIF
 /****************************************************************************************************************************************
 	File: 		Set_vPurpose_dynamically.txt
 	Included by:	All QVFs and QVWs. 
 		
-	Author:		Jeff R. Robbins
+	Author:		Jeff R. Robbins and Andrew Gri
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.7b
-	Date:		2018-02-19
+	Version:	4.1.3
+	Date:		2020-01-18
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
