@@ -40,11 +40,9 @@ vSEEQ_SQL
 vSEEQ_StaleAfter
 vSEEQ_TableCount
 vSEEQ_TableType
-vSEEQ_Target
 vSEEQ_TargetFolder
 vSEEQ_TargetFolderAndTarget
 vSEEQ_TargetKey
-vSEEQ_TargetWithoutBrackets
 vSEEQ_TimeIncrementalPostProccessing
 vSEEQ_TimeIncrementalPreProccessing
 vSEEQ_TimeIteration
@@ -83,3 +81,12 @@ vTSEEQ_ModeOriginal
 vSEEQ_TmpProxyTable
 vSEEQ_NumFieldsLOADed
 vSEEQ_NumRecordsLOADed
+vSEEQ_IncrementalKeyExists
+vSEEQ_IncrementalKeyIsFirst
+vSEEQ_Target
+vSEEQ_TargetWithoutBrackets
+vSEEQ_TargetUnexpanded
+vSEEQ_SQL_RecordCount
+vSEEQ_GetSQL_RecordCount
+vSEEQ_QlikRecordCount
+vSEEQ_QVDFirstField

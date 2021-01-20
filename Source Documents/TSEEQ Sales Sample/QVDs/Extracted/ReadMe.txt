@@ -1,1 +1,1 @@
-This folder contains extacted QVDs.
+This folder contains extracted QVDs.

@@ -7,46 +7,57 @@ sub IncrementalBlock1
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.7
-	Date:		2018-12-09
+	Version:	5.0.1
+	Date:		2021-02-01
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
 **********************************************************************************************************************************************************/
-//	Trace 'Entering subroutine IncrementalBlock1 in $(vCommonScriptPath)eee\SEEQ_subroutines_incremental.txt';
+	Trace 'Entering subroutine IncrementalBlock1 in $(vCommonScriptPath)eee\SEEQ_subroutines_incremental.txt';
    	LET vSEEQ_TimeIncrementalPreProccessing = num(now(1));		// performance profiling
 
 	LET vSEEQAddOnFileSize=FileSize('$(vCommonScriptPath)EEE\add-ons\QCEE Incremental1.txt');
 //	trace $(vSEEQAddOnFileSize);
-	IF  vSEEQAddOnFileSize > 0 THEN
+	//IF  vSEEQAddOnFileSize > 0 THEN			// 2020-09-25 JRR COMMENTED
+	IF  vSEEQAddOnFileSize > 0  and  upper(vPurpose) = 'EXTRACT' and NOT vTSEEQ_ForceAllTablesFull THEN // 2020-09-25 JRR ADDED
 		$(Include=$(vCommonScriptPath)\eee\add-ons\QCEE Incremental1.txt);			
 	ELSE
-//		exit SCRIPT;
 		IF len(trim(vSEEQ_Constraints))>0 AND left(vSEEQ_Constraints, 2) <> '//'THEN
 			LET vSEEQ_Constraints = 'WHERE  $(vSEEQ_Constraints)';
 		ENDIF
-		IF upper(vSEEQ_IncrementalLoadType) <> 'FULL' AND upper(vPurpose) = 'EXTRACT'  THEN
-			Call SEEQ_WriteMessage ('QCEE Incremental1 add-on for TSEEQ was not found.  Please contact Qlik Consulting at QlikConsultingUSA@qlik.com for assistance with this add-on.');
+//		IF upper(vSEEQ_IncrementalLoadType) <> 'FULL' AND upper(vPurpose) = 'EXTRACT'  THEN	// 2020-09-25 JRR COMMENTED
+		IF vSEEQAddOnFileSize < 1 and NOT vTSEEQ_ForceAllTablesFull  THEN	// 2020-09-25 JRR ADDED	
+			Call SEEQ_WriteMessage ('QCEE Incremental1 add-on for TSEEQ was not found.  Please email Jeff.Robbins@qlik.com and jr@qlikperf.com for assistance with this add-on.');
 			CALL SEEQ_WriteMessage('Switching from $(vSEEQ_IncrementalLoadType) to FULL load.');
 			SET vSEEQ_IncrementalLoadType = 'FULL';		
+		// 2020-09-25 BEGIN BLOCK ADDED BY JRR
+		ElseIf upper(vSEEQ_IncrementalLoadType) <> 'FULL' AND upper(vPurpose) = 'EXTRACT' and vTSEEQ_ForceAllTablesFull  THEN	// 2020-09-25 JRR ADDED	
+			Call SEEQ_WriteMessage ('vTSEEQ_ForceAllTablesFull  is set to TRUE. This variable over-rides the Incremental Load Type field from the Rules file.');
+			CALL SEEQ_WriteMessage('Switching from $(vSEEQ_IncrementalLoadType) to FULL load.');
+			SET vSEEQ_IncrementalLoadType = 'FULL';		
+		// 2020-09-25 END BLOCK ADDED BY JRR
 		ENDIF
 	ENDIF
 	SET vSEEQAddOnFileSize=;
 	LET vSEEQ_TimeIncrementalPreProccessing = num(now(1)) -  vSEEQ_TimeIncrementalPreProccessing;		// performance profiling
 //	Call SEEQ_WriteMessage ('Exiting subroutine IncrementalBlock1 in $(vCommonScriptPath)eee\SEEQ_subroutines_incremental.txt');		
-//	Trace 'Exiting subroutine IncrementalBlock1 in $(vCommonScriptPath)\eee\SEEQ_subroutines_incremental.txt';	
+	Trace 'Exiting subroutine IncrementalBlock1 in $(vCommonScriptPath)\eee\SEEQ_subroutines_incremental.txt';	
 end sub	// IncrementalBlock1
 /******************************************************************************************************************************************/
 sub IncrementalBlock2
-//	Trace 'Entering subroutine IncrementalBlock2 in $(vCommonScriptPath)\eee\SEEQ_subroutines_incremental.txt';	
+	Trace 'Entering subroutine IncrementalBlock2 in $(vCommonScriptPath)\eee\SEEQ_subroutines_incremental.txt';	
 	LET vSEEQ_TimeIncrementalPostProccessing = num(now(1));		// performance profiling
-	IF FileSize('$(vCommonScriptPath)\eee\add-ons\qcee incremental2.txt') > 0 THEN
-		$(Include=$(vCommonScriptPath)\eee\add-ons\qcee incremental2.txt);
+	//	IF FileSize('$(vCommonScriptPath)\eee\add-ons\qcee incremental2.txt') > 0 THEN // 2020-08-21 JRR commented
+	IF FileSize('$(vCommonScriptPath)\eee\add-ons\qcee incremental2.txt') > 0 and $(vSEEQ_NumRecords$(vPurposeED)) > 0  THEN //2020-08-21 JRR added
+			$(Include=$(vCommonScriptPath)\eee\add-ons\qcee incremental2.txt);		// Process added and modified records
+	ENDIF 
+	IF FileSize('$(vCommonScriptPath)\eee\add-ons\qcee incremental3.txt') > 0 and upper(vSEEQ_IncrementalLoadType) = 'INCREMENTAL_DELETE' and  upper(vTSEEQ_Mode) = 'GENERATE AND EXECUTE' THEN //2020-10-05 JRR added
+			$(Include=$(vCommonScriptPath)\eee\add-ons\qcee incremental3.txt);		// Process deleted records
 	ENDIF 
 	SET vSEEQ_Incremental_QVD_AlreadyExists	= '';
 	SET vSEEQ_TargetFolderAndTarget = '';	
 	LET vSEEQ_TimeIncrementalPostProccessing = num(now(1)) -  vSEEQ_TimeIncrementalPostProccessing;
-//	Trace 'Exiting subroutine IncrementalBlock2 in $(vCommonScriptPath)\eee\SEEQ_subroutines_incremental.txt';	
+	Trace 'Exiting subroutine IncrementalBlock2 in $(vCommonScriptPath)\eee\SEEQ_subroutines_incremental.txt';	
 end sub	// IncrementalBlock2
 /******************************************************************************************************************************************/

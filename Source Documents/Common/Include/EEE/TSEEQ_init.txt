@@ -7,8 +7,8 @@ sub InitVariablesOuter
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	4.0.5
-	Date:		2019-10-31
+	Version:	5.0.1
+	Date:		2021-02-01
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -114,6 +114,7 @@ sub InitVariablesOuter
 					NOCONCATENATE LOAD 	DISTINCT * 		
 					FROM [$(vRulesSourceFile_INCLUDE_FIELDS)] (txt, utf8, embedded labels, delimiter is ',', msq)
 					WHERE upper(ENABLED)='Y'
+//					Order by RecNo()			// 2020-08-27 JRR added		
 					;
 				ENDIF
 				IF 	upper(vPurpose) = 'TRANSFORM' THEN			
@@ -148,13 +149,17 @@ sub InitVariablesOuter
 end sub // InitVariablesOuter
 /******************************************************************************************************************************************/
 sub InitVariablesInner
+	SET vSEEQ_NumRecordsEXTRACTed=0;
 	SET vSEEQ_DropExcludedFieldsStatement=;		// 2018-07-12 JRR added this line
 	SET vSEEQ_NumFields$(vPurposeED)=0;		// 2017-04-08 JRR moved this line from InitVariablesOuter to InitVariablesInner
 	SET vSEEQ_NumRecords$(vPurposeED)=0;	// 2017-04-08 JRR moved this line from InitVariablesOuter to InitVariablesInner
 	SET vSEEQ_Messages=;
 	SET vSEEQ_ThisIsMappingTable=0;		
 	SET vSEEQ_ExecuteStatement='';
+	SET vSEEQ_GetSQL_RecordCount='';
 	SET vSEEQ_ExecuteStatementIncrementalBlock2='';
+	SET vSEEQ_ExecuteStatementIncrementalBlock3='';
+	SET vSEEQ_QlikRecordCount=;
 	SET vSEEQ_FieldsExpansion ='';
 	 LET vSEEQ_TimeIteration = num(now(1));		// performance profiling
 	// For Extract or Tranforms, the target is a QVD; for a Load, the target is a table in the QV associative data model. 
@@ -191,7 +196,10 @@ sub InitVariablesInner
 	LET vSEEQ_Target =  '[' & PurgeChar(peek('Target', $(vSEEQ_OuterLoopCounter), 'Rules'), ' -	[]')  & ']' ;		// 2016-09-25 JRR added this line.
 	LET vSEEQ_TargetWithoutBrackets =  PurgeChar(peek('Target', $(vSEEQ_OuterLoopCounter), 'Rules'), ' -	[]')   ;		// 2016-09-25 JRR added this line.	
 	
-	LET vSEEQ_TargetFolder =  peek('Target Folder', $(vSEEQ_OuterLoopCounter), 'Rules');			
+	LET vSEEQ_TargetUnexpanded =  replace(peek('Target', $(vSEEQ_OuterLoopCounter), 'Rules'), '$', '#');		// 2020-09-24 JRR added this line to preserve un-evaluated target name
+
+
+	LET vSEEQ_TargetFolder =  peek('Target Folder', $(vSEEQ_OuterLoopCounter), 'Rules');	 // 2020-09-29 JRR uncommented		
 	//2017-07-22 JRR commented the following line due to error when running in Qlik Sense June 2017 release:
 //	IF right(vSEEQ_TargetFolder, 1) <> $(vSlash) THEN			// append trailing '\' (QlikView) or '/' (QlikSense) to complete the path.
 	//2017-07-22 JRR added the following line to resolve error when running in Qlik Sense June 2017 release:
@@ -267,7 +275,8 @@ sub InitVariablesInner
 	LET vSEEQ_LastExecTime = 0;	
 
 	IF upper(vPurpose) = 'EXTRACT' THEN 
-		set vSEEQ_SQL = 'SQL ';			// pulling from the DB
+		set vSEEQ_SQL = 'SQL ';			// 2020-10-14 JRR commented this line, since it breaks a preceding load in EXTRACT
+		set vSEEQ_SQL = ' ';			// 2020-10-14 JRR added this line
 	ELSEIF upper(vPurpose) = 'TRANSFORM' OR upper(vPurpose) = 'LOAD' THEN 
 			IF upper(vSEEQ_SourceType = 'EXTERNAL' ) THEN
 				LET vSEEQ_SourceFormat = peek('External Source Format', $(vSEEQ_OuterLoopCounter), 'Rules' );

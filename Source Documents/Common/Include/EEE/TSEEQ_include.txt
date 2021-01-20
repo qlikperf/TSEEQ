@@ -6,8 +6,8 @@ sub SEEQ_ExecuteRulesSourceFile
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	4.0.2
-	Date:		2019-09-20
+	Version:	5.0.1
+	Date:		2021-02-01
 
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -67,7 +67,13 @@ $(vSEEQ_PostLoadScript)';
 
 			IF $(vSEEQ_NumRecords$(vPurposeED)) = 0 and vSEEQ_ThisIsMappingTable <> 1 and upper(vPurpose) <> 'LOAD'  THEN
 				SET vSEEQ_ErrorDetected = 1;
-				CALL SEEQ_WriteMessage('0 records $(vPurposeED) from $(vSEEQ_TargetWithoutBrackets). QVD will not be written.'); 
+//				CALL SEEQ_WriteMessage('0 records $(vPurposeED) from $(vSEEQ_TargetWithoutBrackets). QVD will not be written.'); 	// 2020-08-21 JRR commented
+// 				CALL SEEQ_WriteMessage('0 records $(vPurposeED) from $(vSEEQ_Source). QVD will not be written.'); 		// 2020-08-21 JRR added
+				 IF  upper(vSEEQ_IncrementalLoadType) = 'INCREMENTAL_DELETE' and upper(vPurpose) = 'EXTRACT' THEN		// 2020-10-05 JRR added this line and next
+						CALL SEEQ_WriteMessage('0 new/modified records $(vPurposeED) from $(vSEEQ_Source). Deleted record analysis to follow.'); 
+				ELSE
+				 	CALL SEEQ_WriteMessage('0 records $(vPurposeED) from $(vSEEQ_Source). QVD will not be written.'); 	// 2020-08-21 JRR added
+				ENDIF
 			ENDIF
 		ENDIF
 		//---- 
@@ -81,11 +87,13 @@ $(vSEEQ_PostLoadScript)';
 			TRACE 'Sleeping $(vSEEQ_RandomSleepTime) milliseconds to simulate latency';
 			sleep ($(vSEEQ_RandomSleepTime));
 		ENDIF
-		SET vSEEQ_ComputerName=;
+//		SET vSEEQ_ComputerName=;		// 2020-08-29 JRR commented
 		SET vSEEQ_RandomSleepTime=;		
 		LET vSEEQ_TimeLoad = num(now(1)) -  vSEEQ_TimeLoad;  // performance profiling				
+
 		CALL IncrementalBlock2;		// Incremental post-processing for EXTRACT operations
-		SET vSEEQ_ExecuteStatement = '$(vSEEQ_ExecuteStatement) $(vSEEQ_ExecuteStatementIncrementalBlock2)';
+		SET vSEEQ_ExecuteStatement = '$(vSEEQ_ExecuteStatement) $(vSEEQ_ExecuteStatementIncrementalBlock2)$(vSEEQ_GetSQL_RecordCount)$(vSEEQ_ExecuteStatementIncrementalBlock3)';
+
 		Concatenate (SEEQ_ExecutionTrace) LOAD $(vSEEQ_TargetKey) AS SEEQ_TargetKey, '$(vSEEQ_ExecuteStatement)' AS [EEE Executed Script], 
 					Timestamp(num(now(1)), 'hh:mm:ss TT') AS [EEE Execution Completion Time], $(vSEEQ_TimeLoad) AS [EEE Execution Time Elapsed], RowNo()-1 AS  [EEE Execution Order] AutoGenerate 1;
 //		CALL MetaData		// tag fields in TRANSFORM operations	

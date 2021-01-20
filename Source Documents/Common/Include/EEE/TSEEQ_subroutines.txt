@@ -7,8 +7,8 @@ Sub ExcludeFieldsInit
 	Author:				Jeff R. Robbins
 	Author email:		jrs@qlik.com; jr@qlikperf.com
 	
-	Version:	4.0.6
-	Date:		2020-02-20
+	Version:	5.0.1
+	Date:		2021-02-01
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -44,6 +44,7 @@ sub IncludeFields
 	// INCLUDE_FIELD processing for TRANSFORM is handled by the TranformFields procedure, farther below
 			IncludeField:
 			LOAD 	DISTINCT IN.Field AS IncludeField, RowNo() AS Order
+//			LOAD 	DISTINCT IN.Field AS IncludeField, RecNo() AS Order		// LOOKY
 			Resident IncludeFieldsForAllTables 
 			// WHERE $(vSEEQ_GetThisRuleLine)	and purgechar([Target], ' -	') = '$(vSEEQ_TargetWithoutBrackets)'; // 2020-02-20 JRR COMMENTED THIS LINE
 			WHERE $(vSEEQ_GetThisRuleLine)	; // 2020-02-20 JRR ADDED THIS LINE to enable INCLUDE_FIELD wildcard matching on Targets 
