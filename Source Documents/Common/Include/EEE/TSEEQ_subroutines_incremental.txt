@@ -18,25 +18,17 @@ sub IncrementalBlock1
    	LET vSEEQ_TimeIncrementalPreProccessing = num(now(1));		// performance profiling
 
 	LET vSEEQAddOnFileSize=FileSize('$(vCommonScriptPath)EEE\add-ons\QCEE Incremental1.txt');
-//	trace $(vSEEQAddOnFileSize);
-	//IF  vSEEQAddOnFileSize > 0 THEN			// 2020-09-25 JRR COMMENTED
-	IF  vSEEQAddOnFileSize > 0  and  upper(vPurpose) = 'EXTRACT' and NOT vTSEEQ_ForceAllTablesFull THEN // 2020-09-25 JRR ADDED
+
+	IF  vSEEQAddOnFileSize > 0 and upper(vPurpose) = 'EXTRACT' THEN
 		$(Include=$(vCommonScriptPath)\eee\add-ons\QCEE Incremental1.txt);			
 	ELSE
 		IF len(trim(vSEEQ_Constraints))>0 AND left(vSEEQ_Constraints, 2) <> '//'THEN
 			LET vSEEQ_Constraints = 'WHERE  $(vSEEQ_Constraints)';
 		ENDIF
-//		IF upper(vSEEQ_IncrementalLoadType) <> 'FULL' AND upper(vPurpose) = 'EXTRACT'  THEN	// 2020-09-25 JRR COMMENTED
-		IF vSEEQAddOnFileSize < 1 and NOT vTSEEQ_ForceAllTablesFull  THEN	// 2020-09-25 JRR ADDED	
-			Call SEEQ_WriteMessage ('QCEE Incremental1 add-on for TSEEQ was not found.  Please email Jeff.Robbins@qlik.com and jr@qlikperf.com for assistance with this add-on.');
+		IF upper(vSEEQ_IncrementalLoadType) <> 'FULL' AND upper(vPurpose) = 'EXTRACT'  THEN
+			Call SEEQ_WriteMessage ('QCEE Incremental1 add-on for TSEEQ was not found.  Please contact Qlik Consulting at https://www.qlik.com/us/services/qlik-consulting/contact-consulting for assistance with this add-on.');
 			CALL SEEQ_WriteMessage('Switching from $(vSEEQ_IncrementalLoadType) to FULL load.');
 			SET vSEEQ_IncrementalLoadType = 'FULL';		
-		// 2020-09-25 BEGIN BLOCK ADDED BY JRR
-		ElseIf upper(vSEEQ_IncrementalLoadType) <> 'FULL' AND upper(vPurpose) = 'EXTRACT' and vTSEEQ_ForceAllTablesFull  THEN	// 2020-09-25 JRR ADDED	
-			Call SEEQ_WriteMessage ('vTSEEQ_ForceAllTablesFull  is set to TRUE. This variable over-rides the Incremental Load Type field from the Rules file.');
-			CALL SEEQ_WriteMessage('Switching from $(vSEEQ_IncrementalLoadType) to FULL load.');
-			SET vSEEQ_IncrementalLoadType = 'FULL';		
-		// 2020-09-25 END BLOCK ADDED BY JRR
 		ENDIF
 	ENDIF
 	SET vSEEQAddOnFileSize=;
