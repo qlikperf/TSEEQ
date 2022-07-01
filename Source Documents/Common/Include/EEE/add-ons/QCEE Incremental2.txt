@@ -1,0 +1,50 @@
+/**********************************************************************************************************************************************************
+	File:		QCEE Incremental2.txt
+	Purpose:	Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
+	Included by:	TSEEQ_subroutines_incremental.txt
+
+	
+	Author:		Jeff R. Robbins
+	Email:		jrs@qlik.com; jr@QlikPerf.com
+	
+	Version:	3.1.2
+	Date:		2018-02-15
+	
+	This program is provided in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+**********************************************************************************************************************************************************/
+IF upper(vSEEQ_IncrementalLoadType) <> 'FULL'  AND upper(vPurpose) = 'EXTRACT'  THEN
+	LET  vSEEQ_Incremental_QVD_AlreadyExists = not isnull(QVDCreateTime('$(vSEEQ_TargetFolderAndTarget).qvd'));
+	IF vSEEQ_Incremental_QVD_AlreadyExists THEN
+				trace Historical QVD exists;
+				LET vSEEQ_Incremental_ID_Fields_Len = len (trim (vSEEQ_Incremental_ID_Fields ) );
+		IF vSEEQ_Incremental_ID_Fields_Len > 0 THEN		// handle case where records can be added and/or modified.
+	 		TRACE incremental2;
+				IF '$(vTSEEQ_Mode)' = 'GENERATE AND EXECUTE' THEN		// vTSEEQ_Mode is not GENERATE ONLY
+				STORE 	$(vSEEQ_Target) INTO [$(vSEEQ_TargetFolder)$(vSEEQ_TargetWithoutBrackets)_ChangedRecords.qvd] (qvd);
+			ENDIF
+			SET vSEEQ_ExecuteStatementIncrementalBlock2='
+[SEEQ_Incremental_Tmp_Table]:	// Create the distinct record key in the records just pulled by the incremental load. 
+LOAD 
+$(vSEEQ_Incremental_ID_Fields) AS SEEQ_IncrementalKey, 
+* 
+Resident $(vSEEQ_Target)$(vSEEQ_Semicolon) 
+DROP Table $(vSEEQ_Target)$(vSEEQ_Semicolon) 
+RENAME TABLE SEEQ_Incremental_Tmp_Table to $(vSEEQ_Target)$(vSEEQ_Semicolon)					
+Concatenate ($(vSEEQ_Target))		// Add historical records to the incremental records.
+LOAD   
+	*	
+FROM [$(vSEEQ_TargetFolderAndTarget).qvd] (qvd) WHERE not Exists(  SEEQ_IncrementalKey, $(vSEEQ_Incremental_ID_Fields) )$(vSEEQ_Semicolon)'
+;
+			IF '$(vTSEEQ_Mode)' = 'GENERATE AND EXECUTE' THEN		// vTSEEQ_Mode is not GENERATE ONLY
+				Trace 'Executing the following code:';	
+				Trace '$(vSEEQ_ExecuteStatementIncrementalBlock2)';	
+				$(vSEEQ_ExecuteStatementIncrementalBlock2);
+				DROP Field SEEQ_IncrementalKey;
+			ENDIF
+		ENDIF	
+	ELSE 
+	trace Historical QVD not detected ;
+	ENDIF			 
+ENDIF

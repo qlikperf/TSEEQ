@@ -1,0 +1,83 @@
+/**********************************************************************************************************************************************************
+	File:		QCEE Incremental1.txt
+	Purpose:	Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
+	Included by:	TSEEQ_subroutines_incremental.txt
+
+	
+	Author:		Jeff R. Robbins
+	Email:		jrs@qlik.com; jr@QlikPerf.com
+	
+	Version:	3.1.2
+	Date:		2018-02-15
+	
+	This program is provided in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+**********************************************************************************************************************************************************/
+Trace 'Entering QCEE Incremental1 add-on for TSEEQ.';
+LET vSEEQ_QVDCreateTime = trim(QVDCreateTime('$(vSEEQ_TargetFolder)$(vSEEQ_TargetWithoutBrackets).qvd'));
+LET vSEEQ_ValidIncremental = if (len(trim(vSEEQ_ModfiedTimestampField)) >0 and len(trim(vSEEQ_Incremental_ID_Fields)) > 0 and len(trim(vSEEQ_LastModfiedTimestampFormatForQuery)) > 0, 1, 0);
+	IF upper(vSEEQ_IncrementalLoadType) = 'INCREMENTAL'  AND upper(vPurpose) = 'EXTRACT' AND len(vSEEQ_QVDCreateTime) > 0 AND vSEEQ_ValidIncremental THEN
+	// Case 1: This is an incremental load and the QVD already exists from a prior extract operation:
+	CALL SEEQ_WriteMessage('This is an $(vSEEQ_IncrementalLoadType) load and the historical QVD exists.'); 
+	LET vSEEQ_TargetFolderAndTarget= '$(vSEEQ_TargetFolder)' & '$(vSEEQ_TargetWithoutBrackets)';
+	IF vTSEEQ_Mode = 'GENERATE AND EXECUTE' THEN	
+		// While slower than simply looking at the QVD file timestamp, looking at the most recent last modified 
+		// timestamp within the historical QVW is more precise, and eliminates potential cross-system time sync issues. 
+		CALL SEEQ_WriteMessage('vTSEEQ_Mode = GENERATE AND EXECUTE. Pulling last modified timestamp from the highest $(vSEEQ_ModfiedTimestampField) value within the historical QVD.');
+		SEEQ_tmpMaxDate:
+		Load DISTINCT ($(vSEEQ_ModfiedTimestampField)) as LastModifiedDateDistinct 		From [$(vSEEQ_TargetFolderAndTarget).qvd] (qvd);
+		SEEQ_LoadTime:
+		LOAD MAX (LastModifiedDateDistinct ) AS LastModifiedDate resident SEEQ_tmpMaxDate;
+		DROP Table SEEQ_tmpMaxDate;
+		Let vSEEQ_LastExecTime = peek('LastModifiedDate',0,'SEEQ_LoadTime');
+		DROP Table SEEQ_LoadTime;
+	ELSEIF vTSEEQ_Mode = 'GENERATE ONLY'  THEN	
+		// Looking at the QVD timestamp is faster but less precise than  looking at the most recent last modified timestamp 
+		// within the QVD.  Since GENERATE ONLY is a developer-oriented debug mode and not a mode in which 
+		// production is run, this lack of precision is not problematic.
+		CALL SEEQ_WriteMessage('vTSEEQ_Mode = GENERATE ONLY.  Pulling timestamp of the  historical QVD.');
+		LET vSEEQ_LastExecTime = num(vSEEQ_QVDCreateTime);
+	ENDIF
+	LET vSEEQ_LastExecTimeFormatted  =  $(vSEEQ_LastModfiedTimestampFormatForQuery);  // The FormatForQuery is applied to vSEEQ_LastExecTime
+		/* Here we consider cases where there are multiple timestamp fields that must be checked. For example, the requirement might be to extract
+		all records where the DateModified *or* the DateAdded field contains a timestamp greather than or equal to vSEEQ_LastExecTime.  This is a
+		rare case that complicates the code considerably.  We leave the code here, albeit commented, for reference should this need arise again in the 
+		future. This commented code presumes that vSEEQ_ModfiedTimestampField contains the comma-separated list of fields to consider, for example: DateModified,DateAdded
+			// add single quotes around the constraint:
+			//		LET vSEEQ_ConstraintsIncremental= '(' &	replace ( vSEEQ_ModfiedTimestampField, ',' , '>='&chr(39)&'$(vSEEQ_LastExecTimeFormatted)'&chr(39) &' OR ' ) & '>='&chr(39)&'$(vSEEQ_LastExecTimeFormatted)'&chr(39)  & ')';
+			// don't add single quotes around the constraint:
+			LET vSEEQ_ConstraintsIncremental= '(' &	replace ( vSEEQ_ModfiedTimestampField, ',' , '>='&'$(vSEEQ_LastExecTimeFormatted)'&' OR ' ) & '>='&'$(vSEEQ_LastExecTimeFormatted)'& ')';
+	*/
+	// The following line is for the common case of a single timestamp field that must be checked:
+	SET vSEEQ_ConstraintsIncremental=$(vSEEQ_ModfiedTimestampField)>=$(vSEEQ_LastExecTimeFormatted);
+	
+	IF len(vSEEQ_Constraints) > 0 THEN	// place parens around original constraints:
+		LET vSEEQ_Constraints =  'WHERE (' & vSEEQ_Constraints & ') AND $(vSEEQ_ConstraintsIncremental)';
+	ELSE 
+		LET vSEEQ_Constraints = 'WHERE   $(vSEEQ_ConstraintsIncremental)';
+	ENDIF
+ELSEIF	len(trim(vSEEQ_Constraints) ) > 0 AND  left(vSEEQ_Constraints, 2) <> '//' and upper(vPurpose) = 'EXTRACT' THEN 
+	// Case 3: This is an incremental load and the QVD does not exist, or this is a full load. There are some Constraints defined:
+	IF not	vSEEQ_ValidIncremental and upper(vSEEQ_IncrementalLoadType) <> 'FULL'  THEN
+		CALL SEEQ_WriteMessage('$(vRulesSourceFile) specifies an $(vSEEQ_IncrementalLoadType) load but Last Modfied Timestamp Field, Last Modfied Timestamp Format for Query, and/or Incremental ID Field(s) are blank.  Switching to FULL load.');
+	ENDIF
+	if upper(vSEEQ_IncrementalLoadType) <> 'FULL'  and len(vSEEQ_QVDCreateTime) < 1   THEN
+		CALL SEEQ_WriteMessage('$(vRulesSourceFile) specifies an $(vSEEQ_IncrementalLoadType) load but the historical QVD does not exist.  Switching to FULL load.');
+	ENDIF
+	LET vSEEQ_Constraints = 'WHERE  $(vSEEQ_Constraints)';
+       SET vSEEQ_IncrementalLoadType = 'FULL';		// even if INCREMENTAL was specified in the rules, we execute FULL, since the historical QVD does not exist.
+ELSEIF	 upper(vPurpose) = 'EXTRACT' THEN 
+	// Case 4: This is an incremental load and the QVD does not exist, or this is a full load. There are no Constraints defined:
+	IF not	vSEEQ_ValidIncremental and upper(vSEEQ_IncrementalLoadType) <> 'FULL' THEN
+		CALL SEEQ_WriteMessage('$(vRulesSourceFile) specifies an $(vSEEQ_IncrementalLoadType) load but Last Modfied Timestamp Field, Last Modfied Timestamp Format for Query, and/or Incremental ID Field(s) are blank.  Switching to FULL load.');
+	ENDIF
+	if upper(vSEEQ_IncrementalLoadType) <> 'FULL'  and len(vSEEQ_QVDCreateTime) < 1 THEN
+		CALL SEEQ_WriteMessage('$(vRulesSourceFile) specifies an $(vSEEQ_IncrementalLoadType) load but the historical QVD does not exist.  Switching to FULL load.');
+	ENDIF
+	LET vSEEQ_Constraints = ' ';	
+       SET vSEEQ_IncrementalLoadType = 'FULL';		// even if INCREMENTAL was specified in the rules, we execute FULL, since the historical QVD does not exist    
+ELSEIF len(trim(vSEEQ_Constraints))>0 THEN		// add WHERE back to the constraints.
+	LET vSEEQ_Constraints='WHERE ' & '$(vSEEQ_Constraints)';	
+ENDIF	
+Trace 'Exiting QCEE Incremental1 add-on for TSEEQ.';
