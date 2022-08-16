@@ -1,9 +1,10 @@
 sub Load_Variables_from_XLS(vExpressionFile, vWorksheet, vKEEPorDROP)
+	Trace 'Entering subroutine Load_Variables_from_XLS in $(vCommonScriptPath)\Load_Variables_from_XLS.txt';
 /*******************************************************************************************************************************************************
 	Procedure: 	Load_Variables_from_XLS
 
-	Version:	4.0.6
-	Date:		2020-02-02
+	Version:	6.0.1
+	Date:		2022-07-07
 
 	Purpose:	Load variables from the specified XLS file and contained worksheet into a QlikVIew app.
 	
@@ -44,5 +45,5 @@ sub Load_Variables_from_XLS(vExpressionFile, vWorksheet, vKEEPorDROP)
 	call Load_Variables_from_Resident('Tmp_XLS_Contents', '$(vKEEPorDROP)' );	// keep variable list in tabular format in data model
 	
 	DROP Table Tmp_XLS_Contents;
-	 
+	Trace 'Exiting subroutine Load_Variables_from_XLS in $(vCommonScriptPath)\Load_Variables_from_XLS.txt';
 endsub

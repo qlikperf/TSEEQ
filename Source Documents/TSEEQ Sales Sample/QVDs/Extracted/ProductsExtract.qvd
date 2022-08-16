@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ <QvdTableHeader>
+   <QvBuildNo>50655</QvBuildNo>
+   <CreatorDoc>09fed3ec-3098-459e-a97b-d9818fd8c430</CreatorDoc>
+   <CreateUtcTime>2022-08-04 23:58:34</CreateUtcTime>
+   <SourceCreateUtcTime></SourceCreateUtcTime>
+   <SourceFileUtcTime></SourceFileUtcTime>
+   <SourceFileSize>-1</SourceFileSize>
+   <StaleUtcTime></StaleUtcTime>
+   <TableName>ProductsExtract</TableName>
+   <Fields>
+     <QvdFieldHeader>
+       <FieldName>ProductID</FieldName>
+       <BitOffset>0</BitOffset>
+       <BitWidth>8</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>INTEGER</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>77</NoOfSymbols>
+       <Offset>0</Offset>
+       <Length>385</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>ProductName</FieldName>
+       <BitOffset>24</BitOffset>
+       <BitWidth>7</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>77</NoOfSymbols>
+       <Offset>385</Offset>
+       <Length>1192</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$text</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>SupplierID</FieldName>
+       <BitOffset>8</BitOffset>
+       <BitWidth>8</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>INTEGER</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>29</NoOfSymbols>
+       <Offset>1577</Offset>
+       <Length>145</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>CategoryID</FieldName>
+       <BitOffset>53</BitOffset>
+       <BitWidth>3</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>INTEGER</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>8</NoOfSymbols>
+       <Offset>1722</Offset>
+       <Length>40</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$key</String>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>QuantityPerUnit</FieldName>
+       <BitOffset>44</BitOffset>
+       <BitWidth>5</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>INTEGER</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>25</NoOfSymbols>
+       <Offset>1762</Offset>
+       <Length>125</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>UnitCost</FieldName>
+       <BitOffset>31</BitOffset>
+       <BitWidth>7</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>75</NoOfSymbols>
+       <Offset>1887</Offset>
+       <Length>675</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>UnitPrice</FieldName>
+       <BitOffset>16</BitOffset>
+       <BitWidth>8</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>60</NoOfSymbols>
+       <Offset>2562</Offset>
+       <Length>440</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>UnitsInStock</FieldName>
+       <BitOffset>38</BitOffset>
+       <BitWidth>6</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>INTEGER</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>51</NoOfSymbols>
+       <Offset>3002</Offset>
+       <Length>255</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>UnitsOnOrder</FieldName>
+       <BitOffset>49</BitOffset>
+       <BitWidth>4</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>INTEGER</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>10</NoOfSymbols>
+       <Offset>3257</Offset>
+       <Length>50</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+   </Fields>
+   <Compression></Compression>
+   <RecordByteSize>7</RecordByteSize>
+   <NoOfRecords>77</NoOfRecords>
+   <Offset>3307</Offset>
+   <Length>539</Length>
+   <Lineage>
+     <LineageInfo>
+       <Discriminator>AUTOGENERATE;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>INLINE;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>QWT;</Discriminator>
+       <Statement>SELECT Format ( Quantity * UnitPrice ,  &quot;Currency&quot; ) as [Line Price from ExtractRules INCLUDE_FIELDS], 
+`Order Details`.*
+ FROM  `Order Details`  </Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>QWT;</Discriminator>
+       <Statement>[CategoriesExtract]:		
+ SELECT * FROM  Categories  </Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>QWT;</Discriminator>
+       <Statement>[CustomersExtract]:		
+ SELECT * FROM  Customers  </Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>QWT;</Discriminator>
+       <Statement>[DivisionsExtract]:		
+ SELECT * FROM  Divisions  </Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>QWT;</Discriminator>
+       <Statement>[OrderDetailsExtract]:		
+ LOAD 
+    *,
+    money(Quantity * UnitPrice , '$#,##0.00;($#,##0.00)' )  as [Line Price from ExtractRules TABLES Preceding Load]
+;SELECT Format ( Quantity * UnitPrice ,  &quot;Currency&quot; ) as [Line Price from ExtractRules INCLUDE_FIELDS], 
+`Order Details`.*
+ FROM  `Order Details`  </Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>QWT;</Discriminator>
+       <Statement>[OrdersExtract]:		
+ SELECT * FROM  Orders  </Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>QWT;</Discriminator>
+       <Statement>[ProductsExtract]:		
+ SELECT * FROM  Products  </Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT IncludeField;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT IncludeFieldsForAllTables;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT Tmp_Variable_Repository;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT Tmp_XLS_Contents;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>{STORE - [lib://Sales//QVDs/Extracted/OrderDetailsExtract.qvd] (qvd)};</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>{STORE - [lib://Sales//QVDs/Extracted\/CategoriesExtract.qvd] (qvd)};</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>{STORE - [lib://Sales//QVDs/Extracted\/CustomersExtract.qvd] (qvd)};</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>{STORE - [lib://Sales//QVDs/Extracted\/DivisionsExtract.qvd] (qvd)};</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>{STORE - [lib://Sales//QVDs/Extracted\/OrdersExtract.qvd] (qvd)};</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\osd4sf.git_copy\tseeq\source documents\common\variables\common_extract_variables.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\osd4sf.git_copy\tseeq\source documents\common\variables\common_infotext_variables.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>c:\osd4sf.git_copy\tseeq\source documents\common\variables\common_variables.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\etl_rules\salesextractrules.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\variables\sales_extract_variables.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\variables\sales_variables.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+   </Lineage>
+   <Comment></Comment>
+   <EncryptionInfo></EncryptionInfo>
+   <TableTags></TableTags>
+   <ProfilingData></ProfilingData>
+ </QvdTableHeader>
+                         	   
+                                                                      !   "   #   $   %   &   '   (   )   *   +   ,   -   .   /   0   1   2   3   4   5   6   7   8   9   :   ;   <   =   >   ?   @   A   B   C   D   E   F   G   H   I   J   K   L   M   Lenin Jeansshorts Mr2 Trousers Chantell Shirt Rossi Shorts O-Man Underwear Shagall Socks Runner Shoes Tuxedo Top Fuji Boots Sapporoo Gloves Desperado Jeans Tank Swimsuit Aino Shoes Kool Sunglasses Sumi Underwear Wimbledon T-Shirt TieBreak Tennis shoes Deuce Shirt Squash Shorts Tennis Suit Basket Shoes Ravellis Tr√§skor DSW Sandals Samba Soccer Socks Basket Vest Bike Helmet Tracksuit RDL Suit Davenport Shoes Baby Dark Lounge Suit Rossi Bermuda Shorts Riviera Swimsuit Casual Boots Baywatch Swimsuit LA. Shorts Mehmet-Tr√∂ja Mehmet-Skor Le Baby Dress Terence Top Duck Trousers Duck Shirt Walking Shoes Summer Shorts Okkaba Skin Jackets Danske Treshoe Rodbye Troje Lundenhagen Boots Root Boot Finnish Sport Blades Finnish Swimsuit Summit Hiking Boots Winter Boots Jack Flash Dress Patamonia Fleece Jacket Feiss Fleece Trousers Slip-on Shoes Lightweight Sandals Onesy Dress Rasta WCT Game Over T-Shirt AAA Running Shoe Lace Shoes Serve-Shirt WFS Shoes Stretch Pants Langoste Shirt Minnki P√§lsii Cap Tube Socks US-Master Jeans Atles Lussekofta Oyaki Kimono Mehmet-Napp X-Train Shoes Bow tie Halter Dress Wrap Skirt                         	   
+                                                                                    
+         d   2   (               $         Z                     i   5   D         =
+◊£pΩ.@ÏQ∏Ö+0@fffffÊ.@◊£p=
+W3@·zÆG·@ÆG·zÆ	@ÆG·zé@@§p=
+◊#0@33333s@@ÕÃÃÃÃÃ@öôôôô5@ÆG·zÆ@\è¬ı(5@\è¬ı(\4@ÏQ∏ÖÎ@R∏ÖÎQ@öôôôôY3@◊£p=
+6@öôôôôô@è¬ı(\P@è¬ı(\è!@333333@∏ÖÎQ∏@333333@33333≥%@·zÆG!:@H·zÆB@H·zÆgB@è¬ı(\/Y@ˆ(\è¬µ6@ÖÎQ∏@=
+◊£p=.@3333334@
+◊£p=
+@ÆG·zÆ@ÕÃÃÃÃÃ@q=
+◊£p@q=
+◊£0O@ˆ(\è¬H@◊£p=
+W0@ÖÎQ∏@fffffÊ%@ˆ(\è¬ı$@{ÆG· P@·zÆG· @§p=
+◊#"@ÖÎQ∏6@öôôôôY<@\è¬ı(‹.@§p=
+◊#+@è¬ı(\ØT@§p=
+◊≥Q@q=
+◊£0J@ÖÎQ∏E>@◊£p=
+ó@@ˆ(\è¬A@ˆ(\è¬ïB@√ı(\è¬@√ı(\è¬@=
+◊£p=6@§p=
+◊c9@ÕÃÃÃÃÃ/@     @=@\è¬ı(\!@ÆG·zî0@ÕÃÃÃÃG@◊£p=
+W#@ffffff˙?{ÆG·˙8@=
+◊£p}:@ÏQ∏ÖÎ!@{ÆG·zÏ?§p=
+◊c8@q=
+◊£p@33333s@               (   '         
+           @7@      @fffffÊ"@     Ä9@ffffff"@Q         @	         @   {ÆG·:?@33333ÛE@ÕÃÃÃÃÃF@√ı(\èÚ^@§p=
+◊„9@      !@         T@<   ffffff2@ÕÃÃÃÃL#@   ÕÃÃÃÃ‹R@      #@     `@@     @0@öôôôô˘X@P   ffffffN@öôôôôπA@&        Ä3@      H@        Ä:@ÕÃÃÃÃL=@fffffÊ3@     †@@öôôôô$@      )@           Ä>@öôôôôô'@öôôôôôÒ?         @è     '         5       x                  V      #   *      (      h   =      L   1      
+   	   p   o      E   {   U         _   $   A   &      s   >   O      q      4      e   }   9           (   F      2   
+   <   P   d              Å@   Å$É¡  1 ÖBA ÉQ@ á√ `	âDÄ
+
+Öb	ã≈†
+cÄçFs@Ä èí¿
+°`ëà≥Ä…√¿ì	ƒ¿	Jƒ¬ïä‘‡À4‡	ó5 
+L≈¿
+ôå¡¿
+ç≈¿õÕ≈@¡`ù∆ÄüOÜ¢  êf¿!°–Ê†""ı†#£ëÄ$$wà%•R !&&S!'ßì«Ä((‘«Ä)©‘≈‡* *U¿™+!´(!,",V8d- ≠ñXÄ..◊¯`/#Øóad0 0∆Ã1$±…†2%2`3&≥Y˘‡4'41!5(µöô¿66€¿7)∑õ)Í8*∏√‡9+9Ä:∫\J¡;,;ùZ¡<-º›¿=.=^Ä¿>/æc!?0?ü¬Ó@1¿_U AA +0B¬`{!C2C·¡ D3ƒ·5¿E4E¢!
+F5∆‚ G6G£ã H7»„;ÄI8I$ãRJ9 $Ã K:Keå!L;ÃîÃ 

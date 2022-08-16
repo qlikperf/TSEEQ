@@ -1,4 +1,5 @@
 sub InitVariablesOuter
+	Trace 'Entering subroutine InitVariablesOuter in $(vCommonScriptPath)\EEE\TSEEQ_init.txt';
 /**********************************************************************************************************************************************************
 	File:		TSEEQ_init.txt
 	Purpose:	Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
@@ -7,8 +8,8 @@ sub InitVariablesOuter
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	5.0.1
-	Date:		2021-02-01
+	Version:	6.0.1
+	Date:		2022-07-07
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -36,10 +37,12 @@ sub InitVariablesOuter
 		SET vSEEQ_RulesFieldList = *, AutoNumber(Target & '_' & [Target Folder] ) AS SEEQ_TargetKey;
 	ENDIf
 
-   	SET vSEEQ_MaxRulesTryCount=4;
+
+	SET vSEEQ_MaxRulesTryCount=4;
    	SET vSEEQ_RulesTryCount=1;	
 	SET ErrorMode = 0; 		SET vSEEQ_RulesReadSuccessFlag = 0;
 	do 		// keep attempting to read the rules file until you succeed (the file may be briefly locked while it is being saved, so multiple attempts might be needed).
+//			Trace 'vRulesSourceFile = $(vRulesSourceFile)';
 		IF vTSEEQ_RuleFileType = 'XLS' THEN
 			Rules:
 			NOCONCATENATE 	
@@ -114,7 +117,6 @@ sub InitVariablesOuter
 					NOCONCATENATE LOAD 	DISTINCT * 		
 					FROM [$(vRulesSourceFile_INCLUDE_FIELDS)] (txt, utf8, embedded labels, delimiter is ',', msq)
 					WHERE upper(ENABLED)='Y'
-//					Order by RecNo()			// 2020-08-27 JRR added		
 					;
 				ENDIF
 				IF 	upper(vPurpose) = 'TRANSFORM' THEN			
@@ -146,9 +148,13 @@ sub InitVariablesOuter
 	SET vSEEQ_RulesFieldList = '';	
 	SET vSEEQ_RulesReadSuccessFlag = '';
 	SET vTSEEQ_RuleFileType=;
+
+	Trace 'Exiting subroutine InitVariablesOuter in $(vCommonScriptPath)\EEE\TSEEQ_init.txt';
 end sub // InitVariablesOuter
 /******************************************************************************************************************************************/
 sub InitVariablesInner
+	Trace 'Entering subroutine InitVariablesInner in $(vCommonScriptPath)\EEE\TSEEQ_init.txt';
+
 	SET vSEEQ_NumRecordsEXTRACTed=0;
 	SET vSEEQ_DropExcludedFieldsStatement=;		// 2018-07-12 JRR added this line
 	SET vSEEQ_NumFields$(vPurposeED)=0;		// 2017-04-08 JRR moved this line from InitVariablesOuter to InitVariablesInner
@@ -206,6 +212,9 @@ sub InitVariablesInner
 	IF right(vSEEQ_TargetFolder, 1) <> '$(vSlash)' THEN			// append trailing '\' (QlikView) or '/' (QlikSense) to complete the path.
 		SET vSEEQ_TargetFolder  = '$(vSEEQ_TargetFolder)$(vSlash)';
 	ENDIF
+
+	// 2022-07-07 JRR added the following line for SaaS / CloudBucket support:
+	LET vSEEQ_TargetFolder = $(vUDF_RemoveExtraDoubleSlashesFromPath(vSEEQ_TargetFolder));
 
 	LET vSEEQ_TargetKey  = peek('SEEQ_TargetKey', $(vSEEQ_OuterLoopCounter), 'Rules');	
 	
@@ -287,5 +296,8 @@ sub InitVariablesInner
 			set vSEEQ_SQL ='';		// for a Transforms and Loads, we load from a QVD, so we blank out the vSEEQ_SQL variable
 	ENDIF
 	SET vSEEQ_ErrorDetected = 0;
+
+	Trace 'Exiting subroutine InitVariablesInner in $(vCommonScriptPath)\EEE\TSEEQ_init.txt';
+
 end Sub	// InitVariablesInner
 /******************************************************************************************************************************************/

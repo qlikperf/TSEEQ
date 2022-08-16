@@ -1,12 +1,13 @@
 sub Load_Variables_from_Resident(vTmpResidentTable, vKEEPorDROP)
+	Trace 'Entering subroutine Load_Variables_from_Resident in $(vCommonScriptPath)\Load_Variables_from_Resident.txt';
 /****************************************************************************************************************************************
 	Procedure:	Load_Variables_from_Resident
 		
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.7
-	Date:		2018-12-09
+	Version:	6.0.1
+	Date:		2022-07-07
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -48,9 +49,13 @@ sub Load_Variables_from_Resident(vTmpResidentTable, vKEEPorDROP)
 	ENDIF
 	DROP Table Tmp_Variable_Repository;  
 	LET vLVR_NumVariablesToInit = null();
+
+	Trace 'Exiting subroutine Load_Variables_from_Resident in $(vCommonScriptPath)\Load_Variables_from_Resident .txt';
 endsub 
 /****************************************************************************************************************************************/
 sub  Load_Variables_from_Resident_Init
+	Trace 'Entering subroutine Load_Variables_from_Resident_Init in $(vCommonScriptPath)\Load_Variables_from_Resident.txt';
+
 	//2014-01-07 JRR added the following three lines to handle the cases where vApp is not defined in the callee, so that WildMatch would not return an undesired result.
 	if IsNull(vApp)  or len (trim(vApp)) = 0  THEN
 		SET vApp = 'BLANK';	
@@ -71,7 +76,7 @@ sub  Load_Variables_from_Resident_Init
 		VariableSourceFilePath,
 		[Variable Name] AS %VariableName, 
 		applymap ( 'VarTypeMap', left( [Variable Name], 1 ), 'Other' ) AS [Variable Type],
-		replace ( replace( [Variable Definition] , '“', '"'), '”', '"') AS [Variable Definition], 
+		replace ( replace( [Variable Definition] , 'ï¿½', '"'), 'ï¿½', '"') AS [Variable Definition], 
 		Comment AS [Variable Comment]
 		,
 		if (len([SET or LET]) <2, 'SET', [SET or LET]) AS [SET or LET] // if not defined, defaults to SET
@@ -93,6 +98,7 @@ sub  Load_Variables_from_Resident_Init
 	Rename Table Tmp_Variable_Repository_02 TO Tmp_Variable_Repository; 
 	DROP FIELD [Load Order];
 
+	Trace 'Exiting subroutine Load_Variables_from_Resident_Init in $(vCommonScriptPath)\Load_Variables_from_Resident.txt';
 ENDSUB
 /****************************************************************************************************************************************/
 sub Load_Variables_from_Resident_Handle_Error
@@ -107,6 +113,7 @@ sub Load_Variables_from_Resident_Handle_Error
 ENDSUB			   
 /****************************************************************************************************************************************/
 sub Load_Variables_from_Resident_Define_Variable
+	Trace 'Entering subroutine Load_Variables_from_Resident_Define_Variable in $(vCommonScriptPath)\Load_Variables_from_Resident.txt';
 		  //Here the the expressions are assigned to variables  
 			IF '$(vLVR_SetOrLet)' = 'LET' THEN
 				Let '$(vLVR_VariableName)' = $(vLVR_VariableDefinition);
@@ -132,6 +139,7 @@ sub Load_Variables_from_Resident_Define_Variable
 					; // 2015-01-08 JRR added this line to prevent "Script line error/General Script Error"
 				ENDIF
 			ENDIF   
+	Trace 'Exiting subroutine Load_Variables_from_Resident_Define_Variable in $(vCommonScriptPath)\Load_Variables_from_Resident.txt';
 ENDSUB			
 /****************************************************************************************************************************************/
 sub Load_Variables_from_Resident_Clear_Variables

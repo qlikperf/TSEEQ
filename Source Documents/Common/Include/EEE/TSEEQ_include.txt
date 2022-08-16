@@ -1,4 +1,5 @@
 sub SEEQ_ExecuteRulesSourceFile
+	Trace 'Entering subroutine SEEQ_ExecuteRulesSourceFile in $(vCommonScriptPath)\EEE\TSEEQ_include.txt';
 /**********************************************************************************************************************************************************
 	File:		SEEQ_include.txt
 	Purpose:	Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
@@ -6,8 +7,8 @@ sub SEEQ_ExecuteRulesSourceFile
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	5.0.1
-	Date:		2021-02-01
+	Version:	6.0.1
+	Date:		2022-07-07
 
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -40,6 +41,9 @@ sub SEEQ_ExecuteRulesSourceFile
 		CALL TransformFields;		// set vSEEQ_FieldsExpansion for TRANSFORM operations.  
 		CALL IncrementalBlock1;		// Incremental pre-processing for EXTRACT operations. 
 
+		// 2022-07-07 JRR added the following line for SaaS / CloudBucket support:
+		LET vSEEQ_Source = $(vUDF_RemoveExtraDoubleSlashesFromPath(vSEEQ_Source));
+
 		SET vSEEQ_ExecuteStatement = '$(vSEEQ_Target):		
 $(vSEEQ_Prefix)$(vSEEQ_SQL)$(vSEEQ_LoadCommand) $(vSEEQ_FieldsExpansion) $(vSEEQ_From) $(vSEEQ_Source) $(vSEEQ_Constraints)$(vSEEQ_Semicolon)';
 
@@ -57,7 +61,7 @@ $(vSEEQ_PostLoadScript)';
 		ENDIF	
 
     	LET vSEEQ_TimeLoad = num(now(1));		// performance profiling
-		//----  CORE: The following lines run the SQL (SELECT or EXEC) for an EXTRACT. For a TRANSFORM or LOAD,  load from QVD is run:
+		//----  CORE: The following lines run the SQL (SELECT or EXEC) for an EXTRACT. For a TRANSFORM or LOAD, load from QVD is run:
 		IF upper(vTSEEQ_Mode) = 'GENERATE AND EXECUTE' THEN		// vTSEEQ_Mode is not GENERATE ONLY
 			Trace 'Executing the following code:';	
 			Trace '$(vSEEQ_ExecuteStatement)';		
@@ -104,4 +108,5 @@ $(vSEEQ_PostLoadScript)';
 
 	Call SEEQ_Terminate;
 	SET vTSEEQ_ModeOriginal='';
+	Trace 'Exiting subroutine SEEQ_ExecuteRulesSourceFile in $(vCommonScriptPath)\EEE\TSEEQ_include.txt';
 endsub

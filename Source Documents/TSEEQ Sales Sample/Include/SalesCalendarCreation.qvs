@@ -23,7 +23,8 @@ Drop table AllDates;
 // Prior to generating the calendar, read Variables file for values of vMinDateNum, vMaxDateNum and vToday:
 call Load_Variables_from_XLS('$(vVariablePath)$(vApp)_Date_Variables.xls', 'Sheet1', 'KEEP') ;
 
-$(must_Include=$(vCommonScriptPath)createcalendartable.txt); 
+//  2022-07-07 JRR cchanged 'createcalendartable' to 'CreateCalendarTable', for SaaS / CloudBucket support: 
+$(must_Include=$(vCommonScriptPath)CreateCalendarTable.txt); 
 call CreateCalendarQvd('$(vTSEEQ_CalendarFieldNamePrefix)', 'KEEP');			// Create Calendar and then keep the calendar in memory.    
 
 SET vMinDateNum=;

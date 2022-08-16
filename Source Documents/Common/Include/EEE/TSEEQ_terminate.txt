@@ -1,4 +1,5 @@
 sub StoreQVD
+	Trace 'Entering subroutine StoreQVD in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt';
 /**********************************************************************************************************************************************************
 	File:			SEEQ_terminate.txt
 	Purpose:		Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
@@ -7,8 +8,8 @@ sub StoreQVD
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	5.0.1
-	Date:		2021-02-01
+	Version:	6.0.1
+	Date:		2022-07-07
 
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -81,14 +82,19 @@ sub StoreQVD
 		drop table ExcludeFields, 	ExcludeFieldsConcat;
 	ENDIF
 	SET vSEEQ_NoOfRowsInTarget=;
+
+	Trace 'Exiting subroutine StoreQVD in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt';
+
 End Sub
 /******************************************************************************************************************************************/
 sub SEEQ_Terminate
 
+	Trace 'Entering subroutine SEEQ_Terminate in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt';
+
 	SEEQ_var_list_destroy_tmp:		// list of variables to set to null upon the end of engine execution, in the procedure SEEQ_Terminate.
 	LOAD Variable as [Variable Name]
 	FROM
-	[$(vCommonScriptPath)\EEE\SEEQ_VariableList.txt]
+	[$(vCommonScriptPath)EEE/SEEQ_VariableList.txt]		// 2022-07-07 JRR removed extraneous '\' in front of 'EEE' and replaced remaining '\' with '/'
 	(txt, codepage is 1252, embedded labels, delimiter is ' ', msq);
 
 	IF NoOfRows('Execution Stats') > 0 THEN 
@@ -104,7 +110,10 @@ sub SEEQ_Terminate
 				IF len(trim(QvdCreateTime('$(vETLStatisticsQVDPath)$(vEEEQVDTraceFile).qvd')) ) > 0 THEN		// QVD exists; load records from prior extract/tranform
 					CONCATENATE (QVDsGeneratedHistorical) 
 					First 400000	// keep no more than 400,000 records from prior executions. This is an arbitrary limit and could be raised.
-					LOAD * FROM [$(vETLStatisticsQVDPath)\$(vEEEQVDTraceFile).qvd] (qvd);
+					// 2022-07-07 JRR commented the following line:
+					//	LOAD * FROM [$(vETLStatisticsQVDPath)\$(vEEEQVDTraceFile).qvd] (qvd);
+					// 2022-07-07 JRR added the following line (extra '\' removed), for CloudBucket support, in the following line:
+					LOAD * FROM [$(vETLStatisticsQVDPath)$(vEEEQVDTraceFile).qvd] (qvd);
 				ENDIF
 				STORE [QVDsGeneratedHistorical] INTO [$(vETLStatisticsQVDPath)$(vEEEQVDTraceFile).qvd] (qvd);
 				DROP Table QVDsGeneratedHistorical;
@@ -154,5 +163,8 @@ sub SEEQ_Terminate
 	IF upper(vPurpose) = 'TRANSFORM'  AND vTSEEQ_RetainFieldRulesFlag <> 1 THEN 
 		DROP Table 	TransformFieldsForAllTables;
 	ENDIF
+
+	Trace 'Exiting subroutine SEEQ_Terminate in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt';
+
 ENDSUB	
 /******************************************************************************************************************************************/

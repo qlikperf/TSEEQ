@@ -1,4 +1,4 @@
-$(must_Include=$(vCommonScriptPath)eee\TSEEQ_init.txt);
+$(must_Include=$(vCommonScriptPath)EEE/TSEEQ_init.txt);
 /**************************************************************************************************************************************
 	File:		TSEEQ Master Include File.txt
 	Purpose:	This file includes multiple include files that implement TSEEQ, The Structured ETL Engine for Qlik.
@@ -6,10 +6,21 @@ $(must_Include=$(vCommonScriptPath)eee\TSEEQ_init.txt);
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	3.1.7
-	Date:		2018-12-09
+	Version:	6.0.1
+	Date:		2022-07-07
 ***************************************************************************************************************************************/
+
+/**************************************************************************************************************************************
+2022-07-07: for Qlik Sense SaaS compatibility, all backward slash (\) characters were replaced with forward slashes (/),
+and all 'eee' were replaced with 'EEE'.
+Old lines:
+$(must_Include=$(vCommonScriptPath)eee/TSEEQ_init.txt); (prior 1st line in this file)
 $(must_Include=$(vCommonScriptPath)eee\TSEEQ_subroutines.txt);
 $(must_Include=$(vCommonScriptPath)eee\TSEEQ_subroutines_incremental.txt);
 $(must_Include=$(vCommonScriptPath)eee\TSEEQ_terminate.txt);
 $(must_Include=$(vCommonScriptPath)eee\TSEEQ_include.txt);
+***************************************************************************************************************************************/
+$(must_Include=$(vCommonScriptPath)EEE/TSEEQ_subroutines.txt);
+$(must_Include=$(vCommonScriptPath)EEE/TSEEQ_subroutines_incremental.txt);
+$(must_Include=$(vCommonScriptPath)EEE/TSEEQ_terminate.txt);
+$(must_Include=$(vCommonScriptPath)EEE/TSEEQ_include.txt);

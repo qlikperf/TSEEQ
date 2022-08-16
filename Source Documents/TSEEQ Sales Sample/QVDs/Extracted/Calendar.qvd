@@ -1,0 +1,1184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+ <QvdTableHeader>
+   <QvBuildNo>50655</QvBuildNo>
+   <CreatorDoc>0d586d82-c150-4c1b-aa4a-c35fe1285bfe</CreatorDoc>
+   <CreateUtcTime>2022-08-16 14:54:54</CreateUtcTime>
+   <SourceCreateUtcTime></SourceCreateUtcTime>
+   <SourceFileUtcTime></SourceFileUtcTime>
+   <SourceFileSize>-1</SourceFileSize>
+   <StaleUtcTime></StaleUtcTime>
+   <TableName>Calendar</TableName>
+   <Fields>
+     <QvdFieldHeader>
+       <FieldName>Today Flag</FieldName>
+       <BitOffset>69</BitOffset>
+       <BitWidth>3</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>0</Offset>
+       <Length>14</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Past Week Flag</FieldName>
+       <BitOffset>72</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>14</Offset>
+       <Length>14</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Past Month Flag</FieldName>
+       <BitOffset>73</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>28</Offset>
+       <Length>14</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Future Month Flag</FieldName>
+       <BitOffset>74</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>42</Offset>
+       <Length>14</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Past Quarter Flag</FieldName>
+       <BitOffset>75</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>56</Offset>
+       <Length>14</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Quarter Start</FieldName>
+       <BitOffset>64</BitOffset>
+       <BitWidth>5</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>DATE</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>MM/DD/YYYY</Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>21</NoOfSymbols>
+       <Offset>70</Offset>
+       <Length>105</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+         <String>$timestamp</String>
+         <String>$date</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Date</FieldName>
+       <BitOffset>0</BitOffset>
+       <BitWidth>11</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>DATE</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>MM/DD/YYYY</Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>1809</NoOfSymbols>
+       <Offset>175</Offset>
+       <Length>28944</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+         <String>$timestamp</String>
+         <String>$date</String>
+         <String>$key</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>DateNum</FieldName>
+       <BitOffset>32</BitOffset>
+       <BitWidth>11</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>14</nDec>
+         <UseThou>1</UseThou>
+         <Fmt>##############</Fmt>
+         <Dec>.</Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>1809</NoOfSymbols>
+       <Offset>29119</Offset>
+       <Length>19899</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+         <String>$timestamp</String>
+         <String>$date</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>YearQuarter</FieldName>
+       <BitOffset>88</BitOffset>
+       <BitWidth>5</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>21</NoOfSymbols>
+       <Offset>49018</Offset>
+       <Length>189</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$ascii</String>
+         <String>$text</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Year</FieldName>
+       <BitOffset>43</BitOffset>
+       <BitWidth>3</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>INTEGER</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>###0</Fmt>
+         <Dec>.</Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>6</NoOfSymbols>
+       <Offset>49207</Offset>
+       <Length>30</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Month</FieldName>
+       <BitOffset>84</BitOffset>
+       <BitWidth>4</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>12</NoOfSymbols>
+       <Offset>49237</Offset>
+       <Length>108</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Day</FieldName>
+       <BitOffset>93</BitOffset>
+       <BitWidth>5</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>INTEGER</Type>
+         <nDec>0</nDec>
+         <UseThou>1</UseThou>
+         <Fmt>###0</Fmt>
+         <Dec>.</Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>31</NoOfSymbols>
+       <Offset>49345</Offset>
+       <Length>155</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>WeekDay</FieldName>
+       <BitOffset>81</BitOffset>
+       <BitWidth>3</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>7</NoOfSymbols>
+       <Offset>49500</Offset>
+       <Length>63</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Quarter</FieldName>
+       <BitOffset>77</BitOffset>
+       <BitWidth>2</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>4</NoOfSymbols>
+       <Offset>49563</Offset>
+       <Length>16</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$ascii</String>
+         <String>$text</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>YearMonth</FieldName>
+       <BitOffset>11</BitOffset>
+       <BitWidth>6</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>DATE</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>YYYY-MMM</Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>60</NoOfSymbols>
+       <Offset>49579</Offset>
+       <Length>840</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+         <String>$timestamp</String>
+         <String>$date</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>MonthYear</FieldName>
+       <BitOffset>17</BitOffset>
+       <BitWidth>6</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>DATE</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>MMM-YYYY</Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>60</NoOfSymbols>
+       <Offset>50419</Offset>
+       <Length>840</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+         <String>$timestamp</String>
+         <String>$date</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>WeekYear</FieldName>
+       <BitOffset>23</BitOffset>
+       <BitWidth>9</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>264</NoOfSymbols>
+       <Offset>51259</Offset>
+       <Length>2332</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$ascii</String>
+         <String>$text</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>YearWeek</FieldName>
+       <BitOffset>46</BitOffset>
+       <BitWidth>9</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>264</NoOfSymbols>
+       <Offset>53591</Offset>
+       <Length>2332</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$ascii</String>
+         <String>$text</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>WeekStarting</FieldName>
+       <BitOffset>55</BitOffset>
+       <BitWidth>9</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>DATE</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>MM/DD/YYYY</Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>260</NoOfSymbols>
+       <Offset>55923</Offset>
+       <Length>1300</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+         <String>$timestamp</String>
+         <String>$date</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>CurYTDFlag</FieldName>
+       <BitOffset>76</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>##############</Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>57223</Offset>
+       <Length>10</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>LastYTDFlag</FieldName>
+       <BitOffset>98</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>##############</Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>57233</Offset>
+       <Length>10</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>CurQTDFlag</FieldName>
+       <BitOffset>99</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>##############</Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>57243</Offset>
+       <Length>10</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>LastQTDFlag</FieldName>
+       <BitOffset>100</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>##############</Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>57253</Offset>
+       <Length>10</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>CurMTDFlag</FieldName>
+       <BitOffset>101</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>##############</Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>57263</Offset>
+       <Length>10</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>LastMTDFlag</FieldName>
+       <BitOffset>102</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>##############</Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>57273</Offset>
+       <Length>10</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>CurYearFlag</FieldName>
+       <BitOffset>103</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>##############</Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>57283</Offset>
+       <Length>10</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>LastYearFlag</FieldName>
+       <BitOffset>104</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>##############</Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>57293</Offset>
+       <Length>10</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>CurQtrFlag</FieldName>
+       <BitOffset>105</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>##############</Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>57303</Offset>
+       <Length>10</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>LastQtrFlag</FieldName>
+       <BitOffset>106</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>##############</Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>57313</Offset>
+       <Length>10</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>CurMonthFlag</FieldName>
+       <BitOffset>107</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>##############</Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>57323</Offset>
+       <Length>10</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>LastMonthFlag</FieldName>
+       <BitOffset>108</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>##############</Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>57333</Offset>
+       <Length>10</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>TwoMonthsAgoFlag</FieldName>
+       <BitOffset>109</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>##############</Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>57343</Offset>
+       <Length>10</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Rolling12MonthFlag</FieldName>
+       <BitOffset>110</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>##############</Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>57353</Offset>
+       <Length>10</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>Rolling3MonthFlag</FieldName>
+       <BitOffset>111</BitOffset>
+       <BitWidth>1</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>REAL</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt>##############</Fmt>
+         <Dec>.</Dec>
+         <Thou>,</Thou>
+       </NumberFormat>
+       <NoOfSymbols>2</NoOfSymbols>
+       <Offset>57363</Offset>
+       <Length>10</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$numeric</String>
+         <String>$integer</String>
+       </Tags>
+     </QvdFieldHeader>
+     <QvdFieldHeader>
+       <FieldName>WeekdayGrouping</FieldName>
+       <BitOffset>79</BitOffset>
+       <BitWidth>2</BitWidth>
+       <Bias>0</Bias>
+       <NumberFormat>
+         <Type>UNKNOWN</Type>
+         <nDec>0</nDec>
+         <UseThou>0</UseThou>
+         <Fmt></Fmt>
+         <Dec></Dec>
+         <Thou></Thou>
+       </NumberFormat>
+       <NoOfSymbols>3</NoOfSymbols>
+       <Offset>57373</Offset>
+       <Length>31</Length>
+       <Comment></Comment>
+       <Tags>
+         <String>$ascii</String>
+         <String>$text</String>
+       </Tags>
+     </QvdFieldHeader>
+   </Fields>
+   <Compression></Compression>
+   <RecordByteSize>14</RecordByteSize>
+   <NoOfRecords>1809</NoOfRecords>
+   <Offset>57404</Offset>
+   <Length>25326</Length>
+   <Lineage>
+     <LineageInfo>
+       <Discriminator></Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>AUTOGENERATE;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>INLINE;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT AllDates;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT DateField;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT Execution Stats;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT MetaData2;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT MetaData2Tmp;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT Rules;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT SEEQ_ExecutionTrace;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT SEEQ_var_list_destroy;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT SEEQ_var_list_destroy_tmp;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT Tmp_Variable_Repository;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>RESIDENT Tmp_XLS_Contents;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\common\include\eee\seeq_variablelist.txt;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\common\variables\color_variables.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\common\variables\common_app_variables.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\common\variables\common_infotext_variables.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\common\variables\common_load_variables.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\common\variables\common_variables.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\etl_rules\salesloadrules.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\etl_rules\salestransformrules.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\qvds\transformed\categories.qvd;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\qvds\transformed\customers.qvd;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\qvds\transformed\divisions.qvd;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\qvds\transformed\orders.qvd;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\qvds\transformed\products.qvd;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\qvds\transformed\shipments.qvd;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\qvds\transformed\shippers.qvd;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\variables\sales dashboard chart dimensions.xlsx;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\variables\sales dashboard chart measures.xlsx;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\variables\sales dashboard selection pane fields.xlsx;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\variables\sales_app_variables.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\variables\sales_date_variables.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+     <LineageInfo>
+       <Discriminator>d:\tc\eee\tseeq.github_5\source documents\tseeq sales sample\variables\sales_variables.xls;</Discriminator>
+       <Statement></Statement>
+     </LineageInfo>
+   </Lineage>
+   <Comment></Comment>
+   <EncryptionInfo></EncryptionInfo>
+   <TableTags></TableTags>
+   <ProfilingData></ProfilingData>
+ </QvdTableHeader>
+     0    1     0    1     0    1     0    1     0    1 ‚¥  Ý¥  8¦  ”¦  ð¦  J§  ¥§  ¨  ]¨  ·¨  ©  n©  Ê©  $ª  ª  Ûª  7«  ’«  í«  I¬  ¥¬  ³¥  02/19/2016 ´¥  02/20/2016 µ¥  02/21/2016 ¶¥  02/22/2016 ·¥  02/23/2016 ¸¥  02/24/2016 ¹¥  02/25/2016 º¥  02/26/2016 »¥  02/27/2016 ¼¥  02/28/2016 ½¥  02/29/2016 ¾¥  03/01/2016 ¿¥  03/02/2016 À¥  03/03/2016 Á¥  03/04/2016 Â¥  03/05/2016 Ã¥  03/06/2016 Ä¥  03/07/2016 Å¥  03/08/2016 Æ¥  03/09/2016 Ç¥  03/10/2016 È¥  03/11/2016 É¥  03/12/2016 Ê¥  03/13/2016 Ë¥  03/14/2016 Ì¥  03/15/2016 Í¥  03/16/2016 Î¥  03/17/2016 Ï¥  03/18/2016 Ð¥  03/19/2016 Ñ¥  03/20/2016 Ò¥  03/21/2016 Ó¥  03/22/2016 Ô¥  03/23/2016 Õ¥  03/24/2016 Ö¥  03/25/2016 ×¥  03/26/2016 Ø¥  03/27/2016 Ù¥  03/28/2016 Ú¥  03/29/2016 Û¥  03/30/2016 Ü¥  03/31/2016 Ý¥  04/01/2016 Þ¥  04/02/2016 ß¥  04/03/2016 à¥  04/04/2016 á¥  04/05/2016 â¥  04/06/2016 ã¥  04/07/2016 ä¥  04/08/2016 å¥  04/09/2016 æ¥  04/10/2016 ç¥  04/11/2016 è¥  04/12/2016 é¥  04/13/2016 ê¥  04/14/2016 ë¥  04/15/2016 ì¥  04/16/2016 í¥  04/17/2016 î¥  04/18/2016 ï¥  04/19/2016 ð¥  04/20/2016 ñ¥  04/21/2016 ò¥  04/22/2016 ó¥  04/23/2016 ô¥  04/24/2016 õ¥  04/25/2016 ö¥  04/26/2016 ÷¥  04/27/2016 ø¥  04/28/2016 ù¥  04/29/2016 ú¥  04/30/2016 û¥  05/01/2016 ü¥  05/02/2016 ý¥  05/03/2016 þ¥  05/04/2016 ÿ¥  05/05/2016  ¦  05/06/2016 ¦  05/07/2016 ¦  05/08/2016 ¦  05/09/2016 ¦  05/10/2016 ¦  05/11/2016 ¦  05/12/2016 ¦  05/13/2016 ¦  05/14/2016 	¦  05/15/2016 
+¦  05/16/2016 ¦  05/17/2016 ¦  05/18/2016 ¦  05/19/2016 ¦  05/20/2016 ¦  05/21/2016 ¦  05/22/2016 ¦  05/23/2016 ¦  05/24/2016 ¦  05/25/2016 ¦  05/26/2016 ¦  05/27/2016 ¦  05/28/2016 ¦  05/29/2016 ¦  05/30/2016 ¦  05/31/2016 ¦  06/01/2016 ¦  06/02/2016 ¦  06/03/2016 ¦  06/04/2016 ¦  06/05/2016 ¦  06/06/2016  ¦  06/07/2016 !¦  06/08/2016 "¦  06/09/2016 #¦  06/10/2016 $¦  06/11/2016 %¦  06/12/2016 &¦  06/13/2016 '¦  06/14/2016 (¦  06/15/2016 )¦  06/16/2016 *¦  06/17/2016 +¦  06/18/2016 ,¦  06/19/2016 -¦  06/20/2016 .¦  06/21/2016 /¦  06/22/2016 0¦  06/23/2016 1¦  06/24/2016 2¦  06/25/2016 3¦  06/26/2016 4¦  06/27/2016 5¦  06/28/2016 6¦  06/29/2016 7¦  06/30/2016 8¦  07/01/2016 9¦  07/02/2016 :¦  07/03/2016 ;¦  07/04/2016 <¦  07/05/2016 =¦  07/06/2016 >¦  07/07/2016 ?¦  07/08/2016 @¦  07/09/2016 A¦  07/10/2016 B¦  07/11/2016 C¦  07/12/2016 D¦  07/13/2016 E¦  07/14/2016 F¦  07/15/2016 G¦  07/16/2016 H¦  07/17/2016 I¦  07/18/2016 J¦  07/19/2016 K¦  07/20/2016 L¦  07/21/2016 M¦  07/22/2016 N¦  07/23/2016 O¦  07/24/2016 P¦  07/25/2016 Q¦  07/26/2016 R¦  07/27/2016 S¦  07/28/2016 T¦  07/29/2016 U¦  07/30/2016 V¦  07/31/2016 W¦  08/01/2016 X¦  08/02/2016 Y¦  08/03/2016 Z¦  08/04/2016 [¦  08/05/2016 \¦  08/06/2016 ]¦  08/07/2016 ^¦  08/08/2016 _¦  08/09/2016 `¦  08/10/2016 a¦  08/11/2016 b¦  08/12/2016 c¦  08/13/2016 d¦  08/14/2016 e¦  08/15/2016 f¦  08/16/2016 g¦  08/17/2016 h¦  08/18/2016 i¦  08/19/2016 j¦  08/20/2016 k¦  08/21/2016 l¦  08/22/2016 m¦  08/23/2016 n¦  08/24/2016 o¦  08/25/2016 p¦  08/26/2016 q¦  08/27/2016 r¦  08/28/2016 s¦  08/29/2016 t¦  08/30/2016 u¦  08/31/2016 v¦  09/01/2016 w¦  09/02/2016 x¦  09/03/2016 y¦  09/04/2016 z¦  09/05/2016 {¦  09/06/2016 |¦  09/07/2016 }¦  09/08/2016 ~¦  09/09/2016 ¦  09/10/2016 €¦  09/11/2016 ¦  09/12/2016 ‚¦  09/13/2016 ƒ¦  09/14/2016 „¦  09/15/2016 …¦  09/16/2016 †¦  09/17/2016 ‡¦  09/18/2016 ˆ¦  09/19/2016 ‰¦  09/20/2016 Š¦  09/21/2016 ‹¦  09/22/2016 Œ¦  09/23/2016 ¦  09/24/2016 Ž¦  09/25/2016 ¦  09/26/2016 ¦  09/27/2016 ‘¦  09/28/2016 ’¦  09/29/2016 “¦  09/30/2016 ”¦  10/01/2016 •¦  10/02/2016 –¦  10/03/2016 —¦  10/04/2016 ˜¦  10/05/2016 ™¦  10/06/2016 š¦  10/07/2016 ›¦  10/08/2016 œ¦  10/09/2016 ¦  10/10/2016 ž¦  10/11/2016 Ÿ¦  10/12/2016  ¦  10/13/2016 ¡¦  10/14/2016 ¢¦  10/15/2016 £¦  10/16/2016 ¤¦  10/17/2016 ¥¦  10/18/2016 ¦¦  10/19/2016 §¦  10/20/2016 ¨¦  10/21/2016 ©¦  10/22/2016 ª¦  10/23/2016 «¦  10/24/2016 ¬¦  10/25/2016 ­¦  10/26/2016 ®¦  10/27/2016 ¯¦  10/28/2016 °¦  10/29/2016 ±¦  10/30/2016 ²¦  10/31/2016 ³¦  11/01/2016 ´¦  11/02/2016 µ¦  11/03/2016 ¶¦  11/04/2016 ·¦  11/05/2016 ¸¦  11/06/2016 ¹¦  11/07/2016 º¦  11/08/2016 »¦  11/09/2016 ¼¦  11/10/2016 ½¦  11/11/2016 ¾¦  11/12/2016 ¿¦  11/13/2016 À¦  11/14/2016 Á¦  11/15/2016 Â¦  11/16/2016 Ã¦  11/17/2016 Ä¦  11/18/2016 Å¦  11/19/2016 Æ¦  11/20/2016 Ç¦  11/21/2016 È¦  11/22/2016 É¦  11/23/2016 Ê¦  11/24/2016 Ë¦  11/25/2016 Ì¦  11/26/2016 Í¦  11/27/2016 Î¦  11/28/2016 Ï¦  11/29/2016 Ð¦  11/30/2016 Ñ¦  12/01/2016 Ò¦  12/02/2016 Ó¦  12/03/2016 Ô¦  12/04/2016 Õ¦  12/05/2016 Ö¦  12/06/2016 ×¦  12/07/2016 Ø¦  12/08/2016 Ù¦  12/09/2016 Ú¦  12/10/2016 Û¦  12/11/2016 Ü¦  12/12/2016 Ý¦  12/13/2016 Þ¦  12/14/2016 ß¦  12/15/2016 à¦  12/16/2016 á¦  12/17/2016 â¦  12/18/2016 ã¦  12/19/2016 ä¦  12/20/2016 å¦  12/21/2016 æ¦  12/22/2016 ç¦  12/23/2016 è¦  12/24/2016 é¦  12/25/2016 ê¦  12/26/2016 ë¦  12/27/2016 ì¦  12/28/2016 í¦  12/29/2016 î¦  12/30/2016 ï¦  12/31/2016 ð¦  01/01/2017 ñ¦  01/02/2017 ò¦  01/03/2017 ó¦  01/04/2017 ô¦  01/05/2017 õ¦  01/06/2017 ö¦  01/07/2017 ÷¦  01/08/2017 ø¦  01/09/2017 ù¦  01/10/2017 ú¦  01/11/2017 û¦  01/12/2017 ü¦  01/13/2017 ý¦  01/14/2017 þ¦  01/15/2017 ÿ¦  01/16/2017  §  01/17/2017 §  01/18/2017 §  01/19/2017 §  01/20/2017 §  01/21/2017 §  01/22/2017 §  01/23/2017 §  01/24/2017 §  01/25/2017 	§  01/26/2017 
+§  01/27/2017 §  01/28/2017 §  01/29/2017 §  01/30/2017 §  01/31/2017 §  02/01/2017 §  02/02/2017 §  02/03/2017 §  02/04/2017 §  02/05/2017 §  02/06/2017 §  02/07/2017 §  02/08/2017 §  02/09/2017 §  02/10/2017 §  02/11/2017 §  02/12/2017 §  02/13/2017 §  02/14/2017 §  02/15/2017 §  02/16/2017 §  02/17/2017  §  02/18/2017 !§  02/19/2017 "§  02/20/2017 #§  02/21/2017 $§  02/22/2017 %§  02/23/2017 &§  02/24/2017 '§  02/25/2017 (§  02/26/2017 )§  02/27/2017 *§  02/28/2017 +§  03/01/2017 ,§  03/02/2017 -§  03/03/2017 .§  03/04/2017 /§  03/05/2017 0§  03/06/2017 1§  03/07/2017 2§  03/08/2017 3§  03/09/2017 4§  03/10/2017 5§  03/11/2017 6§  03/12/2017 7§  03/13/2017 8§  03/14/2017 9§  03/15/2017 :§  03/16/2017 ;§  03/17/2017 <§  03/18/2017 =§  03/19/2017 >§  03/20/2017 ?§  03/21/2017 @§  03/22/2017 A§  03/23/2017 B§  03/24/2017 C§  03/25/2017 D§  03/26/2017 E§  03/27/2017 F§  03/28/2017 G§  03/29/2017 H§  03/30/2017 I§  03/31/2017 J§  04/01/2017 K§  04/02/2017 L§  04/03/2017 M§  04/04/2017 N§  04/05/2017 O§  04/06/2017 P§  04/07/2017 Q§  04/08/2017 R§  04/09/2017 S§  04/10/2017 T§  04/11/2017 U§  04/12/2017 V§  04/13/2017 W§  04/14/2017 X§  04/15/2017 Y§  04/16/2017 Z§  04/17/2017 [§  04/18/2017 \§  04/19/2017 ]§  04/20/2017 ^§  04/21/2017 _§  04/22/2017 `§  04/23/2017 a§  04/24/2017 b§  04/25/2017 c§  04/26/2017 d§  04/27/2017 e§  04/28/2017 f§  04/29/2017 g§  04/30/2017 h§  05/01/2017 i§  05/02/2017 j§  05/03/2017 k§  05/04/2017 l§  05/05/2017 m§  05/06/2017 n§  05/07/2017 o§  05/08/2017 p§  05/09/2017 q§  05/10/2017 r§  05/11/2017 s§  05/12/2017 t§  05/13/2017 u§  05/14/2017 v§  05/15/2017 w§  05/16/2017 x§  05/17/2017 y§  05/18/2017 z§  05/19/2017 {§  05/20/2017 |§  05/21/2017 }§  05/22/2017 ~§  05/23/2017 §  05/24/2017 €§  05/25/2017 §  05/26/2017 ‚§  05/27/2017 ƒ§  05/28/2017 „§  05/29/2017 …§  05/30/2017 †§  05/31/2017 ‡§  06/01/2017 ˆ§  06/02/2017 ‰§  06/03/2017 Š§  06/04/2017 ‹§  06/05/2017 Œ§  06/06/2017 §  06/07/2017 Ž§  06/08/2017 §  06/09/2017 §  06/10/2017 ‘§  06/11/2017 ’§  06/12/2017 “§  06/13/2017 ”§  06/14/2017 •§  06/15/2017 –§  06/16/2017 —§  06/17/2017 ˜§  06/18/2017 ™§  06/19/2017 š§  06/20/2017 ›§  06/21/2017 œ§  06/22/2017 §  06/23/2017 ž§  06/24/2017 Ÿ§  06/25/2017  §  06/26/2017 ¡§  06/27/2017 ¢§  06/28/2017 £§  06/29/2017 ¤§  06/30/2017 ¥§  07/01/2017 ¦§  07/02/2017 §§  07/03/2017 ¨§  07/04/2017 ©§  07/05/2017 ª§  07/06/2017 «§  07/07/2017 ¬§  07/08/2017 ­§  07/09/2017 ®§  07/10/2017 ¯§  07/11/2017 °§  07/12/2017 ±§  07/13/2017 ²§  07/14/2017 ³§  07/15/2017 ´§  07/16/2017 µ§  07/17/2017 ¶§  07/18/2017 ·§  07/19/2017 ¸§  07/20/2017 ¹§  07/21/2017 º§  07/22/2017 »§  07/23/2017 ¼§  07/24/2017 ½§  07/25/2017 ¾§  07/26/2017 ¿§  07/27/2017 À§  07/28/2017 Á§  07/29/2017 Â§  07/30/2017 Ã§  07/31/2017 Ä§  08/01/2017 Å§  08/02/2017 Æ§  08/03/2017 Ç§  08/04/2017 È§  08/05/2017 É§  08/06/2017 Ê§  08/07/2017 Ë§  08/08/2017 Ì§  08/09/2017 Í§  08/10/2017 Î§  08/11/2017 Ï§  08/12/2017 Ð§  08/13/2017 Ñ§  08/14/2017 Ò§  08/15/2017 Ó§  08/16/2017 Ô§  08/17/2017 Õ§  08/18/2017 Ö§  08/19/2017 ×§  08/20/2017 Ø§  08/21/2017 Ù§  08/22/2017 Ú§  08/23/2017 Û§  08/24/2017 Ü§  08/25/2017 Ý§  08/26/2017 Þ§  08/27/2017 ß§  08/28/2017 à§  08/29/2017 á§  08/30/2017 â§  08/31/2017 ã§  09/01/2017 ä§  09/02/2017 å§  09/03/2017 æ§  09/04/2017 ç§  09/05/2017 è§  09/06/2017 é§  09/07/2017 ê§  09/08/2017 ë§  09/09/2017 ì§  09/10/2017 í§  09/11/2017 î§  09/12/2017 ï§  09/13/2017 ð§  09/14/2017 ñ§  09/15/2017 ò§  09/16/2017 ó§  09/17/2017 ô§  09/18/2017 õ§  09/19/2017 ö§  09/20/2017 ÷§  09/21/2017 ø§  09/22/2017 ù§  09/23/2017 ú§  09/24/2017 û§  09/25/2017 ü§  09/26/2017 ý§  09/27/2017 þ§  09/28/2017 ÿ§  09/29/2017  ¨  09/30/2017 ¨  10/01/2017 ¨  10/02/2017 ¨  10/03/2017 ¨  10/04/2017 ¨  10/05/2017 ¨  10/06/2017 ¨  10/07/2017 ¨  10/08/2017 	¨  10/09/2017 
+¨  10/10/2017 ¨  10/11/2017 ¨  10/12/2017 ¨  10/13/2017 ¨  10/14/2017 ¨  10/15/2017 ¨  10/16/2017 ¨  10/17/2017 ¨  10/18/2017 ¨  10/19/2017 ¨  10/20/2017 ¨  10/21/2017 ¨  10/22/2017 ¨  10/23/2017 ¨  10/24/2017 ¨  10/25/2017 ¨  10/26/2017 ¨  10/27/2017 ¨  10/28/2017 ¨  10/29/2017 ¨  10/30/2017 ¨  10/31/2017  ¨  11/01/2017 !¨  11/02/2017 "¨  11/03/2017 #¨  11/04/2017 $¨  11/05/2017 %¨  11/06/2017 &¨  11/07/2017 '¨  11/08/2017 (¨  11/09/2017 )¨  11/10/2017 *¨  11/11/2017 +¨  11/12/2017 ,¨  11/13/2017 -¨  11/14/2017 .¨  11/15/2017 /¨  11/16/2017 0¨  11/17/2017 1¨  11/18/2017 2¨  11/19/2017 3¨  11/20/2017 4¨  11/21/2017 5¨  11/22/2017 6¨  11/23/2017 7¨  11/24/2017 8¨  11/25/2017 9¨  11/26/2017 :¨  11/27/2017 ;¨  11/28/2017 <¨  11/29/2017 =¨  11/30/2017 >¨  12/01/2017 ?¨  12/02/2017 @¨  12/03/2017 A¨  12/04/2017 B¨  12/05/2017 C¨  12/06/2017 D¨  12/07/2017 E¨  12/08/2017 F¨  12/09/2017 G¨  12/10/2017 H¨  12/11/2017 I¨  12/12/2017 J¨  12/13/2017 K¨  12/14/2017 L¨  12/15/2017 M¨  12/16/2017 N¨  12/17/2017 O¨  12/18/2017 P¨  12/19/2017 Q¨  12/20/2017 R¨  12/21/2017 S¨  12/22/2017 T¨  12/23/2017 U¨  12/24/2017 V¨  12/25/2017 W¨  12/26/2017 X¨  12/27/2017 Y¨  12/28/2017 Z¨  12/29/2017 [¨  12/30/2017 \¨  12/31/2017 ]¨  01/01/2018 ^¨  01/02/2018 _¨  01/03/2018 `¨  01/04/2018 a¨  01/05/2018 b¨  01/06/2018 c¨  01/07/2018 d¨  01/08/2018 e¨  01/09/2018 f¨  01/10/2018 g¨  01/11/2018 h¨  01/12/2018 i¨  01/13/2018 j¨  01/14/2018 k¨  01/15/2018 l¨  01/16/2018 m¨  01/17/2018 n¨  01/18/2018 o¨  01/19/2018 p¨  01/20/2018 q¨  01/21/2018 r¨  01/22/2018 s¨  01/23/2018 t¨  01/24/2018 u¨  01/25/2018 v¨  01/26/2018 w¨  01/27/2018 x¨  01/28/2018 y¨  01/29/2018 z¨  01/30/2018 {¨  01/31/2018 |¨  02/01/2018 }¨  02/02/2018 ~¨  02/03/2018 ¨  02/04/2018 €¨  02/05/2018 ¨  02/06/2018 ‚¨  02/07/2018 ƒ¨  02/08/2018 „¨  02/09/2018 …¨  02/10/2018 †¨  02/11/2018 ‡¨  02/12/2018 ˆ¨  02/13/2018 ‰¨  02/14/2018 Š¨  02/15/2018 ‹¨  02/16/2018 Œ¨  02/17/2018 ¨  02/18/2018 Ž¨  02/19/2018 ¨  02/20/2018 ¨  02/21/2018 ‘¨  02/22/2018 ’¨  02/23/2018 “¨  02/24/2018 ”¨  02/25/2018 •¨  02/26/2018 –¨  02/27/2018 —¨  02/28/2018 ˜¨  03/01/2018 ™¨  03/02/2018 š¨  03/03/2018 ›¨  03/04/2018 œ¨  03/05/2018 ¨  03/06/2018 ž¨  03/07/2018 Ÿ¨  03/08/2018  ¨  03/09/2018 ¡¨  03/10/2018 ¢¨  03/11/2018 £¨  03/12/2018 ¤¨  03/13/2018 ¥¨  03/14/2018 ¦¨  03/15/2018 §¨  03/16/2018 ¨¨  03/17/2018 ©¨  03/18/2018 ª¨  03/19/2018 «¨  03/20/2018 ¬¨  03/21/2018 ­¨  03/22/2018 ®¨  03/23/2018 ¯¨  03/24/2018 °¨  03/25/2018 ±¨  03/26/2018 ²¨  03/27/2018 ³¨  03/28/2018 ´¨  03/29/2018 µ¨  03/30/2018 ¶¨  03/31/2018 ·¨  04/01/2018 ¸¨  04/02/2018 ¹¨  04/03/2018 º¨  04/04/2018 »¨  04/05/2018 ¼¨  04/06/2018 ½¨  04/07/2018 ¾¨  04/08/2018 ¿¨  04/09/2018 À¨  04/10/2018 Á¨  04/11/2018 Â¨  04/12/2018 Ã¨  04/13/2018 Ä¨  04/14/2018 Å¨  04/15/2018 Æ¨  04/16/2018 Ç¨  04/17/2018 È¨  04/18/2018 É¨  04/19/2018 Ê¨  04/20/2018 Ë¨  04/21/2018 Ì¨  04/22/2018 Í¨  04/23/2018 Î¨  04/24/2018 Ï¨  04/25/2018 Ð¨  04/26/2018 Ñ¨  04/27/2018 Ò¨  04/28/2018 Ó¨  04/29/2018 Ô¨  04/30/2018 Õ¨  05/01/2018 Ö¨  05/02/2018 ×¨  05/03/2018 Ø¨  05/04/2018 Ù¨  05/05/2018 Ú¨  05/06/2018 Û¨  05/07/2018 Ü¨  05/08/2018 Ý¨  05/09/2018 Þ¨  05/10/2018 ß¨  05/11/2018 à¨  05/12/2018 á¨  05/13/2018 â¨  05/14/2018 ã¨  05/15/2018 ä¨  05/16/2018 å¨  05/17/2018 æ¨  05/18/2018 ç¨  05/19/2018 è¨  05/20/2018 é¨  05/21/2018 ê¨  05/22/2018 ë¨  05/23/2018 ì¨  05/24/2018 í¨  05/25/2018 î¨  05/26/2018 ï¨  05/27/2018 ð¨  05/28/2018 ñ¨  05/29/2018 ò¨  05/30/2018 ó¨  05/31/2018 ô¨  06/01/2018 õ¨  06/02/2018 ö¨  06/03/2018 ÷¨  06/04/2018 ø¨  06/05/2018 ù¨  06/06/2018 ú¨  06/07/2018 û¨  06/08/2018 ü¨  06/09/2018 ý¨  06/10/2018 þ¨  06/11/2018 ÿ¨  06/12/2018  ©  06/13/2018 ©  06/14/2018 ©  06/15/2018 ©  06/16/2018 ©  06/17/2018 ©  06/18/2018 ©  06/19/2018 ©  06/20/2018 ©  06/21/2018 	©  06/22/2018 
+©  06/23/2018 ©  06/24/2018 ©  06/25/2018 ©  06/26/2018 ©  06/27/2018 ©  06/28/2018 ©  06/29/2018 ©  06/30/2018 ©  07/01/2018 ©  07/02/2018 ©  07/03/2018 ©  07/04/2018 ©  07/05/2018 ©  07/06/2018 ©  07/07/2018 ©  07/08/2018 ©  07/09/2018 ©  07/10/2018 ©  07/11/2018 ©  07/12/2018 ©  07/13/2018 ©  07/14/2018  ©  07/15/2018 !©  07/16/2018 "©  07/17/2018 #©  07/18/2018 $©  07/19/2018 %©  07/20/2018 &©  07/21/2018 '©  07/22/2018 (©  07/23/2018 )©  07/24/2018 *©  07/25/2018 +©  07/26/2018 ,©  07/27/2018 -©  07/28/2018 .©  07/29/2018 /©  07/30/2018 0©  07/31/2018 1©  08/01/2018 2©  08/02/2018 3©  08/03/2018 4©  08/04/2018 5©  08/05/2018 6©  08/06/2018 7©  08/07/2018 8©  08/08/2018 9©  08/09/2018 :©  08/10/2018 ;©  08/11/2018 <©  08/12/2018 =©  08/13/2018 >©  08/14/2018 ?©  08/15/2018 @©  08/16/2018 A©  08/17/2018 B©  08/18/2018 C©  08/19/2018 D©  08/20/2018 E©  08/21/2018 F©  08/22/2018 G©  08/23/2018 H©  08/24/2018 I©  08/25/2018 J©  08/26/2018 K©  08/27/2018 L©  08/28/2018 M©  08/29/2018 N©  08/30/2018 O©  08/31/2018 P©  09/01/2018 Q©  09/02/2018 R©  09/03/2018 S©  09/04/2018 T©  09/05/2018 U©  09/06/2018 V©  09/07/2018 W©  09/08/2018 X©  09/09/2018 Y©  09/10/2018 Z©  09/11/2018 [©  09/12/2018 \©  09/13/2018 ]©  09/14/2018 ^©  09/15/2018 _©  09/16/2018 `©  09/17/2018 a©  09/18/2018 b©  09/19/2018 c©  09/20/2018 d©  09/21/2018 e©  09/22/2018 f©  09/23/2018 g©  09/24/2018 h©  09/25/2018 i©  09/26/2018 j©  09/27/2018 k©  09/28/2018 l©  09/29/2018 m©  09/30/2018 n©  10/01/2018 o©  10/02/2018 p©  10/03/2018 q©  10/04/2018 r©  10/05/2018 s©  10/06/2018 t©  10/07/2018 u©  10/08/2018 v©  10/09/2018 w©  10/10/2018 x©  10/11/2018 y©  10/12/2018 z©  10/13/2018 {©  10/14/2018 |©  10/15/2018 }©  10/16/2018 ~©  10/17/2018 ©  10/18/2018 €©  10/19/2018 ©  10/20/2018 ‚©  10/21/2018 ƒ©  10/22/2018 „©  10/23/2018 …©  10/24/2018 †©  10/25/2018 ‡©  10/26/2018 ˆ©  10/27/2018 ‰©  10/28/2018 Š©  10/29/2018 ‹©  10/30/2018 Œ©  10/31/2018 ©  11/01/2018 Ž©  11/02/2018 ©  11/03/2018 ©  11/04/2018 ‘©  11/05/2018 ’©  11/06/2018 “©  11/07/2018 ”©  11/08/2018 •©  11/09/2018 –©  11/10/2018 —©  11/11/2018 ˜©  11/12/2018 ™©  11/13/2018 š©  11/14/2018 ›©  11/15/2018 œ©  11/16/2018 ©  11/17/2018 ž©  11/18/2018 Ÿ©  11/19/2018  ©  11/20/2018 ¡©  11/21/2018 ¢©  11/22/2018 £©  11/23/2018 ¤©  11/24/2018 ¥©  11/25/2018 ¦©  11/26/2018 §©  11/27/2018 ¨©  11/28/2018 ©©  11/29/2018 ª©  11/30/2018 «©  12/01/2018 ¬©  12/02/2018 ­©  12/03/2018 ®©  12/04/2018 ¯©  12/05/2018 °©  12/06/2018 ±©  12/07/2018 ²©  12/08/2018 ³©  12/09/2018 ´©  12/10/2018 µ©  12/11/2018 ¶©  12/12/2018 ·©  12/13/2018 ¸©  12/14/2018 ¹©  12/15/2018 º©  12/16/2018 »©  12/17/2018 ¼©  12/18/2018 ½©  12/19/2018 ¾©  12/20/2018 ¿©  12/21/2018 À©  12/22/2018 Á©  12/23/2018 Â©  12/24/2018 Ã©  12/25/2018 Ä©  12/26/2018 Å©  12/27/2018 Æ©  12/28/2018 Ç©  12/29/2018 È©  12/30/2018 É©  12/31/2018 Ê©  01/01/2019 Ë©  01/02/2019 Ì©  01/03/2019 Í©  01/04/2019 Î©  01/05/2019 Ï©  01/06/2019 Ð©  01/07/2019 Ñ©  01/08/2019 Ò©  01/09/2019 Ó©  01/10/2019 Ô©  01/11/2019 Õ©  01/12/2019 Ö©  01/13/2019 ×©  01/14/2019 Ø©  01/15/2019 Ù©  01/16/2019 Ú©  01/17/2019 Û©  01/18/2019 Ü©  01/19/2019 Ý©  01/20/2019 Þ©  01/21/2019 ß©  01/22/2019 à©  01/23/2019 á©  01/24/2019 â©  01/25/2019 ã©  01/26/2019 ä©  01/27/2019 å©  01/28/2019 æ©  01/29/2019 ç©  01/30/2019 è©  01/31/2019 é©  02/01/2019 ê©  02/02/2019 ë©  02/03/2019 ì©  02/04/2019 í©  02/05/2019 î©  02/06/2019 ï©  02/07/2019 ð©  02/08/2019 ñ©  02/09/2019 ò©  02/10/2019 ó©  02/11/2019 ô©  02/12/2019 õ©  02/13/2019 ö©  02/14/2019 ÷©  02/15/2019 ø©  02/16/2019 ù©  02/17/2019 ú©  02/18/2019 û©  02/19/2019 ü©  02/20/2019 ý©  02/21/2019 þ©  02/22/2019 ÿ©  02/23/2019  ª  02/24/2019 ª  02/25/2019 ª  02/26/2019 ª  02/27/2019 ª  02/28/2019 ª  03/01/2019 ª  03/02/2019 ª  03/03/2019 ª  03/04/2019 	ª  03/05/2019 
+ª  03/06/2019 ª  03/07/2019 ª  03/08/2019 ª  03/09/2019 ª  03/10/2019 ª  03/11/2019 ª  03/12/2019 ª  03/13/2019 ª  03/14/2019 ª  03/15/2019 ª  03/16/2019 ª  03/17/2019 ª  03/18/2019 ª  03/19/2019 ª  03/20/2019 ª  03/21/2019 ª  03/22/2019 ª  03/23/2019 ª  03/24/2019 ª  03/25/2019 ª  03/26/2019 ª  03/27/2019  ª  03/28/2019 !ª  03/29/2019 "ª  03/30/2019 #ª  03/31/2019 $ª  04/01/2019 %ª  04/02/2019 &ª  04/03/2019 'ª  04/04/2019 (ª  04/05/2019 )ª  04/06/2019 *ª  04/07/2019 +ª  04/08/2019 ,ª  04/09/2019 -ª  04/10/2019 .ª  04/11/2019 /ª  04/12/2019 0ª  04/13/2019 1ª  04/14/2019 2ª  04/15/2019 3ª  04/16/2019 4ª  04/17/2019 5ª  04/18/2019 6ª  04/19/2019 7ª  04/20/2019 8ª  04/21/2019 9ª  04/22/2019 :ª  04/23/2019 ;ª  04/24/2019 <ª  04/25/2019 =ª  04/26/2019 >ª  04/27/2019 ?ª  04/28/2019 @ª  04/29/2019 Aª  04/30/2019 Bª  05/01/2019 Cª  05/02/2019 Dª  05/03/2019 Eª  05/04/2019 Fª  05/05/2019 Gª  05/06/2019 Hª  05/07/2019 Iª  05/08/2019 Jª  05/09/2019 Kª  05/10/2019 Lª  05/11/2019 Mª  05/12/2019 Nª  05/13/2019 Oª  05/14/2019 Pª  05/15/2019 Qª  05/16/2019 Rª  05/17/2019 Sª  05/18/2019 Tª  05/19/2019 Uª  05/20/2019 Vª  05/21/2019 Wª  05/22/2019 Xª  05/23/2019 Yª  05/24/2019 Zª  05/25/2019 [ª  05/26/2019 \ª  05/27/2019 ]ª  05/28/2019 ^ª  05/29/2019 _ª  05/30/2019 `ª  05/31/2019 aª  06/01/2019 bª  06/02/2019 cª  06/03/2019 dª  06/04/2019 eª  06/05/2019 fª  06/06/2019 gª  06/07/2019 hª  06/08/2019 iª  06/09/2019 jª  06/10/2019 kª  06/11/2019 lª  06/12/2019 mª  06/13/2019 nª  06/14/2019 oª  06/15/2019 pª  06/16/2019 qª  06/17/2019 rª  06/18/2019 sª  06/19/2019 tª  06/20/2019 uª  06/21/2019 vª  06/22/2019 wª  06/23/2019 xª  06/24/2019 yª  06/25/2019 zª  06/26/2019 {ª  06/27/2019 |ª  06/28/2019 }ª  06/29/2019 ~ª  06/30/2019 ª  07/01/2019 €ª  07/02/2019 ª  07/03/2019 ‚ª  07/04/2019 ƒª  07/05/2019 „ª  07/06/2019 …ª  07/07/2019 †ª  07/08/2019 ‡ª  07/09/2019 ˆª  07/10/2019 ‰ª  07/11/2019 Šª  07/12/2019 ‹ª  07/13/2019 Œª  07/14/2019 ª  07/15/2019 Žª  07/16/2019 ª  07/17/2019 ª  07/18/2019 ‘ª  07/19/2019 ’ª  07/20/2019 “ª  07/21/2019 ”ª  07/22/2019 •ª  07/23/2019 –ª  07/24/2019 —ª  07/25/2019 ˜ª  07/26/2019 ™ª  07/27/2019 šª  07/28/2019 ›ª  07/29/2019 œª  07/30/2019 ª  07/31/2019 žª  08/01/2019 Ÿª  08/02/2019  ª  08/03/2019 ¡ª  08/04/2019 ¢ª  08/05/2019 £ª  08/06/2019 ¤ª  08/07/2019 ¥ª  08/08/2019 ¦ª  08/09/2019 §ª  08/10/2019 ¨ª  08/11/2019 ©ª  08/12/2019 ªª  08/13/2019 «ª  08/14/2019 ¬ª  08/15/2019 ­ª  08/16/2019 ®ª  08/17/2019 ¯ª  08/18/2019 °ª  08/19/2019 ±ª  08/20/2019 ²ª  08/21/2019 ³ª  08/22/2019 ´ª  08/23/2019 µª  08/24/2019 ¶ª  08/25/2019 ·ª  08/26/2019 ¸ª  08/27/2019 ¹ª  08/28/2019 ºª  08/29/2019 »ª  08/30/2019 ¼ª  08/31/2019 ½ª  09/01/2019 ¾ª  09/02/2019 ¿ª  09/03/2019 Àª  09/04/2019 Áª  09/05/2019 Âª  09/06/2019 Ãª  09/07/2019 Äª  09/08/2019 Åª  09/09/2019 Æª  09/10/2019 Çª  09/11/2019 Èª  09/12/2019 Éª  09/13/2019 Êª  09/14/2019 Ëª  09/15/2019 Ìª  09/16/2019 Íª  09/17/2019 Îª  09/18/2019 Ïª  09/19/2019 Ðª  09/20/2019 Ñª  09/21/2019 Òª  09/22/2019 Óª  09/23/2019 Ôª  09/24/2019 Õª  09/25/2019 Öª  09/26/2019 ×ª  09/27/2019 Øª  09/28/2019 Ùª  09/29/2019 Úª  09/30/2019 Ûª  10/01/2019 Üª  10/02/2019 Ýª  10/03/2019 Þª  10/04/2019 ßª  10/05/2019 àª  10/06/2019 áª  10/07/2019 âª  10/08/2019 ãª  10/09/2019 äª  10/10/2019 åª  10/11/2019 æª  10/12/2019 çª  10/13/2019 èª  10/14/2019 éª  10/15/2019 êª  10/16/2019 ëª  10/17/2019 ìª  10/18/2019 íª  10/19/2019 îª  10/20/2019 ïª  10/21/2019 ðª  10/22/2019 ñª  10/23/2019 òª  10/24/2019 óª  10/25/2019 ôª  10/26/2019 õª  10/27/2019 öª  10/28/2019 ÷ª  10/29/2019 øª  10/30/2019 ùª  10/31/2019 úª  11/01/2019 ûª  11/02/2019 üª  11/03/2019 ýª  11/04/2019 þª  11/05/2019 ÿª  11/06/2019  «  11/07/2019 «  11/08/2019 «  11/09/2019 «  11/10/2019 «  11/11/2019 «  11/12/2019 «  11/13/2019 «  11/14/2019 «  11/15/2019 	«  11/16/2019 
+«  11/17/2019 «  11/18/2019 «  11/19/2019 «  11/20/2019 «  11/21/2019 «  11/22/2019 «  11/23/2019 «  11/24/2019 «  11/25/2019 «  11/26/2019 «  11/27/2019 «  11/28/2019 «  11/29/2019 «  11/30/2019 «  12/01/2019 «  12/02/2019 «  12/03/2019 «  12/04/2019 «  12/05/2019 «  12/06/2019 «  12/07/2019 «  12/08/2019  «  12/09/2019 !«  12/10/2019 "«  12/11/2019 #«  12/12/2019 $«  12/13/2019 %«  12/14/2019 &«  12/15/2019 '«  12/16/2019 («  12/17/2019 )«  12/18/2019 *«  12/19/2019 +«  12/20/2019 ,«  12/21/2019 -«  12/22/2019 .«  12/23/2019 /«  12/24/2019 0«  12/25/2019 1«  12/26/2019 2«  12/27/2019 3«  12/28/2019 4«  12/29/2019 5«  12/30/2019 6«  12/31/2019 7«  01/01/2020 8«  01/02/2020 9«  01/03/2020 :«  01/04/2020 ;«  01/05/2020 <«  01/06/2020 =«  01/07/2020 >«  01/08/2020 ?«  01/09/2020 @«  01/10/2020 A«  01/11/2020 B«  01/12/2020 C«  01/13/2020 D«  01/14/2020 E«  01/15/2020 F«  01/16/2020 G«  01/17/2020 H«  01/18/2020 I«  01/19/2020 J«  01/20/2020 K«  01/21/2020 L«  01/22/2020 M«  01/23/2020 N«  01/24/2020 O«  01/25/2020 P«  01/26/2020 Q«  01/27/2020 R«  01/28/2020 S«  01/29/2020 T«  01/30/2020 U«  01/31/2020 V«  02/01/2020 W«  02/02/2020 X«  02/03/2020 Y«  02/04/2020 Z«  02/05/2020 [«  02/06/2020 \«  02/07/2020 ]«  02/08/2020 ^«  02/09/2020 _«  02/10/2020 `«  02/11/2020 a«  02/12/2020 b«  02/13/2020 c«  02/14/2020 d«  02/15/2020 e«  02/16/2020 f«  02/17/2020 g«  02/18/2020 h«  02/19/2020 i«  02/20/2020 j«  02/21/2020 k«  02/22/2020 l«  02/23/2020 m«  02/24/2020 n«  02/25/2020 o«  02/26/2020 p«  02/27/2020 q«  02/28/2020 r«  02/29/2020 s«  03/01/2020 t«  03/02/2020 u«  03/03/2020 v«  03/04/2020 w«  03/05/2020 x«  03/06/2020 y«  03/07/2020 z«  03/08/2020 {«  03/09/2020 |«  03/10/2020 }«  03/11/2020 ~«  03/12/2020 «  03/13/2020 €«  03/14/2020 «  03/15/2020 ‚«  03/16/2020 ƒ«  03/17/2020 „«  03/18/2020 …«  03/19/2020 †«  03/20/2020 ‡«  03/21/2020 ˆ«  03/22/2020 ‰«  03/23/2020 Š«  03/24/2020 ‹«  03/25/2020 Œ«  03/26/2020 «  03/27/2020 Ž«  03/28/2020 «  03/29/2020 «  03/30/2020 ‘«  03/31/2020 ’«  04/01/2020 “«  04/02/2020 ”«  04/03/2020 •«  04/04/2020 –«  04/05/2020 —«  04/06/2020 ˜«  04/07/2020 ™«  04/08/2020 š«  04/09/2020 ›«  04/10/2020 œ«  04/11/2020 «  04/12/2020 ž«  04/13/2020 Ÿ«  04/14/2020  «  04/15/2020 ¡«  04/16/2020 ¢«  04/17/2020 £«  04/18/2020 ¤«  04/19/2020 ¥«  04/20/2020 ¦«  04/21/2020 §«  04/22/2020 ¨«  04/23/2020 ©«  04/24/2020 ª«  04/25/2020 ««  04/26/2020 ¬«  04/27/2020 ­«  04/28/2020 ®«  04/29/2020 ¯«  04/30/2020 °«  05/01/2020 ±«  05/02/2020 ²«  05/03/2020 ³«  05/04/2020 ´«  05/05/2020 µ«  05/06/2020 ¶«  05/07/2020 ·«  05/08/2020 ¸«  05/09/2020 ¹«  05/10/2020 º«  05/11/2020 »«  05/12/2020 ¼«  05/13/2020 ½«  05/14/2020 ¾«  05/15/2020 ¿«  05/16/2020 À«  05/17/2020 Á«  05/18/2020 Â«  05/19/2020 Ã«  05/20/2020 Ä«  05/21/2020 Å«  05/22/2020 Æ«  05/23/2020 Ç«  05/24/2020 È«  05/25/2020 É«  05/26/2020 Ê«  05/27/2020 Ë«  05/28/2020 Ì«  05/29/2020 Í«  05/30/2020 Î«  05/31/2020 Ï«  06/01/2020 Ð«  06/02/2020 Ñ«  06/03/2020 Ò«  06/04/2020 Ó«  06/05/2020 Ô«  06/06/2020 Õ«  06/07/2020 Ö«  06/08/2020 ×«  06/09/2020 Ø«  06/10/2020 Ù«  06/11/2020 Ú«  06/12/2020 Û«  06/13/2020 Ü«  06/14/2020 Ý«  06/15/2020 Þ«  06/16/2020 ß«  06/17/2020 à«  06/18/2020 á«  06/19/2020 â«  06/20/2020 ã«  06/21/2020 ä«  06/22/2020 å«  06/23/2020 æ«  06/24/2020 ç«  06/25/2020 è«  06/26/2020 é«  06/27/2020 ê«  06/28/2020 ë«  06/29/2020 ì«  06/30/2020 í«  07/01/2020 î«  07/02/2020 ï«  07/03/2020 ð«  07/04/2020 ñ«  07/05/2020 ò«  07/06/2020 ó«  07/07/2020 ô«  07/08/2020 õ«  07/09/2020 ö«  07/10/2020 ÷«  07/11/2020 ø«  07/12/2020 ù«  07/13/2020 ú«  07/14/2020 û«  07/15/2020 ü«  07/16/2020 ý«  07/17/2020 þ«  07/18/2020 ÿ«  07/19/2020  ¬  07/20/2020 ¬  07/21/2020 ¬  07/22/2020 ¬  07/23/2020 ¬  07/24/2020 ¬  07/25/2020 ¬  07/26/2020 ¬  07/27/2020 ¬  07/28/2020 	¬  07/29/2020 
+¬  07/30/2020 ¬  07/31/2020 ¬  08/01/2020 ¬  08/02/2020 ¬  08/03/2020 ¬  08/04/2020 ¬  08/05/2020 ¬  08/06/2020 ¬  08/07/2020 ¬  08/08/2020 ¬  08/09/2020 ¬  08/10/2020 ¬  08/11/2020 ¬  08/12/2020 ¬  08/13/2020 ¬  08/14/2020 ¬  08/15/2020 ¬  08/16/2020 ¬  08/17/2020 ¬  08/18/2020 ¬  08/19/2020 ¬  08/20/2020  ¬  08/21/2020 !¬  08/22/2020 "¬  08/23/2020 #¬  08/24/2020 $¬  08/25/2020 %¬  08/26/2020 &¬  08/27/2020 '¬  08/28/2020 (¬  08/29/2020 )¬  08/30/2020 *¬  08/31/2020 +¬  09/01/2020 ,¬  09/02/2020 -¬  09/03/2020 .¬  09/04/2020 /¬  09/05/2020 0¬  09/06/2020 1¬  09/07/2020 2¬  09/08/2020 3¬  09/09/2020 4¬  09/10/2020 5¬  09/11/2020 6¬  09/12/2020 7¬  09/13/2020 8¬  09/14/2020 9¬  09/15/2020 :¬  09/16/2020 ;¬  09/17/2020 <¬  09/18/2020 =¬  09/19/2020 >¬  09/20/2020 ?¬  09/21/2020 @¬  09/22/2020 A¬  09/23/2020 B¬  09/24/2020 C¬  09/25/2020 D¬  09/26/2020 E¬  09/27/2020 F¬  09/28/2020 G¬  09/29/2020 H¬  09/30/2020 I¬  10/01/2020 J¬  10/02/2020 K¬  10/03/2020 L¬  10/04/2020 M¬  10/05/2020 N¬  10/06/2020 O¬  10/07/2020 P¬  10/08/2020 Q¬  10/09/2020 R¬  10/10/2020 S¬  10/11/2020 T¬  10/12/2020 U¬  10/13/2020 V¬  10/14/2020 W¬  10/15/2020 X¬  10/16/2020 Y¬  10/17/2020 Z¬  10/18/2020 [¬  10/19/2020 \¬  10/20/2020 ]¬  10/21/2020 ^¬  10/22/2020 _¬  10/23/2020 `¬  10/24/2020 a¬  10/25/2020 b¬  10/26/2020 c¬  10/27/2020 d¬  10/28/2020 e¬  10/29/2020 f¬  10/30/2020 g¬  10/31/2020 h¬  11/01/2020 i¬  11/02/2020 j¬  11/03/2020 k¬  11/04/2020 l¬  11/05/2020 m¬  11/06/2020 n¬  11/07/2020 o¬  11/08/2020 p¬  11/09/2020 q¬  11/10/2020 r¬  11/11/2020 s¬  11/12/2020 t¬  11/13/2020 u¬  11/14/2020 v¬  11/15/2020 w¬  11/16/2020 x¬  11/17/2020 y¬  11/18/2020 z¬  11/19/2020 {¬  11/20/2020 |¬  11/21/2020 }¬  11/22/2020 ~¬  11/23/2020 ¬  11/24/2020 €¬  11/25/2020 ¬  11/26/2020 ‚¬  11/27/2020 ƒ¬  11/28/2020 „¬  11/29/2020 …¬  11/30/2020 †¬  12/01/2020 ‡¬  12/02/2020 ˆ¬  12/03/2020 ‰¬  12/04/2020 Š¬  12/05/2020 ‹¬  12/06/2020 Œ¬  12/07/2020 ¬  12/08/2020 Ž¬  12/09/2020 ¬  12/10/2020 ¬  12/11/2020 ‘¬  12/12/2020 ’¬  12/13/2020 “¬  12/14/2020 ”¬  12/15/2020 •¬  12/16/2020 –¬  12/17/2020 —¬  12/18/2020 ˜¬  12/19/2020 ™¬  12/20/2020 š¬  12/21/2020 ›¬  12/22/2020 œ¬  12/23/2020 ¬  12/24/2020 ž¬  12/25/2020 Ÿ¬  12/26/2020  ¬  12/27/2020 ¡¬  12/28/2020 ¢¬  12/29/2020 £¬  12/30/2020 ¤¬  12/31/2020 ¥¬  01/01/2021 ¦¬  01/02/2021 §¬  01/03/2021 ¨¬  01/04/2021 ©¬  01/05/2021 ª¬  01/06/2021 «¬  01/07/2021 ¬¬  01/08/2021 ­¬  01/09/2021 ®¬  01/10/2021 ¯¬  01/11/2021 °¬  01/12/2021 ±¬  01/13/2021 ²¬  01/14/2021 ³¬  01/15/2021 ´¬  01/16/2021 µ¬  01/17/2021 ¶¬  01/18/2021 ·¬  01/19/2021 ¸¬  01/20/2021 ¹¬  01/21/2021 º¬  01/22/2021 »¬  01/23/2021 ¼¬  01/24/2021 ½¬  01/25/2021 ¾¬  01/26/2021 ¿¬  01/27/2021 À¬  01/28/2021 Á¬  01/29/2021 Â¬  01/30/2021 Ã¬  01/31/2021 ³¥  42419 ´¥  42420 µ¥  42421 ¶¥  42422 ·¥  42423 ¸¥  42424 ¹¥  42425 º¥  42426 »¥  42427 ¼¥  42428 ½¥  42429 ¾¥  42430 ¿¥  42431 À¥  42432 Á¥  42433 Â¥  42434 Ã¥  42435 Ä¥  42436 Å¥  42437 Æ¥  42438 Ç¥  42439 È¥  42440 É¥  42441 Ê¥  42442 Ë¥  42443 Ì¥  42444 Í¥  42445 Î¥  42446 Ï¥  42447 Ð¥  42448 Ñ¥  42449 Ò¥  42450 Ó¥  42451 Ô¥  42452 Õ¥  42453 Ö¥  42454 ×¥  42455 Ø¥  42456 Ù¥  42457 Ú¥  42458 Û¥  42459 Ü¥  42460 Ý¥  42461 Þ¥  42462 ß¥  42463 à¥  42464 á¥  42465 â¥  42466 ã¥  42467 ä¥  42468 å¥  42469 æ¥  42470 ç¥  42471 è¥  42472 é¥  42473 ê¥  42474 ë¥  42475 ì¥  42476 í¥  42477 î¥  42478 ï¥  42479 ð¥  42480 ñ¥  42481 ò¥  42482 ó¥  42483 ô¥  42484 õ¥  42485 ö¥  42486 ÷¥  42487 ø¥  42488 ù¥  42489 ú¥  42490 û¥  42491 ü¥  42492 ý¥  42493 þ¥  42494 ÿ¥  42495  ¦  42496 ¦  42497 ¦  42498 ¦  42499 ¦  42500 ¦  42501 ¦  42502 ¦  42503 ¦  42504 	¦  42505 
+¦  42506 ¦  42507 ¦  42508 ¦  42509 ¦  42510 ¦  42511 ¦  42512 ¦  42513 ¦  42514 ¦  42515 ¦  42516 ¦  42517 ¦  42518 ¦  42519 ¦  42520 ¦  42521 ¦  42522 ¦  42523 ¦  42524 ¦  42525 ¦  42526 ¦  42527  ¦  42528 !¦  42529 "¦  42530 #¦  42531 $¦  42532 %¦  42533 &¦  42534 '¦  42535 (¦  42536 )¦  42537 *¦  42538 +¦  42539 ,¦  42540 -¦  42541 .¦  42542 /¦  42543 0¦  42544 1¦  42545 2¦  42546 3¦  42547 4¦  42548 5¦  42549 6¦  42550 7¦  42551 8¦  42552 9¦  42553 :¦  42554 ;¦  42555 <¦  42556 =¦  42557 >¦  42558 ?¦  42559 @¦  42560 A¦  42561 B¦  42562 C¦  42563 D¦  42564 E¦  42565 F¦  42566 G¦  42567 H¦  42568 I¦  42569 J¦  42570 K¦  42571 L¦  42572 M¦  42573 N¦  42574 O¦  42575 P¦  42576 Q¦  42577 R¦  42578 S¦  42579 T¦  42580 U¦  42581 V¦  42582 W¦  42583 X¦  42584 Y¦  42585 Z¦  42586 [¦  42587 \¦  42588 ]¦  42589 ^¦  42590 _¦  42591 `¦  42592 a¦  42593 b¦  42594 c¦  42595 d¦  42596 e¦  42597 f¦  42598 g¦  42599 h¦  42600 i¦  42601 j¦  42602 k¦  42603 l¦  42604 m¦  42605 n¦  42606 o¦  42607 p¦  42608 q¦  42609 r¦  42610 s¦  42611 t¦  42612 u¦  42613 v¦  42614 w¦  42615 x¦  42616 y¦  42617 z¦  42618 {¦  42619 |¦  42620 }¦  42621 ~¦  42622 ¦  42623 €¦  42624 ¦  42625 ‚¦  42626 ƒ¦  42627 „¦  42628 …¦  42629 †¦  42630 ‡¦  42631 ˆ¦  42632 ‰¦  42633 Š¦  42634 ‹¦  42635 Œ¦  42636 ¦  42637 Ž¦  42638 ¦  42639 ¦  42640 ‘¦  42641 ’¦  42642 “¦  42643 ”¦  42644 •¦  42645 –¦  42646 —¦  42647 ˜¦  42648 ™¦  42649 š¦  42650 ›¦  42651 œ¦  42652 ¦  42653 ž¦  42654 Ÿ¦  42655  ¦  42656 ¡¦  42657 ¢¦  42658 £¦  42659 ¤¦  42660 ¥¦  42661 ¦¦  42662 §¦  42663 ¨¦  42664 ©¦  42665 ª¦  42666 «¦  42667 ¬¦  42668 ­¦  42669 ®¦  42670 ¯¦  42671 °¦  42672 ±¦  42673 ²¦  42674 ³¦  42675 ´¦  42676 µ¦  42677 ¶¦  42678 ·¦  42679 ¸¦  42680 ¹¦  42681 º¦  42682 »¦  42683 ¼¦  42684 ½¦  42685 ¾¦  42686 ¿¦  42687 À¦  42688 Á¦  42689 Â¦  42690 Ã¦  42691 Ä¦  42692 Å¦  42693 Æ¦  42694 Ç¦  42695 È¦  42696 É¦  42697 Ê¦  42698 Ë¦  42699 Ì¦  42700 Í¦  42701 Î¦  42702 Ï¦  42703 Ð¦  42704 Ñ¦  42705 Ò¦  42706 Ó¦  42707 Ô¦  42708 Õ¦  42709 Ö¦  42710 ×¦  42711 Ø¦  42712 Ù¦  42713 Ú¦  42714 Û¦  42715 Ü¦  42716 Ý¦  42717 Þ¦  42718 ß¦  42719 à¦  42720 á¦  42721 â¦  42722 ã¦  42723 ä¦  42724 å¦  42725 æ¦  42726 ç¦  42727 è¦  42728 é¦  42729 ê¦  42730 ë¦  42731 ì¦  42732 í¦  42733 î¦  42734 ï¦  42735 ð¦  42736 ñ¦  42737 ò¦  42738 ó¦  42739 ô¦  42740 õ¦  42741 ö¦  42742 ÷¦  42743 ø¦  42744 ù¦  42745 ú¦  42746 û¦  42747 ü¦  42748 ý¦  42749 þ¦  42750 ÿ¦  42751  §  42752 §  42753 §  42754 §  42755 §  42756 §  42757 §  42758 §  42759 §  42760 	§  42761 
+§  42762 §  42763 §  42764 §  42765 §  42766 §  42767 §  42768 §  42769 §  42770 §  42771 §  42772 §  42773 §  42774 §  42775 §  42776 §  42777 §  42778 §  42779 §  42780 §  42781 §  42782 §  42783  §  42784 !§  42785 "§  42786 #§  42787 $§  42788 %§  42789 &§  42790 '§  42791 (§  42792 )§  42793 *§  42794 +§  42795 ,§  42796 -§  42797 .§  42798 /§  42799 0§  42800 1§  42801 2§  42802 3§  42803 4§  42804 5§  42805 6§  42806 7§  42807 8§  42808 9§  42809 :§  42810 ;§  42811 <§  42812 =§  42813 >§  42814 ?§  42815 @§  42816 A§  42817 B§  42818 C§  42819 D§  42820 E§  42821 F§  42822 G§  42823 H§  42824 I§  42825 J§  42826 K§  42827 L§  42828 M§  42829 N§  42830 O§  42831 P§  42832 Q§  42833 R§  42834 S§  42835 T§  42836 U§  42837 V§  42838 W§  42839 X§  42840 Y§  42841 Z§  42842 [§  42843 \§  42844 ]§  42845 ^§  42846 _§  42847 `§  42848 a§  42849 b§  42850 c§  42851 d§  42852 e§  42853 f§  42854 g§  42855 h§  42856 i§  42857 j§  42858 k§  42859 l§  42860 m§  42861 n§  42862 o§  42863 p§  42864 q§  42865 r§  42866 s§  42867 t§  42868 u§  42869 v§  42870 w§  42871 x§  42872 y§  42873 z§  42874 {§  42875 |§  42876 }§  42877 ~§  42878 §  42879 €§  42880 §  42881 ‚§  42882 ƒ§  42883 „§  42884 …§  42885 †§  42886 ‡§  42887 ˆ§  42888 ‰§  42889 Š§  42890 ‹§  42891 Œ§  42892 §  42893 Ž§  42894 §  42895 §  42896 ‘§  42897 ’§  42898 “§  42899 ”§  42900 •§  42901 –§  42902 —§  42903 ˜§  42904 ™§  42905 š§  42906 ›§  42907 œ§  42908 §  42909 ž§  42910 Ÿ§  42911  §  42912 ¡§  42913 ¢§  42914 £§  42915 ¤§  42916 ¥§  42917 ¦§  42918 §§  42919 ¨§  42920 ©§  42921 ª§  42922 «§  42923 ¬§  42924 ­§  42925 ®§  42926 ¯§  42927 °§  42928 ±§  42929 ²§  42930 ³§  42931 ´§  42932 µ§  42933 ¶§  42934 ·§  42935 ¸§  42936 ¹§  42937 º§  42938 »§  42939 ¼§  42940 ½§  42941 ¾§  42942 ¿§  42943 À§  42944 Á§  42945 Â§  42946 Ã§  42947 Ä§  42948 Å§  42949 Æ§  42950 Ç§  42951 È§  42952 É§  42953 Ê§  42954 Ë§  42955 Ì§  42956 Í§  42957 Î§  42958 Ï§  42959 Ð§  42960 Ñ§  42961 Ò§  42962 Ó§  42963 Ô§  42964 Õ§  42965 Ö§  42966 ×§  42967 Ø§  42968 Ù§  42969 Ú§  42970 Û§  42971 Ü§  42972 Ý§  42973 Þ§  42974 ß§  42975 à§  42976 á§  42977 â§  42978 ã§  42979 ä§  42980 å§  42981 æ§  42982 ç§  42983 è§  42984 é§  42985 ê§  42986 ë§  42987 ì§  42988 í§  42989 î§  42990 ï§  42991 ð§  42992 ñ§  42993 ò§  42994 ó§  42995 ô§  42996 õ§  42997 ö§  42998 ÷§  42999 ø§  43000 ù§  43001 ú§  43002 û§  43003 ü§  43004 ý§  43005 þ§  43006 ÿ§  43007  ¨  43008 ¨  43009 ¨  43010 ¨  43011 ¨  43012 ¨  43013 ¨  43014 ¨  43015 ¨  43016 	¨  43017 
+¨  43018 ¨  43019 ¨  43020 ¨  43021 ¨  43022 ¨  43023 ¨  43024 ¨  43025 ¨  43026 ¨  43027 ¨  43028 ¨  43029 ¨  43030 ¨  43031 ¨  43032 ¨  43033 ¨  43034 ¨  43035 ¨  43036 ¨  43037 ¨  43038 ¨  43039  ¨  43040 !¨  43041 "¨  43042 #¨  43043 $¨  43044 %¨  43045 &¨  43046 '¨  43047 (¨  43048 )¨  43049 *¨  43050 +¨  43051 ,¨  43052 -¨  43053 .¨  43054 /¨  43055 0¨  43056 1¨  43057 2¨  43058 3¨  43059 4¨  43060 5¨  43061 6¨  43062 7¨  43063 8¨  43064 9¨  43065 :¨  43066 ;¨  43067 <¨  43068 =¨  43069 >¨  43070 ?¨  43071 @¨  43072 A¨  43073 B¨  43074 C¨  43075 D¨  43076 E¨  43077 F¨  43078 G¨  43079 H¨  43080 I¨  43081 J¨  43082 K¨  43083 L¨  43084 M¨  43085 N¨  43086 O¨  43087 P¨  43088 Q¨  43089 R¨  43090 S¨  43091 T¨  43092 U¨  43093 V¨  43094 W¨  43095 X¨  43096 Y¨  43097 Z¨  43098 [¨  43099 \¨  43100 ]¨  43101 ^¨  43102 _¨  43103 `¨  43104 a¨  43105 b¨  43106 c¨  43107 d¨  43108 e¨  43109 f¨  43110 g¨  43111 h¨  43112 i¨  43113 j¨  43114 k¨  43115 l¨  43116 m¨  43117 n¨  43118 o¨  43119 p¨  43120 q¨  43121 r¨  43122 s¨  43123 t¨  43124 u¨  43125 v¨  43126 w¨  43127 x¨  43128 y¨  43129 z¨  43130 {¨  43131 |¨  43132 }¨  43133 ~¨  43134 ¨  43135 €¨  43136 ¨  43137 ‚¨  43138 ƒ¨  43139 „¨  43140 …¨  43141 †¨  43142 ‡¨  43143 ˆ¨  43144 ‰¨  43145 Š¨  43146 ‹¨  43147 Œ¨  43148 ¨  43149 Ž¨  43150 ¨  43151 ¨  43152 ‘¨  43153 ’¨  43154 “¨  43155 ”¨  43156 •¨  43157 –¨  43158 —¨  43159 ˜¨  43160 ™¨  43161 š¨  43162 ›¨  43163 œ¨  43164 ¨  43165 ž¨  43166 Ÿ¨  43167  ¨  43168 ¡¨  43169 ¢¨  43170 £¨  43171 ¤¨  43172 ¥¨  43173 ¦¨  43174 §¨  43175 ¨¨  43176 ©¨  43177 ª¨  43178 «¨  43179 ¬¨  43180 ­¨  43181 ®¨  43182 ¯¨  43183 °¨  43184 ±¨  43185 ²¨  43186 ³¨  43187 ´¨  43188 µ¨  43189 ¶¨  43190 ·¨  43191 ¸¨  43192 ¹¨  43193 º¨  43194 »¨  43195 ¼¨  43196 ½¨  43197 ¾¨  43198 ¿¨  43199 À¨  43200 Á¨  43201 Â¨  43202 Ã¨  43203 Ä¨  43204 Å¨  43205 Æ¨  43206 Ç¨  43207 È¨  43208 É¨  43209 Ê¨  43210 Ë¨  43211 Ì¨  43212 Í¨  43213 Î¨  43214 Ï¨  43215 Ð¨  43216 Ñ¨  43217 Ò¨  43218 Ó¨  43219 Ô¨  43220 Õ¨  43221 Ö¨  43222 ×¨  43223 Ø¨  43224 Ù¨  43225 Ú¨  43226 Û¨  43227 Ü¨  43228 Ý¨  43229 Þ¨  43230 ß¨  43231 à¨  43232 á¨  43233 â¨  43234 ã¨  43235 ä¨  43236 å¨  43237 æ¨  43238 ç¨  43239 è¨  43240 é¨  43241 ê¨  43242 ë¨  43243 ì¨  43244 í¨  43245 î¨  43246 ï¨  43247 ð¨  43248 ñ¨  43249 ò¨  43250 ó¨  43251 ô¨  43252 õ¨  43253 ö¨  43254 ÷¨  43255 ø¨  43256 ù¨  43257 ú¨  43258 û¨  43259 ü¨  43260 ý¨  43261 þ¨  43262 ÿ¨  43263  ©  43264 ©  43265 ©  43266 ©  43267 ©  43268 ©  43269 ©  43270 ©  43271 ©  43272 	©  43273 
+©  43274 ©  43275 ©  43276 ©  43277 ©  43278 ©  43279 ©  43280 ©  43281 ©  43282 ©  43283 ©  43284 ©  43285 ©  43286 ©  43287 ©  43288 ©  43289 ©  43290 ©  43291 ©  43292 ©  43293 ©  43294 ©  43295  ©  43296 !©  43297 "©  43298 #©  43299 $©  43300 %©  43301 &©  43302 '©  43303 (©  43304 )©  43305 *©  43306 +©  43307 ,©  43308 -©  43309 .©  43310 /©  43311 0©  43312 1©  43313 2©  43314 3©  43315 4©  43316 5©  43317 6©  43318 7©  43319 8©  43320 9©  43321 :©  43322 ;©  43323 <©  43324 =©  43325 >©  43326 ?©  43327 @©  43328 A©  43329 B©  43330 C©  43331 D©  43332 E©  43333 F©  43334 G©  43335 H©  43336 I©  43337 J©  43338 K©  43339 L©  43340 M©  43341 N©  43342 O©  43343 P©  43344 Q©  43345 R©  43346 S©  43347 T©  43348 U©  43349 V©  43350 W©  43351 X©  43352 Y©  43353 Z©  43354 [©  43355 \©  43356 ]©  43357 ^©  43358 _©  43359 `©  43360 a©  43361 b©  43362 c©  43363 d©  43364 e©  43365 f©  43366 g©  43367 h©  43368 i©  43369 j©  43370 k©  43371 l©  43372 m©  43373 n©  43374 o©  43375 p©  43376 q©  43377 r©  43378 s©  43379 t©  43380 u©  43381 v©  43382 w©  43383 x©  43384 y©  43385 z©  43386 {©  43387 |©  43388 }©  43389 ~©  43390 ©  43391 €©  43392 ©  43393 ‚©  43394 ƒ©  43395 „©  43396 …©  43397 †©  43398 ‡©  43399 ˆ©  43400 ‰©  43401 Š©  43402 ‹©  43403 Œ©  43404 ©  43405 Ž©  43406 ©  43407 ©  43408 ‘©  43409 ’©  43410 “©  43411 ”©  43412 •©  43413 –©  43414 —©  43415 ˜©  43416 ™©  43417 š©  43418 ›©  43419 œ©  43420 ©  43421 ž©  43422 Ÿ©  43423  ©  43424 ¡©  43425 ¢©  43426 £©  43427 ¤©  43428 ¥©  43429 ¦©  43430 §©  43431 ¨©  43432 ©©  43433 ª©  43434 «©  43435 ¬©  43436 ­©  43437 ®©  43438 ¯©  43439 °©  43440 ±©  43441 ²©  43442 ³©  43443 ´©  43444 µ©  43445 ¶©  43446 ·©  43447 ¸©  43448 ¹©  43449 º©  43450 »©  43451 ¼©  43452 ½©  43453 ¾©  43454 ¿©  43455 À©  43456 Á©  43457 Â©  43458 Ã©  43459 Ä©  43460 Å©  43461 Æ©  43462 Ç©  43463 È©  43464 É©  43465 Ê©  43466 Ë©  43467 Ì©  43468 Í©  43469 Î©  43470 Ï©  43471 Ð©  43472 Ñ©  43473 Ò©  43474 Ó©  43475 Ô©  43476 Õ©  43477 Ö©  43478 ×©  43479 Ø©  43480 Ù©  43481 Ú©  43482 Û©  43483 Ü©  43484 Ý©  43485 Þ©  43486 ß©  43487 à©  43488 á©  43489 â©  43490 ã©  43491 ä©  43492 å©  43493 æ©  43494 ç©  43495 è©  43496 é©  43497 ê©  43498 ë©  43499 ì©  43500 í©  43501 î©  43502 ï©  43503 ð©  43504 ñ©  43505 ò©  43506 ó©  43507 ô©  43508 õ©  43509 ö©  43510 ÷©  43511 ø©  43512 ù©  43513 ú©  43514 û©  43515 ü©  43516 ý©  43517 þ©  43518 ÿ©  43519  ª  43520 ª  43521 ª  43522 ª  43523 ª  43524 ª  43525 ª  43526 ª  43527 ª  43528 	ª  43529 
+ª  43530 ª  43531 ª  43532 ª  43533 ª  43534 ª  43535 ª  43536 ª  43537 ª  43538 ª  43539 ª  43540 ª  43541 ª  43542 ª  43543 ª  43544 ª  43545 ª  43546 ª  43547 ª  43548 ª  43549 ª  43550 ª  43551  ª  43552 !ª  43553 "ª  43554 #ª  43555 $ª  43556 %ª  43557 &ª  43558 'ª  43559 (ª  43560 )ª  43561 *ª  43562 +ª  43563 ,ª  43564 -ª  43565 .ª  43566 /ª  43567 0ª  43568 1ª  43569 2ª  43570 3ª  43571 4ª  43572 5ª  43573 6ª  43574 7ª  43575 8ª  43576 9ª  43577 :ª  43578 ;ª  43579 <ª  43580 =ª  43581 >ª  43582 ?ª  43583 @ª  43584 Aª  43585 Bª  43586 Cª  43587 Dª  43588 Eª  43589 Fª  43590 Gª  43591 Hª  43592 Iª  43593 Jª  43594 Kª  43595 Lª  43596 Mª  43597 Nª  43598 Oª  43599 Pª  43600 Qª  43601 Rª  43602 Sª  43603 Tª  43604 Uª  43605 Vª  43606 Wª  43607 Xª  43608 Yª  43609 Zª  43610 [ª  43611 \ª  43612 ]ª  43613 ^ª  43614 _ª  43615 `ª  43616 aª  43617 bª  43618 cª  43619 dª  43620 eª  43621 fª  43622 gª  43623 hª  43624 iª  43625 jª  43626 kª  43627 lª  43628 mª  43629 nª  43630 oª  43631 pª  43632 qª  43633 rª  43634 sª  43635 tª  43636 uª  43637 vª  43638 wª  43639 xª  43640 yª  43641 zª  43642 {ª  43643 |ª  43644 }ª  43645 ~ª  43646 ª  43647 €ª  43648 ª  43649 ‚ª  43650 ƒª  43651 „ª  43652 …ª  43653 †ª  43654 ‡ª  43655 ˆª  43656 ‰ª  43657 Šª  43658 ‹ª  43659 Œª  43660 ª  43661 Žª  43662 ª  43663 ª  43664 ‘ª  43665 ’ª  43666 “ª  43667 ”ª  43668 •ª  43669 –ª  43670 —ª  43671 ˜ª  43672 ™ª  43673 šª  43674 ›ª  43675 œª  43676 ª  43677 žª  43678 Ÿª  43679  ª  43680 ¡ª  43681 ¢ª  43682 £ª  43683 ¤ª  43684 ¥ª  43685 ¦ª  43686 §ª  43687 ¨ª  43688 ©ª  43689 ªª  43690 «ª  43691 ¬ª  43692 ­ª  43693 ®ª  43694 ¯ª  43695 °ª  43696 ±ª  43697 ²ª  43698 ³ª  43699 ´ª  43700 µª  43701 ¶ª  43702 ·ª  43703 ¸ª  43704 ¹ª  43705 ºª  43706 »ª  43707 ¼ª  43708 ½ª  43709 ¾ª  43710 ¿ª  43711 Àª  43712 Áª  43713 Âª  43714 Ãª  43715 Äª  43716 Åª  43717 Æª  43718 Çª  43719 Èª  43720 Éª  43721 Êª  43722 Ëª  43723 Ìª  43724 Íª  43725 Îª  43726 Ïª  43727 Ðª  43728 Ñª  43729 Òª  43730 Óª  43731 Ôª  43732 Õª  43733 Öª  43734 ×ª  43735 Øª  43736 Ùª  43737 Úª  43738 Ûª  43739 Üª  43740 Ýª  43741 Þª  43742 ßª  43743 àª  43744 áª  43745 âª  43746 ãª  43747 äª  43748 åª  43749 æª  43750 çª  43751 èª  43752 éª  43753 êª  43754 ëª  43755 ìª  43756 íª  43757 îª  43758 ïª  43759 ðª  43760 ñª  43761 òª  43762 óª  43763 ôª  43764 õª  43765 öª  43766 ÷ª  43767 øª  43768 ùª  43769 úª  43770 ûª  43771 üª  43772 ýª  43773 þª  43774 ÿª  43775  «  43776 «  43777 «  43778 «  43779 «  43780 «  43781 «  43782 «  43783 «  43784 	«  43785 
+«  43786 «  43787 «  43788 «  43789 «  43790 «  43791 «  43792 «  43793 «  43794 «  43795 «  43796 «  43797 «  43798 «  43799 «  43800 «  43801 «  43802 «  43803 «  43804 «  43805 «  43806 «  43807  «  43808 !«  43809 "«  43810 #«  43811 $«  43812 %«  43813 &«  43814 '«  43815 («  43816 )«  43817 *«  43818 +«  43819 ,«  43820 -«  43821 .«  43822 /«  43823 0«  43824 1«  43825 2«  43826 3«  43827 4«  43828 5«  43829 6«  43830 7«  43831 8«  43832 9«  43833 :«  43834 ;«  43835 <«  43836 =«  43837 >«  43838 ?«  43839 @«  43840 A«  43841 B«  43842 C«  43843 D«  43844 E«  43845 F«  43846 G«  43847 H«  43848 I«  43849 J«  43850 K«  43851 L«  43852 M«  43853 N«  43854 O«  43855 P«  43856 Q«  43857 R«  43858 S«  43859 T«  43860 U«  43861 V«  43862 W«  43863 X«  43864 Y«  43865 Z«  43866 [«  43867 \«  43868 ]«  43869 ^«  43870 _«  43871 `«  43872 a«  43873 b«  43874 c«  43875 d«  43876 e«  43877 f«  43878 g«  43879 h«  43880 i«  43881 j«  43882 k«  43883 l«  43884 m«  43885 n«  43886 o«  43887 p«  43888 q«  43889 r«  43890 s«  43891 t«  43892 u«  43893 v«  43894 w«  43895 x«  43896 y«  43897 z«  43898 {«  43899 |«  43900 }«  43901 ~«  43902 «  43903 €«  43904 «  43905 ‚«  43906 ƒ«  43907 „«  43908 …«  43909 †«  43910 ‡«  43911 ˆ«  43912 ‰«  43913 Š«  43914 ‹«  43915 Œ«  43916 «  43917 Ž«  43918 «  43919 «  43920 ‘«  43921 ’«  43922 “«  43923 ”«  43924 •«  43925 –«  43926 —«  43927 ˜«  43928 ™«  43929 š«  43930 ›«  43931 œ«  43932 «  43933 ž«  43934 Ÿ«  43935  «  43936 ¡«  43937 ¢«  43938 £«  43939 ¤«  43940 ¥«  43941 ¦«  43942 §«  43943 ¨«  43944 ©«  43945 ª«  43946 ««  43947 ¬«  43948 ­«  43949 ®«  43950 ¯«  43951 °«  43952 ±«  43953 ²«  43954 ³«  43955 ´«  43956 µ«  43957 ¶«  43958 ·«  43959 ¸«  43960 ¹«  43961 º«  43962 »«  43963 ¼«  43964 ½«  43965 ¾«  43966 ¿«  43967 À«  43968 Á«  43969 Â«  43970 Ã«  43971 Ä«  43972 Å«  43973 Æ«  43974 Ç«  43975 È«  43976 É«  43977 Ê«  43978 Ë«  43979 Ì«  43980 Í«  43981 Î«  43982 Ï«  43983 Ð«  43984 Ñ«  43985 Ò«  43986 Ó«  43987 Ô«  43988 Õ«  43989 Ö«  43990 ×«  43991 Ø«  43992 Ù«  43993 Ú«  43994 Û«  43995 Ü«  43996 Ý«  43997 Þ«  43998 ß«  43999 à«  44000 á«  44001 â«  44002 ã«  44003 ä«  44004 å«  44005 æ«  44006 ç«  44007 è«  44008 é«  44009 ê«  44010 ë«  44011 ì«  44012 í«  44013 î«  44014 ï«  44015 ð«  44016 ñ«  44017 ò«  44018 ó«  44019 ô«  44020 õ«  44021 ö«  44022 ÷«  44023 ø«  44024 ù«  44025 ú«  44026 û«  44027 ü«  44028 ý«  44029 þ«  44030 ÿ«  44031  ¬  44032 ¬  44033 ¬  44034 ¬  44035 ¬  44036 ¬  44037 ¬  44038 ¬  44039 ¬  44040 	¬  44041 
+¬  44042 ¬  44043 ¬  44044 ¬  44045 ¬  44046 ¬  44047 ¬  44048 ¬  44049 ¬  44050 ¬  44051 ¬  44052 ¬  44053 ¬  44054 ¬  44055 ¬  44056 ¬  44057 ¬  44058 ¬  44059 ¬  44060 ¬  44061 ¬  44062 ¬  44063  ¬  44064 !¬  44065 "¬  44066 #¬  44067 $¬  44068 %¬  44069 &¬  44070 '¬  44071 (¬  44072 )¬  44073 *¬  44074 +¬  44075 ,¬  44076 -¬  44077 .¬  44078 /¬  44079 0¬  44080 1¬  44081 2¬  44082 3¬  44083 4¬  44084 5¬  44085 6¬  44086 7¬  44087 8¬  44088 9¬  44089 :¬  44090 ;¬  44091 <¬  44092 =¬  44093 >¬  44094 ?¬  44095 @¬  44096 A¬  44097 B¬  44098 C¬  44099 D¬  44100 E¬  44101 F¬  44102 G¬  44103 H¬  44104 I¬  44105 J¬  44106 K¬  44107 L¬  44108 M¬  44109 N¬  44110 O¬  44111 P¬  44112 Q¬  44113 R¬  44114 S¬  44115 T¬  44116 U¬  44117 V¬  44118 W¬  44119 X¬  44120 Y¬  44121 Z¬  44122 [¬  44123 \¬  44124 ]¬  44125 ^¬  44126 _¬  44127 `¬  44128 a¬  44129 b¬  44130 c¬  44131 d¬  44132 e¬  44133 f¬  44134 g¬  44135 h¬  44136 i¬  44137 j¬  44138 k¬  44139 l¬  44140 m¬  44141 n¬  44142 o¬  44143 p¬  44144 q¬  44145 r¬  44146 s¬  44147 t¬  44148 u¬  44149 v¬  44150 w¬  44151 x¬  44152 y¬  44153 z¬  44154 {¬  44155 |¬  44156 }¬  44157 ~¬  44158 ¬  44159 €¬  44160 ¬  44161 ‚¬  44162 ƒ¬  44163 „¬  44164 …¬  44165 †¬  44166 ‡¬  44167 ˆ¬  44168 ‰¬  44169 Š¬  44170 ‹¬  44171 Œ¬  44172 ¬  44173 Ž¬  44174 ¬  44175 ¬  44176 ‘¬  44177 ’¬  44178 “¬  44179 ”¬  44180 •¬  44181 –¬  44182 —¬  44183 ˜¬  44184 ™¬  44185 š¬  44186 ›¬  44187 œ¬  44188 ¬  44189 ž¬  44190 Ÿ¬  44191  ¬  44192 ¡¬  44193 ¢¬  44194 £¬  44195 ¤¬  44196 ¥¬  44197 ¦¬  44198 §¬  44199 ¨¬  44200 ©¬  44201 ª¬  44202 «¬  44203 ¬¬  44204 ­¬  44205 ®¬  44206 ¯¬  44207 °¬  44208 ±¬  44209 ²¬  44210 ³¬  44211 ´¬  44212 µ¬  44213 ¶¬  44214 ·¬  44215 ¸¬  44216 ¹¬  44217 º¬  44218 »¬  44219 ¼¬  44220 ½¬  44221 ¾¬  44222 ¿¬  44223 À¬  44224 Á¬  44225 Â¬  44226 Ã¬  44227 2016-Q1 2016-Q2 2016-Q3 2016-Q4 2017-Q1 2017-Q2 2017-Q3 2017-Q4 2018-Q1 2018-Q2 2018-Q3 2018-Q4 2019-Q1 2019-Q2 2019-Q3 2019-Q4 2020-Q1 2020-Q2 2020-Q3 2020-Q4 2021-Q1 à  á  â  ã  ä  å     Feb    Mar    Apr    May    Jun    Jul    Aug 	   Sep 
+   Oct    Nov    Dec    Jan                                                          	   
+                                    Fri    Sat     Sun    Mon    Tue    Wed    Thu Q1 Q2 Q3 Q4 ¡¥  2016-Feb ¾¥  2016-Mar Ý¥  2016-Apr û¥  2016-May ¦  2016-Jun 8¦  2016-Jul W¦  2016-Aug v¦  2016-Sep ”¦  2016-Oct ³¦  2016-Nov Ñ¦  2016-Dec ð¦  2017-Jan §  2017-Feb +§  2017-Mar J§  2017-Apr h§  2017-May ‡§  2017-Jun ¥§  2017-Jul Ä§  2017-Aug ã§  2017-Sep ¨  2017-Oct  ¨  2017-Nov >¨  2017-Dec ]¨  2018-Jan |¨  2018-Feb ˜¨  2018-Mar ·¨  2018-Apr Õ¨  2018-May ô¨  2018-Jun ©  2018-Jul 1©  2018-Aug P©  2018-Sep n©  2018-Oct ©  2018-Nov «©  2018-Dec Ê©  2019-Jan é©  2019-Feb ª  2019-Mar $ª  2019-Apr Bª  2019-May aª  2019-Jun ª  2019-Jul žª  2019-Aug ½ª  2019-Sep Ûª  2019-Oct úª  2019-Nov «  2019-Dec 7«  2020-Jan V«  2020-Feb s«  2020-Mar ’«  2020-Apr °«  2020-May Ï«  2020-Jun í«  2020-Jul ¬  2020-Aug +¬  2020-Sep I¬  2020-Oct h¬  2020-Nov †¬  2020-Dec ¥¬  2021-Jan ¡¥  Feb-2016 ¾¥  Mar-2016 Ý¥  Apr-2016 û¥  May-2016 ¦  Jun-2016 8¦  Jul-2016 W¦  Aug-2016 v¦  Sep-2016 ”¦  Oct-2016 ³¦  Nov-2016 Ñ¦  Dec-2016 ð¦  Jan-2017 §  Feb-2017 +§  Mar-2017 J§  Apr-2017 h§  May-2017 ‡§  Jun-2017 ¥§  Jul-2017 Ä§  Aug-2017 ã§  Sep-2017 ¨  Oct-2017  ¨  Nov-2017 >¨  Dec-2017 ]¨  Jan-2018 |¨  Feb-2018 ˜¨  Mar-2018 ·¨  Apr-2018 Õ¨  May-2018 ô¨  Jun-2018 ©  Jul-2018 1©  Aug-2018 P©  Sep-2018 n©  Oct-2018 ©  Nov-2018 «©  Dec-2018 Ê©  Jan-2019 é©  Feb-2019 ª  Mar-2019 $ª  Apr-2019 Bª  May-2019 aª  Jun-2019 ª  Jul-2019 žª  Aug-2019 ½ª  Sep-2019 Ûª  Oct-2019 úª  Nov-2019 «  Dec-2019 7«  Jan-2020 V«  Feb-2020 s«  Mar-2020 ’«  Apr-2020 °«  May-2020 Ï«  Jun-2020 í«  Jul-2020 ¬  Aug-2020 +¬  Sep-2020 I¬  Oct-2020 h¬  Nov-2020 †¬  Dec-2020 ¥¬  Jan-2021 8-2016 9-2016 10-2016 11-2016 12-2016 13-2016 14-2016 15-2016 16-2016 17-2016 18-2016 19-2016 20-2016 21-2016 22-2016 23-2016 24-2016 25-2016 26-2016 27-2016 28-2016 29-2016 30-2016 31-2016 32-2016 33-2016 34-2016 35-2016 36-2016 37-2016 38-2016 39-2016 40-2016 41-2016 42-2016 43-2016 44-2016 45-2016 46-2016 47-2016 48-2016 49-2016 50-2016 51-2016 52-2016 53-2016 1-2017 2-2017 3-2017 4-2017 5-2017 6-2017 7-2017 8-2017 9-2017 10-2017 11-2017 12-2017 13-2017 14-2017 15-2017 16-2017 17-2017 18-2017 19-2017 20-2017 21-2017 22-2017 23-2017 24-2017 25-2017 26-2017 27-2017 28-2017 29-2017 30-2017 31-2017 32-2017 33-2017 34-2017 35-2017 36-2017 37-2017 38-2017 39-2017 40-2017 41-2017 42-2017 43-2017 44-2017 45-2017 46-2017 47-2017 48-2017 49-2017 50-2017 51-2017 52-2017 53-2017 1-2018 2-2018 3-2018 4-2018 5-2018 6-2018 7-2018 8-2018 9-2018 10-2018 11-2018 12-2018 13-2018 14-2018 15-2018 16-2018 17-2018 18-2018 19-2018 20-2018 21-2018 22-2018 23-2018 24-2018 25-2018 26-2018 27-2018 28-2018 29-2018 30-2018 31-2018 32-2018 33-2018 34-2018 35-2018 36-2018 37-2018 38-2018 39-2018 40-2018 41-2018 42-2018 43-2018 44-2018 45-2018 46-2018 47-2018 48-2018 49-2018 50-2018 51-2018 52-2018 53-2018 1-2019 2-2019 3-2019 4-2019 5-2019 6-2019 7-2019 8-2019 9-2019 10-2019 11-2019 12-2019 13-2019 14-2019 15-2019 16-2019 17-2019 18-2019 19-2019 20-2019 21-2019 22-2019 23-2019 24-2019 25-2019 26-2019 27-2019 28-2019 29-2019 30-2019 31-2019 32-2019 33-2019 34-2019 35-2019 36-2019 37-2019 38-2019 39-2019 40-2019 41-2019 42-2019 43-2019 44-2019 45-2019 46-2019 47-2019 48-2019 49-2019 50-2019 51-2019 52-2019 53-2019 1-2020 2-2020 3-2020 4-2020 5-2020 6-2020 7-2020 8-2020 9-2020 10-2020 11-2020 12-2020 13-2020 14-2020 15-2020 16-2020 17-2020 18-2020 19-2020 20-2020 21-2020 22-2020 23-2020 24-2020 25-2020 26-2020 27-2020 28-2020 29-2020 30-2020 31-2020 32-2020 33-2020 34-2020 35-2020 36-2020 37-2020 38-2020 39-2020 40-2020 41-2020 42-2020 43-2020 44-2020 45-2020 46-2020 47-2020 48-2020 49-2020 50-2020 51-2020 52-2020 53-2020 1-2021 2-2021 3-2021 4-2021 5-2021 6-2021 2016-8 2016-9 2016-10 2016-11 2016-12 2016-13 2016-14 2016-15 2016-16 2016-17 2016-18 2016-19 2016-20 2016-21 2016-22 2016-23 2016-24 2016-25 2016-26 2016-27 2016-28 2016-29 2016-30 2016-31 2016-32 2016-33 2016-34 2016-35 2016-36 2016-37 2016-38 2016-39 2016-40 2016-41 2016-42 2016-43 2016-44 2016-45 2016-46 2016-47 2016-48 2016-49 2016-50 2016-51 2016-52 2016-53 2017-1 2017-2 2017-3 2017-4 2017-5 2017-6 2017-7 2017-8 2017-9 2017-10 2017-11 2017-12 2017-13 2017-14 2017-15 2017-16 2017-17 2017-18 2017-19 2017-20 2017-21 2017-22 2017-23 2017-24 2017-25 2017-26 2017-27 2017-28 2017-29 2017-30 2017-31 2017-32 2017-33 2017-34 2017-35 2017-36 2017-37 2017-38 2017-39 2017-40 2017-41 2017-42 2017-43 2017-44 2017-45 2017-46 2017-47 2017-48 2017-49 2017-50 2017-51 2017-52 2017-53 2018-1 2018-2 2018-3 2018-4 2018-5 2018-6 2018-7 2018-8 2018-9 2018-10 2018-11 2018-12 2018-13 2018-14 2018-15 2018-16 2018-17 2018-18 2018-19 2018-20 2018-21 2018-22 2018-23 2018-24 2018-25 2018-26 2018-27 2018-28 2018-29 2018-30 2018-31 2018-32 2018-33 2018-34 2018-35 2018-36 2018-37 2018-38 2018-39 2018-40 2018-41 2018-42 2018-43 2018-44 2018-45 2018-46 2018-47 2018-48 2018-49 2018-50 2018-51 2018-52 2018-53 2019-1 2019-2 2019-3 2019-4 2019-5 2019-6 2019-7 2019-8 2019-9 2019-10 2019-11 2019-12 2019-13 2019-14 2019-15 2019-16 2019-17 2019-18 2019-19 2019-20 2019-21 2019-22 2019-23 2019-24 2019-25 2019-26 2019-27 2019-28 2019-29 2019-30 2019-31 2019-32 2019-33 2019-34 2019-35 2019-36 2019-37 2019-38 2019-39 2019-40 2019-41 2019-42 2019-43 2019-44 2019-45 2019-46 2019-47 2019-48 2019-49 2019-50 2019-51 2019-52 2019-53 2020-1 2020-2 2020-3 2020-4 2020-5 2020-6 2020-7 2020-8 2020-9 2020-10 2020-11 2020-12 2020-13 2020-14 2020-15 2020-16 2020-17 2020-18 2020-19 2020-20 2020-21 2020-22 2020-23 2020-24 2020-25 2020-26 2020-27 2020-28 2020-29 2020-30 2020-31 2020-32 2020-33 2020-34 2020-35 2020-36 2020-37 2020-38 2020-39 2020-40 2020-41 2020-42 2020-43 2020-44 2020-45 2020-46 2020-47 2020-48 2020-49 2020-50 2020-51 2020-52 2020-53 2021-1 2021-2 2021-3 2021-4 2021-5 2021-6 ®¥  µ¥  ¼¥  Ã¥  Ê¥  Ñ¥  Ø¥  ß¥  æ¥  í¥  ô¥  û¥  ¦  	¦  ¦  ¦  ¦  %¦  ,¦  3¦  :¦  A¦  H¦  O¦  V¦  ]¦  d¦  k¦  r¦  y¦  €¦  ‡¦  Ž¦  •¦  œ¦  £¦  ª¦  ±¦  ¸¦  ¿¦  Æ¦  Í¦  Ô¦  Û¦  â¦  é¦  ð¦  ÷¦  þ¦  §  §  §  §  !§  (§  /§  6§  =§  D§  K§  R§  Y§  `§  g§  n§  u§  |§  ƒ§  Š§  ‘§  ˜§  Ÿ§  ¦§  ­§  ´§  »§  Â§  É§  Ð§  ×§  Þ§  å§  ì§  ó§  ú§  ¨  ¨  ¨  ¨  ¨  $¨  +¨  2¨  9¨  @¨  G¨  N¨  U¨  \¨  c¨  j¨  q¨  x¨  ¨  †¨  ¨  ”¨  ›¨  ¢¨  ©¨  °¨  ·¨  ¾¨  Å¨  Ì¨  Ó¨  Ú¨  á¨  è¨  ï¨  ö¨  ý¨  ©  ©  ©  ©   ©  '©  .©  5©  <©  C©  J©  Q©  X©  _©  f©  m©  t©  {©  ‚©  ‰©  ©  —©  ž©  ¥©  ¬©  ³©  º©  Á©  È©  Ï©  Ö©  Ý©  ä©  ë©  ò©  ù©   ª  ª  ª  ª  ª  #ª  *ª  1ª  8ª  ?ª  Fª  Mª  Tª  [ª  bª  iª  pª  wª  ~ª  …ª  Œª  “ª  šª  ¡ª  ¨ª  ¯ª  ¶ª  ½ª  Äª  Ëª  Òª  Ùª  àª  çª  îª  õª  üª  «  
+«  «  «  «  &«  -«  4«  ;«  B«  I«  P«  W«  ^«  e«  l«  s«  z«  «  ˆ«  «  –«  «  ¤«  ««  ²«  ¹«  À«  Ç«  Î«  Õ«  Ü«  ã«  ê«  ñ«  ø«  ÿ«  ¬  ¬  ¬  ¬  "¬  )¬  0¬  7¬  >¬  E¬  L¬  S¬  Z¬  a¬  h¬  o¬  v¬  }¬  „¬  ‹¬  ’¬  ™¬   ¬  §¬  ®¬  µ¬  ¼¬  Ã¬                                                                                                           Weekend Mon-Tue Wed-Thu-Fri                           € @€  €@   € @€  €`   € @€   	€   € @€       € @€   À   € @€    à   € @€     	  	€  €  
+  
+€  €@ €   ` €   € €     €   À €   à ‚À€ €  ‚À€ €  ‚À€  @ ‚À€  ` ‚À€  € ‚À€    ‚À€  À   €à   €          @    `    €       ‚@ €   ‚@ €@   ‚ @  `  !‚!@  €  "‚"@     #‚#@  À  $‚$@  à  %%€ €  &&€ €  ''€  @ ((€    ))€  À **€  a ++€ " ,„,À $¡ -„-À &Á .„.À )á /„/À + 0„0À -! 1„1À  A 2„2À "a 33  $ 44  &¡ 55  )Á 66  +á 77  - 88   ! 99  "A :„:@‚ $a ;„;@‚ & <„<@‚ )  =„=@‚ +!  >„>@‚ -A  ?„?@‚  a  @„@@‚ "  AA€ $¡  BB€ &Á  CC€ )á  DD€ + EE€ -! FF€  A GG€ "¡ H†HÀ‚ 4a I†IÀ‚ 6 J†JÀ‚ 9¡ K†KÀ‚ ;Á L†LÀ‚ =á M†MÀ‚ 0 N†NÀ‚ 2! OO  4A PP  6a QQ  9 RR  ;¡ SS  =Á TT  0á UU  2 V†V@ƒ 4! W†W@ƒ 6A X†X@ƒ 9a Y†Y@ƒ ; Z†Z@ƒ =  [†[@ƒ 0!  \†\@ƒ 2A  ]]€ 4a  ^^€ 6  __€ 9¡  ``€ ;Á  aa€ =á  bb€ 0 cc€ 2! d†dÀƒ 4A e†eÀƒ 6¡ f†fÀƒ 9Á g ˆgÀƒ Ka h ˆhÀƒ M i ˆiÀƒ @¡ j ˆjÀƒ BÁ k k  Dá l l  F m m  I! n n  KA o o  Ma p p  @ q q  B¡ r ˆr@„ DÁ s ˆs@„ Fá t ˆt@„ I u ˆu@„ K! v ˆv@„ MA w ˆw@„ @a x ˆx@„ B y 	y€	 D  z 	z€	 F!  { 	{€	 IA  | 	|€	 Ka  } 	}€	 M  ~ 	~€	 @¡   	€	 BÁ  € ˆ	€À„	 Dá   ˆ	À„	 F ‚ ˆ	‚À„	 I! ƒ ˆ	ƒÀ„	 KA „ ˆ	„À„	 M¡ …(Š	…À„	@Pb †(Š	†À„	@R‚ ‡(
+
+‡ 
+ÀT¢ ˆ(
+
+ˆ 
+ÀVÂ ‰(
+
+‰ 
+@Yâ Š(
+
+Š 
+@[ ‹(
+
+‹ 
+@]" Œ(
+
+Œ 
+@PB (
+
+ 
+@Rb Ž(Š
+Ž@…
+ÀT‚ (Š
+@…
+ÀV¢ (Š
+@…
+@YÂ ‘(Š
+‘@…
+@[â ’(Š
+’@…
+@] “(Š
+“@…
+@P" ”(Š
+”@…
+@RB •(
+•€ÀTb –(
+–€ÀV‚ —(
+—€@Y  ˜(
+˜€@["  ™(
+™€@]B  š(
+š€@Pb  ›(
+›€@R‚  œ(ŠœÀ…ÀT¢  (ŠÀ…ÀVÂ  ž(ŠžÀ…@Yâ  Ÿ(ŠŸÀ…@[  (Š À…@]" ¡(Š¡À…@PB ¢(Š¢À…@R¢ £(
+£ ÀTÂ ¤0¤ Àfb ¥0¥ @i‚ ¦0¦ @k¢ §0§ @mÂ ¨0¨ @`â ©0© @b ª0Œª@†Àd" «0Œ«@†ÀfB ¬0Œ¬@†@ib ­0Œ­@†@k‚ ®0Œ®@†@m¢ ¯0Œ¯@†@`Â °0Œ°@†@bâ ±0±€Àd ²0²€Àf" ³0³€@iB ´0´€@kb µ0µ€@m‚ ¶0¶€@`  ·0·€@b"  ¸0Œ¸À†ÀdB  ¹0Œ¹À†Àfb  º0ŒºÀ†@i‚  »0Œ»À†@k¢  ¼0Œ¼À†@mÂ  ½0Œ½À†@`â  ¾0Œ¾À†@b ¿0¿ Àd" À0À ÀfB Á0Á @i¢ Â0Â @kÂ Ã8Ã @}b Ä8Ä @p‚ Å8Å @r¢ Æ8ŽÆ@‡ÀtÂ Ç8ŽÇ@‡Àvâ È8ŽÈ@‡@y É8ŽÉ@‡@{" Ê8ŽÊ@‡@}B Ë8ŽË@‡@pb Ì8ŽÌ@‡@r‚ Í8Í€Àt¢ Î8Î€ÀvÂ Ï8Ï€@yâ Ð8Ð€@{ Ñ8Ñ€@}" Ò8Ò€@pB Ó8Ó€@rb Ô8ŽÔÀ‡Àt‚ Õ8ŽÕÀ‡Àv  Ö8ŽÖÀ‡@y"  ×8Ž×À‡@{B  Ø8ŽØÀ‡@}b  Ù8ŽÙÀ‡@p‚  Ú8ŽÚÀ‡@r¢  Û8Û ÀtÂ  Ü8Ü Àvâ  Ý8Ý @y Þ8Þ @{" ß8ß @}B à8à @p¢ á@á `‚c â@â@ˆà„ƒ ã@ã@ˆà†£ ä@ä@ˆ`‰Ã å@å@ˆ`‹ã æ@æ@ˆ` ç@ç@ˆ`€# è@è@ˆ`‚C é@é€à„c ê@ê€à†ƒ ë@ë€`‰£ ì@ì€`‹Ã í@í€`ã î@î€`€ ï@ï€`‚# ð@ðÀˆà„C ñ@ñÀˆà†c ò@òÀˆ`‰ƒ ó@óÀˆ`‹  ô@ôÀˆ`#  õ@õÀˆ`€C  ö@öÀˆ`‚c  ÷@÷ 	à„ƒ  ø@ø 	à†£  ù@ù 	`‰Ã  ú@ú 	`‹ã  û@û 	` ü@ü 	`€# ý@ý 	`‚C þ@þ@‰à„£ ÿ@ÿ@‰à†Ã  I’ A‰`™c I’A‰`›ƒ I’A‰`£ I’A‰`Ã I’A‰`’ã I	à” I	à–# I	`™C I	`›c 	I		`ƒ 
+I
+	`£ I	`’Ã I’Á‰à”ã I’Á‰à– I’Á‰`™# I’Á‰`›C I’Á‰`c I’Á‰`ƒ I’Á‰`’  I
+à”#  I
+à–C  I
+`™c  I
+`›ƒ  I
+`£  I
+`Ã  I
+`’ã  I’AŠà” I’AŠà–# I’AŠ`™C I’AŠ`›£ Q”AŠ`­c Q”AŠ` ƒ  Q” AŠ`¢£ !Q!
+à¤Ã "Q"
+à¦ã #Q#
+`© $Q$
+`«# %Q%
+`­C &Q&
+` c 'Q'
+`¢ƒ (Q”(ÁŠà¤£ )Q”)ÁŠà¦Ã *Q”*ÁŠ`©ã +Q”+ÁŠ`« ,Q”,ÁŠ`­# -Q”-ÁŠ` C .Q”.ÁŠ`¢c /Q/à¤ƒ 0Q0à¦  1Q1`©#  2Q2`«C  3Q3`­c  4Q4` ƒ  5Q5`¢£  6Q”6A‹à¤Ã  7Q”7A‹à¦ã  8Q”8A‹`© 9Q”9A‹`«# :Q”:A‹`­C ;Q”;A‹` £ <Q”<A‹`¢Ã =Y=‰€´d >Y>‰€¶„ ?Y?‰ ¹¤ @Y@‰ »Ä AYA‰ ½ä BYB‰ ° CYC‰ ²$ DY–DÉ‹€´D EY–EÉ‹€¶d FY–FÉ‹ ¹„ GY–GÉ‹ »¤ HY–HÉ‹ ½Ä IY–IÉ‹ °ä JY–JÉ‹ ² KYK	€´$ LYL	€¶D MYM	 ¹d NYN	 »„ OYO	 ½  PYP	 °$  QYQ	 ²D  RY–RIŒ€´d  SY–SIŒ€¶„  TY–TIŒ ¹¤  UY–UIŒ »Ä  VY–VIŒ ½ä  WY–WIŒ ° XY–XIŒ ²$ YYY‰€´D ZYZ‰€¶¤ [Y[‰ ¹Ä \a\‰ d ]a]‰ „ ^a^‰  ¤ _a_‰ Ä `a˜`ÉŒ€ä aa˜aÉŒ€ ba˜bÉŒ 	$ ca˜cÉŒ D da˜dÉŒ d ea˜eÉŒ  „ fa˜fÉŒ ¤ gag	€Ä hah	€ä iai	 	 jaj	 $ kak	 D lal	  d mam	 „ na˜nI€  oa˜oI€$  pa˜pI 	D  qa˜qI d  ra˜rI „  sa˜sI  ¤  ta˜tI Ä  uau‰€ä  vav‰€ waw‰ 	$ xix‰ d yiy‰ „ ziz‰ ¤ {i{‰ Ä |iš|É€ä }iš}É€ ~iš~É $ išÉ D €iš€É d išÉ „ ‚iš‚É ¤ ƒiƒ	€Ä „i„	€ä …i…	  †i†	 $ ‡i‡	 D ˆiˆ	 d ‰i‰	 „ ŠišŠIŽ€  ‹iš‹IŽ€$  ŒišŒIŽ D  išIŽ d  ŽišŽIŽ „  išIŽ ¤  išIŽ Ä  ‘i‘‰€ä  ’i’‰€ “i“‰ $ ”i”‰ D •i•‰ ¤ –i–‰ Ä —q—‰ "e ˜qœ˜ÉŽ $… ™qœ™ÉŽ &¥ šqœšÉŽ )Å ›qœ›ÉŽ +å œqœœÉŽ - qœÉŽ  % žqœžÉŽ "E ŸqŸ	 $e  q 	 &… ¡q¡	 )¥ ¢q¢	 +Å £q£	 -å ¤q¤	   ¥q¥	 "% ¦qœ¦I $E §qœ§I &e ¨qœ¨I )… ©qœ©I +  ªqœªI -%  «qœ«I  E  ¬qœ¬I "e  ­q­‰ $…  ®q®‰ &¥  ¯q¯‰ )Å  °q°‰ +å  ±q±‰ - ²q²‰  % ³q³‰ "E ´qœ´É $¥ µyžµÉ 6e ¶yž¶É 9… ·yž·É ;¥ ¸yž¸É =Å ¹yž¹É 0å ºyžºÉ 2 »y »	  4% ¼y ¼	  6E ½y ½	  9e ¾y ¾	  ;… ¿y ¿	  =¥ Ày À	  0Å Áy Á	  2å Âyž ÂI  4 Ãyž ÃI  6% Äyž ÄI  9E Åyž ÅI  ;e Æyž ÆI  =… Çyž ÇI  0  Èyž ÈI  2%  Éy!É‰! 4E  Êy!Ê‰! 6e  Ëy!Ë‰! 9…  Ìy!Ì‰! ;¥  Íy!Í‰! =Å  Îy!Î‰! 0å  Ïy!Ï‰! 2 Ðyž!ÐÉ! 4% Ñyž!ÑÉ! 6E Òyž!ÒÉ! 9¥ Óyž!ÓÉ! ;Å Ô !ÔÉ! Me Õ !ÕÉ! @… Ö !ÖÉ! B¥ × "×	" DÅ Ø "Ø	" Få Ù "Ù	" I Ú "Ú	" K% Û "Û	" ME Ü "Ü	" @e Ý "Ý	" B… Þ "ÞI‘" D¥ ß "ßI‘" FÅ à "àI‘" Iå á "áI‘" K â "âI‘" M% ã "ãI‘" @E ä "äI‘" Be å #å‰# D… æ #æ‰# F  ç #ç‰# I%  è #è‰# KE  é #é‰# Me  ê #ê‰# @…  ë #ë‰# B¥  ì #ìÉ‘# DÅ  í #íÉ‘# Få  î #îÉ‘# I ï #ïÉ‘# K% ð #ðÉ‘# ME ñ #ñÉ‘# @¥ ò‰¢#òÉ‘#@Rf ó‰"$ó	$ÀT† ô‰"$ô	$ÀV¦ õ‰"$õ	$@YÆ ö‰"$ö	$@[æ ÷‰"$÷	$@] ø‰"$ø	$@P& ù‰"$ù	$@RF ú‰¢$úI’$ÀTf û‰¢$ûI’$ÀV† ü‰¢$üI’$@Y¦ ý‰¢$ýI’$@[Æ þ‰¢$þI’$@]æ ÿ‰¢$ÿI’$@P  Š¢$ J’$@R& Š"%Š%ÀTF Š"%Š%ÀVf Š"%Š%@Y† Š"%Š%@[  Š"%Š%@]&  Š"%Š%@PF  Š"%Š%@Rf  Š¢%Ê’%ÀT†  	Š¢%	Ê’%ÀV¦  
+Š¢%
+Ê’%@YÆ  Š¢%Ê’%@[æ  Š¢%Ê’%@] Š¢%Ê’%@P& Š¢%Ê’%@RF Š"&
+&ÀT¦ Š"&
+&ÀVÆ ’$&
+&@if ’$&
+&@k† ’$&
+&@m¦ ’$&
+&@`Æ ’$&
+&@bæ ’¤&J“&Àd ’¤&J“&Àf& ’¤&J“&@iF ’¤&J“&@kf ’¤&J“&@m† ’¤&J“&@`¦ ’¤&J“&@bÆ ’$'Š'Àdæ ’$'Š'Àf ’$'Š'@i&  ’$' Š'@kF !’$'!Š'@mf "’$'"Š'@`† #’$'#Š'@b  $’¤'$Ê“'Àd&  %’¤'%Ê“'ÀfF  &’¤'&Ê“'@if  '’¤''Ê“'@k†  (’¤'(Ê“'@m¦  )’¤')Ê“'@`Æ  *’¤'*Ê“'@bæ  +’$(+
+(Àd ,’$(,
+(Àf& -’$(-
+(@iF .’$(.
+(@k¦ /’$(/
+(@mÆ 0š&(0
+(@pf 1š&(1
+(@r† 2š¦(2J”(Àt¦ 3š¦(3J”(ÀvÆ 4š¦(4J”(@yæ 5š¦(5J”(@{ 6š¦(6J”(@}& 7š¦(7J”(@pF 8š¦(8J”(@rf 9š&)9Š)Àt† :š&):Š)Àv¦ ;š&);Š)@yÆ <š&)<Š)@{æ =š&)=Š)@} >š&)>Š)@p& ?š&)?Š)@rF @š¦)@Ê”)Àtf Aš¦)AÊ”)Àv† Bš¦)BÊ”)@y  Cš¦)CÊ”)@{&  Dš¦)DÊ”)@}F  Eš¦)EÊ”)@pf  Fš¦)FÊ”)@r†  Gš&*G
+*Àt¦  Hš&*H
+*ÀvÆ  Iš&*I
+*@yæ  Jš&*J
+*@{ Kš&*K
+*@}& Lš&*L
+*@pF Mš&*M
+*@r¦ N¢¨*NJ•*à„g O¢¨*OJ•*à†‡ P¢¨*PJ•*`‰§ Q¢¨*QJ•*`‹Ç R¢¨*RJ•*`ç S¢¨*SJ•*`€ T¢¨*TJ•*`‚' U¢(+UŠ+à„G V¢(+VŠ+à†g W¢(+WŠ+`‰‡ X¢(+XŠ+`‹§ Y¢(+YŠ+`Ç Z¢(+ZŠ+`€ç [¢(+[Š+`‚ \¢¨+\Ê•+à„' ]¢¨+]Ê•+à†G ^¢¨+^Ê•+`‰g _¢¨+_Ê•+`‹‡ `¢¨+`Ê•+`  a¢¨+aÊ•+`€'  b¢¨+bÊ•+`‚G  c¢(,c
+,à„g  d¢(,d
+,à†‡  e¢(,e
+,`‰§  f¢(,f
+,`‹Ç  g¢(,g
+,`ç  h¢(,h
+,`€ i¢(,i
+,`‚' j¢¨,jJ–,à„G k¢¨,kJ–,à†§ l¢¨,lJ–,`‰Ç mªª,mJ–,`›g nªª,nJ–,`‡ oªª,oJ–,`§ pªª,pJ–,`’Ç qª*-qŠ-à”ç rª*-rŠ-à– sª*-sŠ-`™' tª*-tŠ-`›G uª*-uŠ-`g vª*-vŠ-`‡ wª*-wŠ-`’§ xªª-xÊ–-à”Ç yªª-yÊ–-à–ç zªª-zÊ–-`™ {ªª-{Ê–-`›' |ªª-|Ê–-`G }ªª-}Ê–-`g ~ªª-~Ê–-`’‡ ª*.
+.à”  €ª*.€
+.à–'  ª*.
+.`™G  ‚ª*.‚
+.`›g  ƒª*.ƒ
+.`‡  „ª*.„
+.`§  …ª*.…
+.`’Ç  †ªª.†J—.à”ç  ‡ªª.‡J—.à– ˆªª.ˆJ—.`™' ‰ªª.‰J—.`›G Šªª.ŠJ—.`§ ‹²¬.‹J—.` g Œ²¬.ŒJ—.`¢‡ ²,/Š/à¤§ Ž²,/ŽŠ/à¦Ç ²,/Š/`©ç ²,/Š/`« ‘²,/‘Š/`­' ’²,/’Š/` G “²,/“Š/`¢g ”²¬/”Ê—/à¤‡ •²¬/•Ê—/à¦§ –²¬/–Ê—/`©Ç —²¬/—Ê—/`«ç ˜²¬/˜Ê—/`­ ™²¬/™Ê—/` ' š²¬/šÊ—/`¢G ›²,0›
+0à¤g œ²,0œ
+0à¦‡ ²,0
+0`©  ž²,0ž
+0`«'  Ÿ²,0Ÿ
+0`­G   ²,0 
+0` g  ¡²,0¡
+0`¢‡  ¢²¬0¢J˜0à¤§  £²¬0£J˜0à¦Ç  ¤²¬0¤J˜0`©ç  ¥²¬0¥J˜0`« ¦²¬0¦J˜0`­' §²¬0§J˜0` G ¨²¬0¨J˜0`¢§ ©²,1©Š1à¤Ç ªº®1ªÒ1€¶h «º®1«Ò1 ¹ˆ ¬º®1¬Ò1 »¨ ­º®1­Ò1 ½È ®º®1®Ò1 °è ¯º®1¯Ò1 ² °º.2°™1€´( ±º.2±™1€¶H ²º.2²™1 ¹h ³º.2³™1 »ˆ ´º.2´™1 ½¨ µº.2µ™1 °È ¶º.2¶™1 ²è ·º®2·R2€´ ¸º®2¸R2€¶( ¹º®2¹R2 ¹H ºº®2ºR2 »h »º®2»R2 ½ˆ ¼º®2¼R2 °  ½º®2½R2 ²(  ¾º.3¾’™2€´H  ¿º.3¿’™2€¶h  Àº.3À’™2 ¹ˆ  Áº.3Á’™2 »¨  Âº.3Â’™2 ½È  Ãº.3Ã’™2 °è  Äº.3Ä’™2 ² Åº®3ÅÒ3€´( Æº®3ÆÒ3€¶H Çº®3ÇÒ3 ¹¨ Èº®3ÈÒ3 »È ÉÂ°3ÉÒ3 h ÊÂ°3ÊÒ3  ˆ ËÂ°3ËÒ3 ¨ ÌÂ04Ìš3€È ÍÂ04Íš3€è ÎÂ04Îš3 	 ÏÂ04Ïš3 ( ÐÂ04Ðš3 H ÑÂ04Ñš3  h ÒÂ04Òš3 ˆ ÓÂ°4ÓR4€¨ ÔÂ°4ÔR4€È ÕÂ°4ÕR4 	è ÖÂ°4ÖR4  ×Â°4×R4 ( ØÂ°4ØR4  H ÙÂ°4ÙR4 h ÚÂ05Ú’š4€ˆ ÛÂ05Û’š4€  ÜÂ05Ü’š4 	(  ÝÂ05Ý’š4 H  ÞÂ05Þ’š4 h  ßÂ05ß’š4  ˆ  àÂ05à’š4 ¨  áÂ°5áÒ5€È  âÂ°5âÒ5€è  ãÂ°5ãÒ5 	 äÂ°5äÒ5 ( åÊ²5åÒ5 h æÊ²5æÒ5 ˆ çÊ²5çÒ5 ¨ èÊ26è›5€È éÊ26é›5€è êÊ26ê›5  ëÊ26ë›5 ( ìÊ26ì›5 H íÊ26í›5 h îÊ26î›5 ˆ ïÊ²6ïR6€¨ ðÊ²6ðR6€È ñÊ²6ñR6 è òÊ²6òR6  óÊ²6óR6 ( ôÊ²6ôR6 H õÊ²6õR6 h öÊ27ö’›6€ˆ ÷Ê27÷’›6€  øÊ27ø’›6 (  ùÊ27ù’›6 H  úÊ27ú’›6 h  ûÊ27û’›6 ˆ  üÊ27ü’›6 ¨  ýÊ²7ýÒ7€È  þÊ²7þÒ7€è  ÿÊ²7ÿÒ7   Ë²7 Ó7 ( Ë²7Ó7 H Ë²7Ó7 ¨ Ë²7Ó7 È Ó48œ7	 $i Ó48œ7	 &‰ Ó48œ7	 )© Ó48œ7	 +É Ó48œ7	 -é 	Ó48	œ7	  	 
+Ó48
+œ7	 ") Ó´8S8	 $I Ó´8S8	 &i Ó´8S8	 )‰ Ó´8S8	 +© Ó´8S8	 -É Ó´8S8	  é Ó´8S8	 "	 Ó49“œ8	 $) Ó49“œ8	 &I Ó49“œ8	 )i Ó49“œ8	 +‰ Ó49“œ8	 -	  Ó49“œ8	  )  Ó49“œ8	 "I  Ó´9Ó9	 $i  Ó´9Ó9	 &‰  Ó´9Ó9	 )©  Ó´9Ó9	 +É  Ó´9Ó9	 -é  Ó´9Ó9	  	 Ó´9Ó9	 ")  Ó4: 9	 $I !Ó4:!9	 &© "Û6:"9	 9i #Û6:#9	 ;‰ $Û6:$9	 =© %Û6:%9	 0É &Û6:&9	 2é 'Û¶:'S:	 4	 (Û¶:(S:	 6) )Û¶:)S:	 9I *Û¶:*S:	 ;i +Û¶:+S:	 =‰ ,Û¶:,S:	 0© -Û¶:-S:	 2É .Û6;.“:	 4é /Û6;/“:	 6	 0Û6;0“:	 9) 1Û6;1“:	 ;I 2Û6;2“:	 =i 3Û6;3“:	 0‰ 4Û6;4“:	 2	  5Û¶;5Ó;	 4)  6Û¶;6Ó;	 6I  7Û¶;7Ó;	 9i  8Û¶;8Ó;	 ;‰  9Û¶;9Ó;	 =©  :Û¶;:Ó;	 0É  ;Û¶;;Ó;	 2é  <Û6<<ž;	 4	 =Û6<=ž;	 6) >Û6<>ž;	 9I ?Û6<?ž;	 ;© @Û6<@ž;	 =É Aã8<Až;	 @i Bã8<Bž;	 B‰ Cã¸<CS<	 D© Dã¸<DS<	 FÉ Eã¸<ES<	 Ié Fã¸<FS<	 K	 Gã¸<GS<	 M) Hã¸<HS<	 @I Iã¸<IS<	 Bi Jã8=J“ž<	 D‰ Kã8=K“ž<	 F© Lã8=L“ž<	 IÉ Mã8=M“ž<	 Ké Nã8=N“ž<	 M	 Oã8=O“ž<	 @) Pã8=P“ž<	 BI Qã¸=QÓ=	 Di Rã¸=RÓ=	 F‰ Sã¸=SÓ=	 I	  Tã¸=TÓ=	 K)  Uã¸=UÓ=	 MI  Vã¸=VÓ=	 @i  Wã¸=WÓ=	 B‰  Xã8>XŸ=	 D©  Yã8>YŸ=	 FÉ  Zã8>ZŸ=	 Ié  [ã8>[Ÿ=	 K	 \ã8>\Ÿ=	 M) ]ã8>]Ÿ=	 @I ^ã8>^Ÿ=	 B© _ëº>_S>
+ÀTj `ëº>`S>
+ÀVŠ aëº>aS>
+@Yª bëº>bS>
+@[Ê cëº>cS>
+@]ê dëº>dS>
+@P
+ eëº>eS>
+@R* fë:?f“Ÿ>
+ÀTJ gë:?g“Ÿ>
+ÀVj hë:?h“Ÿ>
+@YŠ ië:?i“Ÿ>
+@[ª jë:?j“Ÿ>
+@]Ê kë:?k“Ÿ>
+@Pê lë:?l“Ÿ>
+@R
+ mëº?mÓ?
+ÀT* nëº?nÓ?
+ÀVJ oëº?oÓ?
+@Yj pëº?pÓ?
+@[Š qëº?qÓ?
+@]
+  rëº?rÓ?
+@P*  sëº?sÓ?
+@RJ  të:@t ?
+ÀTj  uë:@u ?
+ÀVŠ  vë:@v ?
+@Yª  wë:@w ?
+@[Ê  xë:@x ?
+@]ê  yë:@y ?
+@P
+ zë:@z ?
+@R* {ëº@{S @
+ÀTJ |ëº@|S @
+ÀVª }ëº@}S @
+@YÊ ~ó¼@~S @
+@kj ó¼@S @
+@mŠ €ó¼@€S @
+@`ª ó¼@S @
+@bÊ ‚ó<A‚“ @
+Àdê ƒó<Aƒ“ @
+Àf
+ „ó<A„“ @
+@i* …ó<A…“ @
+@kJ †ó<A†“ @
+@mj ‡ó<A‡“ @
+@`Š ˆó<Aˆ“ @
+@bª ‰ó¼A‰Ó A
+ÀdÊ Šó¼AŠÓ A
+Àfê ‹ó¼A‹Ó A
+@i
+ Œó¼AŒÓ A
+@k* ó¼AÓ A
+@mJ Žó¼AŽÓ A
+@`j ó¼AÓ A
+@bŠ ó<B¡A
+Àd
+  ‘ó<B‘¡A
+Àf*  ’ó<B’¡A
+@iJ  “ó<B“¡A
+@kj  ”ó<B”¡A
+@mŠ  •ó<B•¡A
+@`ª  –ó<B–¡A
+@bÊ  —ó¼B—S!B
+Àdê  ˜ó¼B˜S!B
+Àf
+ ™ó¼B™S!B
+@i* šó¼BšS!B
+@kJ ›ó¼B›S!B
+@mª œó¼BœS!B
+@`Ê û¾BS!B
+@rj žû>Cž“¡B
+ÀtŠ Ÿû>CŸ“¡B
+Àvª  û>C “¡B
+@yÊ ¡û>C¡“¡B
+@{ê ¢û>C¢“¡B
+@}
+ £û>C£“¡B
+@p* ¤û>C¤“¡B
+@rJ ¥û¾C¥Ó!C
+Àtj ¦û¾C¦Ó!C
+ÀvŠ §û¾C§Ó!C
+@yª ¨û¾C¨Ó!C
+@{Ê ©û¾C©Ó!C
+@}ê ªû¾CªÓ!C
+@p
+ «û¾C«Ó!C
+@r* ¬û>D¬¢C
+ÀtJ ­û>D­¢C
+Àvj ®û>D®¢C
+@yŠ ¯û>D¯¢C
+@{
+  °û>D°¢C
+@}*  ±û>D±¢C
+@pJ  ²û>D²¢C
+@rj  ³û¾D³S"D
+ÀtŠ  ´û¾D´S"D
+Àvª  µû¾DµS"D
+@yÊ  ¶û¾D¶S"D
+@{ê  ·û¾D·S"D
+@}
+ ¸û¾D¸S"D
+@p* ¹û¾D¹S"D
+@rJ ºû>Eº“¢D
+Àtª »AE»“¢Dà†k ¼AE¼“¢D`‰‹ ½AE½“¢D`‹« ¾AE¾“¢D`Ë ¿AE¿“¢D`€ë ÀAEÀ“¢D`‚ ÁÁEÁÓ"Eà„+ ÂÁEÂÓ"Eà†K ÃÁEÃÓ"E`‰k ÄÁEÄÓ"E`‹‹ ÅÁEÅÓ"E`« ÆÁEÆÓ"E`€Ë ÇÁEÇÓ"E`‚ë ÈAFÈ£Eà„ ÉAFÉ£Eà†+ ÊAFÊ£E`‰K ËAFË£E`‹k ÌAFÌ£E`‹ ÍAFÍ£E`€  ÎAFÎ£E`‚+  ÏÁFÏS#Fà„K  ÐÁFÐS#Fà†k  ÑÁFÑS#F`‰‹  ÒÁFÒS#F`‹«  ÓÁFÓS#F`Ë  ÔÁFÔS#F`€ë  ÕÁFÕS#F`‚ ÖAGÖ“£Fà„+ ×AG×“£Fà†K ØAGØ“£F`‰« ÙAGÙ“£F`‹Ë ÚCGÚ“£F`k ÛCGÛ“£F`‹ ÜCGÜ“£F`’« ÝÃGÝÓ#Gà”Ë ÞÃGÞÓ#Gà–ë ßÃGßÓ#G`™ àÃGàÓ#G`›+ áÃGáÓ#G`K âÃGâÓ#G`k ãÃGãÓ#G`’‹ äCHä¤Gà”« åCHå¤Gà–Ë æCHæ¤G`™ë çCHç¤G`› èCHè¤G`+ éCHé¤G`K êCHê¤G`’k ëÃHëS$Hà”‹ ìÃHìS$Hà–  íÃHíS$H`™+  îÃHîS$H`›K  ïÃHïS$H`k  ðÃHðS$H`‹  ñÃHñS$H`’«  òCIò“¤Hà”Ë  óCIó“¤Hà–ë  ôCIô“¤H`™ õCIõ“¤H`›+ öCIö“¤H`K ÷CI÷“¤H`« øEIø“¤H`¢k ùÅIùÓ$Ià¤‹ úÅIúÓ$Ià¦« ûÅIûÓ$I`©Ë üÅIüÓ$I`«ë ýÅIýÓ$I`­ þÅIþÓ$I` + ÿÅIÿÓ$I`¢K  EJ ¥Ià¤k EJ¥Ià¦‹ EJ¥I`©« EJ¥I`«Ë EJ¥I`­ë EJ¥I`  EJ¥I`¢+ ÅJT%Jà¤K ÅJT%Jà¦k 	ÅJ	T%J`©‹ 
+ÅJ
+T%J`«  ÅJT%J`­+  ÅJT%J` K  ÅJT%J`¢k  EK”¥Jà¤‹  EK”¥Jà¦«  EK”¥J`©Ë  EK”¥J`«ë  EK”¥J`­ EK”¥J` + EK”¥J`¢K ÅKÔ%Kà¤« ÅKÔ%Kà¦Ë GL&K ¹l GL&K »Œ GL&K ½¬ GL&K °Ì GL&K ²ì ÇL\¦K€´ ÇL\¦K€¶, ÇL\¦K ¹L ÇL\¦K »l  ÇL \¦K ½Œ !ÇL!\¦K °¬ "ÇL"\¦K ²Ì #GM#œ&L€´ì $GM$œ&L€¶ %GM%œ&L ¹, &GM&œ&L »L 'GM'œ&L ½l (GM(œ&L °Œ )GM)œ&L ²  *ÇM*Ü¦L€´,  +ÇM+Ü¦L€¶L  ,ÇM,Ü¦L ¹l  -ÇM-Ü¦L »Œ  .ÇM.Ü¦L ½¬  /ÇM/Ü¦L °Ì  0ÇM0Ü¦L ²ì  1GN1'M€´ 2GN2'M€¶, 3GN3'M ¹L 4GN4'M »¬ 5GN5'M ½Ì 6$IN6'M  l 7$IN7'M Œ 8$ÉN8\§M€¬ 9$ÉN9\§M€Ì :$ÉN:\§M 	ì ;$ÉN;\§M  <$ÉN<\§M , =$ÉN=\§M  L >$ÉN>\§M l ?$IO?œ'N€Œ @$IO@œ'N€¬ A$IOAœ'N 	Ì B$IOBœ'N ì C$IOCœ'N  D$IODœ'N  , E$IOEœ'N L F$ÉOFÜ§N€l G$ÉOGÜ§N€Œ H$ÉOHÜ§N 	  I$ÉOIÜ§N ,  J$ÉOJÜ§N L  K$ÉOKÜ§N  l  L$ÉOLÜ§N Œ  M$IPM(O€¬  N$IPN(O€Ì  O$IPO(O 	ì  P$IPP(O  Q$IPQ(O , R,KPR(O l S,KPS(O Œ T,ËPT\¨O€¬ U,ËPU\¨O€Ì V,ËPV\¨O ì W,ËPW\¨O  X,ËPX\¨O , Y,ËPY\¨O L Z,ËPZ\¨O l [,KQ[œ(P€Œ \,KQ\œ(P€¬ ],KQ]œ(P Ì ^,KQ^œ(P ì _,KQ_œ(P  `,KQ`œ(P , a,KQaœ(P L b,ËQbÜ¨P€l c,ËQcÜ¨P€Œ d,ËQdÜ¨P   e,ËQeÜ¨P ,  f,ËQfÜ¨P L  g,ËQgÜ¨P l  h,ËQhÜ¨P Œ  i,KRi)Q€¬  j,KRj)Q€Ì  k,KRk)Q ì  l,KRl)Q  m,KRm)Q , n,KRn)Q L o,KRo)Q ¬ p,ËRp\©Q€Ì q4ÍRq\©Q &m r4ÍRr\©Q ) s4ÍRs\©Q +­ t4ÍRt\©Q -Í u4ÍRu\©Q  í v4ÍRv\©Q " w4MSwœ)R $- x4MSxœ)R &M y4MSyœ)R )m z4MSzœ)R + {4MS{œ)R -­ |4MS|œ)R  Í }4MS}œ)R "í ~4ÍS~Ü©R $ 4ÍSÜ©R &- €4ÍS€Ü©R )M 4ÍSÜ©R +m ‚4ÍS‚Ü©R - ƒ4ÍSƒÜ©R    „4ÍS„Ü©R "-  …4MT…*S $M  †4MT†*S &m  ‡4MT‡*S )  ˆ4MTˆ*S +­  ‰4MT‰*S -Í  Š4MTŠ*S  í  ‹4MT‹*S " Œ4ÍTŒ\ªS $- 4ÍT\ªS &M Ž4ÍTŽ\ªS )­ <ÏT\ªS ;m <ÏT\ªS = ‘<ÏT‘\ªS 0­ ’<ÏT’\ªS 2Í “<OU“œ*T 4í ”<OU”œ*T 6 •<OU•œ*T 9- –<OU–œ*T ;M —<OU—œ*T =m ˜<OU˜œ*T 0 ™<OU™œ*T 2­ š<ÏUšÜªT 4Í ›<ÏU›ÜªT 6í œ<ÏUœÜªT 9 <ÏUÜªT ;- ž<ÏUžÜªT =M Ÿ<ÏUŸÜªT 0m  <ÏU ÜªT 2 ¡<OV¡+U 4  ¢<OV¢+U 6-  £<OV£+U 9M  ¤<OV¤+U ;m  ¥<OV¥+U =  ¦<OV¦+U 0­  §<OV§+U 2Í  ¨<ÏV¨\«U 4í  ©<ÏV©\«U 6 ª<ÏVª\«U 9- «<ÏV«\«U ;M ¬<ÏV¬\«U =­ ­<ÏV­\«U 0Í ®DÑV®\«U Bm ¯DQW¯œ+V D °DQW°œ+V F­ ±DQW±œ+V IÍ ²DQW²œ+V Kí ³DQW³œ+V M ´DQW´œ+V @- µDQWµœ+V BM ¶DÑW¶Ü«V Dm ·DÑW·Ü«V F ¸DÑW¸Ü«V I­ ¹DÑW¹Ü«V KÍ ºDÑWºÜ«V Mí »DÑW»Ü«V @ ¼DÑW¼Ü«V B- ½DQX½,W DM ¾DQX¾,W Fm ¿DQX¿,W I ÀDQXÀ,W K  ÁDQXÁ,W M-  ÂDQXÂ,W @M  ÃDQXÃ,W Bm  ÄDÑXÄ\¬W D  ÅDÑXÅ\¬W F­  ÆDÑXÆ\¬W IÍ  ÇDÑXÇ\¬W Kí  ÈDÑXÈ\¬W M ÉDÑXÉ\¬W @- ÊDÑXÊ\¬W BM ËDQYËœ,X D­ ÌLSYÌœ,XÀVn ÍLSYÍœ,X@YŽ ÎLSYÎœ,X@[® ÏLSYÏœ,X@]Î ÐLSYÐœ,X@Pî ÑLSYÑœ,X@R ÒLÓYÒÜ¬XÀT. ÓLÓYÓÜ¬XÀVN ÔLÓYÔÜ¬X@Yn ÕLÓYÕÜ¬X@[Ž ÖLÓYÖÜ¬X@]® ×LÓY×Ü¬X@PÎ ØLÓYØÜ¬X@Rî ÙLSZÙ-YÀT ÚLSZÚ-YÀV. ÛLSZÛ-Y@YN ÜLSZÜ-Y@[n ÝLSZÝ-Y@]Ž ÞLSZÞ-Y@P  ßLSZß-Y@R.  àLÓZà\­YÀTN  áLÓZá\­YÀVn  âLÓZâ\­Y@YŽ  ãLÓZã\­Y@[®  äLÓZä\­Y@]Î  åLÓZå\­Y@Pî  æLÓZæ\­Y@R çLS[çœ-ZÀT. èLS[èœ-ZÀVN éLS[éœ-Z@Y® êLS[êœ-Z@[Î ëTU[ëœ-Z@mn ìTU[ìœ-Z@`Ž íTU[íœ-Z@b® îTÕ[îÜ­ZÀdÎ ïTÕ[ïÜ­ZÀfî ðTÕ[ðÜ­Z@i ñTÕ[ñÜ­Z@k. òTÕ[òÜ­Z@mN óTÕ[óÜ­Z@`n ôTÕ[ôÜ­Z@bŽ õTU\õ.[Àd® öTU\ö.[ÀfÎ ÷TU\÷.[@iî øTU\ø.[@k ùTU\ù.[@m. úTU\ú.[@`N ûTU\û.[@bn üTÕ\ü\®[ÀdŽ ýTÕ\ý\®[Àf  þTÕ\þ\®[@i.  ÿTÕ\ÿ\®[@kN   UÕ\ ]®[@mn  UÕ\]®[@`Ž  UÕ\]®[@b®  UU].\ÀdÎ  UU].\Àfî  UU].\@i UU].\@k. UU].\@mN UU].\@`® 	UU]	.\@bÎ 
+]×]
+Ý®\Àtn ]×]Ý®\ÀvŽ ]×]Ý®\@y® ]×]Ý®\@{Î ]×]Ý®\@}î ]×]Ý®\@p ]×]Ý®\@r. ]W^/]ÀtN ]W^/]Àvn ]W^/]@yŽ ]W^/]@{® ]W^/]@}Î ]W^/]@pî ]W^/]@r ]×^]¯]Àt. ]×^]¯]ÀvN ]×^]¯]@yn ]×^]¯]@{Ž ]×^]¯]@}  ]×^]¯]@p.  ]×^]¯]@rN  ]W_/^Àtn   ]W_ /^ÀvŽ  !]W_!/^@y®  "]W_"/^@{Î  #]W_#/^@}î  $]W_$/^@p %]W_%/^@r. &]×_&Ý¯^ÀtN ']×_'Ý¯^Àv® (eÙ_(Ý¯^`‰o )eÙ_)Ý¯^`‹ *eÙ_*Ý¯^`¯ +eÙ_+Ý¯^`€Ï ,eÙ_,Ý¯^`‚ï -eY`-0_à„ .eY`.0_à†/ /eY`/0_`‰O 0eY`00_`‹o 1eY`10_` 2eY`20_`€¯ 3eY`30_`‚Ï 4eÙ`4]°_à„ï 5eÙ`5]°_à† 6eÙ`6]°_`‰/ 7eÙ`7]°_`‹O 8eÙ`8]°_`o 9eÙ`9]°_`€ :eÙ`:]°_`‚  ;eYa;0`à„/  <eYa<0`à†O  =eYa=0``‰o  >eYa>0``‹  ?eYa?0``¯  @eYa@0``€Ï  AeYaA0``‚ï  BeÙaBÝ°`à„ CeÙaCÝ°`à†/ DeÙaDÝ°``‰O EeÙaEÝ°``‹¯ FeÙaFÝ°``Ï GmÛaGÝ°``o HmÛaHÝ°``’ Im[bI1aà”¯ Jm[bJ1aà–Ï Km[bK1a`™ï Lm[bL1a`› Mm[bM1a`/ Nm[bN1a`O Om[bO1a`’o PmÛbP]±aà” QmÛbQ]±aà–¯ RmÛbR]±a`™Ï SmÛbS]±a`›ï TmÛbT]±a` UmÛbU]±a`/ VmÛbV]±a`’O Wm[cW1bà”o Xm[cX1bà– Ym[cY1b`™  Zm[cZ1b`›/  [m[c[1b`O  \m[c\1b`o  ]m[c]1b`’  ^mÛc^Ý±bà”¯  _mÛc_Ý±bà–Ï  `mÛc`Ý±b`™ï  amÛcaÝ±b`› bmÛcbÝ±b`/ cmÛccÝ±b`O dmÛcdÝ±b`’¯ eu]de2cà¤o fu]df2cà¦ gu]dg2c`©¯ hu]dh2c`«Ï iu]di2c`­ï ju]dj2c`  ku]dk2c`¢/ luÝdl]²cà¤O muÝdm]²cà¦o nuÝdn]²c`© ouÝdo]²c`«¯ puÝdp]²c`­Ï quÝdq]²c` ï ruÝdr]²c`¢ su]es2dà¤/ tu]et2dà¦O uu]eu2d`©o vu]ev2d`« wu]ew2d`­  xu]ex2d` /  yu]ey2d`¢O  zuÝezÝ²dà¤o  {uÝe{Ý²dà¦  |uÝe|Ý²d`©¯  }uÝe}Ý²d`«Ï  ~uÝe~Ý²d`­ï  uÝeÝ²d`  €uÝe€Ý²d`¢/ u]f3eà¤O ‚u]f‚3eà¦¯ ƒu]fƒ3e`©Ï „}ßf„e3e »p…}ßf…e3e ½†}ßf†e3e °°‡}ßf‡e3e ²Ðˆ}_gˆ¥³e€´ð‰}_g‰¥³e€¶Š}_gŠ¥³e ¹0‹}_g‹¥³e »PŒ}_gŒ¥³e ½p}_g¥³e °Ž}_gŽ¥³e ²°}ßgå3f€´Ð}ßgå3f€¶ð‘}ßg‘å3f ¹’}ßg’å3f »0“}ßg“å3f ½P”}ßg”å3f °p•}ßg•å3f ²–}_h–%´f€´—}_h—%´f€¶0˜}_h˜%´f ¹P™}_h™%´f »pš}_hš%´f ½›}_h›%´f °°œ}_hœ%´f ²Ð}ßhe4g€´ðž}ßhže4g€¶Ÿ}ßhŸe4g ¹0 }ßh e4g »P¡}ßh¡e4g ½°¢}ßh¢e4g °Ð£…áh£e4g pA¤…ai¤¥´g€A¥…ai¥¥´g€°A¦…ai¦¥´g 	ÐA§…ai§¥´g ðA¨…ai¨¥´g A©…ai©¥´g  0Aª…aiª¥´g PA«…ái«å4h€pA¬…ái¬å4h€A­…ái­å4h 	°A®…ái®å4h ÐA¯…ái¯å4h ðA°…ái°å4h  A±…ái±å4h 0A²…aj²%µh€PA³…aj³%µh€pA´…aj´%µh 	Aµ…ajµ%µh  A¶…aj¶%µh 0 A·…aj·%µh  P A¸…aj¸%µh p A¹…áj¹e5i€ Aº…ájºe5i€° A»…áj»e5i 	Ð A¼…áj¼e5i ð A½…áj½e5i A¾…áj¾e5i  0A¿…áj¿e5i PAÀckÀ¥µi€pAÁckÁ¥µi€AÂckÂ¥µi °AÃckÃ¥µi ÐAÄckÄ¥µi ðAÅckÅ¥µi AÆckÆ¥µi 0AÇãkÇå5j€PAÈãkÈå5j€pAÉãkÉå5j AÊãkÊå5j °AËãkËå5j ÐAÌãkÌå5j ðAÍãkÍå5j AÎclÎ%¶j€0AÏclÏ%¶j€PAÐclÐ%¶j pAÑclÑ%¶j AÒclÒ%¶j  AÓclÓ%¶j 0 AÔclÔ%¶j P AÕãlÕe6k€p AÖãlÖe6k€ A×ãl×e6k ° AØãlØe6k Ð AÙãlÙe6k ð AÚãlÚe6k AÛãlÛe6k 0AÜcmÜ¥¶k€PAÝcmÝ¥¶k€°AÞcmÞ¥¶k ÐAß•emß¥¶k +qAà•emà¥¶k -‘Aá•emá¥¶k  ±Aâ•emâ¥¶k "ÑAã•åmãå6l $ñAä•åmäå6l &Aå•åmåå6l )1Aæ•åmæå6l +QAç•åmçå6l -qAè•åmèå6l  ‘Aé•åméå6l "±Aê•enê%·l $ÑAë•enë%·l &ñAì•enì%·l )Aí•ení%·l +1Aî•enî%·l -QAï•enï%·l  qAð•enð%·l "‘Añ•ånñe7m $ Aò•ånòe7m &1 Aó•ånóe7m )Q Aô•ånôe7m +q Aõ•ånõe7m -‘ Aö•ånöe7m  ± A÷•ån÷e7m "Ñ Aø•eoø¥·m $ñ Aù•eoù¥·m &Aú•eoú¥·m )1Aû•eoû¥·m +QAü•eoü¥·m -±Aýgoý¥·m 0qAþgoþ¥·m 2‘Aÿçoÿå7n 4±A žço æ7n 6ÑAžçoæ7n 9ñAžçoæ7n ;Ažçoæ7n =1Ažçoæ7n 0QAžçoæ7n 2qAžgp&¸n 4‘Ažgp&¸n 6±Ažgp&¸n 9ÑA	žgp	&¸n ;ñA
+žgp
+&¸n =Ažgp&¸n 01Ažgp&¸n 2QAžçpf8o 4qAžçpf8o 6‘Ažçpf8o 9 Ažçpf8o ;1 Ažçpf8o =Q Ažçpf8o 0q Ažçpf8o 2‘ Ažgq¦¸o 4± Ažgq¦¸o 6Ñ Ažgq¦¸o 9ñ Ažgq¦¸o ;Ažgq¦¸o =1Ažgq¦¸o 0QAžgq¦¸o 2±Ažçqæ8p 4ÑA¦éqæ8p FqA¦éqæ8p I‘A¦éqæ8p K±A¦éqæ8p MÑA ¦éq æ8p @ñA!¦éq!æ8p BA"¦ir"&¹p D1A#¦ir#&¹p FQA$¦ir$&¹p IqA%¦ir%&¹p K‘A&¦ir&&¹p M±A'¦ir'&¹p @ÑA(¦ir(&¹p BñA)¦ér)f9q DA*¦ér*f9q F1A+¦ér+f9q IQA,¦ér,f9q KqA-¦ér-f9q M‘A.¦ér.f9q @ A/¦ér/f9q B1 A0¦is0¦¹q DQ A1¦is1¦¹q Fq A2¦is2¦¹q I‘ A3¦is3¦¹q K± A4¦is4¦¹q MÑ A5¦is5¦¹q @ñ A6¦is6¦¹q BA7¦és7æ9r D1A8¦és8æ9r FQA9¦és9æ9r I±A:®ës:æ9r@[rA;®ës;æ9r@]’A<®ës<æ9r@P²A=®ës=æ9r@RÒA>®kt>&ºrÀTòA?®kt?&ºrÀVA@®kt@&ºr@Y2AA®ktA&ºr@[RAB®ktB&ºr@]rAC®ktC&ºr@P’AD®ktD&ºr@R²AE®ëtEf:sÀTÒAF®ëtFf:sÀVòAG®ëtGf:s@YAH®ëtHf:s@[2AI®ëtIf:s@]RAJ®ëtJf:s@PrAK®ëtKf:s@R’AL®kuL¦ºsÀT AM®kuM¦ºsÀV2 AN®kuN¦ºs@YR AO®kuO¦ºs@[r AP®kuP¦ºs@]’ AQ®kuQ¦ºs@P² AR®kuR¦ºs@RÒ AS®ëuSæ:tÀTò AT®ëuTæ:tÀVAU®ëuUæ:t@Y2AV®ëuVæ:t@[RAW®ëuWæ:t@]²AX®ëuXæ:t@PÒAY¶íuYæ:t@brAZ¶mvZ&»tÀd’A[¶mv[&»tÀf²A\¶mv\&»t@iÒA]¶mv]&»t@kòA^¶mv^&»t@mA_¶mv_&»t@`2A`¶mv`&»t@bRAa¶ívaf;uÀdrAb¶ívbf;uÀf’Ac¶ívcf;u@i²Ad¶ívdf;u@kÒAe¶ívef;u@mòAf¶ívff;u@`Ag¶ívgf;u@b2Ah¶mwh¦»uÀdRAi¶mwi¦»uÀfrAj¶mwj¦»u@i’Ak¶mwk¦»u@k Al¶mwl¦»u@m2 Am¶mwm¦»u@`R An¶mwn¦»u@br Ao¶íwoæ;vÀd’ Ap¶íwpæ;vÀf² Aq¶íwqæ;v@iÒ Ar¶íwræ;v@kò As¶íwsæ;v@mAt¶íwtæ;v@`2Au¶íwuæ;v@bRAv¶mxv&¼vÀd²Aw¶mxw&¼vÀfÒAx¾oxx&¼v@yrAy¾oxy&¼v@{’Az¾oxz&¼v@}²A{¾ox{&¼v@pÒA|¾ox|&¼v@ròA}¾ïx}f<wÀtA~¾ïx~f<wÀv2A¾ïxf<w@yRA€¾ïx€f<w@{rA¾ïxf<w@}’A‚¾ïx‚f<w@p²Aƒ¾ïxƒf<w@rÒA„¾oy„¦¼wÀtòA…¾oy…¦¼wÀvA†¾oy†¦¼w@y2A‡¾oy‡¦¼w@{RAˆ¾oyˆ¦¼w@}rA‰¾oy‰¦¼w@p’AŠ¾oyŠ¦¼w@r A‹¾ïy‹æ<xÀt2 AŒ¾ïyŒæ<xÀvR A¾ïyæ<x@yr AŽ¾ïyŽæ<x@{’ A¾ïyæ<x@}² A¾ïyæ<x@pÒ A‘¾ïy‘æ<x@rò A’¾oz’&½xÀtA“¾oz“&½xÀv2A”¾oz”&½x@yRA•¾oz•&½x@{²A–Æqz–&½x`sE—Æqz—&½x`€“E˜Æqz˜&½x`‚³E™Æñz™f=yà„ÓEšÆñzšf=yà†óE›Æñz›f=y`‰EœÆñzœf=y`‹3EÆñzf=y`SEžÆñzžf=y`€sEŸÆñzŸf=y`‚“E Æq{ ¦½yà„³E¡Æq{¡¦½yà†ÓE¢Æq{¢¦½y`‰óE£Æq{£¦½y`‹E¤Æq{¤¦½y`3E¥Æq{¥¦½y`€SE¦Æq{¦¦½y`‚sE§Æñ{§æ=zà„“E¨Æñ{¨æ=zà†E©Æñ{©æ=z`‰3EªÆñ{ªæ=z`‹SE«Æñ{«æ=z`sE¬Æñ{¬æ=z`€“E­Æñ{­æ=z`‚³E®Æq|®&¾zà„ÓE¯Æq|¯&¾zà†óE°Æq|°&¾z`‰E±Æq|±&¾z`‹3E²Æq|²&¾z`SE³Æq|³&¾z`€³E´Æq|´&¾z`‚ÓEµÎó|µf>{à”så¶Îó|¶f>{è–“å·Îó|·f>{h™³å¸Îó|¸f>{h›Óå¹Îó|¹f>{hóåºÎó|ºf>{hå»Îó|»f>{h’3å¼Îs}¼¦¾{è”Så½Îs}½¦¾{è–så¾Îs}¾¦¾{h™“å¿Îs}¿¦¾{h›³åÀÎs}À¦¾{hÓåÁÎs}Á¦¾{hóåÂÎs}Â¦¾{h’åÃÎó}Ãæ>|è”3åÄÎó}Äæ>|è–SåÅÎó}Åæ>|h™såÆÎó}Ææ>|h›“åÇÎó}Çæ>|h åÈÎó}Èæ>|h3 åÉÎó}Éæ>|h’S åÊÎs~Ê&¿|è”s åËÎs~Ë&¿|è–“ åÌÎs~Ì&¿|h™³ åÍÎs~Í&¿|h›Ó åÎÎs~Î&¿|hó åÏÎs~Ï&¿|håÐÎs~Ð&¿|h’3åÑÎó~Ñf?}è”SåÒÎó~Òf?}è–³åÓÖõ~Óf?}h©sAÕÔÖõ~Ôf?}h«“AÕÕÖõ~Õf?}h­³AÕÖÖõ~Öf?}h ÓAÕ×Öõ~×f?}h¢óAÕØÖuØ¦¿}è¤BÕÙÖuÙ¦¿}è¦3BÕÚÖuÚ¦¿}h©SBÕÛÖuÛ¦¿}h«sBÕÜÖuÜ¦¿}h­“BÕÝÖuÝ¦¿}h ³BÕÞÖuÞ¦¿}h¢ÓBÕßÖõßæ?~è¤óBÕàÖõàæ?~è¦CÕáÖõáæ?~h©3CÕâÖõâæ?~h«SCÕãÖõãæ?~h­sCÕäÖõäæ?~h “CÕåÖõåæ?~h¢@ÕæÖu€æ&À~è¤3@ÕçÖu€ç&À~è¦S@ÕèÖu€è&À~h©s@ÕéÖu€é&À~h«“@ÕêÖu€ê&À~h­³@ÕëÖu€ë&À~h Ó@ÕìÖu€ì&À~h¢ó@ÕíÖõ€íf@è¤AÕîÖõ€îf@è¦3AÕïÖõ€ïf@h©SAÕðÖõ€ðf@h«³CÕñÖõ€ñf@h­ÓCÕòÞwò®@°t©ÊóÞwó®@²”©ÊôÞ÷ôîÀš´´©ÊõÞ÷õîÀš¶Ô©ÊöÞ÷öîÀ¹ô©Ê÷Þ÷÷îÀ»ªÊøÞ÷øîÀ½4ªÊùÞ÷ùîÀ°TªÊúÞ÷úîÀ²tªÊûÞw‚û.A€š´”ªÊüÞw‚ü.A€š¶´ªÊýÞw‚ý.A€¹ÔªÊþÞw‚þ.A€»ôªÊÿÞw‚ÿ.A€½«Ê ßw‚ /A€°4«Êßw‚/A€²T«Êß÷‚oÁ€š´t«Êß÷‚oÁ€š¶”«Êß÷‚oÁ€¹¨Êß÷‚oÁ€»4¨Êß÷‚oÁ€½T¨Êß÷‚oÁ€°t¨Êß÷‚oÁ€²”¨Ê	ßwƒ	¯A›´´¨Ê
+ßwƒ
+¯A›¶Ô¨Êßwƒ¯A¹ô¨Êßwƒ¯A»©Êßwƒ¯A½4©Êßwƒ¯A°T©Êßwƒ¯A²´«Êß÷ƒïÁ4”´Ô«Ê

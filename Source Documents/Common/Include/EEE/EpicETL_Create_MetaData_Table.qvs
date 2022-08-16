@@ -1,6 +1,7 @@
+Trace 'Entering include code in $(vCommonScriptPath)\EEE\EpicETL_Create_MetaData_Table.qvs';
 // Currently, this include file is coded to be invoked from the DataModel QVW or QVF.  Invoking from elsewhere might require
 // a change to the following line:
-LET vTransformRulesFile = replace(vRulesSourceFile, 'LOAD', 'Transform');
+LET vTransformRulesFile = replace(vRulesSourceFile, 'Load', 'Transform'); // 2022-07-07 JRR changed 'LOAD' to 'Load' for SaaS / CloudBucket support
 /*********************************************************************************************************************
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
@@ -94,7 +95,7 @@ group by Target
 Concatenate (MetaData) LoAD * Resident MetaData2;
 
 DROP Table MetaData2;
-//exit Script;
+
 RIGHT JOIN (MetaData)
 LOAD 
      Target  AS [MD Table Name in This Datamodel], 
@@ -117,3 +118,4 @@ MD Original Source Field, MD Field from Source
 RENAME Fields using RENAME_Map;
 
 drop Field [Load Command] From MetaData;
+Trace 'Exiting include code in $(vCommonScriptPath)\EEE\EpicETL_Create_MetaData_Table.qvs';

@@ -99,7 +99,8 @@ sub CommonEnd
 		Mapping LOAD
 		    Old,
 		    New
-		FROM [$(vCommonEXDPath)\XLS\FieldRenameMap.xlsx]
+//		FROM [$(vCommonEXDPath)\XLS\FieldRenameMap.xlsx]	// 2022-07-07 JRR commented this line		
+		FROM [$(vCommonEXDPath)XLS/FieldRenameMap.xlsx]	// 2022-07-07 JRR added this line for  SaaS / CloudBucket support
 		(ooxml, embedded labels, table is Sheet1)
 		WHERE ENABLED='Y'
 		;
@@ -110,9 +111,13 @@ sub CommonEnd
 	SET vFinished = 1;  			// 0 means script did not finish; 1 indicates script completion; this is for debugging. 
 	Trace 'Exiting subroutine CommonEnd in $(vCommonScriptPath)\CommonInclude.txt';
 	EXIT Script;	
+
+	Trace 'Exiting subroutine CommonEnd in $(vCommonScriptPath)\CommonInclude.txt';
+
 ENDSUB	
 
 sub SetRuleSourceFile
+	Trace 'Entering subroutine SetRuleSourceFile in $(vCommonScriptPath)\CommonInclude.txt';
 	// Define which rules source file to use based on the values of vAppPath, vApp, vPurpose, vQlikProduct and vTSEEQ_RulesFileFormat:
 	IF vQlikProduct = 'VIEW' THEN
 		IF vTSEEQ_RulesFileFormat='XLS' THEN
@@ -127,6 +132,8 @@ sub SetRuleSourceFile
 			SET vRulesSourceFile='lib://$(vAppPath)ETL_Rules/CSV/$(vApp)$(vPurpose)Rules_TABLES_Worksheet.csv';        
 		ENDIF
 	ENDIF    
+
+	Trace 'Exiting subroutine SetRuleSourceFile in $(vCommonScriptPath)\CommonInclude.txt';
 	/*******************************************************************************************************************
 		Note that since each CSV file can only contain a single table, if vTSEEQ_RulesFileFormat='CSV', then
 		the EXTRACT and TRANSFORM steps each read multiple CSV files. 
