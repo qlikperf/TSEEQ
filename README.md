@@ -7,10 +7,7 @@
 Please see the **__TSEEQ__** **[documentation](https://github.com/qlikperf/TSEEQ/blob/master/TSEEQ%20Documentation.pdf)** for step-by-step instructions for installation and configuration.
 
 ## Minimum Requirements (one of the following):
-Qlik Sense® Business 
-Qlik Sense® Enterprise SaaS
-Qlik Sense® Enterprise Client-Managed 
-QlikView 
+Qlik Sense® Business, Qlik Sense® Enterprise SaaS, Qlik Sense® Enterprise Client-Managed and QlikView 
 
 **__TSEEQ__** works with Cloud (SaaS), Desktop and on-premise Windows Server product variants of Qlik Sense and QlikView.
 
