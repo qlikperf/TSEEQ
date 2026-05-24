@@ -8,7 +8,10 @@ Trace Entering Include File: $(vApp)CalendarCreation.qvs;
     SET vTSEEQ_CalendarFieldNamePrefix='';
 
 AllDates:   
-Load FieldValue('$(vTSEEQ_FactTableDateField)',IterNo()) as TSEEQ_DateDistinct
+//  2026-05-24 JRR commented the following line for https://github.com/qlikperf/TSEEQ/issues/21
+//  Load FieldValue('$(vTSEEQ_FactTableDateField)',IterNo()) as TSEEQ_DateDistinct
+//  2026-05-24 JRR added the following line for https://github.com/qlikperf/TSEEQ/issues/21
+Load date#(FieldValue('$(vTSEEQ_FactTableDateField)',IterNo()), '$(DateFormat)' ) as TSEEQ_DateDistinct
 AutoGenerate(1)
 While not Isnull(FieldValue('$(vTSEEQ_FactTableDateField)',IterNo()));
 
