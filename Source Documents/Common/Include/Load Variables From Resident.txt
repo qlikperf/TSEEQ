@@ -1,4 +1,4 @@
-sub Load_Variables_from_Resident(vTmpResidentTable, vKEEPorDROP)
+sub Load_Variables_from_Resident(vTmpResidentTable, vKEEPorDROP, vLVR_VariableSource)
 	Trace 'Entering subroutine Load_Variables_from_Resident in $(vCommonScriptPath)\Load_Variables_from_Resident.txt';
 /****************************************************************************************************************************************
 	Procedure:	Load_Variables_from_Resident
@@ -6,8 +6,8 @@ sub Load_Variables_from_Resident(vTmpResidentTable, vKEEPorDROP)
 	Author:		Jeff R. Robbins
 	Email:		jrs@qlik.com; jr@QlikPerf.com
 	
-	Version:	6.0.1
-	Date:		2022-07-07
+	Version:	6.0.6
+	Date:		2026-06-01
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -15,7 +15,7 @@ sub Load_Variables_from_Resident(vTmpResidentTable, vKEEPorDROP)
 	
 	Purpose:		Load variables from the specified resident table.
 	
-	Sample Invocation:  	call Load_Variables_from_Resident('My_Resident_Table', 'DROP' );
+	Sample Invocation:  	call Load_Variables_from_Resident('My_Resident_Table', 'DROP', vLVR_VariableSource
 	
 	Parameters:
 				vTmpResidentTable: Name of resident table containing variables and their definitions.
@@ -24,17 +24,61 @@ sub Load_Variables_from_Resident(vTmpResidentTable, vKEEPorDROP)
 									Such a table greatly facilitates the use of Qlik associative logic to search
 									for variables and their derivations.
 								
-									'DROP' will initialize variables, but will not persit variable info in a data model table.		
-****************************************************************************************************************************************/
+									'DROP' will initialize variables, but will not persit variable info in a data model table.	
+
+				vLVR_VariableSource:  	Optional parameter to capture the source of the variable definition, which can be 
+										helpful for debugging purposes.  vLVR_VariableSource can be an XLS file, DB table, or QVD.
+										vLVR_VariableSource is used not used directly to access the source, but rather to output 
+										diagnostic information in the Load_Variables_from_Resident_Handle_Error subroutine to provide 
+										more context in error messages.  
+****************************************************************************************************************************************/	
 	call Load_Variables_from_Resident_Init;
+
 	Let vLVR_NumVariablesToInit = NoOfRows('Tmp_Variable_Repository');
 	For i = 0 to $(vLVR_NumVariablesToInit)-1
+
+    	LET vLVR_ErrorCount = 0;
 		Let vLVR_SetOrLet  = upper(Peek('SET or LET',   $(i), 'Tmp_Variable_Repository'));
 		Let vLVR_VariableName  = Peek('%VariableName',    $(i), 'Tmp_Variable_Repository');
-		// the replace() in the following line is needed to prevent premature dollar sign expansion, which is rarely desirable:
 		LET vLVR_VariableDefinition = Peek('Variable Definition',   $(i), 'Tmp_Variable_Repository');
-		LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39));
-		IF (Mod($(vLVR_NumSingleQuote), 2) <> 0) THEN		// check for unbalanced (an uneven number of) single quotes. 
+
+        // ------------------------------------------------------------------------------------------------------------
+        // NEW: Detect unmatched comment tokens. See https://github.com/qlikperf/TSEEQ/issues/14
+        // ------------------------------------------------------------------------------------------------------------        
+        LET vLVR_OpenCommentCount  = SubStringCount('$(vLVR_VariableDefinition)', '/*');
+        LET vLVR_CloseCommentCount  = SubStringCount('$(vLVR_VariableDefinition)', '*/');
+        IF vLVR_OpenCommentCount <> vLVR_CloseCommentCount THEN
+        	LET vLVR_ErrorCommentMatch = True();
+          	LET vLVR_ErrorCount = vLVR_ErrorCount + 1;
+	        FlushLog ;     
+		ELSE
+			LET vLVR_ErrorCommentMatch = False();
+        EndIf
+        
+        // ------------------------------------------------------------------------------------------------------------        
+        // Detect unmatched single quotes.
+        // ------------------------------------------------------------------------------------------------------------        
+        LET vLVR_NumSingleQuote = SubStringCount(vLVR_VariableDefinition, chr(39));
+		IF (Mod($(vLVR_NumSingleQuote), 2) <> 0)	THEN
+        	LET vLVR_ErrorSingleQuoteMatch = True();
+          	LET vLVR_ErrorCount = vLVR_ErrorCount + 1;
+	        FlushLog ;     
+		Else
+			LET vLVR_ErrorSingleQuoteMatch = False();			
+		EndIf
+        // ------------------------------------------------------------------------------------------------------------        
+		// NEW: Detect unmatched double quote.  See https://github.com/qlikperf/TSEEQ/issues/23
+        // ------------------------------------------------------------------------------------------------------------        
+        LET vLVR_NumDoubleQuote = SubStringCount(vLVR_VariableDefinition, chr(34));
+		IF (Mod($(vLVR_NumDoubleQuote), 2) <> 0)	THEN
+        	LET vLVR_ErrorDoubleQuoteMatch = True();
+          	LET vLVR_ErrorCount = vLVR_ErrorCount + 1;
+	        FlushLog ;     
+		Else
+			LET vLVR_ErrorDoubleQuoteMatch = False();
+		EndIf
+
+      IF ( vLVR_ErrorCount > 0 ) THEN
 			call Load_Variables_from_Resident_Handle_Error;
 		Else
 			call Load_Variables_from_Resident_Define_Variable;
@@ -102,14 +146,32 @@ sub  Load_Variables_from_Resident_Init
 ENDSUB
 /****************************************************************************************************************************************/
 sub Load_Variables_from_Resident_Handle_Error
-			   	LET vLVR_ErrString=	chr(39) & 
-				'ERROR: INVALID VARIABLE VALUE DEFINED for varible $(vLVR_VariableName). Odd number of single quotes cannot be parsed. ' & 
-				'Root cause is possibly consumption by Excel of the first single quote in the variable value.  '			 &
-				'Resolution is possibly to add an additional single quote to the very front of the Excel cell '	&
-				'where the variable value is defined.' & chr(39);
-			   TRACE $(vLVR_ErrString);
-			   SET '$(vLVR_VariableName)' = $(vLVR_ErrString);
-			   LET vLVR_VariableDefinition=null();		//this line needed to prevent the string with an odd number of single quotes from causing issues.
+	LET vLVR_ErrString=	
+	'ERROR: INVALID VARIABLE DEFINITION  for variable $(vLVR_VariableName) in $(vLVR_VariableSource). Error occurred in 
+	subroutine Load_Variables_from_Resident in $(vCommonScriptPath)\Load_Variables_from_Resident.txt.' ;
+
+	IF vLVR_ErrorSingleQuoteMatch = True() THEN
+		LET vLVR_ErrString = vLVR_ErrString & ' Unmatched single quote detected in variable definition. 
+Root cause is possibly consumption by Excel of the first single quote in the variable value. 
+Resolution is possibly to add an additional single quote to the very front of the Excel cell.';
+	ENDIF
+
+	IF vLVR_ErrorDoubleQuoteMatch = True() THEN
+		LET vLVR_ErrString = vLVR_ErrString & '   Unmatched double quote detected in the Variable Definition.';
+	ENDIF
+
+	IF vLVR_ErrorCommentMatch = True() THEN
+		LET vLVR_ErrString = vLVR_ErrString &  '
+Unmatched (/*) and end (*/) comment markers in the Variable Definition.
+Reference to variable that do not exist may cause this, for example: 22/<dollar sign>(vDoesNotExist)*100. This Variable Definition
+will expand to 22/*100, with the /* therein being interpreted as a start comment with no corresponding end comment, and
+an error will be raised.';
+	ENDIF
+
+	TRACE '$(vLVR_ErrString)';
+	
+	SET '$(vLVR_VariableName)' = '$(vLVR_ErrString)';
+	LET vLVR_VariableDefinition=null();		//this line needed to prevent the string any errot type from causing issues.
 ENDSUB			   
 /****************************************************************************************************************************************/
 sub Load_Variables_from_Resident_Define_Variable
@@ -151,5 +213,12 @@ sub Load_Variables_from_Resident_Clear_Variables
 		LET vWildMatchFound	=null();
 		LET vLVR_DollarSignExpansionDetected = null();		
 		LET vLVR_NumSingleQuote = null();
+		LET vLVR_NumDoubleQuote = null();
+		LET vLVR_ErrorSingleQuoteMatch = null();
+		LET vLVR_ErrorDoubleQuoteMatch = null();
+		LET vLVR_OpenCommentCount = null();
+		LET vLVR_CloseCommentCount = null();
+		LET vLVR_ErrorCommentMatch = null();
+		LET vLVR_ErrorCount = null();
 ENDSUB
 /****************************************************************************************************************************************/

@@ -3,8 +3,8 @@ sub Load_Variables_from_XLS(vExpressionFile, vWorksheet, vKEEPorDROP)
 /*******************************************************************************************************************************************************
 	Procedure: 	Load_Variables_from_XLS
 
-	Version:	6.0.1
-	Date:		2022-07-07
+	Version:	6.0.6
+	Date:		2026-06-01
 
 	Purpose:	Load variables from the specified XLS file and contained worksheet into a QlikVIew app.
 	
@@ -31,6 +31,7 @@ sub Load_Variables_from_XLS(vExpressionFile, vWorksheet, vKEEPorDROP)
 
 	trace 'vExpressionFile=$(vExpressionFile)';
 
+	// Initialize variables used in the called Load_Variables_from_Resident subroutine to avoid any potential issues with previous values.
 	SET vLVR_VariableDefinition = '';
 	
 	Tmp_XLS_Contents:
@@ -42,8 +43,12 @@ sub Load_Variables_from_XLS(vExpressionFile, vWorksheet, vKEEPorDROP)
 	(biff, embedded labels, table is $(vWorksheet)$)	// Excel XP and prior   (xls extension)
 ////	(ooxml, embedded labels, table is $(vWorksheet))	// Excel 2003 and newer (xlsx extension)
 	;
-	call Load_Variables_from_Resident('Tmp_XLS_Contents', '$(vKEEPorDROP)' );	// keep variable list in tabular format in data model
-	
+//	call Load_Variables_from_Resident('Tmp_XLS_Contents', '$(vKEEPorDROP)' ,'$(vExpressionFile)');	
+// A third parameter is added to the call to Load_Variables_from_Resident to capture the source of the variable definition, 
+// which can be helpful for debugging purposes. 
+	call Load_Variables_from_Resident('Tmp_XLS_Contents', '$(vKEEPorDROP)' ,'$(vExpressionFile)');	
+
+
 	DROP Table Tmp_XLS_Contents;
 	Trace 'Exiting subroutine Load_Variables_from_XLS in $(vCommonScriptPath)\Load_Variables_from_XLS.txt';
 endsub
