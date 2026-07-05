@@ -8,15 +8,15 @@ be set to any prior date.
 //	LET vMaxDateNum = floor(num(YearEnd(addmonths(vToday, 36))));			// Uncomment this line to override the value set in Sales_Date_Variables.xls.
 
 sub CreateCalendarQvd( vCCQ_CalendarName, vKEEPorDROP )
-	Trace 'Entering subroutine CreateCalendarQvd in $(vCommonScriptPath)\CreateCalendarTable.txt';
+	call TSEEQ_Trace('Entering subroutine CreateCalendarQvd in $(vCommonScriptPath)\CreateCalendarTable.txt');
 /****************************************************************************************************************************************
 	Procedure:	CreateCalendarQvd
 		
 	Author:		Jeff R. Robbins
-	Email:		jrs@qlik.com; jr@QlikPerf.com
+	Email:		jr@QlikPerf.com
 	
-	Version:	6.0.1
-	Date:		2022-07-07
+	Version:	6.0.7
+	Date:		2026-07-01
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -108,6 +108,5 @@ sub CreateCalendarQvd( vCCQ_CalendarName, vKEEPorDROP )
 	IF upper(vKEEPorDROP) = 'DROP' THEN 
 		DROP Table [$(vCCQ_CalendarName)Calendar];
 	ENDIF	
-	Trace 'Exiting subroutine CreateCalendarQvd in $(vCommonScriptPath)\CreateCalendarTable.txt';
-
+	call TSEEQ_Trace('Exiting subroutine CreateCalendarQvd in $(vCommonScriptPath)\CreateCalendarTable.txt');
 ENDSUB

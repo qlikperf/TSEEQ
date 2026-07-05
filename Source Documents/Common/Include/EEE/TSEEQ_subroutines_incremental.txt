@@ -5,16 +5,16 @@ sub IncrementalBlock1
 			Subroutines in this file are called from SEEQ_include.txt
 	
 	Author:		Jeff R. Robbins
-	Email:		jrs@qlik.com; jr@QlikPerf.com
+	Email:		jr@QlikPerf.com
 	
-	Version:	5.0.1
-	Date:		2021-02-01
+	Version:	6.0.7
+	Date:		2026-07-01
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
 **********************************************************************************************************************************************************/
-	Trace 'Entering subroutine IncrementalBlock1 in $(vCommonScriptPath)eee\SEEQ_subroutines_incremental.txt';
+	call TSEEQ_Trace('Entering subroutine IncrementalBlock1 in $(vCommonScriptPath)eee\SEEQ_subroutines_incremental.txt');
    	LET vSEEQ_TimeIncrementalPreProccessing = num(now(1));		// performance profiling
 
 	LET vSEEQAddOnFileSize=FileSize('$(vCommonScriptPath)EEE\add-ons\QCEE Incremental1.txt');
@@ -34,11 +34,11 @@ sub IncrementalBlock1
 	SET vSEEQAddOnFileSize=;
 	LET vSEEQ_TimeIncrementalPreProccessing = num(now(1)) -  vSEEQ_TimeIncrementalPreProccessing;		// performance profiling
 //	Call SEEQ_WriteMessage ('Exiting subroutine IncrementalBlock1 in $(vCommonScriptPath)eee\SEEQ_subroutines_incremental.txt');		
-	Trace 'Exiting subroutine IncrementalBlock1 in $(vCommonScriptPath)\eee\SEEQ_subroutines_incremental.txt';	
+	call TSEEQ_Trace('Exiting subroutine IncrementalBlock1 in $(vCommonScriptPath)\eee\SEEQ_subroutines_incremental.txt');
 end sub	// IncrementalBlock1
 /******************************************************************************************************************************************/
 sub IncrementalBlock2
-	Trace 'Entering subroutine IncrementalBlock2 in $(vCommonScriptPath)\eee\SEEQ_subroutines_incremental.txt';	
+	call TSEEQ_Trace('Entering subroutine IncrementalBlock2 in $(vCommonScriptPath)\eee\SEEQ_subroutines_incremental.txt');
 	LET vSEEQ_TimeIncrementalPostProccessing = num(now(1));		// performance profiling
 	//	IF FileSize('$(vCommonScriptPath)\eee\add-ons\qcee incremental2.txt') > 0 THEN // 2020-08-21 JRR commented
 	IF FileSize('$(vCommonScriptPath)\eee\add-ons\qcee incremental2.txt') > 0 and $(vSEEQ_NumRecords$(vPurposeED)) > 0  THEN //2020-08-21 JRR added
@@ -50,6 +50,6 @@ sub IncrementalBlock2
 	SET vSEEQ_Incremental_QVD_AlreadyExists	= '';
 	SET vSEEQ_TargetFolderAndTarget = '';	
 	LET vSEEQ_TimeIncrementalPostProccessing = num(now(1)) -  vSEEQ_TimeIncrementalPostProccessing;
-	Trace 'Exiting subroutine IncrementalBlock2 in $(vCommonScriptPath)\eee\SEEQ_subroutines_incremental.txt';	
+	call TSEEQ_Trace('Exiting subroutine IncrementalBlock2 in $(vCommonScriptPath)\eee\SEEQ_subroutines_incremental.txt');
 end sub	// IncrementalBlock2
 /******************************************************************************************************************************************/

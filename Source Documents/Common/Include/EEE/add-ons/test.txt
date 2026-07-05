@@ -1,4 +1,3 @@
-call TSEEQ_Trace('Entering $(vCommonScriptPath)\Include\EEE\add-ons\QCEE Incremental2.txt');
 /**********************************************************************************************************************************************************
 	File:		QCEE Incremental2.txt
 	Purpose:	Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
@@ -8,8 +7,8 @@ call TSEEQ_Trace('Entering $(vCommonScriptPath)\Include\EEE\add-ons\QCEE Increme
 	Author:		Jeff R. Robbins
 	Email:		jr@QlikPerf.com
 	
-	Version:	6.0.7
-	Date:		2026-07-01
+	Version:	3.1.2
+	Date:		2018-02-15
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -49,4 +48,3 @@ FROM [$(vSEEQ_TargetFolderAndTarget).qvd] (qvd) WHERE not Exists(  SEEQ_Incremen
 	trace Historical QVD not detected ;
 	ENDIF			 
 ENDIF
-call TSEEQ_Trace('Exiting $(vCommonScriptPath)\Include\EEE\add-ons\QCEE Incremental2.txt');

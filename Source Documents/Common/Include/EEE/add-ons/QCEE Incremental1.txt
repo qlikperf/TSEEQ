@@ -1,3 +1,4 @@
+call TSEEQ_Trace('Entering $(vCommonScriptPath)\Include\EEE\add-ons\QCEE Incremental1.txt');
 /**********************************************************************************************************************************************************
 	File:		QCEE Incremental1.txt
 	Purpose:	Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
@@ -5,16 +6,15 @@
 
 	
 	Author:		Jeff R. Robbins
-	Email:		jrs@qlik.com; jr@QlikPerf.com
+	Email:		jr@QlikPerf.com
 	
-	Version:	3.1.2
-	Date:		2018-02-15
+	Version:	6.0.7
+	Date:		2026-07-10
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
 **********************************************************************************************************************************************************/
-Trace 'Entering QCEE Incremental1 add-on for TSEEQ.';
 LET vSEEQ_QVDCreateTime = trim(QVDCreateTime('$(vSEEQ_TargetFolder)$(vSEEQ_TargetWithoutBrackets).qvd'));
 LET vSEEQ_ValidIncremental = if (len(trim(vSEEQ_ModfiedTimestampField)) >0 and len(trim(vSEEQ_Incremental_ID_Fields)) > 0 and len(trim(vSEEQ_LastModfiedTimestampFormatForQuery)) > 0, 1, 0);
 	IF upper(vSEEQ_IncrementalLoadType) = 'INCREMENTAL'  AND upper(vPurpose) = 'EXTRACT' AND len(vSEEQ_QVDCreateTime) > 0 AND vSEEQ_ValidIncremental THEN
@@ -80,4 +80,4 @@ ELSEIF	 upper(vPurpose) = 'EXTRACT' THEN
 ELSEIF len(trim(vSEEQ_Constraints))>0 THEN		// add WHERE back to the constraints.
 	LET vSEEQ_Constraints='WHERE ' & '$(vSEEQ_Constraints)';	
 ENDIF	
-Trace 'Exiting QCEE Incremental1 add-on for TSEEQ.';
+call TSEEQ_Trace('Exiting $(vCommonScriptPath)\Include\EEE\add-ons\QCEE Incremental1.txt');

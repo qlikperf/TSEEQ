@@ -1,13 +1,13 @@
-Trace 'Entering include code in $(vCommonScriptPath)\EEE\EpicETL_Create_MetaData_Table.qvs';
+call TSEEQ_Trace('Entering include code in $(vCommonScriptPath)\EEE\EpicETL_Create_MetaData_Table.qvs');
 // Currently, this include file is coded to be invoked from the DataModel QVW or QVF.  Invoking from elsewhere might require
 // a change to the following line:
 LET vTransformRulesFile = replace(vRulesSourceFile, 'Load', 'Transform'); // 2022-07-07 JRR changed 'LOAD' to 'Load' for SaaS / CloudBucket support
 /*********************************************************************************************************************
 	Author:		Jeff R. Robbins
-	Email:		jrs@qlik.com; jr@QlikPerf.com
+	Email:		jr@QlikPerf.com
 	
-	Version:	3.1.2
-	Date:		2018-02-15
+	Version:	6.0.7
+	Date:		2026-07-01
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -118,4 +118,4 @@ MD Original Source Field, MD Field from Source
 RENAME Fields using RENAME_Map;
 
 drop Field [Load Command] From MetaData;
-Trace 'Exiting include code in $(vCommonScriptPath)\EEE\EpicETL_Create_MetaData_Table.qvs';
+call TSEEQ_Trace('Exiting include code in $(vCommonScriptPath)\EEE\EpicETL_Create_MetaData_Table.qvs');

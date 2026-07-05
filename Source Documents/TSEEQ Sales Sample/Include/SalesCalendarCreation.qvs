@@ -1,8 +1,7 @@
 //****************************************************************************************************************
 //	This is an example of an externalized include file.
 //****************************************************************************************************************
-Trace Entering Include File: $(vApp)CalendarCreation.qvs;
-
+call TSEEQ_Trace('Entering Include File: $(vApp)CalendarCreation.qvs');
 // Add script here as required.
     SET vTSEEQ_FactTableDateField='Date';
     SET vTSEEQ_CalendarFieldNamePrefix='';
@@ -36,4 +35,4 @@ SET vTSEEQ_FactTableDateField=;
 SET vTSEEQ_CalendarFieldNamePrefix=;
 DROP Table MinMaxDates;
 
-Trace Exiting Include File: $(vApp)CalendarCreation.qvs;
+call TSEEQ_Trace('Exiting Include File: $(vApp)CalendarCreation.qvs');

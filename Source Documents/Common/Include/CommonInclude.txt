@@ -1,19 +1,23 @@
+sub TSEEQ_Trace (vTSEEQ_TraceMessage)
+	Trace <<<TSEEQ: $(vTSEEQ_TraceMessage)>>>; 
+end sub
+
 sub CommonInit 
 /**********************************************************************************************************************************************************
 	File:		CommonInclude.txt
 	Purpose:	Common Initialization and Common Ending routines for all QVFs and QVWs that invoke TSEEQ, The Structured ETL Engine for Qlik.
 	
 	Author:		Jeff R. Robbins
-	Email:		jrs@qlik.com; jr@QlikPerf.com
+	Email:		jr@QlikPerf.com
 	
-	Version:	4.0.7
-	Date:		2020-07-13
+	Version:	6.0.7
+	Date:		2026-07-01
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
 **********************************************************************************************************************************************************/
-	Trace 'Entering subroutine CommonInit in $(vCommonScriptPath)\CommonInclude.txt';
+	call TSEEQ_Trace('Entering subroutine CommonInit in $(vCommonScriptPath)\CommonInclude.txt');
 	SET ThousandSep=',';
 	SET DecimalSep='.';
 	SET MoneyThousandSep=',';
@@ -83,12 +87,12 @@ sub CommonInit
 		LET vReloadTimeEnd = now();
 		exit script;
 	endif
-	Trace 'Exiting subroutine CommonInit in $(vCommonScriptPath)\CommonInclude.txt';
+	call TSEEQ_Trace('Exiting subroutine CommonInit in $(vCommonScriptPath)\CommonInclude.txt');
 end sub
 
 sub CommonEnd
 
-	Trace 'Entering subroutine CommonEnd in $(vCommonScriptPath)\CommonInclude.txt';
+	call TSEEQ_Trace('Entering subroutine CommonEnd in $(vCommonScriptPath)\CommonInclude.txt');
 	if upper(vPurpose) = 'LOAD' OR vTSEEQ_Combined_Purpose_Flag = 1 THEN 
 		RENAME FIELD [QVD Created] to [QVD Loaded];
 	endif
@@ -109,15 +113,14 @@ sub CommonEnd
 
 	LET vReloadTimeEnd = now();		// for performance profiling
 	SET vFinished = 1;  			// 0 means script did not finish; 1 indicates script completion; this is for debugging. 
-	Trace 'Exiting subroutine CommonEnd in $(vCommonScriptPath)\CommonInclude.txt';
+	call TSEEQ_Trace('Exiting subroutine CommonEnd in $(vCommonScriptPath)\CommonInclude.txt');
 	EXIT Script;	
 
-	Trace 'Exiting subroutine CommonEnd in $(vCommonScriptPath)\CommonInclude.txt';
-
+	call TSEEQ_Trace('Exiting subroutine CommonEnd in $(vCommonScriptPath)\CommonInclude.txt');
 ENDSUB	
 
 sub SetRuleSourceFile
-	Trace 'Entering subroutine SetRuleSourceFile in $(vCommonScriptPath)\CommonInclude.txt';
+	call TSEEQ_Trace('Entering subroutine SetRuleSourceFile in $(vCommonScriptPath)\CommonInclude.txt');
 	// Define which rules source file to use based on the values of vAppPath, vApp, vPurpose, vQlikProduct and vTSEEQ_RulesFileFormat:
 	IF vQlikProduct = 'VIEW' THEN
 		IF vTSEEQ_RulesFileFormat='XLS' THEN
@@ -133,7 +136,7 @@ sub SetRuleSourceFile
 		ENDIF
 	ENDIF    
 
-	Trace 'Exiting subroutine SetRuleSourceFile in $(vCommonScriptPath)\CommonInclude.txt';
+	call TSEEQ_Trace('Exiting subroutine SetRuleSourceFile in $(vCommonScriptPath)\CommonInclude.txt');
 	/*******************************************************************************************************************
 		Note that since each CSV file can only contain a single table, if vTSEEQ_RulesFileFormat='CSV', then
 		the EXTRACT and TRANSFORM steps each read multiple CSV files. 

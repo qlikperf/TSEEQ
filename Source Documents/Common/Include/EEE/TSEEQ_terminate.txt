@@ -1,15 +1,15 @@
 sub StoreQVD
-	Trace 'Entering subroutine StoreQVD in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt';
+	call TSEEQ_Trace('Entering subroutine StoreQVD in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt');
 /**********************************************************************************************************************************************************
 	File:			SEEQ_terminate.txt
 	Purpose:		Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
 						Subroutines in this file are called from SEEQ_include.txt
 	
 	Author:		Jeff R. Robbins
-	Email:		jrs@qlik.com; jr@QlikPerf.com
+	Email:		jr@QlikPerf.com
 	
-	Version:	6.0.1
-	Date:		2022-07-07
+	Version:	6.0.7
+	Date:		2026-07-01
 
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -83,14 +83,12 @@ sub StoreQVD
 	ENDIF
 	SET vSEEQ_NoOfRowsInTarget=;
 
-	Trace 'Exiting subroutine StoreQVD in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt';
-
+	call TSEEQ_Trace('Exiting subroutine StoreQVD in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt');
 End Sub
 /******************************************************************************************************************************************/
 sub SEEQ_Terminate
 
-	Trace 'Entering subroutine SEEQ_Terminate in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt';
-
+	call TSEEQ_Trace('Entering subroutine SEEQ_Terminate in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt');
 	SEEQ_var_list_destroy_tmp:		// list of variables to set to null upon the end of engine execution, in the procedure SEEQ_Terminate.
 	LOAD Variable as [Variable Name]
 	FROM
@@ -164,7 +162,6 @@ sub SEEQ_Terminate
 		DROP Table 	TransformFieldsForAllTables;
 	ENDIF
 
-	Trace 'Exiting subroutine SEEQ_Terminate in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt';
-
+	call TSEEQ_Trace('Exiting subroutine SEEQ_Terminate in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt');
 ENDSUB	
 /******************************************************************************************************************************************/

@@ -1,15 +1,15 @@
 sub InitVariablesOuter
-	Trace 'Entering subroutine InitVariablesOuter in $(vCommonScriptPath)\EEE\TSEEQ_init.txt';
+	call TSEEQ_Trace('Entering subroutine InitVariablesOuter in $(vCommonScriptPath)\EEE\TSEEQ_init.txt');
 /**********************************************************************************************************************************************************
 	File:		TSEEQ_init.txt
 	Purpose:	Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
 						Subroutines in this file are called from SEEQ_include.txt
 	
 	Author:		Jeff R. Robbins
-	Email:		jrs@qlik.com; jr@QlikPerf.com
+	Email:		jr@QlikPerf.com
 	
-	Version:	6.0.1
-	Date:		2022-07-07
+	Version:	6.0.7
+	Date:		2026-07-01
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -149,12 +149,11 @@ sub InitVariablesOuter
 	SET vSEEQ_RulesReadSuccessFlag = '';
 	SET vTSEEQ_RuleFileType=;
 
-	Trace 'Exiting subroutine InitVariablesOuter in $(vCommonScriptPath)\EEE\TSEEQ_init.txt';
+	call TSEEQ_Trace('Exiting subroutine InitVariablesOuter in $(vCommonScriptPath)\EEE\TSEEQ_init.txt');
 end sub // InitVariablesOuter
 /******************************************************************************************************************************************/
 sub InitVariablesInner
-	Trace 'Entering subroutine InitVariablesInner in $(vCommonScriptPath)\EEE\TSEEQ_init.txt';
-
+	call TSEEQ_Trace('Entering subroutine InitVariablesInner in $(vCommonScriptPath)\EEE\TSEEQ_init.txt');
 	SET vSEEQ_NumRecordsEXTRACTed=0;
 	SET vSEEQ_DropExcludedFieldsStatement=;		// 2018-07-12 JRR added this line
 	SET vSEEQ_NumFields$(vPurposeED)=0;		// 2017-04-08 JRR moved this line from InitVariablesOuter to InitVariablesInner
@@ -297,7 +296,6 @@ sub InitVariablesInner
 	ENDIF
 	SET vSEEQ_ErrorDetected = 0;
 
-	Trace 'Exiting subroutine InitVariablesInner in $(vCommonScriptPath)\EEE\TSEEQ_init.txt';
-
+	call TSEEQ_Trace('Exiting subroutine InitVariablesInner in $(vCommonScriptPath)\EEE\TSEEQ_init.txt');
 end Sub	// InitVariablesInner
 /******************************************************************************************************************************************/

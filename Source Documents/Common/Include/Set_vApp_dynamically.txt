@@ -23,7 +23,7 @@ ENDIF
 	Included by:	All QVFs and QVWs. 
 		
 	Author:		Jeff R. Robbins and Andrew Gri
-	Email:		jrs@qlik.com; jr@QlikPerf.com
+	Email:		jr@QlikPerf.com
 	
 	Version:	4.1.3
 	Date:		2020-01-18
