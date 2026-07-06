@@ -1,12 +1,12 @@
-Trace 'Entering include file: ~\Common\include\Load AdHoc Dimensions And Measures.qvs';
+call TSEEQ_Trace('Entering include file: ~\Common\include\Load AdHoc Dimensions And Measures.qvs');
 /****************************************************************************************************************************************
 	File:		Load AdHoc Dimensions And Measures.qvs
 		
 	Author:		Jeff R. Robbins
-	Email:		jrs@qlik.com; jr@QlikPerf.com
+	Email:		jr@QlikPerf.com
 	
-	Version:	4.0.6
-	Date:		2020-02-02
+	Version:	6.0.7
+	Date:		2026-07-01
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -71,4 +71,4 @@ next i
     (ooxml, embedded labels, table is Sheet1)
     WHERE ENABLED = 'Y';
 	
-Trace 'Exiting include file:  ~\Common\include\Load AdHoc Dimensions And Measures.qvs';
+call TSEEQ_Trace('Exiting include file:  ~\Common\include\Load AdHoc Dimensions And Measures.qvs');

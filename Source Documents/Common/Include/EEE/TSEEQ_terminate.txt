@@ -1,5 +1,5 @@
 sub StoreQVD
-	Trace 'Entering subroutine StoreQVD in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt';
+	call TSEEQ_Trace('Entering subroutine StoreQVD in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt');
 /**********************************************************************************************************************************************************
 	File:			SEEQ_terminate.txt
 	Purpose:		Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
@@ -80,14 +80,12 @@ sub StoreQVD
 	ENDIF
 	SET vSEEQ_NoOfRowsInTarget=;
 
-	Trace 'Exiting subroutine StoreQVD in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt';
-
+	call TSEEQ_Trace('Exiting subroutine StoreQVD in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt');
 End Sub
 /******************************************************************************************************************************************/
 sub SEEQ_Terminate
 
-	Trace 'Entering subroutine SEEQ_Terminate in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt';
-
+	call TSEEQ_Trace('Entering subroutine SEEQ_Terminate in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt');
 	SEEQ_var_list_destroy_tmp:		// list of variables to set to null upon the end of engine execution, in the procedure SEEQ_Terminate.
 	LOAD Variable as [Variable Name]
 	FROM
@@ -146,7 +144,6 @@ sub SEEQ_Terminate
 		DROP Table 	TransformFieldsForAllTables;
 	ENDIF
 
-	Trace 'Exiting subroutine SEEQ_Terminate in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt';
-
+	call TSEEQ_Trace('Exiting subroutine SEEQ_Terminate in $(vCommonScriptPath)\EEE\TSEEQ_terminate.txt');
 ENDSUB	
 /******************************************************************************************************************************************/

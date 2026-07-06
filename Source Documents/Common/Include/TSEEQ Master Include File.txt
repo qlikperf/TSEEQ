@@ -4,7 +4,7 @@ $(must_Include=$(vCommonScriptPath)EEE/TSEEQ_init.txt);
 	Purpose:	This file includes multiple include files that implement TSEEQ, The Structured ETL Engine for Qlik.
 					
 	Author:		Jeff R. Robbins
-	Email:		jrs@qlik.com; jr@QlikPerf.com
+	Email:		jr@QlikPerf.com
 	
 	Version:	6.0.1
 	Date:		2022-07-07

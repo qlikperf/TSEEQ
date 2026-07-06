@@ -1,14 +1,14 @@
-Trace Entering Include File: '~\Admin\Include\ETL Analysis Include.txt';
+call TSEEQ_Trace('Entering Include File: ''~\Admin\Include\ETL Analysis Include.txt');
 /**********************************************************************************************************************************************************
 	File:		ETL Analysis Include.txt
 	Purpose:	Read Historical ETL statistics.
 	Included By:	ETL Analysis.qvw & ETL Analysis.qvf
 	
 	Author:		Jeff R. Robbins
-	Email:		jrs@qlik.com; jr@QlikPerf.com
+	Email:		jr@QlikPerf.com
 
-	Version:	4.1.2
-	Date:		2020-12-07
+	Version:	6.0.7
+	Date:		2026-07-01
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -116,4 +116,4 @@ FROM [lib://Sales/ETL_Rules/SalesExtractRules.xls]		// someday, we should includ
 WHERE Upper(ENABLED) = 'Y';
 
 STORE ExtractTransform INTO  [$(vETLStatisticsQVDPath)Historical ExtractTransformClean.qvd] (qvd);
-Trace  Exiting Include File: '~\Admin\Include\ETL Analysis Include.txt';
+call TSEEQ_Trace('Exiting Include File: ''~\Admin\Include\ETL Analysis Include.txt');

@@ -1,8 +1,7 @@
 //****************************************************************************************************************
 //	This is an example of an externalized include file.
 //****************************************************************************************************************
-Trace Entering Include File: $(vApp)$(vPurpose)Include_PreProcessing.txt;
-
+call TSEEQ_Trace('Entering Include File: $(vApp)$(vPurpose)Include_PreProcessing.txt');
 // Add script here as required.
 
-Trace Exiting Include File: $(vApp)$(vPurpose)Include_PreProcessing.txt;
+call TSEEQ_Trace('Exiting Include File: $(vApp)$(vPurpose)Include_PreProcessing.txt');

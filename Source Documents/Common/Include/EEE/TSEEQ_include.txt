@@ -1,14 +1,14 @@
 sub SEEQ_ExecuteRulesSourceFile
-	Trace 'Entering subroutine SEEQ_ExecuteRulesSourceFile in $(vCommonScriptPath)\EEE\TSEEQ_include.txt';
+	call TSEEQ_Trace('Entering subroutine SEEQ_ExecuteRulesSourceFile in $(vCommonScriptPath)\EEE\TSEEQ_include.txt');
 /**********************************************************************************************************************************************************
 	File:		SEEQ_include.txt
 	Purpose:	Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
 						
 	Author:		Jeff R. Robbins
-	Email:		jrs@qlik.com; jr@QlikPerf.com
+	Email:		jr@QlikPerf.com
 	
-	Version:	6.0.1
-	Date:		2022-07-07
+	Version:	6.0.7
+	Date:		2026-07-01
 
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -108,5 +108,5 @@ $(vSEEQ_PostLoadScript)';
 
 	Call SEEQ_Terminate;
 	SET vTSEEQ_ModeOriginal='';
-	Trace 'Exiting subroutine SEEQ_ExecuteRulesSourceFile in $(vCommonScriptPath)\EEE\TSEEQ_include.txt';
+	call TSEEQ_Trace('Exiting subroutine SEEQ_ExecuteRulesSourceFile in $(vCommonScriptPath)\EEE\TSEEQ_include.txt');
 endsub

@@ -1,15 +1,15 @@
 Sub ExcludeFieldsInit
-	Trace 'Entering subroutine ExcludeFieldsInit in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt';
+	call TSEEQ_Trace('Entering subroutine ExcludeFieldsInit in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt');
 /**********************************************************************************************************************************************************
 	File:				SEEQ_subroutines.txt
 	Purpose:			Extract, Transform and Load tables as specified in the table specified by the variable vRulesSourceFile.
 						Subroutines in this file are called from SEEQ_include.txt
 	
 	Author:				Jeff R. Robbins
-	Author email:		jrs@qlik.com; jr@qlikperf.com
+	Author email:		jr@qlikperf.com
 	
-	Version:	6.0.1
-	Date:		2022-07-07
+	Version:	6.0.7
+	Date:		2026-07-01
 	
 	This program is provided in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -28,11 +28,11 @@ Sub ExcludeFieldsInit
 			Resident ExcludeFields;
 	ENDIF
 
-	Trace 'Exiting subroutine ExcludeFieldsInit in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt';
+	call TSEEQ_Trace('Exiting subroutine ExcludeFieldsInit in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt');
 END SUB			// ExcludeFieldsInit
 /******************************************************************************************************************************************/
 sub ExcludeFields
-	Trace 'Entering subroutine ExcludeFields in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt';
+	call TSEEQ_Trace('Entering subroutine ExcludeFields in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt');
 	IF upper(vPurpose) = 'EXTRACT' THEN	
 		LET vExcludeFields = peek('ExcludeFieldsConcat', 0, 'ExcludeFieldsConcat');
 		IF upper(vPurpose) = 'EXTRACT' AND vSEEQ_Fields = 'EXCLUDE_SUBSET' AND len('$(vExcludeFields)' ) > 0  THEN		
@@ -40,11 +40,11 @@ sub ExcludeFields
 		SET vSEEQ_DropExcludedFieldsStatement='DROP Fields $(vExcludeFields) FROM $(vSEEQ_Target)$(vSEEQ_Semicolon)';
 		ENDIF
 	ENDIF
-	Trace 'Exiting subroutine ExcludeFields in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt';
+	call TSEEQ_Trace('Exiting subroutine ExcludeFields in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt');
 end sub	// ExcludeFields
 /******************************************************************************************************************************************/
 sub IncludeFields
-	Trace 'Entering subroutine IncludeFields in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt';
+	call TSEEQ_Trace('Entering subroutine IncludeFields in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt');
 	SET vExcludeFields='';
 	IF upper(vPurpose) = 'EXTRACT' AND upper(vSEEQ_Fields) = 'INCLUDE_SUBSET' THEN	
 	// INCLUDE_FIELD processing for TRANSFORM is handled by the TranformFields procedure, farther below
@@ -67,11 +67,11 @@ sub IncludeFields
 				SET vSEEQ_FieldsExpansion = '*';
 			ENDIF
 		ENDIF
-		Trace 'Exiting subroutine IncludeFields in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt';
+		call TSEEQ_Trace('Exiting subroutine IncludeFields in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt');
 end sub	// IncludeFields			
 ///******************************************************************************************************************************************/
 sub TransformFields 
-	Trace 'Entering subroutine TransformFields in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt';
+	call TSEEQ_Trace('Entering subroutine TransformFields in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt');
 	IF upper(vPurpose) = 'TRANSFORM' THEN
 		SET vSEEQ_FieldsExpansion = '';	// for TRANSFORM, we discard vSEEQ_FieldsExpansion as used by EXTRACT.
 	
@@ -142,7 +142,7 @@ sub TransformFields
 	DROP Table AddFields;		
 	DROP Table TargetFields;
 	ENDIF	
-	Trace 'Exiting subroutine TransformFields in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt';
+	call TSEEQ_Trace('Exiting subroutine TransformFields in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt');
 END SUB	//  TransformFields
 /******************************************************************************************************************************************/
 sub SEEQ_WriteMessage(vSEEQ_MessageToWrite)
@@ -151,7 +151,7 @@ sub SEEQ_WriteMessage(vSEEQ_MessageToWrite)
 endsub
 /******************************************************************************************************************************************/
 sub SEEQ_WriteProxyQVD
-	Trace 'Entering subroutine SEEQ_WriteProxyQVD in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt';
+	call TSEEQ_Trace('Entering subroutine SEEQ_WriteProxyQVD in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt');
 		// If the transform source is an External file (CSV, XLS, etc), we need to create a proxy QVD of the source, so 
 		// that we can read field information from the header of that proxy QVD.  This use of the proxy QVD eliminates 
 		// the need to have transform logic for both QVD and External file types; we can use a single set of logic for both.
@@ -167,11 +167,11 @@ sub SEEQ_WriteProxyQVD
 			STORE TmpProxyTable INTO  [$(vSEEQ_TargetFolder)tmp_TSEEQ_proxy.qvd] (qvd);
 			DROP Table TmpProxyTable;
 			SET vSEEQ_TmpProxyTable = [$(vSEEQ_TargetFolder)tmp_TSEEQ_proxy.qvd] (qvd);
-	Trace 'Exiting subroutine SEEQ_WriteProxyQVD in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt';
+	call TSEEQ_Trace('Exiting subroutine SEEQ_WriteProxyQVD in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt');
 ENDSUB
 /******************************************************************************************************************************************/
 sub SEEQ_TransformIncludeSubset
-	Trace 'Entering subroutine SEEQ_TransformIncludeSubset in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt';
+	call TSEEQ_Trace('Entering subroutine SEEQ_TransformIncludeSubset in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt');
 		IF upper(vSEEQ_Fields) = 'INCLUDE_SUBSET'	THEN
 			TargetFieldsTmp:
 			LOAD IN.Field 	   AS [Target Field Name Tmp], 'INCLUDE_FIELDS' AS [Source XLS Sheet]
@@ -194,5 +194,5 @@ sub SEEQ_TransformIncludeSubset
 			// comment the following line to exclude unmodified original fields (tagged with '_original' in the case where there is name duplication:
 			// LOAD FieldName&'_original' AS [Target Field Name Tmp], 'TABLES (ALL)' AS [Source XLS Sheet]	FROM $(vSEEQ_XML_QVD_Target)		WHERE     	exists ([Target Field Name], FieldName); 
 		ENDIF
-	Trace 'Exiting subroutine SEEQ_TransformIncludeSubset in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt';
+	call TSEEQ_Trace('Exiting subroutine SEEQ_TransformIncludeSubset in $(vCommonScriptPath)\EEE\TSEEQ_subroutines.txt');
 ENDSUB		
